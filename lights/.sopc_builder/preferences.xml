@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<preferences>
+ <debug showDebugMenu="0" />
+ <systemtable filter="Default">
+  <columns>
+   <opcodeName visible="0" />
+   <connections preferredWidth="47" />
+   <irq preferredWidth="34" />
+   <export visible="0" />
+  </columns>
+ </systemtable>
+ <clocktable>
+  <columns>
+   <clockname preferredWidth="30" />
+   <clocksource preferredWidth="30" />
+   <frequency preferredWidth="30" />
+  </columns>
+ </clocktable>
+ <window width="609" height="1001" x="672" y="24" />
+ <library expandedCategories="Library,Project,Library/Peripherals" />
+</preferences>

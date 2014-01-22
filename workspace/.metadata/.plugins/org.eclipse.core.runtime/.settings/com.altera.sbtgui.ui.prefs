@@ -1,0 +1,5 @@
+#Thu Jan 16 13:16:31 EST 2014
+newSoftwareExampleWizardPage.defaultLocation=/acct/s1/mccartjj/CSCE313/lights/software/lights
+newSoftwareExampleWizardPage.sopcinfoFile=/acct/s1/mccartjj/CSCE313/lights/nios_system.sopcinfo
+eclipse.preferences.version=1
+newSoftwareExampleWizardPage2.newBspLocation=/acct/s1/mccartjj/CSCE313/lights/software/lights_bsp
