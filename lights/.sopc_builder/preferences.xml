@@ -11,11 +11,12 @@
  </systemtable>
  <clocktable>
   <columns>
-   <clockname preferredWidth="30" />
-   <clocksource preferredWidth="30" />
-   <frequency preferredWidth="30" />
+   <clockname preferredWidth="83" />
+   <clocksource preferredWidth="84" />
+   <frequency preferredWidth="83" />
   </columns>
  </clocktable>
- <window width="609" height="1001" x="672" y="24" />
- <library expandedCategories="Library,Project,Library/Peripherals" />
+ <window width="774" height="743" x="163" y="69" />
+ <library
+   expandedCategories="Library/Peripherals/Microcontroller Peripherals,Library/Peripherals,Project,Library" />
 </preferences>

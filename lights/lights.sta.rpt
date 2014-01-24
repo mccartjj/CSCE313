@@ -1,5 +1,5 @@
 TimeQuest Timing Analyzer report for lights
-Wed Jan 22 16:23:32 2014
+Thu Jan 23 17:08:18 2014
 Quartus II 32-bit Version 12.0 Build 178 05/31/2012 SJ Full Version
 
 
@@ -93,8 +93,8 @@ applicable agreement for further details.
 +----------------------------------------------------------------------------------------------------------------------------+--------+--------------------------+
 ; SDC File Path                                                                                                              ; Status ; Read at                  ;
 +----------------------------------------------------------------------------------------------------------------------------+--------+--------------------------+
-; cpu_0.sdc                                                                                                                  ; OK     ; Wed Jan 22 16:23:31 2014 ;
-; /usr/local/3rdparty/altera/quartus12/ip/altera/sopc_builder_ip/altera_avalon_clock_adapter/altera_avalon_clock_adapter.sdc ; OK     ; Wed Jan 22 16:23:31 2014 ;
+; cpu_0.sdc                                                                                                                  ; OK     ; Thu Jan 23 17:08:17 2014 ;
+; /usr/local/3rdparty/altera/quartus12/ip/altera/sopc_builder_ip/altera_avalon_clock_adapter/altera_avalon_clock_adapter.sdc ; OK     ; Thu Jan 23 17:08:17 2014 ;
 +----------------------------------------------------------------------------------------------------------------------------+--------+--------------------------+
 
 
@@ -290,8 +290,8 @@ No dedicated SERDES Receiver circuitry present in device or used in design
 ; Unconstrained Clocks            ; 1     ; 1    ;
 ; Unconstrained Input Ports       ; 29    ; 29   ;
 ; Unconstrained Input Port Paths  ; 37    ; 37   ;
-; Unconstrained Output Ports      ; 74    ; 74   ;
-; Unconstrained Output Port Paths ; 128   ; 128  ;
+; Unconstrained Output Ports      ; 130   ; 130  ;
+; Unconstrained Output Port Paths ; 184   ; 184  ;
 +---------------------------------+-------+------+
 
 
@@ -301,7 +301,7 @@ No dedicated SERDES Receiver circuitry present in device or used in design
 Info: *******************************************************************
 Info: Running Quartus II 32-bit TimeQuest Timing Analyzer
     Info: Version 12.0 Build 178 05/31/2012 SJ Full Version
-    Info: Processing started: Wed Jan 22 16:23:29 2014
+    Info: Processing started: Thu Jan 23 17:08:15 2014
 Info: Command: quartus_sta lights -c lights
 Info: qsta_default_script.tcl version: #4
 Info (20030): Parallel compilation is enabled and will use 4 of the 4 processors detected
@@ -375,8 +375,8 @@ Info (332001): The selected device family is not supported by the report_metasta
 Info (332102): Design is not fully constrained for setup requirements
 Info (332102): Design is not fully constrained for hold requirements
 Info: Quartus II 32-bit TimeQuest Timing Analyzer was successful. 0 errors, 8 warnings
-    Info: Peak virtual memory: 371 megabytes
-    Info: Processing ended: Wed Jan 22 16:23:32 2014
+    Info: Peak virtual memory: 361 megabytes
+    Info: Processing ended: Thu Jan 23 17:08:18 2014
     Info: Elapsed time: 00:00:03
     Info: Total CPU time (on all processors): 00:00:02
 

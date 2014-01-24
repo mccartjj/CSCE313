@@ -51,15 +51,6 @@ module lights (
 	wire sdram_clk;
 	wire sys_clk;
 	
-	assign HEX0 = 7'h00;
-	assign HEX1 = 7'h00;
-	assign HEX2 = 7'h00;
-	assign HEX3 = 7'h00;
-	assign HEX4 = 7'h00;
-	assign HEX5 = 7'h00;
-	assign HEX6 = 7'h00;
-	assign HEX7 = 7'h00;
-	
 	assign LCD_ON = 1'b1;
 	assign LCD_BLON = 1'b1;
 	assign LEDR = out_port_from_the_leds[25:8];
@@ -71,6 +62,16 @@ module lights (
 	assign in_port_to_the_keys = KEY[3:1];
 	
 nios_system DUT(
+
+	.out_port_from_the_HEX0(HEX0),
+	.out_port_from_the_HEX1(HEX1),
+	.out_port_from_the_HEX2(HEX2),
+	.out_port_from_the_HEX3(HEX3),
+	.out_port_from_the_HEX4(HEX4),
+	.out_port_from_the_HEX5(HEX5),
+	.out_port_from_the_HEX6(HEX6),
+	.out_port_from_the_HEX7(HEX7),
+	
 	.LCD_E_from_the_lcd_0 (LCD_EN),
 	.LCD_RS_from_the_lcd_0 (LCD_RS),
 	.LCD_RW_from_the_lcd_0 (LCD_RW),

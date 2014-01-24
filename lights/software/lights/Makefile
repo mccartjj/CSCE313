@@ -142,7 +142,8 @@ ACDS_VERSION := 12.0
 ELF := lights.elf
 
 # Paths to C, C++, and assembly source files.
-C_SRCS := hello_world.c
+C_SRCS += LightsFunctions.c
+C_SRCS += Project.c
 CXX_SRCS :=
 ASM_SRCS :=
 

@@ -23,6 +23,2198 @@
 // altera message_level Level1 
 // altera message_off 10034 10035 10036 10037 10230 10240 10030 
 
+module HEX0_s1_arbitrator (
+                            // inputs:
+                             HEX0_s1_readdata,
+                             clk,
+                             cpu_0_data_master_address_to_slave,
+                             cpu_0_data_master_latency_counter,
+                             cpu_0_data_master_read,
+                             cpu_0_data_master_write,
+                             cpu_0_data_master_writedata,
+                             reset_n,
+
+                            // outputs:
+                             HEX0_s1_address,
+                             HEX0_s1_chipselect,
+                             HEX0_s1_readdata_from_sa,
+                             HEX0_s1_reset_n,
+                             HEX0_s1_write_n,
+                             HEX0_s1_writedata,
+                             cpu_0_data_master_granted_HEX0_s1,
+                             cpu_0_data_master_qualified_request_HEX0_s1,
+                             cpu_0_data_master_read_data_valid_HEX0_s1,
+                             cpu_0_data_master_requests_HEX0_s1,
+                             d1_HEX0_s1_end_xfer
+                          )
+;
+
+  output  [  1: 0] HEX0_s1_address;
+  output           HEX0_s1_chipselect;
+  output  [ 31: 0] HEX0_s1_readdata_from_sa;
+  output           HEX0_s1_reset_n;
+  output           HEX0_s1_write_n;
+  output  [ 31: 0] HEX0_s1_writedata;
+  output           cpu_0_data_master_granted_HEX0_s1;
+  output           cpu_0_data_master_qualified_request_HEX0_s1;
+  output           cpu_0_data_master_read_data_valid_HEX0_s1;
+  output           cpu_0_data_master_requests_HEX0_s1;
+  output           d1_HEX0_s1_end_xfer;
+  input   [ 31: 0] HEX0_s1_readdata;
+  input            clk;
+  input   [ 24: 0] cpu_0_data_master_address_to_slave;
+  input            cpu_0_data_master_latency_counter;
+  input            cpu_0_data_master_read;
+  input            cpu_0_data_master_write;
+  input   [ 31: 0] cpu_0_data_master_writedata;
+  input            reset_n;
+
+  wire    [  1: 0] HEX0_s1_address;
+  wire             HEX0_s1_allgrants;
+  wire             HEX0_s1_allow_new_arb_cycle;
+  wire             HEX0_s1_any_bursting_master_saved_grant;
+  wire             HEX0_s1_any_continuerequest;
+  wire             HEX0_s1_arb_counter_enable;
+  reg     [  2: 0] HEX0_s1_arb_share_counter;
+  wire    [  2: 0] HEX0_s1_arb_share_counter_next_value;
+  wire    [  2: 0] HEX0_s1_arb_share_set_values;
+  wire             HEX0_s1_beginbursttransfer_internal;
+  wire             HEX0_s1_begins_xfer;
+  wire             HEX0_s1_chipselect;
+  wire             HEX0_s1_end_xfer;
+  wire             HEX0_s1_firsttransfer;
+  wire             HEX0_s1_grant_vector;
+  wire             HEX0_s1_in_a_read_cycle;
+  wire             HEX0_s1_in_a_write_cycle;
+  wire             HEX0_s1_master_qreq_vector;
+  wire             HEX0_s1_non_bursting_master_requests;
+  wire    [ 31: 0] HEX0_s1_readdata_from_sa;
+  reg              HEX0_s1_reg_firsttransfer;
+  wire             HEX0_s1_reset_n;
+  reg              HEX0_s1_slavearbiterlockenable;
+  wire             HEX0_s1_slavearbiterlockenable2;
+  wire             HEX0_s1_unreg_firsttransfer;
+  wire             HEX0_s1_waits_for_read;
+  wire             HEX0_s1_waits_for_write;
+  wire             HEX0_s1_write_n;
+  wire    [ 31: 0] HEX0_s1_writedata;
+  wire             cpu_0_data_master_arbiterlock;
+  wire             cpu_0_data_master_arbiterlock2;
+  wire             cpu_0_data_master_continuerequest;
+  wire             cpu_0_data_master_granted_HEX0_s1;
+  wire             cpu_0_data_master_qualified_request_HEX0_s1;
+  wire             cpu_0_data_master_read_data_valid_HEX0_s1;
+  wire             cpu_0_data_master_requests_HEX0_s1;
+  wire             cpu_0_data_master_saved_grant_HEX0_s1;
+  reg              d1_HEX0_s1_end_xfer;
+  reg              d1_reasons_to_wait;
+  reg              enable_nonzero_assertions;
+  wire             end_xfer_arb_share_counter_term_HEX0_s1;
+  wire             in_a_read_cycle;
+  wire             in_a_write_cycle;
+  wire    [ 24: 0] shifted_address_to_HEX0_s1_from_cpu_0_data_master;
+  wire             wait_for_HEX0_s1_counter;
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          d1_reasons_to_wait <= 0;
+      else 
+        d1_reasons_to_wait <= ~HEX0_s1_end_xfer;
+    end
+
+
+  assign HEX0_s1_begins_xfer = ~d1_reasons_to_wait & ((cpu_0_data_master_qualified_request_HEX0_s1));
+  //assign HEX0_s1_readdata_from_sa = HEX0_s1_readdata so that symbol knows where to group signals which may go to master only, which is an e_assign
+  assign HEX0_s1_readdata_from_sa = HEX0_s1_readdata;
+
+  assign cpu_0_data_master_requests_HEX0_s1 = ({cpu_0_data_master_address_to_slave[24 : 4] , 4'b0} == 25'h0) & (cpu_0_data_master_read | cpu_0_data_master_write);
+  //HEX0_s1_arb_share_counter set values, which is an e_mux
+  assign HEX0_s1_arb_share_set_values = 1;
+
+  //HEX0_s1_non_bursting_master_requests mux, which is an e_mux
+  assign HEX0_s1_non_bursting_master_requests = cpu_0_data_master_requests_HEX0_s1;
+
+  //HEX0_s1_any_bursting_master_saved_grant mux, which is an e_mux
+  assign HEX0_s1_any_bursting_master_saved_grant = 0;
+
+  //HEX0_s1_arb_share_counter_next_value assignment, which is an e_assign
+  assign HEX0_s1_arb_share_counter_next_value = HEX0_s1_firsttransfer ? (HEX0_s1_arb_share_set_values - 1) : |HEX0_s1_arb_share_counter ? (HEX0_s1_arb_share_counter - 1) : 0;
+
+  //HEX0_s1_allgrants all slave grants, which is an e_mux
+  assign HEX0_s1_allgrants = |HEX0_s1_grant_vector;
+
+  //HEX0_s1_end_xfer assignment, which is an e_assign
+  assign HEX0_s1_end_xfer = ~(HEX0_s1_waits_for_read | HEX0_s1_waits_for_write);
+
+  //end_xfer_arb_share_counter_term_HEX0_s1 arb share counter enable term, which is an e_assign
+  assign end_xfer_arb_share_counter_term_HEX0_s1 = HEX0_s1_end_xfer & (~HEX0_s1_any_bursting_master_saved_grant | in_a_read_cycle | in_a_write_cycle);
+
+  //HEX0_s1_arb_share_counter arbitration counter enable, which is an e_assign
+  assign HEX0_s1_arb_counter_enable = (end_xfer_arb_share_counter_term_HEX0_s1 & HEX0_s1_allgrants) | (end_xfer_arb_share_counter_term_HEX0_s1 & ~HEX0_s1_non_bursting_master_requests);
+
+  //HEX0_s1_arb_share_counter counter, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          HEX0_s1_arb_share_counter <= 0;
+      else if (HEX0_s1_arb_counter_enable)
+          HEX0_s1_arb_share_counter <= HEX0_s1_arb_share_counter_next_value;
+    end
+
+
+  //HEX0_s1_slavearbiterlockenable slave enables arbiterlock, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          HEX0_s1_slavearbiterlockenable <= 0;
+      else if ((|HEX0_s1_master_qreq_vector & end_xfer_arb_share_counter_term_HEX0_s1) | (end_xfer_arb_share_counter_term_HEX0_s1 & ~HEX0_s1_non_bursting_master_requests))
+          HEX0_s1_slavearbiterlockenable <= |HEX0_s1_arb_share_counter_next_value;
+    end
+
+
+  //cpu_0/data_master HEX0/s1 arbiterlock, which is an e_assign
+  assign cpu_0_data_master_arbiterlock = HEX0_s1_slavearbiterlockenable & cpu_0_data_master_continuerequest;
+
+  //HEX0_s1_slavearbiterlockenable2 slave enables arbiterlock2, which is an e_assign
+  assign HEX0_s1_slavearbiterlockenable2 = |HEX0_s1_arb_share_counter_next_value;
+
+  //cpu_0/data_master HEX0/s1 arbiterlock2, which is an e_assign
+  assign cpu_0_data_master_arbiterlock2 = HEX0_s1_slavearbiterlockenable2 & cpu_0_data_master_continuerequest;
+
+  //HEX0_s1_any_continuerequest at least one master continues requesting, which is an e_assign
+  assign HEX0_s1_any_continuerequest = 1;
+
+  //cpu_0_data_master_continuerequest continued request, which is an e_assign
+  assign cpu_0_data_master_continuerequest = 1;
+
+  assign cpu_0_data_master_qualified_request_HEX0_s1 = cpu_0_data_master_requests_HEX0_s1 & ~((cpu_0_data_master_read & ((cpu_0_data_master_latency_counter != 0))));
+  //local readdatavalid cpu_0_data_master_read_data_valid_HEX0_s1, which is an e_mux
+  assign cpu_0_data_master_read_data_valid_HEX0_s1 = cpu_0_data_master_granted_HEX0_s1 & cpu_0_data_master_read & ~HEX0_s1_waits_for_read;
+
+  //HEX0_s1_writedata mux, which is an e_mux
+  assign HEX0_s1_writedata = cpu_0_data_master_writedata;
+
+  //master is always granted when requested
+  assign cpu_0_data_master_granted_HEX0_s1 = cpu_0_data_master_qualified_request_HEX0_s1;
+
+  //cpu_0/data_master saved-grant HEX0/s1, which is an e_assign
+  assign cpu_0_data_master_saved_grant_HEX0_s1 = cpu_0_data_master_requests_HEX0_s1;
+
+  //allow new arb cycle for HEX0/s1, which is an e_assign
+  assign HEX0_s1_allow_new_arb_cycle = 1;
+
+  //placeholder chosen master
+  assign HEX0_s1_grant_vector = 1;
+
+  //placeholder vector of master qualified-requests
+  assign HEX0_s1_master_qreq_vector = 1;
+
+  //HEX0_s1_reset_n assignment, which is an e_assign
+  assign HEX0_s1_reset_n = reset_n;
+
+  assign HEX0_s1_chipselect = cpu_0_data_master_granted_HEX0_s1;
+  //HEX0_s1_firsttransfer first transaction, which is an e_assign
+  assign HEX0_s1_firsttransfer = HEX0_s1_begins_xfer ? HEX0_s1_unreg_firsttransfer : HEX0_s1_reg_firsttransfer;
+
+  //HEX0_s1_unreg_firsttransfer first transaction, which is an e_assign
+  assign HEX0_s1_unreg_firsttransfer = ~(HEX0_s1_slavearbiterlockenable & HEX0_s1_any_continuerequest);
+
+  //HEX0_s1_reg_firsttransfer first transaction, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          HEX0_s1_reg_firsttransfer <= 1'b1;
+      else if (HEX0_s1_begins_xfer)
+          HEX0_s1_reg_firsttransfer <= HEX0_s1_unreg_firsttransfer;
+    end
+
+
+  //HEX0_s1_beginbursttransfer_internal begin burst transfer, which is an e_assign
+  assign HEX0_s1_beginbursttransfer_internal = HEX0_s1_begins_xfer;
+
+  //~HEX0_s1_write_n assignment, which is an e_mux
+  assign HEX0_s1_write_n = ~(cpu_0_data_master_granted_HEX0_s1 & cpu_0_data_master_write);
+
+  assign shifted_address_to_HEX0_s1_from_cpu_0_data_master = cpu_0_data_master_address_to_slave;
+  //HEX0_s1_address mux, which is an e_mux
+  assign HEX0_s1_address = shifted_address_to_HEX0_s1_from_cpu_0_data_master >> 2;
+
+  //d1_HEX0_s1_end_xfer register, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          d1_HEX0_s1_end_xfer <= 1;
+      else 
+        d1_HEX0_s1_end_xfer <= HEX0_s1_end_xfer;
+    end
+
+
+  //HEX0_s1_waits_for_read in a cycle, which is an e_mux
+  assign HEX0_s1_waits_for_read = HEX0_s1_in_a_read_cycle & HEX0_s1_begins_xfer;
+
+  //HEX0_s1_in_a_read_cycle assignment, which is an e_assign
+  assign HEX0_s1_in_a_read_cycle = cpu_0_data_master_granted_HEX0_s1 & cpu_0_data_master_read;
+
+  //in_a_read_cycle assignment, which is an e_mux
+  assign in_a_read_cycle = HEX0_s1_in_a_read_cycle;
+
+  //HEX0_s1_waits_for_write in a cycle, which is an e_mux
+  assign HEX0_s1_waits_for_write = HEX0_s1_in_a_write_cycle & 0;
+
+  //HEX0_s1_in_a_write_cycle assignment, which is an e_assign
+  assign HEX0_s1_in_a_write_cycle = cpu_0_data_master_granted_HEX0_s1 & cpu_0_data_master_write;
+
+  //in_a_write_cycle assignment, which is an e_mux
+  assign in_a_write_cycle = HEX0_s1_in_a_write_cycle;
+
+  assign wait_for_HEX0_s1_counter = 0;
+
+//synthesis translate_off
+//////////////// SIMULATION-ONLY CONTENTS
+  //HEX0/s1 enable non-zero assertions, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          enable_nonzero_assertions <= 0;
+      else 
+        enable_nonzero_assertions <= 1'b1;
+    end
+
+
+
+//////////////// END SIMULATION-ONLY CONTENTS
+
+//synthesis translate_on
+
+endmodule
+
+
+// synthesis translate_off
+`timescale 1ns / 1ps
+// synthesis translate_on
+
+// turn off superfluous verilog processor warnings 
+// altera message_level Level1 
+// altera message_off 10034 10035 10036 10037 10230 10240 10030 
+
+module HEX1_s1_arbitrator (
+                            // inputs:
+                             HEX1_s1_readdata,
+                             clk,
+                             cpu_0_data_master_address_to_slave,
+                             cpu_0_data_master_latency_counter,
+                             cpu_0_data_master_read,
+                             cpu_0_data_master_write,
+                             cpu_0_data_master_writedata,
+                             reset_n,
+
+                            // outputs:
+                             HEX1_s1_address,
+                             HEX1_s1_chipselect,
+                             HEX1_s1_readdata_from_sa,
+                             HEX1_s1_reset_n,
+                             HEX1_s1_write_n,
+                             HEX1_s1_writedata,
+                             cpu_0_data_master_granted_HEX1_s1,
+                             cpu_0_data_master_qualified_request_HEX1_s1,
+                             cpu_0_data_master_read_data_valid_HEX1_s1,
+                             cpu_0_data_master_requests_HEX1_s1,
+                             d1_HEX1_s1_end_xfer
+                          )
+;
+
+  output  [  1: 0] HEX1_s1_address;
+  output           HEX1_s1_chipselect;
+  output  [ 31: 0] HEX1_s1_readdata_from_sa;
+  output           HEX1_s1_reset_n;
+  output           HEX1_s1_write_n;
+  output  [ 31: 0] HEX1_s1_writedata;
+  output           cpu_0_data_master_granted_HEX1_s1;
+  output           cpu_0_data_master_qualified_request_HEX1_s1;
+  output           cpu_0_data_master_read_data_valid_HEX1_s1;
+  output           cpu_0_data_master_requests_HEX1_s1;
+  output           d1_HEX1_s1_end_xfer;
+  input   [ 31: 0] HEX1_s1_readdata;
+  input            clk;
+  input   [ 24: 0] cpu_0_data_master_address_to_slave;
+  input            cpu_0_data_master_latency_counter;
+  input            cpu_0_data_master_read;
+  input            cpu_0_data_master_write;
+  input   [ 31: 0] cpu_0_data_master_writedata;
+  input            reset_n;
+
+  wire    [  1: 0] HEX1_s1_address;
+  wire             HEX1_s1_allgrants;
+  wire             HEX1_s1_allow_new_arb_cycle;
+  wire             HEX1_s1_any_bursting_master_saved_grant;
+  wire             HEX1_s1_any_continuerequest;
+  wire             HEX1_s1_arb_counter_enable;
+  reg     [  2: 0] HEX1_s1_arb_share_counter;
+  wire    [  2: 0] HEX1_s1_arb_share_counter_next_value;
+  wire    [  2: 0] HEX1_s1_arb_share_set_values;
+  wire             HEX1_s1_beginbursttransfer_internal;
+  wire             HEX1_s1_begins_xfer;
+  wire             HEX1_s1_chipselect;
+  wire             HEX1_s1_end_xfer;
+  wire             HEX1_s1_firsttransfer;
+  wire             HEX1_s1_grant_vector;
+  wire             HEX1_s1_in_a_read_cycle;
+  wire             HEX1_s1_in_a_write_cycle;
+  wire             HEX1_s1_master_qreq_vector;
+  wire             HEX1_s1_non_bursting_master_requests;
+  wire    [ 31: 0] HEX1_s1_readdata_from_sa;
+  reg              HEX1_s1_reg_firsttransfer;
+  wire             HEX1_s1_reset_n;
+  reg              HEX1_s1_slavearbiterlockenable;
+  wire             HEX1_s1_slavearbiterlockenable2;
+  wire             HEX1_s1_unreg_firsttransfer;
+  wire             HEX1_s1_waits_for_read;
+  wire             HEX1_s1_waits_for_write;
+  wire             HEX1_s1_write_n;
+  wire    [ 31: 0] HEX1_s1_writedata;
+  wire             cpu_0_data_master_arbiterlock;
+  wire             cpu_0_data_master_arbiterlock2;
+  wire             cpu_0_data_master_continuerequest;
+  wire             cpu_0_data_master_granted_HEX1_s1;
+  wire             cpu_0_data_master_qualified_request_HEX1_s1;
+  wire             cpu_0_data_master_read_data_valid_HEX1_s1;
+  wire             cpu_0_data_master_requests_HEX1_s1;
+  wire             cpu_0_data_master_saved_grant_HEX1_s1;
+  reg              d1_HEX1_s1_end_xfer;
+  reg              d1_reasons_to_wait;
+  reg              enable_nonzero_assertions;
+  wire             end_xfer_arb_share_counter_term_HEX1_s1;
+  wire             in_a_read_cycle;
+  wire             in_a_write_cycle;
+  wire    [ 24: 0] shifted_address_to_HEX1_s1_from_cpu_0_data_master;
+  wire             wait_for_HEX1_s1_counter;
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          d1_reasons_to_wait <= 0;
+      else 
+        d1_reasons_to_wait <= ~HEX1_s1_end_xfer;
+    end
+
+
+  assign HEX1_s1_begins_xfer = ~d1_reasons_to_wait & ((cpu_0_data_master_qualified_request_HEX1_s1));
+  //assign HEX1_s1_readdata_from_sa = HEX1_s1_readdata so that symbol knows where to group signals which may go to master only, which is an e_assign
+  assign HEX1_s1_readdata_from_sa = HEX1_s1_readdata;
+
+  assign cpu_0_data_master_requests_HEX1_s1 = ({cpu_0_data_master_address_to_slave[24 : 4] , 4'b0} == 25'h10) & (cpu_0_data_master_read | cpu_0_data_master_write);
+  //HEX1_s1_arb_share_counter set values, which is an e_mux
+  assign HEX1_s1_arb_share_set_values = 1;
+
+  //HEX1_s1_non_bursting_master_requests mux, which is an e_mux
+  assign HEX1_s1_non_bursting_master_requests = cpu_0_data_master_requests_HEX1_s1;
+
+  //HEX1_s1_any_bursting_master_saved_grant mux, which is an e_mux
+  assign HEX1_s1_any_bursting_master_saved_grant = 0;
+
+  //HEX1_s1_arb_share_counter_next_value assignment, which is an e_assign
+  assign HEX1_s1_arb_share_counter_next_value = HEX1_s1_firsttransfer ? (HEX1_s1_arb_share_set_values - 1) : |HEX1_s1_arb_share_counter ? (HEX1_s1_arb_share_counter - 1) : 0;
+
+  //HEX1_s1_allgrants all slave grants, which is an e_mux
+  assign HEX1_s1_allgrants = |HEX1_s1_grant_vector;
+
+  //HEX1_s1_end_xfer assignment, which is an e_assign
+  assign HEX1_s1_end_xfer = ~(HEX1_s1_waits_for_read | HEX1_s1_waits_for_write);
+
+  //end_xfer_arb_share_counter_term_HEX1_s1 arb share counter enable term, which is an e_assign
+  assign end_xfer_arb_share_counter_term_HEX1_s1 = HEX1_s1_end_xfer & (~HEX1_s1_any_bursting_master_saved_grant | in_a_read_cycle | in_a_write_cycle);
+
+  //HEX1_s1_arb_share_counter arbitration counter enable, which is an e_assign
+  assign HEX1_s1_arb_counter_enable = (end_xfer_arb_share_counter_term_HEX1_s1 & HEX1_s1_allgrants) | (end_xfer_arb_share_counter_term_HEX1_s1 & ~HEX1_s1_non_bursting_master_requests);
+
+  //HEX1_s1_arb_share_counter counter, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          HEX1_s1_arb_share_counter <= 0;
+      else if (HEX1_s1_arb_counter_enable)
+          HEX1_s1_arb_share_counter <= HEX1_s1_arb_share_counter_next_value;
+    end
+
+
+  //HEX1_s1_slavearbiterlockenable slave enables arbiterlock, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          HEX1_s1_slavearbiterlockenable <= 0;
+      else if ((|HEX1_s1_master_qreq_vector & end_xfer_arb_share_counter_term_HEX1_s1) | (end_xfer_arb_share_counter_term_HEX1_s1 & ~HEX1_s1_non_bursting_master_requests))
+          HEX1_s1_slavearbiterlockenable <= |HEX1_s1_arb_share_counter_next_value;
+    end
+
+
+  //cpu_0/data_master HEX1/s1 arbiterlock, which is an e_assign
+  assign cpu_0_data_master_arbiterlock = HEX1_s1_slavearbiterlockenable & cpu_0_data_master_continuerequest;
+
+  //HEX1_s1_slavearbiterlockenable2 slave enables arbiterlock2, which is an e_assign
+  assign HEX1_s1_slavearbiterlockenable2 = |HEX1_s1_arb_share_counter_next_value;
+
+  //cpu_0/data_master HEX1/s1 arbiterlock2, which is an e_assign
+  assign cpu_0_data_master_arbiterlock2 = HEX1_s1_slavearbiterlockenable2 & cpu_0_data_master_continuerequest;
+
+  //HEX1_s1_any_continuerequest at least one master continues requesting, which is an e_assign
+  assign HEX1_s1_any_continuerequest = 1;
+
+  //cpu_0_data_master_continuerequest continued request, which is an e_assign
+  assign cpu_0_data_master_continuerequest = 1;
+
+  assign cpu_0_data_master_qualified_request_HEX1_s1 = cpu_0_data_master_requests_HEX1_s1 & ~((cpu_0_data_master_read & ((cpu_0_data_master_latency_counter != 0))));
+  //local readdatavalid cpu_0_data_master_read_data_valid_HEX1_s1, which is an e_mux
+  assign cpu_0_data_master_read_data_valid_HEX1_s1 = cpu_0_data_master_granted_HEX1_s1 & cpu_0_data_master_read & ~HEX1_s1_waits_for_read;
+
+  //HEX1_s1_writedata mux, which is an e_mux
+  assign HEX1_s1_writedata = cpu_0_data_master_writedata;
+
+  //master is always granted when requested
+  assign cpu_0_data_master_granted_HEX1_s1 = cpu_0_data_master_qualified_request_HEX1_s1;
+
+  //cpu_0/data_master saved-grant HEX1/s1, which is an e_assign
+  assign cpu_0_data_master_saved_grant_HEX1_s1 = cpu_0_data_master_requests_HEX1_s1;
+
+  //allow new arb cycle for HEX1/s1, which is an e_assign
+  assign HEX1_s1_allow_new_arb_cycle = 1;
+
+  //placeholder chosen master
+  assign HEX1_s1_grant_vector = 1;
+
+  //placeholder vector of master qualified-requests
+  assign HEX1_s1_master_qreq_vector = 1;
+
+  //HEX1_s1_reset_n assignment, which is an e_assign
+  assign HEX1_s1_reset_n = reset_n;
+
+  assign HEX1_s1_chipselect = cpu_0_data_master_granted_HEX1_s1;
+  //HEX1_s1_firsttransfer first transaction, which is an e_assign
+  assign HEX1_s1_firsttransfer = HEX1_s1_begins_xfer ? HEX1_s1_unreg_firsttransfer : HEX1_s1_reg_firsttransfer;
+
+  //HEX1_s1_unreg_firsttransfer first transaction, which is an e_assign
+  assign HEX1_s1_unreg_firsttransfer = ~(HEX1_s1_slavearbiterlockenable & HEX1_s1_any_continuerequest);
+
+  //HEX1_s1_reg_firsttransfer first transaction, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          HEX1_s1_reg_firsttransfer <= 1'b1;
+      else if (HEX1_s1_begins_xfer)
+          HEX1_s1_reg_firsttransfer <= HEX1_s1_unreg_firsttransfer;
+    end
+
+
+  //HEX1_s1_beginbursttransfer_internal begin burst transfer, which is an e_assign
+  assign HEX1_s1_beginbursttransfer_internal = HEX1_s1_begins_xfer;
+
+  //~HEX1_s1_write_n assignment, which is an e_mux
+  assign HEX1_s1_write_n = ~(cpu_0_data_master_granted_HEX1_s1 & cpu_0_data_master_write);
+
+  assign shifted_address_to_HEX1_s1_from_cpu_0_data_master = cpu_0_data_master_address_to_slave;
+  //HEX1_s1_address mux, which is an e_mux
+  assign HEX1_s1_address = shifted_address_to_HEX1_s1_from_cpu_0_data_master >> 2;
+
+  //d1_HEX1_s1_end_xfer register, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          d1_HEX1_s1_end_xfer <= 1;
+      else 
+        d1_HEX1_s1_end_xfer <= HEX1_s1_end_xfer;
+    end
+
+
+  //HEX1_s1_waits_for_read in a cycle, which is an e_mux
+  assign HEX1_s1_waits_for_read = HEX1_s1_in_a_read_cycle & HEX1_s1_begins_xfer;
+
+  //HEX1_s1_in_a_read_cycle assignment, which is an e_assign
+  assign HEX1_s1_in_a_read_cycle = cpu_0_data_master_granted_HEX1_s1 & cpu_0_data_master_read;
+
+  //in_a_read_cycle assignment, which is an e_mux
+  assign in_a_read_cycle = HEX1_s1_in_a_read_cycle;
+
+  //HEX1_s1_waits_for_write in a cycle, which is an e_mux
+  assign HEX1_s1_waits_for_write = HEX1_s1_in_a_write_cycle & 0;
+
+  //HEX1_s1_in_a_write_cycle assignment, which is an e_assign
+  assign HEX1_s1_in_a_write_cycle = cpu_0_data_master_granted_HEX1_s1 & cpu_0_data_master_write;
+
+  //in_a_write_cycle assignment, which is an e_mux
+  assign in_a_write_cycle = HEX1_s1_in_a_write_cycle;
+
+  assign wait_for_HEX1_s1_counter = 0;
+
+//synthesis translate_off
+//////////////// SIMULATION-ONLY CONTENTS
+  //HEX1/s1 enable non-zero assertions, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          enable_nonzero_assertions <= 0;
+      else 
+        enable_nonzero_assertions <= 1'b1;
+    end
+
+
+
+//////////////// END SIMULATION-ONLY CONTENTS
+
+//synthesis translate_on
+
+endmodule
+
+
+// synthesis translate_off
+`timescale 1ns / 1ps
+// synthesis translate_on
+
+// turn off superfluous verilog processor warnings 
+// altera message_level Level1 
+// altera message_off 10034 10035 10036 10037 10230 10240 10030 
+
+module HEX2_s1_arbitrator (
+                            // inputs:
+                             HEX2_s1_readdata,
+                             clk,
+                             cpu_0_data_master_address_to_slave,
+                             cpu_0_data_master_latency_counter,
+                             cpu_0_data_master_read,
+                             cpu_0_data_master_write,
+                             cpu_0_data_master_writedata,
+                             reset_n,
+
+                            // outputs:
+                             HEX2_s1_address,
+                             HEX2_s1_chipselect,
+                             HEX2_s1_readdata_from_sa,
+                             HEX2_s1_reset_n,
+                             HEX2_s1_write_n,
+                             HEX2_s1_writedata,
+                             cpu_0_data_master_granted_HEX2_s1,
+                             cpu_0_data_master_qualified_request_HEX2_s1,
+                             cpu_0_data_master_read_data_valid_HEX2_s1,
+                             cpu_0_data_master_requests_HEX2_s1,
+                             d1_HEX2_s1_end_xfer
+                          )
+;
+
+  output  [  1: 0] HEX2_s1_address;
+  output           HEX2_s1_chipselect;
+  output  [ 31: 0] HEX2_s1_readdata_from_sa;
+  output           HEX2_s1_reset_n;
+  output           HEX2_s1_write_n;
+  output  [ 31: 0] HEX2_s1_writedata;
+  output           cpu_0_data_master_granted_HEX2_s1;
+  output           cpu_0_data_master_qualified_request_HEX2_s1;
+  output           cpu_0_data_master_read_data_valid_HEX2_s1;
+  output           cpu_0_data_master_requests_HEX2_s1;
+  output           d1_HEX2_s1_end_xfer;
+  input   [ 31: 0] HEX2_s1_readdata;
+  input            clk;
+  input   [ 24: 0] cpu_0_data_master_address_to_slave;
+  input            cpu_0_data_master_latency_counter;
+  input            cpu_0_data_master_read;
+  input            cpu_0_data_master_write;
+  input   [ 31: 0] cpu_0_data_master_writedata;
+  input            reset_n;
+
+  wire    [  1: 0] HEX2_s1_address;
+  wire             HEX2_s1_allgrants;
+  wire             HEX2_s1_allow_new_arb_cycle;
+  wire             HEX2_s1_any_bursting_master_saved_grant;
+  wire             HEX2_s1_any_continuerequest;
+  wire             HEX2_s1_arb_counter_enable;
+  reg     [  2: 0] HEX2_s1_arb_share_counter;
+  wire    [  2: 0] HEX2_s1_arb_share_counter_next_value;
+  wire    [  2: 0] HEX2_s1_arb_share_set_values;
+  wire             HEX2_s1_beginbursttransfer_internal;
+  wire             HEX2_s1_begins_xfer;
+  wire             HEX2_s1_chipselect;
+  wire             HEX2_s1_end_xfer;
+  wire             HEX2_s1_firsttransfer;
+  wire             HEX2_s1_grant_vector;
+  wire             HEX2_s1_in_a_read_cycle;
+  wire             HEX2_s1_in_a_write_cycle;
+  wire             HEX2_s1_master_qreq_vector;
+  wire             HEX2_s1_non_bursting_master_requests;
+  wire    [ 31: 0] HEX2_s1_readdata_from_sa;
+  reg              HEX2_s1_reg_firsttransfer;
+  wire             HEX2_s1_reset_n;
+  reg              HEX2_s1_slavearbiterlockenable;
+  wire             HEX2_s1_slavearbiterlockenable2;
+  wire             HEX2_s1_unreg_firsttransfer;
+  wire             HEX2_s1_waits_for_read;
+  wire             HEX2_s1_waits_for_write;
+  wire             HEX2_s1_write_n;
+  wire    [ 31: 0] HEX2_s1_writedata;
+  wire             cpu_0_data_master_arbiterlock;
+  wire             cpu_0_data_master_arbiterlock2;
+  wire             cpu_0_data_master_continuerequest;
+  wire             cpu_0_data_master_granted_HEX2_s1;
+  wire             cpu_0_data_master_qualified_request_HEX2_s1;
+  wire             cpu_0_data_master_read_data_valid_HEX2_s1;
+  wire             cpu_0_data_master_requests_HEX2_s1;
+  wire             cpu_0_data_master_saved_grant_HEX2_s1;
+  reg              d1_HEX2_s1_end_xfer;
+  reg              d1_reasons_to_wait;
+  reg              enable_nonzero_assertions;
+  wire             end_xfer_arb_share_counter_term_HEX2_s1;
+  wire             in_a_read_cycle;
+  wire             in_a_write_cycle;
+  wire    [ 24: 0] shifted_address_to_HEX2_s1_from_cpu_0_data_master;
+  wire             wait_for_HEX2_s1_counter;
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          d1_reasons_to_wait <= 0;
+      else 
+        d1_reasons_to_wait <= ~HEX2_s1_end_xfer;
+    end
+
+
+  assign HEX2_s1_begins_xfer = ~d1_reasons_to_wait & ((cpu_0_data_master_qualified_request_HEX2_s1));
+  //assign HEX2_s1_readdata_from_sa = HEX2_s1_readdata so that symbol knows where to group signals which may go to master only, which is an e_assign
+  assign HEX2_s1_readdata_from_sa = HEX2_s1_readdata;
+
+  assign cpu_0_data_master_requests_HEX2_s1 = ({cpu_0_data_master_address_to_slave[24 : 4] , 4'b0} == 25'h20) & (cpu_0_data_master_read | cpu_0_data_master_write);
+  //HEX2_s1_arb_share_counter set values, which is an e_mux
+  assign HEX2_s1_arb_share_set_values = 1;
+
+  //HEX2_s1_non_bursting_master_requests mux, which is an e_mux
+  assign HEX2_s1_non_bursting_master_requests = cpu_0_data_master_requests_HEX2_s1;
+
+  //HEX2_s1_any_bursting_master_saved_grant mux, which is an e_mux
+  assign HEX2_s1_any_bursting_master_saved_grant = 0;
+
+  //HEX2_s1_arb_share_counter_next_value assignment, which is an e_assign
+  assign HEX2_s1_arb_share_counter_next_value = HEX2_s1_firsttransfer ? (HEX2_s1_arb_share_set_values - 1) : |HEX2_s1_arb_share_counter ? (HEX2_s1_arb_share_counter - 1) : 0;
+
+  //HEX2_s1_allgrants all slave grants, which is an e_mux
+  assign HEX2_s1_allgrants = |HEX2_s1_grant_vector;
+
+  //HEX2_s1_end_xfer assignment, which is an e_assign
+  assign HEX2_s1_end_xfer = ~(HEX2_s1_waits_for_read | HEX2_s1_waits_for_write);
+
+  //end_xfer_arb_share_counter_term_HEX2_s1 arb share counter enable term, which is an e_assign
+  assign end_xfer_arb_share_counter_term_HEX2_s1 = HEX2_s1_end_xfer & (~HEX2_s1_any_bursting_master_saved_grant | in_a_read_cycle | in_a_write_cycle);
+
+  //HEX2_s1_arb_share_counter arbitration counter enable, which is an e_assign
+  assign HEX2_s1_arb_counter_enable = (end_xfer_arb_share_counter_term_HEX2_s1 & HEX2_s1_allgrants) | (end_xfer_arb_share_counter_term_HEX2_s1 & ~HEX2_s1_non_bursting_master_requests);
+
+  //HEX2_s1_arb_share_counter counter, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          HEX2_s1_arb_share_counter <= 0;
+      else if (HEX2_s1_arb_counter_enable)
+          HEX2_s1_arb_share_counter <= HEX2_s1_arb_share_counter_next_value;
+    end
+
+
+  //HEX2_s1_slavearbiterlockenable slave enables arbiterlock, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          HEX2_s1_slavearbiterlockenable <= 0;
+      else if ((|HEX2_s1_master_qreq_vector & end_xfer_arb_share_counter_term_HEX2_s1) | (end_xfer_arb_share_counter_term_HEX2_s1 & ~HEX2_s1_non_bursting_master_requests))
+          HEX2_s1_slavearbiterlockenable <= |HEX2_s1_arb_share_counter_next_value;
+    end
+
+
+  //cpu_0/data_master HEX2/s1 arbiterlock, which is an e_assign
+  assign cpu_0_data_master_arbiterlock = HEX2_s1_slavearbiterlockenable & cpu_0_data_master_continuerequest;
+
+  //HEX2_s1_slavearbiterlockenable2 slave enables arbiterlock2, which is an e_assign
+  assign HEX2_s1_slavearbiterlockenable2 = |HEX2_s1_arb_share_counter_next_value;
+
+  //cpu_0/data_master HEX2/s1 arbiterlock2, which is an e_assign
+  assign cpu_0_data_master_arbiterlock2 = HEX2_s1_slavearbiterlockenable2 & cpu_0_data_master_continuerequest;
+
+  //HEX2_s1_any_continuerequest at least one master continues requesting, which is an e_assign
+  assign HEX2_s1_any_continuerequest = 1;
+
+  //cpu_0_data_master_continuerequest continued request, which is an e_assign
+  assign cpu_0_data_master_continuerequest = 1;
+
+  assign cpu_0_data_master_qualified_request_HEX2_s1 = cpu_0_data_master_requests_HEX2_s1 & ~((cpu_0_data_master_read & ((cpu_0_data_master_latency_counter != 0))));
+  //local readdatavalid cpu_0_data_master_read_data_valid_HEX2_s1, which is an e_mux
+  assign cpu_0_data_master_read_data_valid_HEX2_s1 = cpu_0_data_master_granted_HEX2_s1 & cpu_0_data_master_read & ~HEX2_s1_waits_for_read;
+
+  //HEX2_s1_writedata mux, which is an e_mux
+  assign HEX2_s1_writedata = cpu_0_data_master_writedata;
+
+  //master is always granted when requested
+  assign cpu_0_data_master_granted_HEX2_s1 = cpu_0_data_master_qualified_request_HEX2_s1;
+
+  //cpu_0/data_master saved-grant HEX2/s1, which is an e_assign
+  assign cpu_0_data_master_saved_grant_HEX2_s1 = cpu_0_data_master_requests_HEX2_s1;
+
+  //allow new arb cycle for HEX2/s1, which is an e_assign
+  assign HEX2_s1_allow_new_arb_cycle = 1;
+
+  //placeholder chosen master
+  assign HEX2_s1_grant_vector = 1;
+
+  //placeholder vector of master qualified-requests
+  assign HEX2_s1_master_qreq_vector = 1;
+
+  //HEX2_s1_reset_n assignment, which is an e_assign
+  assign HEX2_s1_reset_n = reset_n;
+
+  assign HEX2_s1_chipselect = cpu_0_data_master_granted_HEX2_s1;
+  //HEX2_s1_firsttransfer first transaction, which is an e_assign
+  assign HEX2_s1_firsttransfer = HEX2_s1_begins_xfer ? HEX2_s1_unreg_firsttransfer : HEX2_s1_reg_firsttransfer;
+
+  //HEX2_s1_unreg_firsttransfer first transaction, which is an e_assign
+  assign HEX2_s1_unreg_firsttransfer = ~(HEX2_s1_slavearbiterlockenable & HEX2_s1_any_continuerequest);
+
+  //HEX2_s1_reg_firsttransfer first transaction, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          HEX2_s1_reg_firsttransfer <= 1'b1;
+      else if (HEX2_s1_begins_xfer)
+          HEX2_s1_reg_firsttransfer <= HEX2_s1_unreg_firsttransfer;
+    end
+
+
+  //HEX2_s1_beginbursttransfer_internal begin burst transfer, which is an e_assign
+  assign HEX2_s1_beginbursttransfer_internal = HEX2_s1_begins_xfer;
+
+  //~HEX2_s1_write_n assignment, which is an e_mux
+  assign HEX2_s1_write_n = ~(cpu_0_data_master_granted_HEX2_s1 & cpu_0_data_master_write);
+
+  assign shifted_address_to_HEX2_s1_from_cpu_0_data_master = cpu_0_data_master_address_to_slave;
+  //HEX2_s1_address mux, which is an e_mux
+  assign HEX2_s1_address = shifted_address_to_HEX2_s1_from_cpu_0_data_master >> 2;
+
+  //d1_HEX2_s1_end_xfer register, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          d1_HEX2_s1_end_xfer <= 1;
+      else 
+        d1_HEX2_s1_end_xfer <= HEX2_s1_end_xfer;
+    end
+
+
+  //HEX2_s1_waits_for_read in a cycle, which is an e_mux
+  assign HEX2_s1_waits_for_read = HEX2_s1_in_a_read_cycle & HEX2_s1_begins_xfer;
+
+  //HEX2_s1_in_a_read_cycle assignment, which is an e_assign
+  assign HEX2_s1_in_a_read_cycle = cpu_0_data_master_granted_HEX2_s1 & cpu_0_data_master_read;
+
+  //in_a_read_cycle assignment, which is an e_mux
+  assign in_a_read_cycle = HEX2_s1_in_a_read_cycle;
+
+  //HEX2_s1_waits_for_write in a cycle, which is an e_mux
+  assign HEX2_s1_waits_for_write = HEX2_s1_in_a_write_cycle & 0;
+
+  //HEX2_s1_in_a_write_cycle assignment, which is an e_assign
+  assign HEX2_s1_in_a_write_cycle = cpu_0_data_master_granted_HEX2_s1 & cpu_0_data_master_write;
+
+  //in_a_write_cycle assignment, which is an e_mux
+  assign in_a_write_cycle = HEX2_s1_in_a_write_cycle;
+
+  assign wait_for_HEX2_s1_counter = 0;
+
+//synthesis translate_off
+//////////////// SIMULATION-ONLY CONTENTS
+  //HEX2/s1 enable non-zero assertions, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          enable_nonzero_assertions <= 0;
+      else 
+        enable_nonzero_assertions <= 1'b1;
+    end
+
+
+
+//////////////// END SIMULATION-ONLY CONTENTS
+
+//synthesis translate_on
+
+endmodule
+
+
+// synthesis translate_off
+`timescale 1ns / 1ps
+// synthesis translate_on
+
+// turn off superfluous verilog processor warnings 
+// altera message_level Level1 
+// altera message_off 10034 10035 10036 10037 10230 10240 10030 
+
+module HEX3_s1_arbitrator (
+                            // inputs:
+                             HEX3_s1_readdata,
+                             clk,
+                             cpu_0_data_master_address_to_slave,
+                             cpu_0_data_master_latency_counter,
+                             cpu_0_data_master_read,
+                             cpu_0_data_master_write,
+                             cpu_0_data_master_writedata,
+                             reset_n,
+
+                            // outputs:
+                             HEX3_s1_address,
+                             HEX3_s1_chipselect,
+                             HEX3_s1_readdata_from_sa,
+                             HEX3_s1_reset_n,
+                             HEX3_s1_write_n,
+                             HEX3_s1_writedata,
+                             cpu_0_data_master_granted_HEX3_s1,
+                             cpu_0_data_master_qualified_request_HEX3_s1,
+                             cpu_0_data_master_read_data_valid_HEX3_s1,
+                             cpu_0_data_master_requests_HEX3_s1,
+                             d1_HEX3_s1_end_xfer
+                          )
+;
+
+  output  [  1: 0] HEX3_s1_address;
+  output           HEX3_s1_chipselect;
+  output  [ 31: 0] HEX3_s1_readdata_from_sa;
+  output           HEX3_s1_reset_n;
+  output           HEX3_s1_write_n;
+  output  [ 31: 0] HEX3_s1_writedata;
+  output           cpu_0_data_master_granted_HEX3_s1;
+  output           cpu_0_data_master_qualified_request_HEX3_s1;
+  output           cpu_0_data_master_read_data_valid_HEX3_s1;
+  output           cpu_0_data_master_requests_HEX3_s1;
+  output           d1_HEX3_s1_end_xfer;
+  input   [ 31: 0] HEX3_s1_readdata;
+  input            clk;
+  input   [ 24: 0] cpu_0_data_master_address_to_slave;
+  input            cpu_0_data_master_latency_counter;
+  input            cpu_0_data_master_read;
+  input            cpu_0_data_master_write;
+  input   [ 31: 0] cpu_0_data_master_writedata;
+  input            reset_n;
+
+  wire    [  1: 0] HEX3_s1_address;
+  wire             HEX3_s1_allgrants;
+  wire             HEX3_s1_allow_new_arb_cycle;
+  wire             HEX3_s1_any_bursting_master_saved_grant;
+  wire             HEX3_s1_any_continuerequest;
+  wire             HEX3_s1_arb_counter_enable;
+  reg     [  2: 0] HEX3_s1_arb_share_counter;
+  wire    [  2: 0] HEX3_s1_arb_share_counter_next_value;
+  wire    [  2: 0] HEX3_s1_arb_share_set_values;
+  wire             HEX3_s1_beginbursttransfer_internal;
+  wire             HEX3_s1_begins_xfer;
+  wire             HEX3_s1_chipselect;
+  wire             HEX3_s1_end_xfer;
+  wire             HEX3_s1_firsttransfer;
+  wire             HEX3_s1_grant_vector;
+  wire             HEX3_s1_in_a_read_cycle;
+  wire             HEX3_s1_in_a_write_cycle;
+  wire             HEX3_s1_master_qreq_vector;
+  wire             HEX3_s1_non_bursting_master_requests;
+  wire    [ 31: 0] HEX3_s1_readdata_from_sa;
+  reg              HEX3_s1_reg_firsttransfer;
+  wire             HEX3_s1_reset_n;
+  reg              HEX3_s1_slavearbiterlockenable;
+  wire             HEX3_s1_slavearbiterlockenable2;
+  wire             HEX3_s1_unreg_firsttransfer;
+  wire             HEX3_s1_waits_for_read;
+  wire             HEX3_s1_waits_for_write;
+  wire             HEX3_s1_write_n;
+  wire    [ 31: 0] HEX3_s1_writedata;
+  wire             cpu_0_data_master_arbiterlock;
+  wire             cpu_0_data_master_arbiterlock2;
+  wire             cpu_0_data_master_continuerequest;
+  wire             cpu_0_data_master_granted_HEX3_s1;
+  wire             cpu_0_data_master_qualified_request_HEX3_s1;
+  wire             cpu_0_data_master_read_data_valid_HEX3_s1;
+  wire             cpu_0_data_master_requests_HEX3_s1;
+  wire             cpu_0_data_master_saved_grant_HEX3_s1;
+  reg              d1_HEX3_s1_end_xfer;
+  reg              d1_reasons_to_wait;
+  reg              enable_nonzero_assertions;
+  wire             end_xfer_arb_share_counter_term_HEX3_s1;
+  wire             in_a_read_cycle;
+  wire             in_a_write_cycle;
+  wire    [ 24: 0] shifted_address_to_HEX3_s1_from_cpu_0_data_master;
+  wire             wait_for_HEX3_s1_counter;
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          d1_reasons_to_wait <= 0;
+      else 
+        d1_reasons_to_wait <= ~HEX3_s1_end_xfer;
+    end
+
+
+  assign HEX3_s1_begins_xfer = ~d1_reasons_to_wait & ((cpu_0_data_master_qualified_request_HEX3_s1));
+  //assign HEX3_s1_readdata_from_sa = HEX3_s1_readdata so that symbol knows where to group signals which may go to master only, which is an e_assign
+  assign HEX3_s1_readdata_from_sa = HEX3_s1_readdata;
+
+  assign cpu_0_data_master_requests_HEX3_s1 = ({cpu_0_data_master_address_to_slave[24 : 4] , 4'b0} == 25'h30) & (cpu_0_data_master_read | cpu_0_data_master_write);
+  //HEX3_s1_arb_share_counter set values, which is an e_mux
+  assign HEX3_s1_arb_share_set_values = 1;
+
+  //HEX3_s1_non_bursting_master_requests mux, which is an e_mux
+  assign HEX3_s1_non_bursting_master_requests = cpu_0_data_master_requests_HEX3_s1;
+
+  //HEX3_s1_any_bursting_master_saved_grant mux, which is an e_mux
+  assign HEX3_s1_any_bursting_master_saved_grant = 0;
+
+  //HEX3_s1_arb_share_counter_next_value assignment, which is an e_assign
+  assign HEX3_s1_arb_share_counter_next_value = HEX3_s1_firsttransfer ? (HEX3_s1_arb_share_set_values - 1) : |HEX3_s1_arb_share_counter ? (HEX3_s1_arb_share_counter - 1) : 0;
+
+  //HEX3_s1_allgrants all slave grants, which is an e_mux
+  assign HEX3_s1_allgrants = |HEX3_s1_grant_vector;
+
+  //HEX3_s1_end_xfer assignment, which is an e_assign
+  assign HEX3_s1_end_xfer = ~(HEX3_s1_waits_for_read | HEX3_s1_waits_for_write);
+
+  //end_xfer_arb_share_counter_term_HEX3_s1 arb share counter enable term, which is an e_assign
+  assign end_xfer_arb_share_counter_term_HEX3_s1 = HEX3_s1_end_xfer & (~HEX3_s1_any_bursting_master_saved_grant | in_a_read_cycle | in_a_write_cycle);
+
+  //HEX3_s1_arb_share_counter arbitration counter enable, which is an e_assign
+  assign HEX3_s1_arb_counter_enable = (end_xfer_arb_share_counter_term_HEX3_s1 & HEX3_s1_allgrants) | (end_xfer_arb_share_counter_term_HEX3_s1 & ~HEX3_s1_non_bursting_master_requests);
+
+  //HEX3_s1_arb_share_counter counter, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          HEX3_s1_arb_share_counter <= 0;
+      else if (HEX3_s1_arb_counter_enable)
+          HEX3_s1_arb_share_counter <= HEX3_s1_arb_share_counter_next_value;
+    end
+
+
+  //HEX3_s1_slavearbiterlockenable slave enables arbiterlock, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          HEX3_s1_slavearbiterlockenable <= 0;
+      else if ((|HEX3_s1_master_qreq_vector & end_xfer_arb_share_counter_term_HEX3_s1) | (end_xfer_arb_share_counter_term_HEX3_s1 & ~HEX3_s1_non_bursting_master_requests))
+          HEX3_s1_slavearbiterlockenable <= |HEX3_s1_arb_share_counter_next_value;
+    end
+
+
+  //cpu_0/data_master HEX3/s1 arbiterlock, which is an e_assign
+  assign cpu_0_data_master_arbiterlock = HEX3_s1_slavearbiterlockenable & cpu_0_data_master_continuerequest;
+
+  //HEX3_s1_slavearbiterlockenable2 slave enables arbiterlock2, which is an e_assign
+  assign HEX3_s1_slavearbiterlockenable2 = |HEX3_s1_arb_share_counter_next_value;
+
+  //cpu_0/data_master HEX3/s1 arbiterlock2, which is an e_assign
+  assign cpu_0_data_master_arbiterlock2 = HEX3_s1_slavearbiterlockenable2 & cpu_0_data_master_continuerequest;
+
+  //HEX3_s1_any_continuerequest at least one master continues requesting, which is an e_assign
+  assign HEX3_s1_any_continuerequest = 1;
+
+  //cpu_0_data_master_continuerequest continued request, which is an e_assign
+  assign cpu_0_data_master_continuerequest = 1;
+
+  assign cpu_0_data_master_qualified_request_HEX3_s1 = cpu_0_data_master_requests_HEX3_s1 & ~((cpu_0_data_master_read & ((cpu_0_data_master_latency_counter != 0))));
+  //local readdatavalid cpu_0_data_master_read_data_valid_HEX3_s1, which is an e_mux
+  assign cpu_0_data_master_read_data_valid_HEX3_s1 = cpu_0_data_master_granted_HEX3_s1 & cpu_0_data_master_read & ~HEX3_s1_waits_for_read;
+
+  //HEX3_s1_writedata mux, which is an e_mux
+  assign HEX3_s1_writedata = cpu_0_data_master_writedata;
+
+  //master is always granted when requested
+  assign cpu_0_data_master_granted_HEX3_s1 = cpu_0_data_master_qualified_request_HEX3_s1;
+
+  //cpu_0/data_master saved-grant HEX3/s1, which is an e_assign
+  assign cpu_0_data_master_saved_grant_HEX3_s1 = cpu_0_data_master_requests_HEX3_s1;
+
+  //allow new arb cycle for HEX3/s1, which is an e_assign
+  assign HEX3_s1_allow_new_arb_cycle = 1;
+
+  //placeholder chosen master
+  assign HEX3_s1_grant_vector = 1;
+
+  //placeholder vector of master qualified-requests
+  assign HEX3_s1_master_qreq_vector = 1;
+
+  //HEX3_s1_reset_n assignment, which is an e_assign
+  assign HEX3_s1_reset_n = reset_n;
+
+  assign HEX3_s1_chipselect = cpu_0_data_master_granted_HEX3_s1;
+  //HEX3_s1_firsttransfer first transaction, which is an e_assign
+  assign HEX3_s1_firsttransfer = HEX3_s1_begins_xfer ? HEX3_s1_unreg_firsttransfer : HEX3_s1_reg_firsttransfer;
+
+  //HEX3_s1_unreg_firsttransfer first transaction, which is an e_assign
+  assign HEX3_s1_unreg_firsttransfer = ~(HEX3_s1_slavearbiterlockenable & HEX3_s1_any_continuerequest);
+
+  //HEX3_s1_reg_firsttransfer first transaction, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          HEX3_s1_reg_firsttransfer <= 1'b1;
+      else if (HEX3_s1_begins_xfer)
+          HEX3_s1_reg_firsttransfer <= HEX3_s1_unreg_firsttransfer;
+    end
+
+
+  //HEX3_s1_beginbursttransfer_internal begin burst transfer, which is an e_assign
+  assign HEX3_s1_beginbursttransfer_internal = HEX3_s1_begins_xfer;
+
+  //~HEX3_s1_write_n assignment, which is an e_mux
+  assign HEX3_s1_write_n = ~(cpu_0_data_master_granted_HEX3_s1 & cpu_0_data_master_write);
+
+  assign shifted_address_to_HEX3_s1_from_cpu_0_data_master = cpu_0_data_master_address_to_slave;
+  //HEX3_s1_address mux, which is an e_mux
+  assign HEX3_s1_address = shifted_address_to_HEX3_s1_from_cpu_0_data_master >> 2;
+
+  //d1_HEX3_s1_end_xfer register, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          d1_HEX3_s1_end_xfer <= 1;
+      else 
+        d1_HEX3_s1_end_xfer <= HEX3_s1_end_xfer;
+    end
+
+
+  //HEX3_s1_waits_for_read in a cycle, which is an e_mux
+  assign HEX3_s1_waits_for_read = HEX3_s1_in_a_read_cycle & HEX3_s1_begins_xfer;
+
+  //HEX3_s1_in_a_read_cycle assignment, which is an e_assign
+  assign HEX3_s1_in_a_read_cycle = cpu_0_data_master_granted_HEX3_s1 & cpu_0_data_master_read;
+
+  //in_a_read_cycle assignment, which is an e_mux
+  assign in_a_read_cycle = HEX3_s1_in_a_read_cycle;
+
+  //HEX3_s1_waits_for_write in a cycle, which is an e_mux
+  assign HEX3_s1_waits_for_write = HEX3_s1_in_a_write_cycle & 0;
+
+  //HEX3_s1_in_a_write_cycle assignment, which is an e_assign
+  assign HEX3_s1_in_a_write_cycle = cpu_0_data_master_granted_HEX3_s1 & cpu_0_data_master_write;
+
+  //in_a_write_cycle assignment, which is an e_mux
+  assign in_a_write_cycle = HEX3_s1_in_a_write_cycle;
+
+  assign wait_for_HEX3_s1_counter = 0;
+
+//synthesis translate_off
+//////////////// SIMULATION-ONLY CONTENTS
+  //HEX3/s1 enable non-zero assertions, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          enable_nonzero_assertions <= 0;
+      else 
+        enable_nonzero_assertions <= 1'b1;
+    end
+
+
+
+//////////////// END SIMULATION-ONLY CONTENTS
+
+//synthesis translate_on
+
+endmodule
+
+
+// synthesis translate_off
+`timescale 1ns / 1ps
+// synthesis translate_on
+
+// turn off superfluous verilog processor warnings 
+// altera message_level Level1 
+// altera message_off 10034 10035 10036 10037 10230 10240 10030 
+
+module HEX4_s1_arbitrator (
+                            // inputs:
+                             HEX4_s1_readdata,
+                             clk,
+                             cpu_0_data_master_address_to_slave,
+                             cpu_0_data_master_latency_counter,
+                             cpu_0_data_master_read,
+                             cpu_0_data_master_write,
+                             cpu_0_data_master_writedata,
+                             reset_n,
+
+                            // outputs:
+                             HEX4_s1_address,
+                             HEX4_s1_chipselect,
+                             HEX4_s1_readdata_from_sa,
+                             HEX4_s1_reset_n,
+                             HEX4_s1_write_n,
+                             HEX4_s1_writedata,
+                             cpu_0_data_master_granted_HEX4_s1,
+                             cpu_0_data_master_qualified_request_HEX4_s1,
+                             cpu_0_data_master_read_data_valid_HEX4_s1,
+                             cpu_0_data_master_requests_HEX4_s1,
+                             d1_HEX4_s1_end_xfer
+                          )
+;
+
+  output  [  1: 0] HEX4_s1_address;
+  output           HEX4_s1_chipselect;
+  output  [ 31: 0] HEX4_s1_readdata_from_sa;
+  output           HEX4_s1_reset_n;
+  output           HEX4_s1_write_n;
+  output  [ 31: 0] HEX4_s1_writedata;
+  output           cpu_0_data_master_granted_HEX4_s1;
+  output           cpu_0_data_master_qualified_request_HEX4_s1;
+  output           cpu_0_data_master_read_data_valid_HEX4_s1;
+  output           cpu_0_data_master_requests_HEX4_s1;
+  output           d1_HEX4_s1_end_xfer;
+  input   [ 31: 0] HEX4_s1_readdata;
+  input            clk;
+  input   [ 24: 0] cpu_0_data_master_address_to_slave;
+  input            cpu_0_data_master_latency_counter;
+  input            cpu_0_data_master_read;
+  input            cpu_0_data_master_write;
+  input   [ 31: 0] cpu_0_data_master_writedata;
+  input            reset_n;
+
+  wire    [  1: 0] HEX4_s1_address;
+  wire             HEX4_s1_allgrants;
+  wire             HEX4_s1_allow_new_arb_cycle;
+  wire             HEX4_s1_any_bursting_master_saved_grant;
+  wire             HEX4_s1_any_continuerequest;
+  wire             HEX4_s1_arb_counter_enable;
+  reg     [  2: 0] HEX4_s1_arb_share_counter;
+  wire    [  2: 0] HEX4_s1_arb_share_counter_next_value;
+  wire    [  2: 0] HEX4_s1_arb_share_set_values;
+  wire             HEX4_s1_beginbursttransfer_internal;
+  wire             HEX4_s1_begins_xfer;
+  wire             HEX4_s1_chipselect;
+  wire             HEX4_s1_end_xfer;
+  wire             HEX4_s1_firsttransfer;
+  wire             HEX4_s1_grant_vector;
+  wire             HEX4_s1_in_a_read_cycle;
+  wire             HEX4_s1_in_a_write_cycle;
+  wire             HEX4_s1_master_qreq_vector;
+  wire             HEX4_s1_non_bursting_master_requests;
+  wire    [ 31: 0] HEX4_s1_readdata_from_sa;
+  reg              HEX4_s1_reg_firsttransfer;
+  wire             HEX4_s1_reset_n;
+  reg              HEX4_s1_slavearbiterlockenable;
+  wire             HEX4_s1_slavearbiterlockenable2;
+  wire             HEX4_s1_unreg_firsttransfer;
+  wire             HEX4_s1_waits_for_read;
+  wire             HEX4_s1_waits_for_write;
+  wire             HEX4_s1_write_n;
+  wire    [ 31: 0] HEX4_s1_writedata;
+  wire             cpu_0_data_master_arbiterlock;
+  wire             cpu_0_data_master_arbiterlock2;
+  wire             cpu_0_data_master_continuerequest;
+  wire             cpu_0_data_master_granted_HEX4_s1;
+  wire             cpu_0_data_master_qualified_request_HEX4_s1;
+  wire             cpu_0_data_master_read_data_valid_HEX4_s1;
+  wire             cpu_0_data_master_requests_HEX4_s1;
+  wire             cpu_0_data_master_saved_grant_HEX4_s1;
+  reg              d1_HEX4_s1_end_xfer;
+  reg              d1_reasons_to_wait;
+  reg              enable_nonzero_assertions;
+  wire             end_xfer_arb_share_counter_term_HEX4_s1;
+  wire             in_a_read_cycle;
+  wire             in_a_write_cycle;
+  wire    [ 24: 0] shifted_address_to_HEX4_s1_from_cpu_0_data_master;
+  wire             wait_for_HEX4_s1_counter;
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          d1_reasons_to_wait <= 0;
+      else 
+        d1_reasons_to_wait <= ~HEX4_s1_end_xfer;
+    end
+
+
+  assign HEX4_s1_begins_xfer = ~d1_reasons_to_wait & ((cpu_0_data_master_qualified_request_HEX4_s1));
+  //assign HEX4_s1_readdata_from_sa = HEX4_s1_readdata so that symbol knows where to group signals which may go to master only, which is an e_assign
+  assign HEX4_s1_readdata_from_sa = HEX4_s1_readdata;
+
+  assign cpu_0_data_master_requests_HEX4_s1 = ({cpu_0_data_master_address_to_slave[24 : 4] , 4'b0} == 25'h40) & (cpu_0_data_master_read | cpu_0_data_master_write);
+  //HEX4_s1_arb_share_counter set values, which is an e_mux
+  assign HEX4_s1_arb_share_set_values = 1;
+
+  //HEX4_s1_non_bursting_master_requests mux, which is an e_mux
+  assign HEX4_s1_non_bursting_master_requests = cpu_0_data_master_requests_HEX4_s1;
+
+  //HEX4_s1_any_bursting_master_saved_grant mux, which is an e_mux
+  assign HEX4_s1_any_bursting_master_saved_grant = 0;
+
+  //HEX4_s1_arb_share_counter_next_value assignment, which is an e_assign
+  assign HEX4_s1_arb_share_counter_next_value = HEX4_s1_firsttransfer ? (HEX4_s1_arb_share_set_values - 1) : |HEX4_s1_arb_share_counter ? (HEX4_s1_arb_share_counter - 1) : 0;
+
+  //HEX4_s1_allgrants all slave grants, which is an e_mux
+  assign HEX4_s1_allgrants = |HEX4_s1_grant_vector;
+
+  //HEX4_s1_end_xfer assignment, which is an e_assign
+  assign HEX4_s1_end_xfer = ~(HEX4_s1_waits_for_read | HEX4_s1_waits_for_write);
+
+  //end_xfer_arb_share_counter_term_HEX4_s1 arb share counter enable term, which is an e_assign
+  assign end_xfer_arb_share_counter_term_HEX4_s1 = HEX4_s1_end_xfer & (~HEX4_s1_any_bursting_master_saved_grant | in_a_read_cycle | in_a_write_cycle);
+
+  //HEX4_s1_arb_share_counter arbitration counter enable, which is an e_assign
+  assign HEX4_s1_arb_counter_enable = (end_xfer_arb_share_counter_term_HEX4_s1 & HEX4_s1_allgrants) | (end_xfer_arb_share_counter_term_HEX4_s1 & ~HEX4_s1_non_bursting_master_requests);
+
+  //HEX4_s1_arb_share_counter counter, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          HEX4_s1_arb_share_counter <= 0;
+      else if (HEX4_s1_arb_counter_enable)
+          HEX4_s1_arb_share_counter <= HEX4_s1_arb_share_counter_next_value;
+    end
+
+
+  //HEX4_s1_slavearbiterlockenable slave enables arbiterlock, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          HEX4_s1_slavearbiterlockenable <= 0;
+      else if ((|HEX4_s1_master_qreq_vector & end_xfer_arb_share_counter_term_HEX4_s1) | (end_xfer_arb_share_counter_term_HEX4_s1 & ~HEX4_s1_non_bursting_master_requests))
+          HEX4_s1_slavearbiterlockenable <= |HEX4_s1_arb_share_counter_next_value;
+    end
+
+
+  //cpu_0/data_master HEX4/s1 arbiterlock, which is an e_assign
+  assign cpu_0_data_master_arbiterlock = HEX4_s1_slavearbiterlockenable & cpu_0_data_master_continuerequest;
+
+  //HEX4_s1_slavearbiterlockenable2 slave enables arbiterlock2, which is an e_assign
+  assign HEX4_s1_slavearbiterlockenable2 = |HEX4_s1_arb_share_counter_next_value;
+
+  //cpu_0/data_master HEX4/s1 arbiterlock2, which is an e_assign
+  assign cpu_0_data_master_arbiterlock2 = HEX4_s1_slavearbiterlockenable2 & cpu_0_data_master_continuerequest;
+
+  //HEX4_s1_any_continuerequest at least one master continues requesting, which is an e_assign
+  assign HEX4_s1_any_continuerequest = 1;
+
+  //cpu_0_data_master_continuerequest continued request, which is an e_assign
+  assign cpu_0_data_master_continuerequest = 1;
+
+  assign cpu_0_data_master_qualified_request_HEX4_s1 = cpu_0_data_master_requests_HEX4_s1 & ~((cpu_0_data_master_read & ((cpu_0_data_master_latency_counter != 0))));
+  //local readdatavalid cpu_0_data_master_read_data_valid_HEX4_s1, which is an e_mux
+  assign cpu_0_data_master_read_data_valid_HEX4_s1 = cpu_0_data_master_granted_HEX4_s1 & cpu_0_data_master_read & ~HEX4_s1_waits_for_read;
+
+  //HEX4_s1_writedata mux, which is an e_mux
+  assign HEX4_s1_writedata = cpu_0_data_master_writedata;
+
+  //master is always granted when requested
+  assign cpu_0_data_master_granted_HEX4_s1 = cpu_0_data_master_qualified_request_HEX4_s1;
+
+  //cpu_0/data_master saved-grant HEX4/s1, which is an e_assign
+  assign cpu_0_data_master_saved_grant_HEX4_s1 = cpu_0_data_master_requests_HEX4_s1;
+
+  //allow new arb cycle for HEX4/s1, which is an e_assign
+  assign HEX4_s1_allow_new_arb_cycle = 1;
+
+  //placeholder chosen master
+  assign HEX4_s1_grant_vector = 1;
+
+  //placeholder vector of master qualified-requests
+  assign HEX4_s1_master_qreq_vector = 1;
+
+  //HEX4_s1_reset_n assignment, which is an e_assign
+  assign HEX4_s1_reset_n = reset_n;
+
+  assign HEX4_s1_chipselect = cpu_0_data_master_granted_HEX4_s1;
+  //HEX4_s1_firsttransfer first transaction, which is an e_assign
+  assign HEX4_s1_firsttransfer = HEX4_s1_begins_xfer ? HEX4_s1_unreg_firsttransfer : HEX4_s1_reg_firsttransfer;
+
+  //HEX4_s1_unreg_firsttransfer first transaction, which is an e_assign
+  assign HEX4_s1_unreg_firsttransfer = ~(HEX4_s1_slavearbiterlockenable & HEX4_s1_any_continuerequest);
+
+  //HEX4_s1_reg_firsttransfer first transaction, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          HEX4_s1_reg_firsttransfer <= 1'b1;
+      else if (HEX4_s1_begins_xfer)
+          HEX4_s1_reg_firsttransfer <= HEX4_s1_unreg_firsttransfer;
+    end
+
+
+  //HEX4_s1_beginbursttransfer_internal begin burst transfer, which is an e_assign
+  assign HEX4_s1_beginbursttransfer_internal = HEX4_s1_begins_xfer;
+
+  //~HEX4_s1_write_n assignment, which is an e_mux
+  assign HEX4_s1_write_n = ~(cpu_0_data_master_granted_HEX4_s1 & cpu_0_data_master_write);
+
+  assign shifted_address_to_HEX4_s1_from_cpu_0_data_master = cpu_0_data_master_address_to_slave;
+  //HEX4_s1_address mux, which is an e_mux
+  assign HEX4_s1_address = shifted_address_to_HEX4_s1_from_cpu_0_data_master >> 2;
+
+  //d1_HEX4_s1_end_xfer register, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          d1_HEX4_s1_end_xfer <= 1;
+      else 
+        d1_HEX4_s1_end_xfer <= HEX4_s1_end_xfer;
+    end
+
+
+  //HEX4_s1_waits_for_read in a cycle, which is an e_mux
+  assign HEX4_s1_waits_for_read = HEX4_s1_in_a_read_cycle & HEX4_s1_begins_xfer;
+
+  //HEX4_s1_in_a_read_cycle assignment, which is an e_assign
+  assign HEX4_s1_in_a_read_cycle = cpu_0_data_master_granted_HEX4_s1 & cpu_0_data_master_read;
+
+  //in_a_read_cycle assignment, which is an e_mux
+  assign in_a_read_cycle = HEX4_s1_in_a_read_cycle;
+
+  //HEX4_s1_waits_for_write in a cycle, which is an e_mux
+  assign HEX4_s1_waits_for_write = HEX4_s1_in_a_write_cycle & 0;
+
+  //HEX4_s1_in_a_write_cycle assignment, which is an e_assign
+  assign HEX4_s1_in_a_write_cycle = cpu_0_data_master_granted_HEX4_s1 & cpu_0_data_master_write;
+
+  //in_a_write_cycle assignment, which is an e_mux
+  assign in_a_write_cycle = HEX4_s1_in_a_write_cycle;
+
+  assign wait_for_HEX4_s1_counter = 0;
+
+//synthesis translate_off
+//////////////// SIMULATION-ONLY CONTENTS
+  //HEX4/s1 enable non-zero assertions, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          enable_nonzero_assertions <= 0;
+      else 
+        enable_nonzero_assertions <= 1'b1;
+    end
+
+
+
+//////////////// END SIMULATION-ONLY CONTENTS
+
+//synthesis translate_on
+
+endmodule
+
+
+// synthesis translate_off
+`timescale 1ns / 1ps
+// synthesis translate_on
+
+// turn off superfluous verilog processor warnings 
+// altera message_level Level1 
+// altera message_off 10034 10035 10036 10037 10230 10240 10030 
+
+module HEX5_s1_arbitrator (
+                            // inputs:
+                             HEX5_s1_readdata,
+                             clk,
+                             cpu_0_data_master_address_to_slave,
+                             cpu_0_data_master_latency_counter,
+                             cpu_0_data_master_read,
+                             cpu_0_data_master_write,
+                             cpu_0_data_master_writedata,
+                             reset_n,
+
+                            // outputs:
+                             HEX5_s1_address,
+                             HEX5_s1_chipselect,
+                             HEX5_s1_readdata_from_sa,
+                             HEX5_s1_reset_n,
+                             HEX5_s1_write_n,
+                             HEX5_s1_writedata,
+                             cpu_0_data_master_granted_HEX5_s1,
+                             cpu_0_data_master_qualified_request_HEX5_s1,
+                             cpu_0_data_master_read_data_valid_HEX5_s1,
+                             cpu_0_data_master_requests_HEX5_s1,
+                             d1_HEX5_s1_end_xfer
+                          )
+;
+
+  output  [  1: 0] HEX5_s1_address;
+  output           HEX5_s1_chipselect;
+  output  [ 31: 0] HEX5_s1_readdata_from_sa;
+  output           HEX5_s1_reset_n;
+  output           HEX5_s1_write_n;
+  output  [ 31: 0] HEX5_s1_writedata;
+  output           cpu_0_data_master_granted_HEX5_s1;
+  output           cpu_0_data_master_qualified_request_HEX5_s1;
+  output           cpu_0_data_master_read_data_valid_HEX5_s1;
+  output           cpu_0_data_master_requests_HEX5_s1;
+  output           d1_HEX5_s1_end_xfer;
+  input   [ 31: 0] HEX5_s1_readdata;
+  input            clk;
+  input   [ 24: 0] cpu_0_data_master_address_to_slave;
+  input            cpu_0_data_master_latency_counter;
+  input            cpu_0_data_master_read;
+  input            cpu_0_data_master_write;
+  input   [ 31: 0] cpu_0_data_master_writedata;
+  input            reset_n;
+
+  wire    [  1: 0] HEX5_s1_address;
+  wire             HEX5_s1_allgrants;
+  wire             HEX5_s1_allow_new_arb_cycle;
+  wire             HEX5_s1_any_bursting_master_saved_grant;
+  wire             HEX5_s1_any_continuerequest;
+  wire             HEX5_s1_arb_counter_enable;
+  reg     [  2: 0] HEX5_s1_arb_share_counter;
+  wire    [  2: 0] HEX5_s1_arb_share_counter_next_value;
+  wire    [  2: 0] HEX5_s1_arb_share_set_values;
+  wire             HEX5_s1_beginbursttransfer_internal;
+  wire             HEX5_s1_begins_xfer;
+  wire             HEX5_s1_chipselect;
+  wire             HEX5_s1_end_xfer;
+  wire             HEX5_s1_firsttransfer;
+  wire             HEX5_s1_grant_vector;
+  wire             HEX5_s1_in_a_read_cycle;
+  wire             HEX5_s1_in_a_write_cycle;
+  wire             HEX5_s1_master_qreq_vector;
+  wire             HEX5_s1_non_bursting_master_requests;
+  wire    [ 31: 0] HEX5_s1_readdata_from_sa;
+  reg              HEX5_s1_reg_firsttransfer;
+  wire             HEX5_s1_reset_n;
+  reg              HEX5_s1_slavearbiterlockenable;
+  wire             HEX5_s1_slavearbiterlockenable2;
+  wire             HEX5_s1_unreg_firsttransfer;
+  wire             HEX5_s1_waits_for_read;
+  wire             HEX5_s1_waits_for_write;
+  wire             HEX5_s1_write_n;
+  wire    [ 31: 0] HEX5_s1_writedata;
+  wire             cpu_0_data_master_arbiterlock;
+  wire             cpu_0_data_master_arbiterlock2;
+  wire             cpu_0_data_master_continuerequest;
+  wire             cpu_0_data_master_granted_HEX5_s1;
+  wire             cpu_0_data_master_qualified_request_HEX5_s1;
+  wire             cpu_0_data_master_read_data_valid_HEX5_s1;
+  wire             cpu_0_data_master_requests_HEX5_s1;
+  wire             cpu_0_data_master_saved_grant_HEX5_s1;
+  reg              d1_HEX5_s1_end_xfer;
+  reg              d1_reasons_to_wait;
+  reg              enable_nonzero_assertions;
+  wire             end_xfer_arb_share_counter_term_HEX5_s1;
+  wire             in_a_read_cycle;
+  wire             in_a_write_cycle;
+  wire    [ 24: 0] shifted_address_to_HEX5_s1_from_cpu_0_data_master;
+  wire             wait_for_HEX5_s1_counter;
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          d1_reasons_to_wait <= 0;
+      else 
+        d1_reasons_to_wait <= ~HEX5_s1_end_xfer;
+    end
+
+
+  assign HEX5_s1_begins_xfer = ~d1_reasons_to_wait & ((cpu_0_data_master_qualified_request_HEX5_s1));
+  //assign HEX5_s1_readdata_from_sa = HEX5_s1_readdata so that symbol knows where to group signals which may go to master only, which is an e_assign
+  assign HEX5_s1_readdata_from_sa = HEX5_s1_readdata;
+
+  assign cpu_0_data_master_requests_HEX5_s1 = ({cpu_0_data_master_address_to_slave[24 : 4] , 4'b0} == 25'h50) & (cpu_0_data_master_read | cpu_0_data_master_write);
+  //HEX5_s1_arb_share_counter set values, which is an e_mux
+  assign HEX5_s1_arb_share_set_values = 1;
+
+  //HEX5_s1_non_bursting_master_requests mux, which is an e_mux
+  assign HEX5_s1_non_bursting_master_requests = cpu_0_data_master_requests_HEX5_s1;
+
+  //HEX5_s1_any_bursting_master_saved_grant mux, which is an e_mux
+  assign HEX5_s1_any_bursting_master_saved_grant = 0;
+
+  //HEX5_s1_arb_share_counter_next_value assignment, which is an e_assign
+  assign HEX5_s1_arb_share_counter_next_value = HEX5_s1_firsttransfer ? (HEX5_s1_arb_share_set_values - 1) : |HEX5_s1_arb_share_counter ? (HEX5_s1_arb_share_counter - 1) : 0;
+
+  //HEX5_s1_allgrants all slave grants, which is an e_mux
+  assign HEX5_s1_allgrants = |HEX5_s1_grant_vector;
+
+  //HEX5_s1_end_xfer assignment, which is an e_assign
+  assign HEX5_s1_end_xfer = ~(HEX5_s1_waits_for_read | HEX5_s1_waits_for_write);
+
+  //end_xfer_arb_share_counter_term_HEX5_s1 arb share counter enable term, which is an e_assign
+  assign end_xfer_arb_share_counter_term_HEX5_s1 = HEX5_s1_end_xfer & (~HEX5_s1_any_bursting_master_saved_grant | in_a_read_cycle | in_a_write_cycle);
+
+  //HEX5_s1_arb_share_counter arbitration counter enable, which is an e_assign
+  assign HEX5_s1_arb_counter_enable = (end_xfer_arb_share_counter_term_HEX5_s1 & HEX5_s1_allgrants) | (end_xfer_arb_share_counter_term_HEX5_s1 & ~HEX5_s1_non_bursting_master_requests);
+
+  //HEX5_s1_arb_share_counter counter, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          HEX5_s1_arb_share_counter <= 0;
+      else if (HEX5_s1_arb_counter_enable)
+          HEX5_s1_arb_share_counter <= HEX5_s1_arb_share_counter_next_value;
+    end
+
+
+  //HEX5_s1_slavearbiterlockenable slave enables arbiterlock, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          HEX5_s1_slavearbiterlockenable <= 0;
+      else if ((|HEX5_s1_master_qreq_vector & end_xfer_arb_share_counter_term_HEX5_s1) | (end_xfer_arb_share_counter_term_HEX5_s1 & ~HEX5_s1_non_bursting_master_requests))
+          HEX5_s1_slavearbiterlockenable <= |HEX5_s1_arb_share_counter_next_value;
+    end
+
+
+  //cpu_0/data_master HEX5/s1 arbiterlock, which is an e_assign
+  assign cpu_0_data_master_arbiterlock = HEX5_s1_slavearbiterlockenable & cpu_0_data_master_continuerequest;
+
+  //HEX5_s1_slavearbiterlockenable2 slave enables arbiterlock2, which is an e_assign
+  assign HEX5_s1_slavearbiterlockenable2 = |HEX5_s1_arb_share_counter_next_value;
+
+  //cpu_0/data_master HEX5/s1 arbiterlock2, which is an e_assign
+  assign cpu_0_data_master_arbiterlock2 = HEX5_s1_slavearbiterlockenable2 & cpu_0_data_master_continuerequest;
+
+  //HEX5_s1_any_continuerequest at least one master continues requesting, which is an e_assign
+  assign HEX5_s1_any_continuerequest = 1;
+
+  //cpu_0_data_master_continuerequest continued request, which is an e_assign
+  assign cpu_0_data_master_continuerequest = 1;
+
+  assign cpu_0_data_master_qualified_request_HEX5_s1 = cpu_0_data_master_requests_HEX5_s1 & ~((cpu_0_data_master_read & ((cpu_0_data_master_latency_counter != 0))));
+  //local readdatavalid cpu_0_data_master_read_data_valid_HEX5_s1, which is an e_mux
+  assign cpu_0_data_master_read_data_valid_HEX5_s1 = cpu_0_data_master_granted_HEX5_s1 & cpu_0_data_master_read & ~HEX5_s1_waits_for_read;
+
+  //HEX5_s1_writedata mux, which is an e_mux
+  assign HEX5_s1_writedata = cpu_0_data_master_writedata;
+
+  //master is always granted when requested
+  assign cpu_0_data_master_granted_HEX5_s1 = cpu_0_data_master_qualified_request_HEX5_s1;
+
+  //cpu_0/data_master saved-grant HEX5/s1, which is an e_assign
+  assign cpu_0_data_master_saved_grant_HEX5_s1 = cpu_0_data_master_requests_HEX5_s1;
+
+  //allow new arb cycle for HEX5/s1, which is an e_assign
+  assign HEX5_s1_allow_new_arb_cycle = 1;
+
+  //placeholder chosen master
+  assign HEX5_s1_grant_vector = 1;
+
+  //placeholder vector of master qualified-requests
+  assign HEX5_s1_master_qreq_vector = 1;
+
+  //HEX5_s1_reset_n assignment, which is an e_assign
+  assign HEX5_s1_reset_n = reset_n;
+
+  assign HEX5_s1_chipselect = cpu_0_data_master_granted_HEX5_s1;
+  //HEX5_s1_firsttransfer first transaction, which is an e_assign
+  assign HEX5_s1_firsttransfer = HEX5_s1_begins_xfer ? HEX5_s1_unreg_firsttransfer : HEX5_s1_reg_firsttransfer;
+
+  //HEX5_s1_unreg_firsttransfer first transaction, which is an e_assign
+  assign HEX5_s1_unreg_firsttransfer = ~(HEX5_s1_slavearbiterlockenable & HEX5_s1_any_continuerequest);
+
+  //HEX5_s1_reg_firsttransfer first transaction, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          HEX5_s1_reg_firsttransfer <= 1'b1;
+      else if (HEX5_s1_begins_xfer)
+          HEX5_s1_reg_firsttransfer <= HEX5_s1_unreg_firsttransfer;
+    end
+
+
+  //HEX5_s1_beginbursttransfer_internal begin burst transfer, which is an e_assign
+  assign HEX5_s1_beginbursttransfer_internal = HEX5_s1_begins_xfer;
+
+  //~HEX5_s1_write_n assignment, which is an e_mux
+  assign HEX5_s1_write_n = ~(cpu_0_data_master_granted_HEX5_s1 & cpu_0_data_master_write);
+
+  assign shifted_address_to_HEX5_s1_from_cpu_0_data_master = cpu_0_data_master_address_to_slave;
+  //HEX5_s1_address mux, which is an e_mux
+  assign HEX5_s1_address = shifted_address_to_HEX5_s1_from_cpu_0_data_master >> 2;
+
+  //d1_HEX5_s1_end_xfer register, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          d1_HEX5_s1_end_xfer <= 1;
+      else 
+        d1_HEX5_s1_end_xfer <= HEX5_s1_end_xfer;
+    end
+
+
+  //HEX5_s1_waits_for_read in a cycle, which is an e_mux
+  assign HEX5_s1_waits_for_read = HEX5_s1_in_a_read_cycle & HEX5_s1_begins_xfer;
+
+  //HEX5_s1_in_a_read_cycle assignment, which is an e_assign
+  assign HEX5_s1_in_a_read_cycle = cpu_0_data_master_granted_HEX5_s1 & cpu_0_data_master_read;
+
+  //in_a_read_cycle assignment, which is an e_mux
+  assign in_a_read_cycle = HEX5_s1_in_a_read_cycle;
+
+  //HEX5_s1_waits_for_write in a cycle, which is an e_mux
+  assign HEX5_s1_waits_for_write = HEX5_s1_in_a_write_cycle & 0;
+
+  //HEX5_s1_in_a_write_cycle assignment, which is an e_assign
+  assign HEX5_s1_in_a_write_cycle = cpu_0_data_master_granted_HEX5_s1 & cpu_0_data_master_write;
+
+  //in_a_write_cycle assignment, which is an e_mux
+  assign in_a_write_cycle = HEX5_s1_in_a_write_cycle;
+
+  assign wait_for_HEX5_s1_counter = 0;
+
+//synthesis translate_off
+//////////////// SIMULATION-ONLY CONTENTS
+  //HEX5/s1 enable non-zero assertions, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          enable_nonzero_assertions <= 0;
+      else 
+        enable_nonzero_assertions <= 1'b1;
+    end
+
+
+
+//////////////// END SIMULATION-ONLY CONTENTS
+
+//synthesis translate_on
+
+endmodule
+
+
+// synthesis translate_off
+`timescale 1ns / 1ps
+// synthesis translate_on
+
+// turn off superfluous verilog processor warnings 
+// altera message_level Level1 
+// altera message_off 10034 10035 10036 10037 10230 10240 10030 
+
+module HEX6_s1_arbitrator (
+                            // inputs:
+                             HEX6_s1_readdata,
+                             clk,
+                             cpu_0_data_master_address_to_slave,
+                             cpu_0_data_master_latency_counter,
+                             cpu_0_data_master_read,
+                             cpu_0_data_master_write,
+                             cpu_0_data_master_writedata,
+                             reset_n,
+
+                            // outputs:
+                             HEX6_s1_address,
+                             HEX6_s1_chipselect,
+                             HEX6_s1_readdata_from_sa,
+                             HEX6_s1_reset_n,
+                             HEX6_s1_write_n,
+                             HEX6_s1_writedata,
+                             cpu_0_data_master_granted_HEX6_s1,
+                             cpu_0_data_master_qualified_request_HEX6_s1,
+                             cpu_0_data_master_read_data_valid_HEX6_s1,
+                             cpu_0_data_master_requests_HEX6_s1,
+                             d1_HEX6_s1_end_xfer
+                          )
+;
+
+  output  [  1: 0] HEX6_s1_address;
+  output           HEX6_s1_chipselect;
+  output  [ 31: 0] HEX6_s1_readdata_from_sa;
+  output           HEX6_s1_reset_n;
+  output           HEX6_s1_write_n;
+  output  [ 31: 0] HEX6_s1_writedata;
+  output           cpu_0_data_master_granted_HEX6_s1;
+  output           cpu_0_data_master_qualified_request_HEX6_s1;
+  output           cpu_0_data_master_read_data_valid_HEX6_s1;
+  output           cpu_0_data_master_requests_HEX6_s1;
+  output           d1_HEX6_s1_end_xfer;
+  input   [ 31: 0] HEX6_s1_readdata;
+  input            clk;
+  input   [ 24: 0] cpu_0_data_master_address_to_slave;
+  input            cpu_0_data_master_latency_counter;
+  input            cpu_0_data_master_read;
+  input            cpu_0_data_master_write;
+  input   [ 31: 0] cpu_0_data_master_writedata;
+  input            reset_n;
+
+  wire    [  1: 0] HEX6_s1_address;
+  wire             HEX6_s1_allgrants;
+  wire             HEX6_s1_allow_new_arb_cycle;
+  wire             HEX6_s1_any_bursting_master_saved_grant;
+  wire             HEX6_s1_any_continuerequest;
+  wire             HEX6_s1_arb_counter_enable;
+  reg     [  2: 0] HEX6_s1_arb_share_counter;
+  wire    [  2: 0] HEX6_s1_arb_share_counter_next_value;
+  wire    [  2: 0] HEX6_s1_arb_share_set_values;
+  wire             HEX6_s1_beginbursttransfer_internal;
+  wire             HEX6_s1_begins_xfer;
+  wire             HEX6_s1_chipselect;
+  wire             HEX6_s1_end_xfer;
+  wire             HEX6_s1_firsttransfer;
+  wire             HEX6_s1_grant_vector;
+  wire             HEX6_s1_in_a_read_cycle;
+  wire             HEX6_s1_in_a_write_cycle;
+  wire             HEX6_s1_master_qreq_vector;
+  wire             HEX6_s1_non_bursting_master_requests;
+  wire    [ 31: 0] HEX6_s1_readdata_from_sa;
+  reg              HEX6_s1_reg_firsttransfer;
+  wire             HEX6_s1_reset_n;
+  reg              HEX6_s1_slavearbiterlockenable;
+  wire             HEX6_s1_slavearbiterlockenable2;
+  wire             HEX6_s1_unreg_firsttransfer;
+  wire             HEX6_s1_waits_for_read;
+  wire             HEX6_s1_waits_for_write;
+  wire             HEX6_s1_write_n;
+  wire    [ 31: 0] HEX6_s1_writedata;
+  wire             cpu_0_data_master_arbiterlock;
+  wire             cpu_0_data_master_arbiterlock2;
+  wire             cpu_0_data_master_continuerequest;
+  wire             cpu_0_data_master_granted_HEX6_s1;
+  wire             cpu_0_data_master_qualified_request_HEX6_s1;
+  wire             cpu_0_data_master_read_data_valid_HEX6_s1;
+  wire             cpu_0_data_master_requests_HEX6_s1;
+  wire             cpu_0_data_master_saved_grant_HEX6_s1;
+  reg              d1_HEX6_s1_end_xfer;
+  reg              d1_reasons_to_wait;
+  reg              enable_nonzero_assertions;
+  wire             end_xfer_arb_share_counter_term_HEX6_s1;
+  wire             in_a_read_cycle;
+  wire             in_a_write_cycle;
+  wire    [ 24: 0] shifted_address_to_HEX6_s1_from_cpu_0_data_master;
+  wire             wait_for_HEX6_s1_counter;
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          d1_reasons_to_wait <= 0;
+      else 
+        d1_reasons_to_wait <= ~HEX6_s1_end_xfer;
+    end
+
+
+  assign HEX6_s1_begins_xfer = ~d1_reasons_to_wait & ((cpu_0_data_master_qualified_request_HEX6_s1));
+  //assign HEX6_s1_readdata_from_sa = HEX6_s1_readdata so that symbol knows where to group signals which may go to master only, which is an e_assign
+  assign HEX6_s1_readdata_from_sa = HEX6_s1_readdata;
+
+  assign cpu_0_data_master_requests_HEX6_s1 = ({cpu_0_data_master_address_to_slave[24 : 4] , 4'b0} == 25'h60) & (cpu_0_data_master_read | cpu_0_data_master_write);
+  //HEX6_s1_arb_share_counter set values, which is an e_mux
+  assign HEX6_s1_arb_share_set_values = 1;
+
+  //HEX6_s1_non_bursting_master_requests mux, which is an e_mux
+  assign HEX6_s1_non_bursting_master_requests = cpu_0_data_master_requests_HEX6_s1;
+
+  //HEX6_s1_any_bursting_master_saved_grant mux, which is an e_mux
+  assign HEX6_s1_any_bursting_master_saved_grant = 0;
+
+  //HEX6_s1_arb_share_counter_next_value assignment, which is an e_assign
+  assign HEX6_s1_arb_share_counter_next_value = HEX6_s1_firsttransfer ? (HEX6_s1_arb_share_set_values - 1) : |HEX6_s1_arb_share_counter ? (HEX6_s1_arb_share_counter - 1) : 0;
+
+  //HEX6_s1_allgrants all slave grants, which is an e_mux
+  assign HEX6_s1_allgrants = |HEX6_s1_grant_vector;
+
+  //HEX6_s1_end_xfer assignment, which is an e_assign
+  assign HEX6_s1_end_xfer = ~(HEX6_s1_waits_for_read | HEX6_s1_waits_for_write);
+
+  //end_xfer_arb_share_counter_term_HEX6_s1 arb share counter enable term, which is an e_assign
+  assign end_xfer_arb_share_counter_term_HEX6_s1 = HEX6_s1_end_xfer & (~HEX6_s1_any_bursting_master_saved_grant | in_a_read_cycle | in_a_write_cycle);
+
+  //HEX6_s1_arb_share_counter arbitration counter enable, which is an e_assign
+  assign HEX6_s1_arb_counter_enable = (end_xfer_arb_share_counter_term_HEX6_s1 & HEX6_s1_allgrants) | (end_xfer_arb_share_counter_term_HEX6_s1 & ~HEX6_s1_non_bursting_master_requests);
+
+  //HEX6_s1_arb_share_counter counter, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          HEX6_s1_arb_share_counter <= 0;
+      else if (HEX6_s1_arb_counter_enable)
+          HEX6_s1_arb_share_counter <= HEX6_s1_arb_share_counter_next_value;
+    end
+
+
+  //HEX6_s1_slavearbiterlockenable slave enables arbiterlock, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          HEX6_s1_slavearbiterlockenable <= 0;
+      else if ((|HEX6_s1_master_qreq_vector & end_xfer_arb_share_counter_term_HEX6_s1) | (end_xfer_arb_share_counter_term_HEX6_s1 & ~HEX6_s1_non_bursting_master_requests))
+          HEX6_s1_slavearbiterlockenable <= |HEX6_s1_arb_share_counter_next_value;
+    end
+
+
+  //cpu_0/data_master HEX6/s1 arbiterlock, which is an e_assign
+  assign cpu_0_data_master_arbiterlock = HEX6_s1_slavearbiterlockenable & cpu_0_data_master_continuerequest;
+
+  //HEX6_s1_slavearbiterlockenable2 slave enables arbiterlock2, which is an e_assign
+  assign HEX6_s1_slavearbiterlockenable2 = |HEX6_s1_arb_share_counter_next_value;
+
+  //cpu_0/data_master HEX6/s1 arbiterlock2, which is an e_assign
+  assign cpu_0_data_master_arbiterlock2 = HEX6_s1_slavearbiterlockenable2 & cpu_0_data_master_continuerequest;
+
+  //HEX6_s1_any_continuerequest at least one master continues requesting, which is an e_assign
+  assign HEX6_s1_any_continuerequest = 1;
+
+  //cpu_0_data_master_continuerequest continued request, which is an e_assign
+  assign cpu_0_data_master_continuerequest = 1;
+
+  assign cpu_0_data_master_qualified_request_HEX6_s1 = cpu_0_data_master_requests_HEX6_s1 & ~((cpu_0_data_master_read & ((cpu_0_data_master_latency_counter != 0))));
+  //local readdatavalid cpu_0_data_master_read_data_valid_HEX6_s1, which is an e_mux
+  assign cpu_0_data_master_read_data_valid_HEX6_s1 = cpu_0_data_master_granted_HEX6_s1 & cpu_0_data_master_read & ~HEX6_s1_waits_for_read;
+
+  //HEX6_s1_writedata mux, which is an e_mux
+  assign HEX6_s1_writedata = cpu_0_data_master_writedata;
+
+  //master is always granted when requested
+  assign cpu_0_data_master_granted_HEX6_s1 = cpu_0_data_master_qualified_request_HEX6_s1;
+
+  //cpu_0/data_master saved-grant HEX6/s1, which is an e_assign
+  assign cpu_0_data_master_saved_grant_HEX6_s1 = cpu_0_data_master_requests_HEX6_s1;
+
+  //allow new arb cycle for HEX6/s1, which is an e_assign
+  assign HEX6_s1_allow_new_arb_cycle = 1;
+
+  //placeholder chosen master
+  assign HEX6_s1_grant_vector = 1;
+
+  //placeholder vector of master qualified-requests
+  assign HEX6_s1_master_qreq_vector = 1;
+
+  //HEX6_s1_reset_n assignment, which is an e_assign
+  assign HEX6_s1_reset_n = reset_n;
+
+  assign HEX6_s1_chipselect = cpu_0_data_master_granted_HEX6_s1;
+  //HEX6_s1_firsttransfer first transaction, which is an e_assign
+  assign HEX6_s1_firsttransfer = HEX6_s1_begins_xfer ? HEX6_s1_unreg_firsttransfer : HEX6_s1_reg_firsttransfer;
+
+  //HEX6_s1_unreg_firsttransfer first transaction, which is an e_assign
+  assign HEX6_s1_unreg_firsttransfer = ~(HEX6_s1_slavearbiterlockenable & HEX6_s1_any_continuerequest);
+
+  //HEX6_s1_reg_firsttransfer first transaction, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          HEX6_s1_reg_firsttransfer <= 1'b1;
+      else if (HEX6_s1_begins_xfer)
+          HEX6_s1_reg_firsttransfer <= HEX6_s1_unreg_firsttransfer;
+    end
+
+
+  //HEX6_s1_beginbursttransfer_internal begin burst transfer, which is an e_assign
+  assign HEX6_s1_beginbursttransfer_internal = HEX6_s1_begins_xfer;
+
+  //~HEX6_s1_write_n assignment, which is an e_mux
+  assign HEX6_s1_write_n = ~(cpu_0_data_master_granted_HEX6_s1 & cpu_0_data_master_write);
+
+  assign shifted_address_to_HEX6_s1_from_cpu_0_data_master = cpu_0_data_master_address_to_slave;
+  //HEX6_s1_address mux, which is an e_mux
+  assign HEX6_s1_address = shifted_address_to_HEX6_s1_from_cpu_0_data_master >> 2;
+
+  //d1_HEX6_s1_end_xfer register, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          d1_HEX6_s1_end_xfer <= 1;
+      else 
+        d1_HEX6_s1_end_xfer <= HEX6_s1_end_xfer;
+    end
+
+
+  //HEX6_s1_waits_for_read in a cycle, which is an e_mux
+  assign HEX6_s1_waits_for_read = HEX6_s1_in_a_read_cycle & HEX6_s1_begins_xfer;
+
+  //HEX6_s1_in_a_read_cycle assignment, which is an e_assign
+  assign HEX6_s1_in_a_read_cycle = cpu_0_data_master_granted_HEX6_s1 & cpu_0_data_master_read;
+
+  //in_a_read_cycle assignment, which is an e_mux
+  assign in_a_read_cycle = HEX6_s1_in_a_read_cycle;
+
+  //HEX6_s1_waits_for_write in a cycle, which is an e_mux
+  assign HEX6_s1_waits_for_write = HEX6_s1_in_a_write_cycle & 0;
+
+  //HEX6_s1_in_a_write_cycle assignment, which is an e_assign
+  assign HEX6_s1_in_a_write_cycle = cpu_0_data_master_granted_HEX6_s1 & cpu_0_data_master_write;
+
+  //in_a_write_cycle assignment, which is an e_mux
+  assign in_a_write_cycle = HEX6_s1_in_a_write_cycle;
+
+  assign wait_for_HEX6_s1_counter = 0;
+
+//synthesis translate_off
+//////////////// SIMULATION-ONLY CONTENTS
+  //HEX6/s1 enable non-zero assertions, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          enable_nonzero_assertions <= 0;
+      else 
+        enable_nonzero_assertions <= 1'b1;
+    end
+
+
+
+//////////////// END SIMULATION-ONLY CONTENTS
+
+//synthesis translate_on
+
+endmodule
+
+
+// synthesis translate_off
+`timescale 1ns / 1ps
+// synthesis translate_on
+
+// turn off superfluous verilog processor warnings 
+// altera message_level Level1 
+// altera message_off 10034 10035 10036 10037 10230 10240 10030 
+
+module HEX7_s1_arbitrator (
+                            // inputs:
+                             HEX7_s1_readdata,
+                             clk,
+                             cpu_0_data_master_address_to_slave,
+                             cpu_0_data_master_latency_counter,
+                             cpu_0_data_master_read,
+                             cpu_0_data_master_write,
+                             cpu_0_data_master_writedata,
+                             reset_n,
+
+                            // outputs:
+                             HEX7_s1_address,
+                             HEX7_s1_chipselect,
+                             HEX7_s1_readdata_from_sa,
+                             HEX7_s1_reset_n,
+                             HEX7_s1_write_n,
+                             HEX7_s1_writedata,
+                             cpu_0_data_master_granted_HEX7_s1,
+                             cpu_0_data_master_qualified_request_HEX7_s1,
+                             cpu_0_data_master_read_data_valid_HEX7_s1,
+                             cpu_0_data_master_requests_HEX7_s1,
+                             d1_HEX7_s1_end_xfer
+                          )
+;
+
+  output  [  1: 0] HEX7_s1_address;
+  output           HEX7_s1_chipselect;
+  output  [ 31: 0] HEX7_s1_readdata_from_sa;
+  output           HEX7_s1_reset_n;
+  output           HEX7_s1_write_n;
+  output  [ 31: 0] HEX7_s1_writedata;
+  output           cpu_0_data_master_granted_HEX7_s1;
+  output           cpu_0_data_master_qualified_request_HEX7_s1;
+  output           cpu_0_data_master_read_data_valid_HEX7_s1;
+  output           cpu_0_data_master_requests_HEX7_s1;
+  output           d1_HEX7_s1_end_xfer;
+  input   [ 31: 0] HEX7_s1_readdata;
+  input            clk;
+  input   [ 24: 0] cpu_0_data_master_address_to_slave;
+  input            cpu_0_data_master_latency_counter;
+  input            cpu_0_data_master_read;
+  input            cpu_0_data_master_write;
+  input   [ 31: 0] cpu_0_data_master_writedata;
+  input            reset_n;
+
+  wire    [  1: 0] HEX7_s1_address;
+  wire             HEX7_s1_allgrants;
+  wire             HEX7_s1_allow_new_arb_cycle;
+  wire             HEX7_s1_any_bursting_master_saved_grant;
+  wire             HEX7_s1_any_continuerequest;
+  wire             HEX7_s1_arb_counter_enable;
+  reg     [  2: 0] HEX7_s1_arb_share_counter;
+  wire    [  2: 0] HEX7_s1_arb_share_counter_next_value;
+  wire    [  2: 0] HEX7_s1_arb_share_set_values;
+  wire             HEX7_s1_beginbursttransfer_internal;
+  wire             HEX7_s1_begins_xfer;
+  wire             HEX7_s1_chipselect;
+  wire             HEX7_s1_end_xfer;
+  wire             HEX7_s1_firsttransfer;
+  wire             HEX7_s1_grant_vector;
+  wire             HEX7_s1_in_a_read_cycle;
+  wire             HEX7_s1_in_a_write_cycle;
+  wire             HEX7_s1_master_qreq_vector;
+  wire             HEX7_s1_non_bursting_master_requests;
+  wire    [ 31: 0] HEX7_s1_readdata_from_sa;
+  reg              HEX7_s1_reg_firsttransfer;
+  wire             HEX7_s1_reset_n;
+  reg              HEX7_s1_slavearbiterlockenable;
+  wire             HEX7_s1_slavearbiterlockenable2;
+  wire             HEX7_s1_unreg_firsttransfer;
+  wire             HEX7_s1_waits_for_read;
+  wire             HEX7_s1_waits_for_write;
+  wire             HEX7_s1_write_n;
+  wire    [ 31: 0] HEX7_s1_writedata;
+  wire             cpu_0_data_master_arbiterlock;
+  wire             cpu_0_data_master_arbiterlock2;
+  wire             cpu_0_data_master_continuerequest;
+  wire             cpu_0_data_master_granted_HEX7_s1;
+  wire             cpu_0_data_master_qualified_request_HEX7_s1;
+  wire             cpu_0_data_master_read_data_valid_HEX7_s1;
+  wire             cpu_0_data_master_requests_HEX7_s1;
+  wire             cpu_0_data_master_saved_grant_HEX7_s1;
+  reg              d1_HEX7_s1_end_xfer;
+  reg              d1_reasons_to_wait;
+  reg              enable_nonzero_assertions;
+  wire             end_xfer_arb_share_counter_term_HEX7_s1;
+  wire             in_a_read_cycle;
+  wire             in_a_write_cycle;
+  wire    [ 24: 0] shifted_address_to_HEX7_s1_from_cpu_0_data_master;
+  wire             wait_for_HEX7_s1_counter;
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          d1_reasons_to_wait <= 0;
+      else 
+        d1_reasons_to_wait <= ~HEX7_s1_end_xfer;
+    end
+
+
+  assign HEX7_s1_begins_xfer = ~d1_reasons_to_wait & ((cpu_0_data_master_qualified_request_HEX7_s1));
+  //assign HEX7_s1_readdata_from_sa = HEX7_s1_readdata so that symbol knows where to group signals which may go to master only, which is an e_assign
+  assign HEX7_s1_readdata_from_sa = HEX7_s1_readdata;
+
+  assign cpu_0_data_master_requests_HEX7_s1 = ({cpu_0_data_master_address_to_slave[24 : 4] , 4'b0} == 25'h70) & (cpu_0_data_master_read | cpu_0_data_master_write);
+  //HEX7_s1_arb_share_counter set values, which is an e_mux
+  assign HEX7_s1_arb_share_set_values = 1;
+
+  //HEX7_s1_non_bursting_master_requests mux, which is an e_mux
+  assign HEX7_s1_non_bursting_master_requests = cpu_0_data_master_requests_HEX7_s1;
+
+  //HEX7_s1_any_bursting_master_saved_grant mux, which is an e_mux
+  assign HEX7_s1_any_bursting_master_saved_grant = 0;
+
+  //HEX7_s1_arb_share_counter_next_value assignment, which is an e_assign
+  assign HEX7_s1_arb_share_counter_next_value = HEX7_s1_firsttransfer ? (HEX7_s1_arb_share_set_values - 1) : |HEX7_s1_arb_share_counter ? (HEX7_s1_arb_share_counter - 1) : 0;
+
+  //HEX7_s1_allgrants all slave grants, which is an e_mux
+  assign HEX7_s1_allgrants = |HEX7_s1_grant_vector;
+
+  //HEX7_s1_end_xfer assignment, which is an e_assign
+  assign HEX7_s1_end_xfer = ~(HEX7_s1_waits_for_read | HEX7_s1_waits_for_write);
+
+  //end_xfer_arb_share_counter_term_HEX7_s1 arb share counter enable term, which is an e_assign
+  assign end_xfer_arb_share_counter_term_HEX7_s1 = HEX7_s1_end_xfer & (~HEX7_s1_any_bursting_master_saved_grant | in_a_read_cycle | in_a_write_cycle);
+
+  //HEX7_s1_arb_share_counter arbitration counter enable, which is an e_assign
+  assign HEX7_s1_arb_counter_enable = (end_xfer_arb_share_counter_term_HEX7_s1 & HEX7_s1_allgrants) | (end_xfer_arb_share_counter_term_HEX7_s1 & ~HEX7_s1_non_bursting_master_requests);
+
+  //HEX7_s1_arb_share_counter counter, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          HEX7_s1_arb_share_counter <= 0;
+      else if (HEX7_s1_arb_counter_enable)
+          HEX7_s1_arb_share_counter <= HEX7_s1_arb_share_counter_next_value;
+    end
+
+
+  //HEX7_s1_slavearbiterlockenable slave enables arbiterlock, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          HEX7_s1_slavearbiterlockenable <= 0;
+      else if ((|HEX7_s1_master_qreq_vector & end_xfer_arb_share_counter_term_HEX7_s1) | (end_xfer_arb_share_counter_term_HEX7_s1 & ~HEX7_s1_non_bursting_master_requests))
+          HEX7_s1_slavearbiterlockenable <= |HEX7_s1_arb_share_counter_next_value;
+    end
+
+
+  //cpu_0/data_master HEX7/s1 arbiterlock, which is an e_assign
+  assign cpu_0_data_master_arbiterlock = HEX7_s1_slavearbiterlockenable & cpu_0_data_master_continuerequest;
+
+  //HEX7_s1_slavearbiterlockenable2 slave enables arbiterlock2, which is an e_assign
+  assign HEX7_s1_slavearbiterlockenable2 = |HEX7_s1_arb_share_counter_next_value;
+
+  //cpu_0/data_master HEX7/s1 arbiterlock2, which is an e_assign
+  assign cpu_0_data_master_arbiterlock2 = HEX7_s1_slavearbiterlockenable2 & cpu_0_data_master_continuerequest;
+
+  //HEX7_s1_any_continuerequest at least one master continues requesting, which is an e_assign
+  assign HEX7_s1_any_continuerequest = 1;
+
+  //cpu_0_data_master_continuerequest continued request, which is an e_assign
+  assign cpu_0_data_master_continuerequest = 1;
+
+  assign cpu_0_data_master_qualified_request_HEX7_s1 = cpu_0_data_master_requests_HEX7_s1 & ~((cpu_0_data_master_read & ((cpu_0_data_master_latency_counter != 0))));
+  //local readdatavalid cpu_0_data_master_read_data_valid_HEX7_s1, which is an e_mux
+  assign cpu_0_data_master_read_data_valid_HEX7_s1 = cpu_0_data_master_granted_HEX7_s1 & cpu_0_data_master_read & ~HEX7_s1_waits_for_read;
+
+  //HEX7_s1_writedata mux, which is an e_mux
+  assign HEX7_s1_writedata = cpu_0_data_master_writedata;
+
+  //master is always granted when requested
+  assign cpu_0_data_master_granted_HEX7_s1 = cpu_0_data_master_qualified_request_HEX7_s1;
+
+  //cpu_0/data_master saved-grant HEX7/s1, which is an e_assign
+  assign cpu_0_data_master_saved_grant_HEX7_s1 = cpu_0_data_master_requests_HEX7_s1;
+
+  //allow new arb cycle for HEX7/s1, which is an e_assign
+  assign HEX7_s1_allow_new_arb_cycle = 1;
+
+  //placeholder chosen master
+  assign HEX7_s1_grant_vector = 1;
+
+  //placeholder vector of master qualified-requests
+  assign HEX7_s1_master_qreq_vector = 1;
+
+  //HEX7_s1_reset_n assignment, which is an e_assign
+  assign HEX7_s1_reset_n = reset_n;
+
+  assign HEX7_s1_chipselect = cpu_0_data_master_granted_HEX7_s1;
+  //HEX7_s1_firsttransfer first transaction, which is an e_assign
+  assign HEX7_s1_firsttransfer = HEX7_s1_begins_xfer ? HEX7_s1_unreg_firsttransfer : HEX7_s1_reg_firsttransfer;
+
+  //HEX7_s1_unreg_firsttransfer first transaction, which is an e_assign
+  assign HEX7_s1_unreg_firsttransfer = ~(HEX7_s1_slavearbiterlockenable & HEX7_s1_any_continuerequest);
+
+  //HEX7_s1_reg_firsttransfer first transaction, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          HEX7_s1_reg_firsttransfer <= 1'b1;
+      else if (HEX7_s1_begins_xfer)
+          HEX7_s1_reg_firsttransfer <= HEX7_s1_unreg_firsttransfer;
+    end
+
+
+  //HEX7_s1_beginbursttransfer_internal begin burst transfer, which is an e_assign
+  assign HEX7_s1_beginbursttransfer_internal = HEX7_s1_begins_xfer;
+
+  //~HEX7_s1_write_n assignment, which is an e_mux
+  assign HEX7_s1_write_n = ~(cpu_0_data_master_granted_HEX7_s1 & cpu_0_data_master_write);
+
+  assign shifted_address_to_HEX7_s1_from_cpu_0_data_master = cpu_0_data_master_address_to_slave;
+  //HEX7_s1_address mux, which is an e_mux
+  assign HEX7_s1_address = shifted_address_to_HEX7_s1_from_cpu_0_data_master >> 2;
+
+  //d1_HEX7_s1_end_xfer register, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          d1_HEX7_s1_end_xfer <= 1;
+      else 
+        d1_HEX7_s1_end_xfer <= HEX7_s1_end_xfer;
+    end
+
+
+  //HEX7_s1_waits_for_read in a cycle, which is an e_mux
+  assign HEX7_s1_waits_for_read = HEX7_s1_in_a_read_cycle & HEX7_s1_begins_xfer;
+
+  //HEX7_s1_in_a_read_cycle assignment, which is an e_assign
+  assign HEX7_s1_in_a_read_cycle = cpu_0_data_master_granted_HEX7_s1 & cpu_0_data_master_read;
+
+  //in_a_read_cycle assignment, which is an e_mux
+  assign in_a_read_cycle = HEX7_s1_in_a_read_cycle;
+
+  //HEX7_s1_waits_for_write in a cycle, which is an e_mux
+  assign HEX7_s1_waits_for_write = HEX7_s1_in_a_write_cycle & 0;
+
+  //HEX7_s1_in_a_write_cycle assignment, which is an e_assign
+  assign HEX7_s1_in_a_write_cycle = cpu_0_data_master_granted_HEX7_s1 & cpu_0_data_master_write;
+
+  //in_a_write_cycle assignment, which is an e_mux
+  assign in_a_write_cycle = HEX7_s1_in_a_write_cycle;
+
+  assign wait_for_HEX7_s1_counter = 0;
+
+//synthesis translate_off
+//////////////// SIMULATION-ONLY CONTENTS
+  //HEX7/s1 enable non-zero assertions, which is an e_register
+  always @(posedge clk or negedge reset_n)
+    begin
+      if (reset_n == 0)
+          enable_nonzero_assertions <= 0;
+      else 
+        enable_nonzero_assertions <= 1'b1;
+    end
+
+
+
+//////////////// END SIMULATION-ONLY CONTENTS
+
+//synthesis translate_on
+
+endmodule
+
+
+// synthesis translate_off
+`timescale 1ns / 1ps
+// synthesis translate_on
+
+// turn off superfluous verilog processor warnings 
+// altera message_level Level1 
+// altera message_off 10034 10035 10036 10037 10230 10240 10030 
+
 module clocks_0_avalon_clocks_slave_arbitrator (
                                                  // inputs:
                                                   clk,
@@ -732,11 +2924,27 @@ endmodule
 
 module cpu_0_data_master_arbitrator (
                                       // inputs:
+                                       HEX0_s1_readdata_from_sa,
+                                       HEX1_s1_readdata_from_sa,
+                                       HEX2_s1_readdata_from_sa,
+                                       HEX3_s1_readdata_from_sa,
+                                       HEX4_s1_readdata_from_sa,
+                                       HEX5_s1_readdata_from_sa,
+                                       HEX6_s1_readdata_from_sa,
+                                       HEX7_s1_readdata_from_sa,
                                        clk,
                                        cpu_0_data_master_address,
                                        cpu_0_data_master_byteenable,
                                        cpu_0_data_master_byteenable_nios_system_clock_1_in,
                                        cpu_0_data_master_byteenable_nios_system_clock_2_in,
+                                       cpu_0_data_master_granted_HEX0_s1,
+                                       cpu_0_data_master_granted_HEX1_s1,
+                                       cpu_0_data_master_granted_HEX2_s1,
+                                       cpu_0_data_master_granted_HEX3_s1,
+                                       cpu_0_data_master_granted_HEX4_s1,
+                                       cpu_0_data_master_granted_HEX5_s1,
+                                       cpu_0_data_master_granted_HEX6_s1,
+                                       cpu_0_data_master_granted_HEX7_s1,
                                        cpu_0_data_master_granted_cpu_0_jtag_debug_module,
                                        cpu_0_data_master_granted_jtag_uart_0_avalon_jtag_slave,
                                        cpu_0_data_master_granted_keys_s1,
@@ -745,6 +2953,14 @@ module cpu_0_data_master_arbitrator (
                                        cpu_0_data_master_granted_nios_system_clock_1_in,
                                        cpu_0_data_master_granted_nios_system_clock_2_in,
                                        cpu_0_data_master_granted_sysid_control_slave,
+                                       cpu_0_data_master_qualified_request_HEX0_s1,
+                                       cpu_0_data_master_qualified_request_HEX1_s1,
+                                       cpu_0_data_master_qualified_request_HEX2_s1,
+                                       cpu_0_data_master_qualified_request_HEX3_s1,
+                                       cpu_0_data_master_qualified_request_HEX4_s1,
+                                       cpu_0_data_master_qualified_request_HEX5_s1,
+                                       cpu_0_data_master_qualified_request_HEX6_s1,
+                                       cpu_0_data_master_qualified_request_HEX7_s1,
                                        cpu_0_data_master_qualified_request_cpu_0_jtag_debug_module,
                                        cpu_0_data_master_qualified_request_jtag_uart_0_avalon_jtag_slave,
                                        cpu_0_data_master_qualified_request_keys_s1,
@@ -754,6 +2970,14 @@ module cpu_0_data_master_arbitrator (
                                        cpu_0_data_master_qualified_request_nios_system_clock_2_in,
                                        cpu_0_data_master_qualified_request_sysid_control_slave,
                                        cpu_0_data_master_read,
+                                       cpu_0_data_master_read_data_valid_HEX0_s1,
+                                       cpu_0_data_master_read_data_valid_HEX1_s1,
+                                       cpu_0_data_master_read_data_valid_HEX2_s1,
+                                       cpu_0_data_master_read_data_valid_HEX3_s1,
+                                       cpu_0_data_master_read_data_valid_HEX4_s1,
+                                       cpu_0_data_master_read_data_valid_HEX5_s1,
+                                       cpu_0_data_master_read_data_valid_HEX6_s1,
+                                       cpu_0_data_master_read_data_valid_HEX7_s1,
                                        cpu_0_data_master_read_data_valid_cpu_0_jtag_debug_module,
                                        cpu_0_data_master_read_data_valid_jtag_uart_0_avalon_jtag_slave,
                                        cpu_0_data_master_read_data_valid_keys_s1,
@@ -762,6 +2986,14 @@ module cpu_0_data_master_arbitrator (
                                        cpu_0_data_master_read_data_valid_nios_system_clock_1_in,
                                        cpu_0_data_master_read_data_valid_nios_system_clock_2_in,
                                        cpu_0_data_master_read_data_valid_sysid_control_slave,
+                                       cpu_0_data_master_requests_HEX0_s1,
+                                       cpu_0_data_master_requests_HEX1_s1,
+                                       cpu_0_data_master_requests_HEX2_s1,
+                                       cpu_0_data_master_requests_HEX3_s1,
+                                       cpu_0_data_master_requests_HEX4_s1,
+                                       cpu_0_data_master_requests_HEX5_s1,
+                                       cpu_0_data_master_requests_HEX6_s1,
+                                       cpu_0_data_master_requests_HEX7_s1,
                                        cpu_0_data_master_requests_cpu_0_jtag_debug_module,
                                        cpu_0_data_master_requests_jtag_uart_0_avalon_jtag_slave,
                                        cpu_0_data_master_requests_keys_s1,
@@ -773,6 +3005,14 @@ module cpu_0_data_master_arbitrator (
                                        cpu_0_data_master_write,
                                        cpu_0_data_master_writedata,
                                        cpu_0_jtag_debug_module_readdata_from_sa,
+                                       d1_HEX0_s1_end_xfer,
+                                       d1_HEX1_s1_end_xfer,
+                                       d1_HEX2_s1_end_xfer,
+                                       d1_HEX3_s1_end_xfer,
+                                       d1_HEX4_s1_end_xfer,
+                                       d1_HEX5_s1_end_xfer,
+                                       d1_HEX6_s1_end_xfer,
+                                       d1_HEX7_s1_end_xfer,
                                        d1_cpu_0_jtag_debug_module_end_xfer,
                                        d1_jtag_uart_0_avalon_jtag_slave_end_xfer,
                                        d1_keys_s1_end_xfer,
@@ -817,11 +3057,27 @@ module cpu_0_data_master_arbitrator (
   output  [ 31: 0] cpu_0_data_master_readdata;
   output           cpu_0_data_master_readdatavalid;
   output           cpu_0_data_master_waitrequest;
+  input   [ 31: 0] HEX0_s1_readdata_from_sa;
+  input   [ 31: 0] HEX1_s1_readdata_from_sa;
+  input   [ 31: 0] HEX2_s1_readdata_from_sa;
+  input   [ 31: 0] HEX3_s1_readdata_from_sa;
+  input   [ 31: 0] HEX4_s1_readdata_from_sa;
+  input   [ 31: 0] HEX5_s1_readdata_from_sa;
+  input   [ 31: 0] HEX6_s1_readdata_from_sa;
+  input   [ 31: 0] HEX7_s1_readdata_from_sa;
   input            clk;
   input   [ 24: 0] cpu_0_data_master_address;
   input   [  3: 0] cpu_0_data_master_byteenable;
   input   [  1: 0] cpu_0_data_master_byteenable_nios_system_clock_1_in;
   input            cpu_0_data_master_byteenable_nios_system_clock_2_in;
+  input            cpu_0_data_master_granted_HEX0_s1;
+  input            cpu_0_data_master_granted_HEX1_s1;
+  input            cpu_0_data_master_granted_HEX2_s1;
+  input            cpu_0_data_master_granted_HEX3_s1;
+  input            cpu_0_data_master_granted_HEX4_s1;
+  input            cpu_0_data_master_granted_HEX5_s1;
+  input            cpu_0_data_master_granted_HEX6_s1;
+  input            cpu_0_data_master_granted_HEX7_s1;
   input            cpu_0_data_master_granted_cpu_0_jtag_debug_module;
   input            cpu_0_data_master_granted_jtag_uart_0_avalon_jtag_slave;
   input            cpu_0_data_master_granted_keys_s1;
@@ -830,6 +3086,14 @@ module cpu_0_data_master_arbitrator (
   input            cpu_0_data_master_granted_nios_system_clock_1_in;
   input            cpu_0_data_master_granted_nios_system_clock_2_in;
   input            cpu_0_data_master_granted_sysid_control_slave;
+  input            cpu_0_data_master_qualified_request_HEX0_s1;
+  input            cpu_0_data_master_qualified_request_HEX1_s1;
+  input            cpu_0_data_master_qualified_request_HEX2_s1;
+  input            cpu_0_data_master_qualified_request_HEX3_s1;
+  input            cpu_0_data_master_qualified_request_HEX4_s1;
+  input            cpu_0_data_master_qualified_request_HEX5_s1;
+  input            cpu_0_data_master_qualified_request_HEX6_s1;
+  input            cpu_0_data_master_qualified_request_HEX7_s1;
   input            cpu_0_data_master_qualified_request_cpu_0_jtag_debug_module;
   input            cpu_0_data_master_qualified_request_jtag_uart_0_avalon_jtag_slave;
   input            cpu_0_data_master_qualified_request_keys_s1;
@@ -839,6 +3103,14 @@ module cpu_0_data_master_arbitrator (
   input            cpu_0_data_master_qualified_request_nios_system_clock_2_in;
   input            cpu_0_data_master_qualified_request_sysid_control_slave;
   input            cpu_0_data_master_read;
+  input            cpu_0_data_master_read_data_valid_HEX0_s1;
+  input            cpu_0_data_master_read_data_valid_HEX1_s1;
+  input            cpu_0_data_master_read_data_valid_HEX2_s1;
+  input            cpu_0_data_master_read_data_valid_HEX3_s1;
+  input            cpu_0_data_master_read_data_valid_HEX4_s1;
+  input            cpu_0_data_master_read_data_valid_HEX5_s1;
+  input            cpu_0_data_master_read_data_valid_HEX6_s1;
+  input            cpu_0_data_master_read_data_valid_HEX7_s1;
   input            cpu_0_data_master_read_data_valid_cpu_0_jtag_debug_module;
   input            cpu_0_data_master_read_data_valid_jtag_uart_0_avalon_jtag_slave;
   input            cpu_0_data_master_read_data_valid_keys_s1;
@@ -847,6 +3119,14 @@ module cpu_0_data_master_arbitrator (
   input            cpu_0_data_master_read_data_valid_nios_system_clock_1_in;
   input            cpu_0_data_master_read_data_valid_nios_system_clock_2_in;
   input            cpu_0_data_master_read_data_valid_sysid_control_slave;
+  input            cpu_0_data_master_requests_HEX0_s1;
+  input            cpu_0_data_master_requests_HEX1_s1;
+  input            cpu_0_data_master_requests_HEX2_s1;
+  input            cpu_0_data_master_requests_HEX3_s1;
+  input            cpu_0_data_master_requests_HEX4_s1;
+  input            cpu_0_data_master_requests_HEX5_s1;
+  input            cpu_0_data_master_requests_HEX6_s1;
+  input            cpu_0_data_master_requests_HEX7_s1;
   input            cpu_0_data_master_requests_cpu_0_jtag_debug_module;
   input            cpu_0_data_master_requests_jtag_uart_0_avalon_jtag_slave;
   input            cpu_0_data_master_requests_keys_s1;
@@ -858,6 +3138,14 @@ module cpu_0_data_master_arbitrator (
   input            cpu_0_data_master_write;
   input   [ 31: 0] cpu_0_data_master_writedata;
   input   [ 31: 0] cpu_0_jtag_debug_module_readdata_from_sa;
+  input            d1_HEX0_s1_end_xfer;
+  input            d1_HEX1_s1_end_xfer;
+  input            d1_HEX2_s1_end_xfer;
+  input            d1_HEX3_s1_end_xfer;
+  input            d1_HEX4_s1_end_xfer;
+  input            d1_HEX5_s1_end_xfer;
+  input            d1_HEX6_s1_end_xfer;
+  input            d1_HEX7_s1_end_xfer;
   input            d1_cpu_0_jtag_debug_module_end_xfer;
   input            d1_jtag_uart_0_avalon_jtag_slave_end_xfer;
   input            d1_keys_s1_end_xfer;
@@ -916,14 +3204,22 @@ module cpu_0_data_master_arbitrator (
   wire             pre_flush_cpu_0_data_master_readdatavalid;
   wire             r_0;
   wire             r_1;
+  wire             r_2;
+  wire             r_3;
   //r_0 master_run cascaded wait assignment, which is an e_assign
-  assign r_0 = 1 & (cpu_0_data_master_qualified_request_cpu_0_jtag_debug_module | ~cpu_0_data_master_requests_cpu_0_jtag_debug_module) & (cpu_0_data_master_granted_cpu_0_jtag_debug_module | ~cpu_0_data_master_qualified_request_cpu_0_jtag_debug_module) & ((~cpu_0_data_master_qualified_request_cpu_0_jtag_debug_module | ~cpu_0_data_master_read | (1 & ~d1_cpu_0_jtag_debug_module_end_xfer & cpu_0_data_master_read))) & ((~cpu_0_data_master_qualified_request_cpu_0_jtag_debug_module | ~cpu_0_data_master_write | (1 & cpu_0_data_master_write))) & 1 & (cpu_0_data_master_qualified_request_jtag_uart_0_avalon_jtag_slave | ~cpu_0_data_master_requests_jtag_uart_0_avalon_jtag_slave) & ((~cpu_0_data_master_qualified_request_jtag_uart_0_avalon_jtag_slave | ~(cpu_0_data_master_read | cpu_0_data_master_write) | (1 & ~jtag_uart_0_avalon_jtag_slave_waitrequest_from_sa & (cpu_0_data_master_read | cpu_0_data_master_write)))) & ((~cpu_0_data_master_qualified_request_jtag_uart_0_avalon_jtag_slave | ~(cpu_0_data_master_read | cpu_0_data_master_write) | (1 & ~jtag_uart_0_avalon_jtag_slave_waitrequest_from_sa & (cpu_0_data_master_read | cpu_0_data_master_write)))) & 1 & (cpu_0_data_master_qualified_request_keys_s1 | ~cpu_0_data_master_requests_keys_s1) & ((~cpu_0_data_master_qualified_request_keys_s1 | ~cpu_0_data_master_read | (1 & ~d1_keys_s1_end_xfer & cpu_0_data_master_read))) & ((~cpu_0_data_master_qualified_request_keys_s1 | ~cpu_0_data_master_write | (1 & cpu_0_data_master_write))) & 1 & (cpu_0_data_master_qualified_request_lcd_0_control_slave | ~cpu_0_data_master_requests_lcd_0_control_slave) & ((~cpu_0_data_master_qualified_request_lcd_0_control_slave | ~cpu_0_data_master_read | (1 & ((lcd_0_control_slave_wait_counter_eq_0 & ~d1_lcd_0_control_slave_end_xfer)) & cpu_0_data_master_read))) & ((~cpu_0_data_master_qualified_request_lcd_0_control_slave | ~cpu_0_data_master_write | (1 & ((lcd_0_control_slave_wait_counter_eq_0 & ~d1_lcd_0_control_slave_end_xfer)) & cpu_0_data_master_write))) & 1 & (cpu_0_data_master_qualified_request_leds_s1 | ~cpu_0_data_master_requests_leds_s1) & ((~cpu_0_data_master_qualified_request_leds_s1 | ~cpu_0_data_master_read | (1 & ~d1_leds_s1_end_xfer & cpu_0_data_master_read)));
+  assign r_0 = 1 & (cpu_0_data_master_qualified_request_HEX0_s1 | ~cpu_0_data_master_requests_HEX0_s1) & ((~cpu_0_data_master_qualified_request_HEX0_s1 | ~cpu_0_data_master_read | (1 & ~d1_HEX0_s1_end_xfer & cpu_0_data_master_read))) & ((~cpu_0_data_master_qualified_request_HEX0_s1 | ~cpu_0_data_master_write | (1 & cpu_0_data_master_write))) & 1 & (cpu_0_data_master_qualified_request_HEX1_s1 | ~cpu_0_data_master_requests_HEX1_s1) & ((~cpu_0_data_master_qualified_request_HEX1_s1 | ~cpu_0_data_master_read | (1 & ~d1_HEX1_s1_end_xfer & cpu_0_data_master_read))) & ((~cpu_0_data_master_qualified_request_HEX1_s1 | ~cpu_0_data_master_write | (1 & cpu_0_data_master_write))) & 1 & (cpu_0_data_master_qualified_request_HEX2_s1 | ~cpu_0_data_master_requests_HEX2_s1) & ((~cpu_0_data_master_qualified_request_HEX2_s1 | ~cpu_0_data_master_read | (1 & ~d1_HEX2_s1_end_xfer & cpu_0_data_master_read))) & ((~cpu_0_data_master_qualified_request_HEX2_s1 | ~cpu_0_data_master_write | (1 & cpu_0_data_master_write))) & 1 & (cpu_0_data_master_qualified_request_HEX3_s1 | ~cpu_0_data_master_requests_HEX3_s1) & ((~cpu_0_data_master_qualified_request_HEX3_s1 | ~cpu_0_data_master_read | (1 & ~d1_HEX3_s1_end_xfer & cpu_0_data_master_read))) & ((~cpu_0_data_master_qualified_request_HEX3_s1 | ~cpu_0_data_master_write | (1 & cpu_0_data_master_write))) & 1 & (cpu_0_data_master_qualified_request_HEX4_s1 | ~cpu_0_data_master_requests_HEX4_s1) & ((~cpu_0_data_master_qualified_request_HEX4_s1 | ~cpu_0_data_master_read | (1 & ~d1_HEX4_s1_end_xfer & cpu_0_data_master_read))) & ((~cpu_0_data_master_qualified_request_HEX4_s1 | ~cpu_0_data_master_write | (1 & cpu_0_data_master_write)));
 
   //cascaded wait assignment, which is an e_assign
-  assign cpu_0_data_master_run = r_0 & r_1;
+  assign cpu_0_data_master_run = r_0 & r_1 & r_2 & r_3;
 
   //r_1 master_run cascaded wait assignment, which is an e_assign
-  assign r_1 = ((~cpu_0_data_master_qualified_request_leds_s1 | ~cpu_0_data_master_write | (1 & cpu_0_data_master_write))) & 1 & (cpu_0_data_master_qualified_request_nios_system_clock_1_in | (cpu_0_data_master_write & !cpu_0_data_master_byteenable_nios_system_clock_1_in & cpu_0_data_master_dbs_address[1]) | ~cpu_0_data_master_requests_nios_system_clock_1_in) & ((~cpu_0_data_master_qualified_request_nios_system_clock_1_in | ~cpu_0_data_master_read | (1 & ~nios_system_clock_1_in_waitrequest_from_sa & (cpu_0_data_master_dbs_address[1]) & cpu_0_data_master_read))) & ((~cpu_0_data_master_qualified_request_nios_system_clock_1_in | ~cpu_0_data_master_write | (1 & ~nios_system_clock_1_in_waitrequest_from_sa & (cpu_0_data_master_dbs_address[1]) & cpu_0_data_master_write))) & 1 & ((cpu_0_data_master_qualified_request_nios_system_clock_2_in | ((cpu_0_data_master_write & !cpu_0_data_master_byteenable_nios_system_clock_2_in & cpu_0_data_master_dbs_address[1] & cpu_0_data_master_dbs_address[0])) | ~cpu_0_data_master_requests_nios_system_clock_2_in)) & ((~cpu_0_data_master_qualified_request_nios_system_clock_2_in | ~cpu_0_data_master_read | (1 & ~nios_system_clock_2_in_waitrequest_from_sa & (cpu_0_data_master_dbs_address[1] & cpu_0_data_master_dbs_address[0]) & cpu_0_data_master_read))) & ((~cpu_0_data_master_qualified_request_nios_system_clock_2_in | ~cpu_0_data_master_write | (1 & ~nios_system_clock_2_in_waitrequest_from_sa & (cpu_0_data_master_dbs_address[1] & cpu_0_data_master_dbs_address[0]) & cpu_0_data_master_write))) & 1 & (cpu_0_data_master_qualified_request_sysid_control_slave | ~cpu_0_data_master_requests_sysid_control_slave) & ((~cpu_0_data_master_qualified_request_sysid_control_slave | ~cpu_0_data_master_read | (1 & ~d1_sysid_control_slave_end_xfer & cpu_0_data_master_read))) & ((~cpu_0_data_master_qualified_request_sysid_control_slave | ~cpu_0_data_master_write | (1 & cpu_0_data_master_write)));
+  assign r_1 = 1 & (cpu_0_data_master_qualified_request_HEX5_s1 | ~cpu_0_data_master_requests_HEX5_s1) & ((~cpu_0_data_master_qualified_request_HEX5_s1 | ~cpu_0_data_master_read | (1 & ~d1_HEX5_s1_end_xfer & cpu_0_data_master_read))) & ((~cpu_0_data_master_qualified_request_HEX5_s1 | ~cpu_0_data_master_write | (1 & cpu_0_data_master_write))) & 1 & (cpu_0_data_master_qualified_request_HEX6_s1 | ~cpu_0_data_master_requests_HEX6_s1) & ((~cpu_0_data_master_qualified_request_HEX6_s1 | ~cpu_0_data_master_read | (1 & ~d1_HEX6_s1_end_xfer & cpu_0_data_master_read))) & ((~cpu_0_data_master_qualified_request_HEX6_s1 | ~cpu_0_data_master_write | (1 & cpu_0_data_master_write))) & 1 & (cpu_0_data_master_qualified_request_HEX7_s1 | ~cpu_0_data_master_requests_HEX7_s1) & ((~cpu_0_data_master_qualified_request_HEX7_s1 | ~cpu_0_data_master_read | (1 & ~d1_HEX7_s1_end_xfer & cpu_0_data_master_read))) & ((~cpu_0_data_master_qualified_request_HEX7_s1 | ~cpu_0_data_master_write | (1 & cpu_0_data_master_write))) & 1 & (cpu_0_data_master_qualified_request_cpu_0_jtag_debug_module | ~cpu_0_data_master_requests_cpu_0_jtag_debug_module) & (cpu_0_data_master_granted_cpu_0_jtag_debug_module | ~cpu_0_data_master_qualified_request_cpu_0_jtag_debug_module) & ((~cpu_0_data_master_qualified_request_cpu_0_jtag_debug_module | ~cpu_0_data_master_read | (1 & ~d1_cpu_0_jtag_debug_module_end_xfer & cpu_0_data_master_read))) & ((~cpu_0_data_master_qualified_request_cpu_0_jtag_debug_module | ~cpu_0_data_master_write | (1 & cpu_0_data_master_write))) & 1 & (cpu_0_data_master_qualified_request_jtag_uart_0_avalon_jtag_slave | ~cpu_0_data_master_requests_jtag_uart_0_avalon_jtag_slave) & ((~cpu_0_data_master_qualified_request_jtag_uart_0_avalon_jtag_slave | ~(cpu_0_data_master_read | cpu_0_data_master_write) | (1 & ~jtag_uart_0_avalon_jtag_slave_waitrequest_from_sa & (cpu_0_data_master_read | cpu_0_data_master_write))));
+
+  //r_2 master_run cascaded wait assignment, which is an e_assign
+  assign r_2 = ((~cpu_0_data_master_qualified_request_jtag_uart_0_avalon_jtag_slave | ~(cpu_0_data_master_read | cpu_0_data_master_write) | (1 & ~jtag_uart_0_avalon_jtag_slave_waitrequest_from_sa & (cpu_0_data_master_read | cpu_0_data_master_write)))) & 1 & (cpu_0_data_master_qualified_request_keys_s1 | ~cpu_0_data_master_requests_keys_s1) & ((~cpu_0_data_master_qualified_request_keys_s1 | ~cpu_0_data_master_read | (1 & ~d1_keys_s1_end_xfer & cpu_0_data_master_read))) & ((~cpu_0_data_master_qualified_request_keys_s1 | ~cpu_0_data_master_write | (1 & cpu_0_data_master_write))) & 1 & (cpu_0_data_master_qualified_request_lcd_0_control_slave | ~cpu_0_data_master_requests_lcd_0_control_slave) & ((~cpu_0_data_master_qualified_request_lcd_0_control_slave | ~cpu_0_data_master_read | (1 & ((lcd_0_control_slave_wait_counter_eq_0 & ~d1_lcd_0_control_slave_end_xfer)) & cpu_0_data_master_read))) & ((~cpu_0_data_master_qualified_request_lcd_0_control_slave | ~cpu_0_data_master_write | (1 & ((lcd_0_control_slave_wait_counter_eq_0 & ~d1_lcd_0_control_slave_end_xfer)) & cpu_0_data_master_write))) & 1 & (cpu_0_data_master_qualified_request_leds_s1 | ~cpu_0_data_master_requests_leds_s1) & ((~cpu_0_data_master_qualified_request_leds_s1 | ~cpu_0_data_master_read | (1 & ~d1_leds_s1_end_xfer & cpu_0_data_master_read))) & ((~cpu_0_data_master_qualified_request_leds_s1 | ~cpu_0_data_master_write | (1 & cpu_0_data_master_write))) & 1 & (cpu_0_data_master_qualified_request_nios_system_clock_1_in | (cpu_0_data_master_write & !cpu_0_data_master_byteenable_nios_system_clock_1_in & cpu_0_data_master_dbs_address[1]) | ~cpu_0_data_master_requests_nios_system_clock_1_in) & ((~cpu_0_data_master_qualified_request_nios_system_clock_1_in | ~cpu_0_data_master_read | (1 & ~nios_system_clock_1_in_waitrequest_from_sa & (cpu_0_data_master_dbs_address[1]) & cpu_0_data_master_read))) & ((~cpu_0_data_master_qualified_request_nios_system_clock_1_in | ~cpu_0_data_master_write | (1 & ~nios_system_clock_1_in_waitrequest_from_sa & (cpu_0_data_master_dbs_address[1]) & cpu_0_data_master_write))) & 1 & ((cpu_0_data_master_qualified_request_nios_system_clock_2_in | ((cpu_0_data_master_write & !cpu_0_data_master_byteenable_nios_system_clock_2_in & cpu_0_data_master_dbs_address[1] & cpu_0_data_master_dbs_address[0])) | ~cpu_0_data_master_requests_nios_system_clock_2_in)) & ((~cpu_0_data_master_qualified_request_nios_system_clock_2_in | ~cpu_0_data_master_read | (1 & ~nios_system_clock_2_in_waitrequest_from_sa & (cpu_0_data_master_dbs_address[1] & cpu_0_data_master_dbs_address[0]) & cpu_0_data_master_read)));
+
+  //r_3 master_run cascaded wait assignment, which is an e_assign
+  assign r_3 = ((~cpu_0_data_master_qualified_request_nios_system_clock_2_in | ~cpu_0_data_master_write | (1 & ~nios_system_clock_2_in_waitrequest_from_sa & (cpu_0_data_master_dbs_address[1] & cpu_0_data_master_dbs_address[0]) & cpu_0_data_master_write))) & 1 & (cpu_0_data_master_qualified_request_sysid_control_slave | ~cpu_0_data_master_requests_sysid_control_slave) & ((~cpu_0_data_master_qualified_request_sysid_control_slave | ~cpu_0_data_master_read | (1 & ~d1_sysid_control_slave_end_xfer & cpu_0_data_master_read))) & ((~cpu_0_data_master_qualified_request_sysid_control_slave | ~cpu_0_data_master_write | (1 & cpu_0_data_master_write)));
 
   //optimize select-logic by passing only those address bits which matter.
   assign cpu_0_data_master_address_to_slave = cpu_0_data_master_address[24 : 0];
@@ -939,7 +3235,15 @@ module cpu_0_data_master_arbitrator (
 
 
   //some slave is getting selected, which is an e_mux
-  assign cpu_0_data_master_is_granted_some_slave = cpu_0_data_master_granted_cpu_0_jtag_debug_module |
+  assign cpu_0_data_master_is_granted_some_slave = cpu_0_data_master_granted_HEX0_s1 |
+    cpu_0_data_master_granted_HEX1_s1 |
+    cpu_0_data_master_granted_HEX2_s1 |
+    cpu_0_data_master_granted_HEX3_s1 |
+    cpu_0_data_master_granted_HEX4_s1 |
+    cpu_0_data_master_granted_HEX5_s1 |
+    cpu_0_data_master_granted_HEX6_s1 |
+    cpu_0_data_master_granted_HEX7_s1 |
+    cpu_0_data_master_granted_cpu_0_jtag_debug_module |
     cpu_0_data_master_granted_jtag_uart_0_avalon_jtag_slave |
     cpu_0_data_master_granted_keys_s1 |
     cpu_0_data_master_granted_lcd_0_control_slave |
@@ -953,6 +3257,30 @@ module cpu_0_data_master_arbitrator (
 
   //latent slave read data valid which is not flushed, which is an e_mux
   assign cpu_0_data_master_readdatavalid = cpu_0_data_master_read_but_no_slave_selected |
+    pre_flush_cpu_0_data_master_readdatavalid |
+    cpu_0_data_master_read_data_valid_HEX0_s1 |
+    cpu_0_data_master_read_but_no_slave_selected |
+    pre_flush_cpu_0_data_master_readdatavalid |
+    cpu_0_data_master_read_data_valid_HEX1_s1 |
+    cpu_0_data_master_read_but_no_slave_selected |
+    pre_flush_cpu_0_data_master_readdatavalid |
+    cpu_0_data_master_read_data_valid_HEX2_s1 |
+    cpu_0_data_master_read_but_no_slave_selected |
+    pre_flush_cpu_0_data_master_readdatavalid |
+    cpu_0_data_master_read_data_valid_HEX3_s1 |
+    cpu_0_data_master_read_but_no_slave_selected |
+    pre_flush_cpu_0_data_master_readdatavalid |
+    cpu_0_data_master_read_data_valid_HEX4_s1 |
+    cpu_0_data_master_read_but_no_slave_selected |
+    pre_flush_cpu_0_data_master_readdatavalid |
+    cpu_0_data_master_read_data_valid_HEX5_s1 |
+    cpu_0_data_master_read_but_no_slave_selected |
+    pre_flush_cpu_0_data_master_readdatavalid |
+    cpu_0_data_master_read_data_valid_HEX6_s1 |
+    cpu_0_data_master_read_but_no_slave_selected |
+    pre_flush_cpu_0_data_master_readdatavalid |
+    cpu_0_data_master_read_data_valid_HEX7_s1 |
+    cpu_0_data_master_read_but_no_slave_selected |
     pre_flush_cpu_0_data_master_readdatavalid |
     cpu_0_data_master_read_data_valid_cpu_0_jtag_debug_module |
     cpu_0_data_master_read_but_no_slave_selected |
@@ -978,7 +3306,15 @@ module cpu_0_data_master_arbitrator (
     cpu_0_data_master_read_data_valid_sysid_control_slave;
 
   //cpu_0/data_master readdata mux, which is an e_mux
-  assign cpu_0_data_master_readdata = ({32 {~(cpu_0_data_master_qualified_request_cpu_0_jtag_debug_module & cpu_0_data_master_read)}} | cpu_0_jtag_debug_module_readdata_from_sa) &
+  assign cpu_0_data_master_readdata = ({32 {~(cpu_0_data_master_qualified_request_HEX0_s1 & cpu_0_data_master_read)}} | HEX0_s1_readdata_from_sa) &
+    ({32 {~(cpu_0_data_master_qualified_request_HEX1_s1 & cpu_0_data_master_read)}} | HEX1_s1_readdata_from_sa) &
+    ({32 {~(cpu_0_data_master_qualified_request_HEX2_s1 & cpu_0_data_master_read)}} | HEX2_s1_readdata_from_sa) &
+    ({32 {~(cpu_0_data_master_qualified_request_HEX3_s1 & cpu_0_data_master_read)}} | HEX3_s1_readdata_from_sa) &
+    ({32 {~(cpu_0_data_master_qualified_request_HEX4_s1 & cpu_0_data_master_read)}} | HEX4_s1_readdata_from_sa) &
+    ({32 {~(cpu_0_data_master_qualified_request_HEX5_s1 & cpu_0_data_master_read)}} | HEX5_s1_readdata_from_sa) &
+    ({32 {~(cpu_0_data_master_qualified_request_HEX6_s1 & cpu_0_data_master_read)}} | HEX6_s1_readdata_from_sa) &
+    ({32 {~(cpu_0_data_master_qualified_request_HEX7_s1 & cpu_0_data_master_read)}} | HEX7_s1_readdata_from_sa) &
+    ({32 {~(cpu_0_data_master_qualified_request_cpu_0_jtag_debug_module & cpu_0_data_master_read)}} | cpu_0_jtag_debug_module_readdata_from_sa) &
     ({32 {~(cpu_0_data_master_qualified_request_jtag_uart_0_avalon_jtag_slave & cpu_0_data_master_read)}} | jtag_uart_0_avalon_jtag_slave_readdata_from_sa) &
     ({32 {~(cpu_0_data_master_qualified_request_keys_s1 & cpu_0_data_master_read)}} | keys_s1_readdata_from_sa) &
     ({32 {~(cpu_0_data_master_qualified_request_lcd_0_control_slave & cpu_0_data_master_read)}} | lcd_0_control_slave_readdata_from_sa) &
@@ -1350,16 +3686,16 @@ module cpu_0_instruction_master_arbitrator (
   wire    [ 15: 0] p1_dbs_16_reg_segment_0;
   wire             pre_dbs_count_enable;
   wire             pre_flush_cpu_0_instruction_master_readdatavalid;
-  wire             r_0;
   wire             r_1;
-  //r_0 master_run cascaded wait assignment, which is an e_assign
-  assign r_0 = 1 & (cpu_0_instruction_master_qualified_request_cpu_0_jtag_debug_module | ~cpu_0_instruction_master_requests_cpu_0_jtag_debug_module) & (cpu_0_instruction_master_granted_cpu_0_jtag_debug_module | ~cpu_0_instruction_master_qualified_request_cpu_0_jtag_debug_module) & ((~cpu_0_instruction_master_qualified_request_cpu_0_jtag_debug_module | ~cpu_0_instruction_master_read | (1 & ~d1_cpu_0_jtag_debug_module_end_xfer & cpu_0_instruction_master_read)));
+  wire             r_2;
+  //r_1 master_run cascaded wait assignment, which is an e_assign
+  assign r_1 = 1 & (cpu_0_instruction_master_qualified_request_cpu_0_jtag_debug_module | ~cpu_0_instruction_master_requests_cpu_0_jtag_debug_module) & (cpu_0_instruction_master_granted_cpu_0_jtag_debug_module | ~cpu_0_instruction_master_qualified_request_cpu_0_jtag_debug_module) & ((~cpu_0_instruction_master_qualified_request_cpu_0_jtag_debug_module | ~cpu_0_instruction_master_read | (1 & ~d1_cpu_0_jtag_debug_module_end_xfer & cpu_0_instruction_master_read)));
 
   //cascaded wait assignment, which is an e_assign
-  assign cpu_0_instruction_master_run = r_0 & r_1;
+  assign cpu_0_instruction_master_run = r_1 & r_2;
 
-  //r_1 master_run cascaded wait assignment, which is an e_assign
-  assign r_1 = 1 & (cpu_0_instruction_master_qualified_request_nios_system_clock_0_in | ~cpu_0_instruction_master_requests_nios_system_clock_0_in) & ((~cpu_0_instruction_master_qualified_request_nios_system_clock_0_in | ~cpu_0_instruction_master_read | (1 & ~nios_system_clock_0_in_waitrequest_from_sa & (cpu_0_instruction_master_dbs_address[1]) & cpu_0_instruction_master_read)));
+  //r_2 master_run cascaded wait assignment, which is an e_assign
+  assign r_2 = 1 & (cpu_0_instruction_master_qualified_request_nios_system_clock_0_in | ~cpu_0_instruction_master_requests_nios_system_clock_0_in) & ((~cpu_0_instruction_master_qualified_request_nios_system_clock_0_in | ~cpu_0_instruction_master_read | (1 & ~nios_system_clock_0_in_waitrequest_from_sa & (cpu_0_instruction_master_dbs_address[1]) & cpu_0_instruction_master_read)));
 
   //optimize select-logic by passing only those address bits which matter.
   assign cpu_0_instruction_master_address_to_slave = cpu_0_instruction_master_address[24 : 0];
@@ -3046,12 +5382,12 @@ module nios_system_clock_0_out_arbitrator (
   wire             nios_system_clock_0_out_waitrequest;
   reg              nios_system_clock_0_out_write_last_time;
   reg     [ 15: 0] nios_system_clock_0_out_writedata_last_time;
-  wire             r_1;
-  //r_1 master_run cascaded wait assignment, which is an e_assign
-  assign r_1 = 1 & (nios_system_clock_0_out_qualified_request_sdram_0_s1 | nios_system_clock_0_out_read_data_valid_sdram_0_s1 | ~nios_system_clock_0_out_requests_sdram_0_s1) & (nios_system_clock_0_out_granted_sdram_0_s1 | ~nios_system_clock_0_out_qualified_request_sdram_0_s1) & ((~nios_system_clock_0_out_qualified_request_sdram_0_s1 | ~nios_system_clock_0_out_read | (nios_system_clock_0_out_read_data_valid_sdram_0_s1 & nios_system_clock_0_out_read))) & ((~nios_system_clock_0_out_qualified_request_sdram_0_s1 | ~(nios_system_clock_0_out_read | nios_system_clock_0_out_write) | (1 & ~sdram_0_s1_waitrequest_from_sa & (nios_system_clock_0_out_read | nios_system_clock_0_out_write))));
+  wire             r_3;
+  //r_3 master_run cascaded wait assignment, which is an e_assign
+  assign r_3 = 1 & (nios_system_clock_0_out_qualified_request_sdram_0_s1 | nios_system_clock_0_out_read_data_valid_sdram_0_s1 | ~nios_system_clock_0_out_requests_sdram_0_s1) & (nios_system_clock_0_out_granted_sdram_0_s1 | ~nios_system_clock_0_out_qualified_request_sdram_0_s1) & ((~nios_system_clock_0_out_qualified_request_sdram_0_s1 | ~nios_system_clock_0_out_read | (nios_system_clock_0_out_read_data_valid_sdram_0_s1 & nios_system_clock_0_out_read))) & ((~nios_system_clock_0_out_qualified_request_sdram_0_s1 | ~(nios_system_clock_0_out_read | nios_system_clock_0_out_write) | (1 & ~sdram_0_s1_waitrequest_from_sa & (nios_system_clock_0_out_read | nios_system_clock_0_out_write))));
 
   //cascaded wait assignment, which is an e_assign
-  assign nios_system_clock_0_out_run = r_1;
+  assign nios_system_clock_0_out_run = r_3;
 
   //optimize select-logic by passing only those address bits which matter.
   assign nios_system_clock_0_out_address_to_slave = nios_system_clock_0_out_address;
@@ -3576,12 +5912,12 @@ module nios_system_clock_1_out_arbitrator (
   wire             nios_system_clock_1_out_waitrequest;
   reg              nios_system_clock_1_out_write_last_time;
   reg     [ 15: 0] nios_system_clock_1_out_writedata_last_time;
-  wire             r_1;
-  //r_1 master_run cascaded wait assignment, which is an e_assign
-  assign r_1 = 1 & (nios_system_clock_1_out_qualified_request_sdram_0_s1 | nios_system_clock_1_out_read_data_valid_sdram_0_s1 | ~nios_system_clock_1_out_requests_sdram_0_s1) & (nios_system_clock_1_out_granted_sdram_0_s1 | ~nios_system_clock_1_out_qualified_request_sdram_0_s1) & ((~nios_system_clock_1_out_qualified_request_sdram_0_s1 | ~nios_system_clock_1_out_read | (nios_system_clock_1_out_read_data_valid_sdram_0_s1 & nios_system_clock_1_out_read))) & ((~nios_system_clock_1_out_qualified_request_sdram_0_s1 | ~(nios_system_clock_1_out_read | nios_system_clock_1_out_write) | (1 & ~sdram_0_s1_waitrequest_from_sa & (nios_system_clock_1_out_read | nios_system_clock_1_out_write))));
+  wire             r_3;
+  //r_3 master_run cascaded wait assignment, which is an e_assign
+  assign r_3 = 1 & (nios_system_clock_1_out_qualified_request_sdram_0_s1 | nios_system_clock_1_out_read_data_valid_sdram_0_s1 | ~nios_system_clock_1_out_requests_sdram_0_s1) & (nios_system_clock_1_out_granted_sdram_0_s1 | ~nios_system_clock_1_out_qualified_request_sdram_0_s1) & ((~nios_system_clock_1_out_qualified_request_sdram_0_s1 | ~nios_system_clock_1_out_read | (nios_system_clock_1_out_read_data_valid_sdram_0_s1 & nios_system_clock_1_out_read))) & ((~nios_system_clock_1_out_qualified_request_sdram_0_s1 | ~(nios_system_clock_1_out_read | nios_system_clock_1_out_write) | (1 & ~sdram_0_s1_waitrequest_from_sa & (nios_system_clock_1_out_read | nios_system_clock_1_out_write))));
 
   //cascaded wait assignment, which is an e_assign
-  assign nios_system_clock_1_out_run = r_1;
+  assign nios_system_clock_1_out_run = r_3;
 
   //optimize select-logic by passing only those address bits which matter.
   assign nios_system_clock_1_out_address_to_slave = nios_system_clock_1_out_address;
@@ -4102,12 +6438,12 @@ module nios_system_clock_2_out_arbitrator (
   wire             nios_system_clock_2_out_waitrequest;
   reg              nios_system_clock_2_out_write_last_time;
   reg     [  7: 0] nios_system_clock_2_out_writedata_last_time;
-  wire             r_0;
-  //r_0 master_run cascaded wait assignment, which is an e_assign
-  assign r_0 = 1 & (nios_system_clock_2_out_qualified_request_clocks_0_avalon_clocks_slave | nios_system_clock_2_out_read_data_valid_clocks_0_avalon_clocks_slave | ~nios_system_clock_2_out_requests_clocks_0_avalon_clocks_slave) & ((~nios_system_clock_2_out_qualified_request_clocks_0_avalon_clocks_slave | ~nios_system_clock_2_out_read | (nios_system_clock_2_out_read_data_valid_clocks_0_avalon_clocks_slave & nios_system_clock_2_out_read))) & ((~nios_system_clock_2_out_qualified_request_clocks_0_avalon_clocks_slave | ~(nios_system_clock_2_out_read | nios_system_clock_2_out_write) | (1 & (nios_system_clock_2_out_read | nios_system_clock_2_out_write))));
+  wire             r_1;
+  //r_1 master_run cascaded wait assignment, which is an e_assign
+  assign r_1 = 1 & (nios_system_clock_2_out_qualified_request_clocks_0_avalon_clocks_slave | nios_system_clock_2_out_read_data_valid_clocks_0_avalon_clocks_slave | ~nios_system_clock_2_out_requests_clocks_0_avalon_clocks_slave) & ((~nios_system_clock_2_out_qualified_request_clocks_0_avalon_clocks_slave | ~nios_system_clock_2_out_read | (nios_system_clock_2_out_read_data_valid_clocks_0_avalon_clocks_slave & nios_system_clock_2_out_read))) & ((~nios_system_clock_2_out_qualified_request_clocks_0_avalon_clocks_slave | ~(nios_system_clock_2_out_read | nios_system_clock_2_out_write) | (1 & (nios_system_clock_2_out_read | nios_system_clock_2_out_write))));
 
   //cascaded wait assignment, which is an e_assign
-  assign nios_system_clock_2_out_run = r_0;
+  assign nios_system_clock_2_out_run = r_1;
 
   //optimize select-logic by passing only those address bits which matter.
   assign nios_system_clock_2_out_address_to_slave = nios_system_clock_2_out_address;
@@ -5685,15 +8021,15 @@ endmodule
 // altera message_level Level1 
 // altera message_off 10034 10035 10036 10037 10230 10240 10030 
 
-module nios_system_reset_clk_0_domain_synch_module (
-                                                     // inputs:
-                                                      clk,
-                                                      data_in,
-                                                      reset_n,
+module nios_system_reset_sys_clk_domain_synch_module (
+                                                       // inputs:
+                                                        clk,
+                                                        data_in,
+                                                        reset_n,
 
-                                                     // outputs:
-                                                      data_out
-                                                   )
+                                                       // outputs:
+                                                        data_out
+                                                     )
 ;
 
   output           data_out;
@@ -5733,15 +8069,15 @@ endmodule
 // altera message_level Level1 
 // altera message_off 10034 10035 10036 10037 10230 10240 10030 
 
-module nios_system_reset_sys_clk_domain_synch_module (
-                                                       // inputs:
-                                                        clk,
-                                                        data_in,
-                                                        reset_n,
+module nios_system_reset_clk_0_domain_synch_module (
+                                                     // inputs:
+                                                      clk,
+                                                      data_in,
+                                                      reset_n,
 
-                                                       // outputs:
-                                                        data_out
-                                                     )
+                                                     // outputs:
+                                                      data_out
+                                                   )
 ;
 
   output           data_out;
@@ -5836,6 +8172,30 @@ module nios_system (
                       sdram_clk,
                       sys_clk,
 
+                     // the_HEX0
+                      out_port_from_the_HEX0,
+
+                     // the_HEX1
+                      out_port_from_the_HEX1,
+
+                     // the_HEX2
+                      out_port_from_the_HEX2,
+
+                     // the_HEX3
+                      out_port_from_the_HEX3,
+
+                     // the_HEX4
+                      out_port_from_the_HEX4,
+
+                     // the_HEX5
+                      out_port_from_the_HEX5,
+
+                     // the_HEX6
+                      out_port_from_the_HEX6,
+
+                     // the_HEX7
+                      out_port_from_the_HEX7,
+
                      // the_keys
                       in_port_to_the_keys,
 
@@ -5865,6 +8225,14 @@ module nios_system (
   output           LCD_RS_from_the_lcd_0;
   output           LCD_RW_from_the_lcd_0;
   inout   [  7: 0] LCD_data_to_and_from_the_lcd_0;
+  output  [  6: 0] out_port_from_the_HEX0;
+  output  [  6: 0] out_port_from_the_HEX1;
+  output  [  6: 0] out_port_from_the_HEX2;
+  output  [  6: 0] out_port_from_the_HEX3;
+  output  [  6: 0] out_port_from_the_HEX4;
+  output  [  6: 0] out_port_from_the_HEX5;
+  output  [  6: 0] out_port_from_the_HEX6;
+  output  [  6: 0] out_port_from_the_HEX7;
   output  [ 25: 0] out_port_from_the_leds;
   output           sdram_clk;
   output           sys_clk;
@@ -5881,6 +8249,62 @@ module nios_system (
   input   [  2: 0] in_port_to_the_keys;
   input            reset_n;
 
+  wire    [  1: 0] HEX0_s1_address;
+  wire             HEX0_s1_chipselect;
+  wire    [ 31: 0] HEX0_s1_readdata;
+  wire    [ 31: 0] HEX0_s1_readdata_from_sa;
+  wire             HEX0_s1_reset_n;
+  wire             HEX0_s1_write_n;
+  wire    [ 31: 0] HEX0_s1_writedata;
+  wire    [  1: 0] HEX1_s1_address;
+  wire             HEX1_s1_chipselect;
+  wire    [ 31: 0] HEX1_s1_readdata;
+  wire    [ 31: 0] HEX1_s1_readdata_from_sa;
+  wire             HEX1_s1_reset_n;
+  wire             HEX1_s1_write_n;
+  wire    [ 31: 0] HEX1_s1_writedata;
+  wire    [  1: 0] HEX2_s1_address;
+  wire             HEX2_s1_chipselect;
+  wire    [ 31: 0] HEX2_s1_readdata;
+  wire    [ 31: 0] HEX2_s1_readdata_from_sa;
+  wire             HEX2_s1_reset_n;
+  wire             HEX2_s1_write_n;
+  wire    [ 31: 0] HEX2_s1_writedata;
+  wire    [  1: 0] HEX3_s1_address;
+  wire             HEX3_s1_chipselect;
+  wire    [ 31: 0] HEX3_s1_readdata;
+  wire    [ 31: 0] HEX3_s1_readdata_from_sa;
+  wire             HEX3_s1_reset_n;
+  wire             HEX3_s1_write_n;
+  wire    [ 31: 0] HEX3_s1_writedata;
+  wire    [  1: 0] HEX4_s1_address;
+  wire             HEX4_s1_chipselect;
+  wire    [ 31: 0] HEX4_s1_readdata;
+  wire    [ 31: 0] HEX4_s1_readdata_from_sa;
+  wire             HEX4_s1_reset_n;
+  wire             HEX4_s1_write_n;
+  wire    [ 31: 0] HEX4_s1_writedata;
+  wire    [  1: 0] HEX5_s1_address;
+  wire             HEX5_s1_chipselect;
+  wire    [ 31: 0] HEX5_s1_readdata;
+  wire    [ 31: 0] HEX5_s1_readdata_from_sa;
+  wire             HEX5_s1_reset_n;
+  wire             HEX5_s1_write_n;
+  wire    [ 31: 0] HEX5_s1_writedata;
+  wire    [  1: 0] HEX6_s1_address;
+  wire             HEX6_s1_chipselect;
+  wire    [ 31: 0] HEX6_s1_readdata;
+  wire    [ 31: 0] HEX6_s1_readdata_from_sa;
+  wire             HEX6_s1_reset_n;
+  wire             HEX6_s1_write_n;
+  wire    [ 31: 0] HEX6_s1_writedata;
+  wire    [  1: 0] HEX7_s1_address;
+  wire             HEX7_s1_chipselect;
+  wire    [ 31: 0] HEX7_s1_readdata;
+  wire    [ 31: 0] HEX7_s1_readdata_from_sa;
+  wire             HEX7_s1_reset_n;
+  wire             HEX7_s1_write_n;
+  wire    [ 31: 0] HEX7_s1_writedata;
   wire             LCD_E_from_the_lcd_0;
   wire             LCD_RS_from_the_lcd_0;
   wire             LCD_RW_from_the_lcd_0;
@@ -5898,6 +8322,14 @@ module nios_system (
   wire    [ 15: 0] cpu_0_data_master_dbs_write_16;
   wire    [  7: 0] cpu_0_data_master_dbs_write_8;
   wire             cpu_0_data_master_debugaccess;
+  wire             cpu_0_data_master_granted_HEX0_s1;
+  wire             cpu_0_data_master_granted_HEX1_s1;
+  wire             cpu_0_data_master_granted_HEX2_s1;
+  wire             cpu_0_data_master_granted_HEX3_s1;
+  wire             cpu_0_data_master_granted_HEX4_s1;
+  wire             cpu_0_data_master_granted_HEX5_s1;
+  wire             cpu_0_data_master_granted_HEX6_s1;
+  wire             cpu_0_data_master_granted_HEX7_s1;
   wire             cpu_0_data_master_granted_cpu_0_jtag_debug_module;
   wire             cpu_0_data_master_granted_jtag_uart_0_avalon_jtag_slave;
   wire             cpu_0_data_master_granted_keys_s1;
@@ -5908,6 +8340,14 @@ module nios_system (
   wire             cpu_0_data_master_granted_sysid_control_slave;
   wire    [ 31: 0] cpu_0_data_master_irq;
   wire             cpu_0_data_master_latency_counter;
+  wire             cpu_0_data_master_qualified_request_HEX0_s1;
+  wire             cpu_0_data_master_qualified_request_HEX1_s1;
+  wire             cpu_0_data_master_qualified_request_HEX2_s1;
+  wire             cpu_0_data_master_qualified_request_HEX3_s1;
+  wire             cpu_0_data_master_qualified_request_HEX4_s1;
+  wire             cpu_0_data_master_qualified_request_HEX5_s1;
+  wire             cpu_0_data_master_qualified_request_HEX6_s1;
+  wire             cpu_0_data_master_qualified_request_HEX7_s1;
   wire             cpu_0_data_master_qualified_request_cpu_0_jtag_debug_module;
   wire             cpu_0_data_master_qualified_request_jtag_uart_0_avalon_jtag_slave;
   wire             cpu_0_data_master_qualified_request_keys_s1;
@@ -5917,6 +8357,14 @@ module nios_system (
   wire             cpu_0_data_master_qualified_request_nios_system_clock_2_in;
   wire             cpu_0_data_master_qualified_request_sysid_control_slave;
   wire             cpu_0_data_master_read;
+  wire             cpu_0_data_master_read_data_valid_HEX0_s1;
+  wire             cpu_0_data_master_read_data_valid_HEX1_s1;
+  wire             cpu_0_data_master_read_data_valid_HEX2_s1;
+  wire             cpu_0_data_master_read_data_valid_HEX3_s1;
+  wire             cpu_0_data_master_read_data_valid_HEX4_s1;
+  wire             cpu_0_data_master_read_data_valid_HEX5_s1;
+  wire             cpu_0_data_master_read_data_valid_HEX6_s1;
+  wire             cpu_0_data_master_read_data_valid_HEX7_s1;
   wire             cpu_0_data_master_read_data_valid_cpu_0_jtag_debug_module;
   wire             cpu_0_data_master_read_data_valid_jtag_uart_0_avalon_jtag_slave;
   wire             cpu_0_data_master_read_data_valid_keys_s1;
@@ -5927,6 +8375,14 @@ module nios_system (
   wire             cpu_0_data_master_read_data_valid_sysid_control_slave;
   wire    [ 31: 0] cpu_0_data_master_readdata;
   wire             cpu_0_data_master_readdatavalid;
+  wire             cpu_0_data_master_requests_HEX0_s1;
+  wire             cpu_0_data_master_requests_HEX1_s1;
+  wire             cpu_0_data_master_requests_HEX2_s1;
+  wire             cpu_0_data_master_requests_HEX3_s1;
+  wire             cpu_0_data_master_requests_HEX4_s1;
+  wire             cpu_0_data_master_requests_HEX5_s1;
+  wire             cpu_0_data_master_requests_HEX6_s1;
+  wire             cpu_0_data_master_requests_HEX7_s1;
   wire             cpu_0_data_master_requests_cpu_0_jtag_debug_module;
   wire             cpu_0_data_master_requests_jtag_uart_0_avalon_jtag_slave;
   wire             cpu_0_data_master_requests_keys_s1;
@@ -5966,6 +8422,14 @@ module nios_system (
   wire             cpu_0_jtag_debug_module_resetrequest_from_sa;
   wire             cpu_0_jtag_debug_module_write;
   wire    [ 31: 0] cpu_0_jtag_debug_module_writedata;
+  wire             d1_HEX0_s1_end_xfer;
+  wire             d1_HEX1_s1_end_xfer;
+  wire             d1_HEX2_s1_end_xfer;
+  wire             d1_HEX3_s1_end_xfer;
+  wire             d1_HEX4_s1_end_xfer;
+  wire             d1_HEX5_s1_end_xfer;
+  wire             d1_HEX6_s1_end_xfer;
+  wire             d1_HEX7_s1_end_xfer;
   wire             d1_clocks_0_avalon_clocks_slave_end_xfer;
   wire             d1_cpu_0_jtag_debug_module_end_xfer;
   wire             d1_jtag_uart_0_avalon_jtag_slave_end_xfer;
@@ -6102,6 +8566,14 @@ module nios_system (
   wire    [  7: 0] nios_system_clock_2_out_writedata;
   wire             out_clk_clocks_0_SDRAM_CLK;
   wire             out_clk_clocks_0_sys_clk;
+  wire    [  6: 0] out_port_from_the_HEX0;
+  wire    [  6: 0] out_port_from_the_HEX1;
+  wire    [  6: 0] out_port_from_the_HEX2;
+  wire    [  6: 0] out_port_from_the_HEX3;
+  wire    [  6: 0] out_port_from_the_HEX4;
+  wire    [  6: 0] out_port_from_the_HEX5;
+  wire    [  6: 0] out_port_from_the_HEX6;
+  wire    [  6: 0] out_port_from_the_HEX7;
   wire    [ 25: 0] out_port_from_the_leds;
   wire             reset_n_sources;
   wire    [ 21: 0] sdram_0_s1_address;
@@ -6134,6 +8606,286 @@ module nios_system (
   wire    [  1: 0] zs_dqm_from_the_sdram_0;
   wire             zs_ras_n_from_the_sdram_0;
   wire             zs_we_n_from_the_sdram_0;
+  HEX0_s1_arbitrator the_HEX0_s1
+    (
+      .HEX0_s1_address                             (HEX0_s1_address),
+      .HEX0_s1_chipselect                          (HEX0_s1_chipselect),
+      .HEX0_s1_readdata                            (HEX0_s1_readdata),
+      .HEX0_s1_readdata_from_sa                    (HEX0_s1_readdata_from_sa),
+      .HEX0_s1_reset_n                             (HEX0_s1_reset_n),
+      .HEX0_s1_write_n                             (HEX0_s1_write_n),
+      .HEX0_s1_writedata                           (HEX0_s1_writedata),
+      .clk                                         (sys_clk),
+      .cpu_0_data_master_address_to_slave          (cpu_0_data_master_address_to_slave),
+      .cpu_0_data_master_granted_HEX0_s1           (cpu_0_data_master_granted_HEX0_s1),
+      .cpu_0_data_master_latency_counter           (cpu_0_data_master_latency_counter),
+      .cpu_0_data_master_qualified_request_HEX0_s1 (cpu_0_data_master_qualified_request_HEX0_s1),
+      .cpu_0_data_master_read                      (cpu_0_data_master_read),
+      .cpu_0_data_master_read_data_valid_HEX0_s1   (cpu_0_data_master_read_data_valid_HEX0_s1),
+      .cpu_0_data_master_requests_HEX0_s1          (cpu_0_data_master_requests_HEX0_s1),
+      .cpu_0_data_master_write                     (cpu_0_data_master_write),
+      .cpu_0_data_master_writedata                 (cpu_0_data_master_writedata),
+      .d1_HEX0_s1_end_xfer                         (d1_HEX0_s1_end_xfer),
+      .reset_n                                     (sys_clk_reset_n)
+    );
+
+  HEX0 the_HEX0
+    (
+      .address    (HEX0_s1_address),
+      .chipselect (HEX0_s1_chipselect),
+      .clk        (sys_clk),
+      .out_port   (out_port_from_the_HEX0),
+      .readdata   (HEX0_s1_readdata),
+      .reset_n    (HEX0_s1_reset_n),
+      .write_n    (HEX0_s1_write_n),
+      .writedata  (HEX0_s1_writedata)
+    );
+
+  HEX1_s1_arbitrator the_HEX1_s1
+    (
+      .HEX1_s1_address                             (HEX1_s1_address),
+      .HEX1_s1_chipselect                          (HEX1_s1_chipselect),
+      .HEX1_s1_readdata                            (HEX1_s1_readdata),
+      .HEX1_s1_readdata_from_sa                    (HEX1_s1_readdata_from_sa),
+      .HEX1_s1_reset_n                             (HEX1_s1_reset_n),
+      .HEX1_s1_write_n                             (HEX1_s1_write_n),
+      .HEX1_s1_writedata                           (HEX1_s1_writedata),
+      .clk                                         (sys_clk),
+      .cpu_0_data_master_address_to_slave          (cpu_0_data_master_address_to_slave),
+      .cpu_0_data_master_granted_HEX1_s1           (cpu_0_data_master_granted_HEX1_s1),
+      .cpu_0_data_master_latency_counter           (cpu_0_data_master_latency_counter),
+      .cpu_0_data_master_qualified_request_HEX1_s1 (cpu_0_data_master_qualified_request_HEX1_s1),
+      .cpu_0_data_master_read                      (cpu_0_data_master_read),
+      .cpu_0_data_master_read_data_valid_HEX1_s1   (cpu_0_data_master_read_data_valid_HEX1_s1),
+      .cpu_0_data_master_requests_HEX1_s1          (cpu_0_data_master_requests_HEX1_s1),
+      .cpu_0_data_master_write                     (cpu_0_data_master_write),
+      .cpu_0_data_master_writedata                 (cpu_0_data_master_writedata),
+      .d1_HEX1_s1_end_xfer                         (d1_HEX1_s1_end_xfer),
+      .reset_n                                     (sys_clk_reset_n)
+    );
+
+  HEX1 the_HEX1
+    (
+      .address    (HEX1_s1_address),
+      .chipselect (HEX1_s1_chipselect),
+      .clk        (sys_clk),
+      .out_port   (out_port_from_the_HEX1),
+      .readdata   (HEX1_s1_readdata),
+      .reset_n    (HEX1_s1_reset_n),
+      .write_n    (HEX1_s1_write_n),
+      .writedata  (HEX1_s1_writedata)
+    );
+
+  HEX2_s1_arbitrator the_HEX2_s1
+    (
+      .HEX2_s1_address                             (HEX2_s1_address),
+      .HEX2_s1_chipselect                          (HEX2_s1_chipselect),
+      .HEX2_s1_readdata                            (HEX2_s1_readdata),
+      .HEX2_s1_readdata_from_sa                    (HEX2_s1_readdata_from_sa),
+      .HEX2_s1_reset_n                             (HEX2_s1_reset_n),
+      .HEX2_s1_write_n                             (HEX2_s1_write_n),
+      .HEX2_s1_writedata                           (HEX2_s1_writedata),
+      .clk                                         (sys_clk),
+      .cpu_0_data_master_address_to_slave          (cpu_0_data_master_address_to_slave),
+      .cpu_0_data_master_granted_HEX2_s1           (cpu_0_data_master_granted_HEX2_s1),
+      .cpu_0_data_master_latency_counter           (cpu_0_data_master_latency_counter),
+      .cpu_0_data_master_qualified_request_HEX2_s1 (cpu_0_data_master_qualified_request_HEX2_s1),
+      .cpu_0_data_master_read                      (cpu_0_data_master_read),
+      .cpu_0_data_master_read_data_valid_HEX2_s1   (cpu_0_data_master_read_data_valid_HEX2_s1),
+      .cpu_0_data_master_requests_HEX2_s1          (cpu_0_data_master_requests_HEX2_s1),
+      .cpu_0_data_master_write                     (cpu_0_data_master_write),
+      .cpu_0_data_master_writedata                 (cpu_0_data_master_writedata),
+      .d1_HEX2_s1_end_xfer                         (d1_HEX2_s1_end_xfer),
+      .reset_n                                     (sys_clk_reset_n)
+    );
+
+  HEX2 the_HEX2
+    (
+      .address    (HEX2_s1_address),
+      .chipselect (HEX2_s1_chipselect),
+      .clk        (sys_clk),
+      .out_port   (out_port_from_the_HEX2),
+      .readdata   (HEX2_s1_readdata),
+      .reset_n    (HEX2_s1_reset_n),
+      .write_n    (HEX2_s1_write_n),
+      .writedata  (HEX2_s1_writedata)
+    );
+
+  HEX3_s1_arbitrator the_HEX3_s1
+    (
+      .HEX3_s1_address                             (HEX3_s1_address),
+      .HEX3_s1_chipselect                          (HEX3_s1_chipselect),
+      .HEX3_s1_readdata                            (HEX3_s1_readdata),
+      .HEX3_s1_readdata_from_sa                    (HEX3_s1_readdata_from_sa),
+      .HEX3_s1_reset_n                             (HEX3_s1_reset_n),
+      .HEX3_s1_write_n                             (HEX3_s1_write_n),
+      .HEX3_s1_writedata                           (HEX3_s1_writedata),
+      .clk                                         (sys_clk),
+      .cpu_0_data_master_address_to_slave          (cpu_0_data_master_address_to_slave),
+      .cpu_0_data_master_granted_HEX3_s1           (cpu_0_data_master_granted_HEX3_s1),
+      .cpu_0_data_master_latency_counter           (cpu_0_data_master_latency_counter),
+      .cpu_0_data_master_qualified_request_HEX3_s1 (cpu_0_data_master_qualified_request_HEX3_s1),
+      .cpu_0_data_master_read                      (cpu_0_data_master_read),
+      .cpu_0_data_master_read_data_valid_HEX3_s1   (cpu_0_data_master_read_data_valid_HEX3_s1),
+      .cpu_0_data_master_requests_HEX3_s1          (cpu_0_data_master_requests_HEX3_s1),
+      .cpu_0_data_master_write                     (cpu_0_data_master_write),
+      .cpu_0_data_master_writedata                 (cpu_0_data_master_writedata),
+      .d1_HEX3_s1_end_xfer                         (d1_HEX3_s1_end_xfer),
+      .reset_n                                     (sys_clk_reset_n)
+    );
+
+  HEX3 the_HEX3
+    (
+      .address    (HEX3_s1_address),
+      .chipselect (HEX3_s1_chipselect),
+      .clk        (sys_clk),
+      .out_port   (out_port_from_the_HEX3),
+      .readdata   (HEX3_s1_readdata),
+      .reset_n    (HEX3_s1_reset_n),
+      .write_n    (HEX3_s1_write_n),
+      .writedata  (HEX3_s1_writedata)
+    );
+
+  HEX4_s1_arbitrator the_HEX4_s1
+    (
+      .HEX4_s1_address                             (HEX4_s1_address),
+      .HEX4_s1_chipselect                          (HEX4_s1_chipselect),
+      .HEX4_s1_readdata                            (HEX4_s1_readdata),
+      .HEX4_s1_readdata_from_sa                    (HEX4_s1_readdata_from_sa),
+      .HEX4_s1_reset_n                             (HEX4_s1_reset_n),
+      .HEX4_s1_write_n                             (HEX4_s1_write_n),
+      .HEX4_s1_writedata                           (HEX4_s1_writedata),
+      .clk                                         (sys_clk),
+      .cpu_0_data_master_address_to_slave          (cpu_0_data_master_address_to_slave),
+      .cpu_0_data_master_granted_HEX4_s1           (cpu_0_data_master_granted_HEX4_s1),
+      .cpu_0_data_master_latency_counter           (cpu_0_data_master_latency_counter),
+      .cpu_0_data_master_qualified_request_HEX4_s1 (cpu_0_data_master_qualified_request_HEX4_s1),
+      .cpu_0_data_master_read                      (cpu_0_data_master_read),
+      .cpu_0_data_master_read_data_valid_HEX4_s1   (cpu_0_data_master_read_data_valid_HEX4_s1),
+      .cpu_0_data_master_requests_HEX4_s1          (cpu_0_data_master_requests_HEX4_s1),
+      .cpu_0_data_master_write                     (cpu_0_data_master_write),
+      .cpu_0_data_master_writedata                 (cpu_0_data_master_writedata),
+      .d1_HEX4_s1_end_xfer                         (d1_HEX4_s1_end_xfer),
+      .reset_n                                     (sys_clk_reset_n)
+    );
+
+  HEX4 the_HEX4
+    (
+      .address    (HEX4_s1_address),
+      .chipselect (HEX4_s1_chipselect),
+      .clk        (sys_clk),
+      .out_port   (out_port_from_the_HEX4),
+      .readdata   (HEX4_s1_readdata),
+      .reset_n    (HEX4_s1_reset_n),
+      .write_n    (HEX4_s1_write_n),
+      .writedata  (HEX4_s1_writedata)
+    );
+
+  HEX5_s1_arbitrator the_HEX5_s1
+    (
+      .HEX5_s1_address                             (HEX5_s1_address),
+      .HEX5_s1_chipselect                          (HEX5_s1_chipselect),
+      .HEX5_s1_readdata                            (HEX5_s1_readdata),
+      .HEX5_s1_readdata_from_sa                    (HEX5_s1_readdata_from_sa),
+      .HEX5_s1_reset_n                             (HEX5_s1_reset_n),
+      .HEX5_s1_write_n                             (HEX5_s1_write_n),
+      .HEX5_s1_writedata                           (HEX5_s1_writedata),
+      .clk                                         (sys_clk),
+      .cpu_0_data_master_address_to_slave          (cpu_0_data_master_address_to_slave),
+      .cpu_0_data_master_granted_HEX5_s1           (cpu_0_data_master_granted_HEX5_s1),
+      .cpu_0_data_master_latency_counter           (cpu_0_data_master_latency_counter),
+      .cpu_0_data_master_qualified_request_HEX5_s1 (cpu_0_data_master_qualified_request_HEX5_s1),
+      .cpu_0_data_master_read                      (cpu_0_data_master_read),
+      .cpu_0_data_master_read_data_valid_HEX5_s1   (cpu_0_data_master_read_data_valid_HEX5_s1),
+      .cpu_0_data_master_requests_HEX5_s1          (cpu_0_data_master_requests_HEX5_s1),
+      .cpu_0_data_master_write                     (cpu_0_data_master_write),
+      .cpu_0_data_master_writedata                 (cpu_0_data_master_writedata),
+      .d1_HEX5_s1_end_xfer                         (d1_HEX5_s1_end_xfer),
+      .reset_n                                     (sys_clk_reset_n)
+    );
+
+  HEX5 the_HEX5
+    (
+      .address    (HEX5_s1_address),
+      .chipselect (HEX5_s1_chipselect),
+      .clk        (sys_clk),
+      .out_port   (out_port_from_the_HEX5),
+      .readdata   (HEX5_s1_readdata),
+      .reset_n    (HEX5_s1_reset_n),
+      .write_n    (HEX5_s1_write_n),
+      .writedata  (HEX5_s1_writedata)
+    );
+
+  HEX6_s1_arbitrator the_HEX6_s1
+    (
+      .HEX6_s1_address                             (HEX6_s1_address),
+      .HEX6_s1_chipselect                          (HEX6_s1_chipselect),
+      .HEX6_s1_readdata                            (HEX6_s1_readdata),
+      .HEX6_s1_readdata_from_sa                    (HEX6_s1_readdata_from_sa),
+      .HEX6_s1_reset_n                             (HEX6_s1_reset_n),
+      .HEX6_s1_write_n                             (HEX6_s1_write_n),
+      .HEX6_s1_writedata                           (HEX6_s1_writedata),
+      .clk                                         (sys_clk),
+      .cpu_0_data_master_address_to_slave          (cpu_0_data_master_address_to_slave),
+      .cpu_0_data_master_granted_HEX6_s1           (cpu_0_data_master_granted_HEX6_s1),
+      .cpu_0_data_master_latency_counter           (cpu_0_data_master_latency_counter),
+      .cpu_0_data_master_qualified_request_HEX6_s1 (cpu_0_data_master_qualified_request_HEX6_s1),
+      .cpu_0_data_master_read                      (cpu_0_data_master_read),
+      .cpu_0_data_master_read_data_valid_HEX6_s1   (cpu_0_data_master_read_data_valid_HEX6_s1),
+      .cpu_0_data_master_requests_HEX6_s1          (cpu_0_data_master_requests_HEX6_s1),
+      .cpu_0_data_master_write                     (cpu_0_data_master_write),
+      .cpu_0_data_master_writedata                 (cpu_0_data_master_writedata),
+      .d1_HEX6_s1_end_xfer                         (d1_HEX6_s1_end_xfer),
+      .reset_n                                     (sys_clk_reset_n)
+    );
+
+  HEX6 the_HEX6
+    (
+      .address    (HEX6_s1_address),
+      .chipselect (HEX6_s1_chipselect),
+      .clk        (sys_clk),
+      .out_port   (out_port_from_the_HEX6),
+      .readdata   (HEX6_s1_readdata),
+      .reset_n    (HEX6_s1_reset_n),
+      .write_n    (HEX6_s1_write_n),
+      .writedata  (HEX6_s1_writedata)
+    );
+
+  HEX7_s1_arbitrator the_HEX7_s1
+    (
+      .HEX7_s1_address                             (HEX7_s1_address),
+      .HEX7_s1_chipselect                          (HEX7_s1_chipselect),
+      .HEX7_s1_readdata                            (HEX7_s1_readdata),
+      .HEX7_s1_readdata_from_sa                    (HEX7_s1_readdata_from_sa),
+      .HEX7_s1_reset_n                             (HEX7_s1_reset_n),
+      .HEX7_s1_write_n                             (HEX7_s1_write_n),
+      .HEX7_s1_writedata                           (HEX7_s1_writedata),
+      .clk                                         (sys_clk),
+      .cpu_0_data_master_address_to_slave          (cpu_0_data_master_address_to_slave),
+      .cpu_0_data_master_granted_HEX7_s1           (cpu_0_data_master_granted_HEX7_s1),
+      .cpu_0_data_master_latency_counter           (cpu_0_data_master_latency_counter),
+      .cpu_0_data_master_qualified_request_HEX7_s1 (cpu_0_data_master_qualified_request_HEX7_s1),
+      .cpu_0_data_master_read                      (cpu_0_data_master_read),
+      .cpu_0_data_master_read_data_valid_HEX7_s1   (cpu_0_data_master_read_data_valid_HEX7_s1),
+      .cpu_0_data_master_requests_HEX7_s1          (cpu_0_data_master_requests_HEX7_s1),
+      .cpu_0_data_master_write                     (cpu_0_data_master_write),
+      .cpu_0_data_master_writedata                 (cpu_0_data_master_writedata),
+      .d1_HEX7_s1_end_xfer                         (d1_HEX7_s1_end_xfer),
+      .reset_n                                     (sys_clk_reset_n)
+    );
+
+  HEX7 the_HEX7
+    (
+      .address    (HEX7_s1_address),
+      .chipselect (HEX7_s1_chipselect),
+      .clk        (sys_clk),
+      .out_port   (out_port_from_the_HEX7),
+      .readdata   (HEX7_s1_readdata),
+      .reset_n    (HEX7_s1_reset_n),
+      .write_n    (HEX7_s1_write_n),
+      .writedata  (HEX7_s1_writedata)
+    );
+
   clocks_0_avalon_clocks_slave_arbitrator the_clocks_0_avalon_clocks_slave
     (
       .clk                                                                    (clk_0),
@@ -6205,6 +8957,14 @@ module nios_system (
 
   cpu_0_data_master_arbitrator the_cpu_0_data_master
     (
+      .HEX0_s1_readdata_from_sa                                          (HEX0_s1_readdata_from_sa),
+      .HEX1_s1_readdata_from_sa                                          (HEX1_s1_readdata_from_sa),
+      .HEX2_s1_readdata_from_sa                                          (HEX2_s1_readdata_from_sa),
+      .HEX3_s1_readdata_from_sa                                          (HEX3_s1_readdata_from_sa),
+      .HEX4_s1_readdata_from_sa                                          (HEX4_s1_readdata_from_sa),
+      .HEX5_s1_readdata_from_sa                                          (HEX5_s1_readdata_from_sa),
+      .HEX6_s1_readdata_from_sa                                          (HEX6_s1_readdata_from_sa),
+      .HEX7_s1_readdata_from_sa                                          (HEX7_s1_readdata_from_sa),
       .clk                                                               (sys_clk),
       .cpu_0_data_master_address                                         (cpu_0_data_master_address),
       .cpu_0_data_master_address_to_slave                                (cpu_0_data_master_address_to_slave),
@@ -6214,6 +8974,14 @@ module nios_system (
       .cpu_0_data_master_dbs_address                                     (cpu_0_data_master_dbs_address),
       .cpu_0_data_master_dbs_write_16                                    (cpu_0_data_master_dbs_write_16),
       .cpu_0_data_master_dbs_write_8                                     (cpu_0_data_master_dbs_write_8),
+      .cpu_0_data_master_granted_HEX0_s1                                 (cpu_0_data_master_granted_HEX0_s1),
+      .cpu_0_data_master_granted_HEX1_s1                                 (cpu_0_data_master_granted_HEX1_s1),
+      .cpu_0_data_master_granted_HEX2_s1                                 (cpu_0_data_master_granted_HEX2_s1),
+      .cpu_0_data_master_granted_HEX3_s1                                 (cpu_0_data_master_granted_HEX3_s1),
+      .cpu_0_data_master_granted_HEX4_s1                                 (cpu_0_data_master_granted_HEX4_s1),
+      .cpu_0_data_master_granted_HEX5_s1                                 (cpu_0_data_master_granted_HEX5_s1),
+      .cpu_0_data_master_granted_HEX6_s1                                 (cpu_0_data_master_granted_HEX6_s1),
+      .cpu_0_data_master_granted_HEX7_s1                                 (cpu_0_data_master_granted_HEX7_s1),
       .cpu_0_data_master_granted_cpu_0_jtag_debug_module                 (cpu_0_data_master_granted_cpu_0_jtag_debug_module),
       .cpu_0_data_master_granted_jtag_uart_0_avalon_jtag_slave           (cpu_0_data_master_granted_jtag_uart_0_avalon_jtag_slave),
       .cpu_0_data_master_granted_keys_s1                                 (cpu_0_data_master_granted_keys_s1),
@@ -6224,6 +8992,14 @@ module nios_system (
       .cpu_0_data_master_granted_sysid_control_slave                     (cpu_0_data_master_granted_sysid_control_slave),
       .cpu_0_data_master_irq                                             (cpu_0_data_master_irq),
       .cpu_0_data_master_latency_counter                                 (cpu_0_data_master_latency_counter),
+      .cpu_0_data_master_qualified_request_HEX0_s1                       (cpu_0_data_master_qualified_request_HEX0_s1),
+      .cpu_0_data_master_qualified_request_HEX1_s1                       (cpu_0_data_master_qualified_request_HEX1_s1),
+      .cpu_0_data_master_qualified_request_HEX2_s1                       (cpu_0_data_master_qualified_request_HEX2_s1),
+      .cpu_0_data_master_qualified_request_HEX3_s1                       (cpu_0_data_master_qualified_request_HEX3_s1),
+      .cpu_0_data_master_qualified_request_HEX4_s1                       (cpu_0_data_master_qualified_request_HEX4_s1),
+      .cpu_0_data_master_qualified_request_HEX5_s1                       (cpu_0_data_master_qualified_request_HEX5_s1),
+      .cpu_0_data_master_qualified_request_HEX6_s1                       (cpu_0_data_master_qualified_request_HEX6_s1),
+      .cpu_0_data_master_qualified_request_HEX7_s1                       (cpu_0_data_master_qualified_request_HEX7_s1),
       .cpu_0_data_master_qualified_request_cpu_0_jtag_debug_module       (cpu_0_data_master_qualified_request_cpu_0_jtag_debug_module),
       .cpu_0_data_master_qualified_request_jtag_uart_0_avalon_jtag_slave (cpu_0_data_master_qualified_request_jtag_uart_0_avalon_jtag_slave),
       .cpu_0_data_master_qualified_request_keys_s1                       (cpu_0_data_master_qualified_request_keys_s1),
@@ -6233,6 +9009,14 @@ module nios_system (
       .cpu_0_data_master_qualified_request_nios_system_clock_2_in        (cpu_0_data_master_qualified_request_nios_system_clock_2_in),
       .cpu_0_data_master_qualified_request_sysid_control_slave           (cpu_0_data_master_qualified_request_sysid_control_slave),
       .cpu_0_data_master_read                                            (cpu_0_data_master_read),
+      .cpu_0_data_master_read_data_valid_HEX0_s1                         (cpu_0_data_master_read_data_valid_HEX0_s1),
+      .cpu_0_data_master_read_data_valid_HEX1_s1                         (cpu_0_data_master_read_data_valid_HEX1_s1),
+      .cpu_0_data_master_read_data_valid_HEX2_s1                         (cpu_0_data_master_read_data_valid_HEX2_s1),
+      .cpu_0_data_master_read_data_valid_HEX3_s1                         (cpu_0_data_master_read_data_valid_HEX3_s1),
+      .cpu_0_data_master_read_data_valid_HEX4_s1                         (cpu_0_data_master_read_data_valid_HEX4_s1),
+      .cpu_0_data_master_read_data_valid_HEX5_s1                         (cpu_0_data_master_read_data_valid_HEX5_s1),
+      .cpu_0_data_master_read_data_valid_HEX6_s1                         (cpu_0_data_master_read_data_valid_HEX6_s1),
+      .cpu_0_data_master_read_data_valid_HEX7_s1                         (cpu_0_data_master_read_data_valid_HEX7_s1),
       .cpu_0_data_master_read_data_valid_cpu_0_jtag_debug_module         (cpu_0_data_master_read_data_valid_cpu_0_jtag_debug_module),
       .cpu_0_data_master_read_data_valid_jtag_uart_0_avalon_jtag_slave   (cpu_0_data_master_read_data_valid_jtag_uart_0_avalon_jtag_slave),
       .cpu_0_data_master_read_data_valid_keys_s1                         (cpu_0_data_master_read_data_valid_keys_s1),
@@ -6243,6 +9027,14 @@ module nios_system (
       .cpu_0_data_master_read_data_valid_sysid_control_slave             (cpu_0_data_master_read_data_valid_sysid_control_slave),
       .cpu_0_data_master_readdata                                        (cpu_0_data_master_readdata),
       .cpu_0_data_master_readdatavalid                                   (cpu_0_data_master_readdatavalid),
+      .cpu_0_data_master_requests_HEX0_s1                                (cpu_0_data_master_requests_HEX0_s1),
+      .cpu_0_data_master_requests_HEX1_s1                                (cpu_0_data_master_requests_HEX1_s1),
+      .cpu_0_data_master_requests_HEX2_s1                                (cpu_0_data_master_requests_HEX2_s1),
+      .cpu_0_data_master_requests_HEX3_s1                                (cpu_0_data_master_requests_HEX3_s1),
+      .cpu_0_data_master_requests_HEX4_s1                                (cpu_0_data_master_requests_HEX4_s1),
+      .cpu_0_data_master_requests_HEX5_s1                                (cpu_0_data_master_requests_HEX5_s1),
+      .cpu_0_data_master_requests_HEX6_s1                                (cpu_0_data_master_requests_HEX6_s1),
+      .cpu_0_data_master_requests_HEX7_s1                                (cpu_0_data_master_requests_HEX7_s1),
       .cpu_0_data_master_requests_cpu_0_jtag_debug_module                (cpu_0_data_master_requests_cpu_0_jtag_debug_module),
       .cpu_0_data_master_requests_jtag_uart_0_avalon_jtag_slave          (cpu_0_data_master_requests_jtag_uart_0_avalon_jtag_slave),
       .cpu_0_data_master_requests_keys_s1                                (cpu_0_data_master_requests_keys_s1),
@@ -6255,6 +9047,14 @@ module nios_system (
       .cpu_0_data_master_write                                           (cpu_0_data_master_write),
       .cpu_0_data_master_writedata                                       (cpu_0_data_master_writedata),
       .cpu_0_jtag_debug_module_readdata_from_sa                          (cpu_0_jtag_debug_module_readdata_from_sa),
+      .d1_HEX0_s1_end_xfer                                               (d1_HEX0_s1_end_xfer),
+      .d1_HEX1_s1_end_xfer                                               (d1_HEX1_s1_end_xfer),
+      .d1_HEX2_s1_end_xfer                                               (d1_HEX2_s1_end_xfer),
+      .d1_HEX3_s1_end_xfer                                               (d1_HEX3_s1_end_xfer),
+      .d1_HEX4_s1_end_xfer                                               (d1_HEX4_s1_end_xfer),
+      .d1_HEX5_s1_end_xfer                                               (d1_HEX5_s1_end_xfer),
+      .d1_HEX6_s1_end_xfer                                               (d1_HEX6_s1_end_xfer),
+      .d1_HEX7_s1_end_xfer                                               (d1_HEX7_s1_end_xfer),
       .d1_cpu_0_jtag_debug_module_end_xfer                               (d1_cpu_0_jtag_debug_module_end_xfer),
       .d1_jtag_uart_0_avalon_jtag_slave_end_xfer                         (d1_jtag_uart_0_avalon_jtag_slave_end_xfer),
       .d1_keys_s1_end_xfer                                               (d1_keys_s1_end_xfer),
@@ -6818,11 +9618,11 @@ module nios_system (
     );
 
   //reset is asserted asynchronously and deasserted synchronously
-  nios_system_reset_clk_0_domain_synch_module nios_system_reset_clk_0_domain_synch
+  nios_system_reset_sys_clk_domain_synch_module nios_system_reset_sys_clk_domain_synch
     (
-      .clk      (clk_0),
+      .clk      (sys_clk),
       .data_in  (1'b1),
-      .data_out (clk_0_reset_n),
+      .data_out (sys_clk_reset_n),
       .reset_n  (reset_n_sources)
     );
 
@@ -6835,11 +9635,11 @@ module nios_system (
     0);
 
   //reset is asserted asynchronously and deasserted synchronously
-  nios_system_reset_sys_clk_domain_synch_module nios_system_reset_sys_clk_domain_synch
+  nios_system_reset_clk_0_domain_synch_module nios_system_reset_clk_0_domain_synch
     (
-      .clk      (sys_clk),
+      .clk      (clk_0),
       .data_in  (1'b1),
-      .data_out (sys_clk_reset_n),
+      .data_out (clk_0_reset_n),
       .reset_n  (reset_n_sources)
     );
 
@@ -6892,11 +9692,11 @@ endmodule
 `include "/usr/local/3rdparty/altera/quartus12/quartus/eda/sim_lib/220model.v"
 `include "/usr/local/3rdparty/altera/quartus12/quartus/eda/sim_lib/sgate.v"
 `include "clocks_0.v"
-`include "lcd_0.v"
 `include "leds.v"
-`include "sdram_0.v"
 `include "nios_system_clock_1.v"
+`include "HEX7.v"
 `include "sysid.v"
+`include "HEX1.v"
 `include "cpu_0_test_bench.v"
 `include "cpu_0_mult_cell.v"
 `include "cpu_0_oci_test_bench.v"
@@ -6904,9 +9704,17 @@ endmodule
 `include "cpu_0_jtag_debug_module_sysclk.v"
 `include "cpu_0_jtag_debug_module_wrapper.v"
 `include "cpu_0.v"
-`include "nios_system_clock_2.v"
+`include "HEX3.v"
 `include "keys.v"
 `include "jtag_uart_0.v"
+`include "lcd_0.v"
+`include "HEX6.v"
+`include "sdram_0.v"
+`include "HEX5.v"
+`include "nios_system_clock_2.v"
+`include "HEX4.v"
+`include "HEX2.v"
+`include "HEX0.v"
 `include "nios_system_clock_0.v"
 
 `timescale 1ns / 1ps
@@ -6934,6 +9742,14 @@ module test_bench
   wire             nios_system_clock_2_in_endofpacket_from_sa;
   wire             nios_system_clock_2_out_endofpacket;
   wire             nios_system_clock_2_out_nativeaddress;
+  wire    [  6: 0] out_port_from_the_HEX0;
+  wire    [  6: 0] out_port_from_the_HEX1;
+  wire    [  6: 0] out_port_from_the_HEX2;
+  wire    [  6: 0] out_port_from_the_HEX3;
+  wire    [  6: 0] out_port_from_the_HEX4;
+  wire    [  6: 0] out_port_from_the_HEX5;
+  wire    [  6: 0] out_port_from_the_HEX6;
+  wire    [  6: 0] out_port_from_the_HEX7;
   wire    [ 25: 0] out_port_from_the_leds;
   reg              reset_n;
   wire             sdram_clk;
@@ -6963,6 +9779,14 @@ module test_bench
       .LCD_data_to_and_from_the_lcd_0 (LCD_data_to_and_from_the_lcd_0),
       .clk_0                          (clk_0),
       .in_port_to_the_keys            (in_port_to_the_keys),
+      .out_port_from_the_HEX0         (out_port_from_the_HEX0),
+      .out_port_from_the_HEX1         (out_port_from_the_HEX1),
+      .out_port_from_the_HEX2         (out_port_from_the_HEX2),
+      .out_port_from_the_HEX3         (out_port_from_the_HEX3),
+      .out_port_from_the_HEX4         (out_port_from_the_HEX4),
+      .out_port_from_the_HEX5         (out_port_from_the_HEX5),
+      .out_port_from_the_HEX6         (out_port_from_the_HEX6),
+      .out_port_from_the_HEX7         (out_port_from_the_HEX7),
       .out_port_from_the_leds         (out_port_from_the_leds),
       .reset_n                        (reset_n),
       .sdram_clk                      (sdram_clk),

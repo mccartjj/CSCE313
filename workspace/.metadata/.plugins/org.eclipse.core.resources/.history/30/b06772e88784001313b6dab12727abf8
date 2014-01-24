@@ -1,0 +1,22 @@
+/*
+ * lightsAndOtherFunction.h
+ *
+ *  Created on: Jan 23, 2014
+ *      Author: John McCarthy and Silas, who decided this shit was necessary
+ */
+
+#ifndef LIGHTSANDOTHERFUNCTION_H_
+#define LIGHTSANDOTHERFUNCTION_H_
+
+	//if you can't figure out what this does, stop talking to me.
+	void setUp(void);
+	//accepts from 0 to 7 for location and 0 to 9 for value, displays value at loc
+	void hexOutput(int location, int value);
+	//accepts 0 to 7, displays location as blank
+	void outputBlank(int location);
+	//sets each sevenSegDisplay to a random number
+	void printRandom(void);
+
+#define blank 11
+
+#endif /* LIGHTSANDOTHERFUNCTION_H_ */
