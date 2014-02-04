@@ -39,7 +39,7 @@
 </editorArea>
 <editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="Project.c" partName="Project.c" path="/acct/s1/mccartjj/CSCE313/lights/software/lights/Project.c" title="Project.c" tooltip="lights/Project.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/lights/Project.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2019" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="411" selectionTopPixel="0"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="LightsFunctions.h" partName="LightsFunctions.h" path="/acct/s1/mccartjj/CSCE313/lights/software/lights/LightsFunctions.h" title="LightsFunctions.h" tooltip="lights/LightsFunctions.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/lights/LightsFunctions.h"/>
@@ -58,12 +58,7 @@
 <view id="org.eclipse.cdt.make.ui.views.MakeView" partName="Make Target"/>
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
-<expanded>
-<category IMemento.internal.id="Errors"/>
-<category IMemento.internal.id="Warnings"/>
-<category IMemento.internal.id="Warnings (2 items)"/>
-</expanded>
-<columnWidths org.eclipse.ui.ide.locationField="0" org.eclipse.ui.ide.markerType="0" org.eclipse.ui.ide.pathField="0" org.eclipse.ui.ide.resourceField="0" org.eclipse.ui.ide.severityAndDescriptionField="0"/>
+<columnWidths org.eclipse.ui.ide.locationField="73" org.eclipse.ui.ide.markerType="272" org.eclipse.ui.ide.pathField="143" org.eclipse.ui.ide.resourceField="108" org.eclipse.ui.ide.severityAndDescriptionField="350"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.resourceField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.pathField"/>
@@ -284,40 +279,9 @@
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/lights/LightsFunctions.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/lights/LightsFunctions.h"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/lights/Project.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/lights/LightsFunctions.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/lights/LightsFunctions.h"/>
 </editors>
-<item historyLabel="Project.c" index="2">
-<position info="not_deleted" x="2045" y="0"/>
-</item>
-<item historyLabel="LightsFunctions.c" index="0">
-<position info="not_deleted" x="2580" y="0"/>
-</item>
-<item historyLabel="Project.c" index="2">
-<position info="not_deleted" x="2088" y="0"/>
-</item>
-<item historyLabel="LightsFunctions.c" index="0">
-<position/>
-</item>
-<item historyLabel="Project.c" index="2">
-<position info="not_deleted" x="2088" y="0"/>
-</item>
-<item historyLabel="LightsFunctions.c" index="0">
-<position info="not_deleted" x="1995" y="0"/>
-</item>
-<item historyLabel="Project.c" index="2">
-<position info="not_deleted" x="2088" y="0"/>
-</item>
-<item historyLabel="LightsFunctions.c" index="0">
-<position info="not_deleted" x="464" y="0"/>
-</item>
-<item historyLabel="Project.c" index="2">
-<position info="not_deleted" x="2088" y="0"/>
-</item>
-<item historyLabel="LightsFunctions.c" index="0">
-<position info="not_deleted" x="464" y="0"/>
-</item>
-<item historyLabel="Project.c" index="2">
-<position info="not_deleted" x="2088" y="0"/>
-</item>
 <item historyLabel="LightsFunctions.c" index="0">
 <position info="not_deleted" x="464" y="0"/>
 </item>
@@ -432,8 +396,41 @@
 <item historyLabel="LightsFunctions.h" index="1">
 <position info="not_deleted" x="86" y="0"/>
 </item>
-<item active="true" historyLabel="Project.c" index="2">
+<item historyLabel="Project.c" index="2">
 <position info="not_deleted" x="2019" y="0"/>
+</item>
+<item historyLabel="LightsFunctions.c" index="3">
+<position info="not_deleted" x="186" y="0"/>
+</item>
+<item historyLabel="Project.c" index="2">
+<position info="not_deleted" x="411" y="0"/>
+</item>
+<item historyLabel="LightsFunctions.h" index="4">
+<position info="not_deleted" x="86" y="0"/>
+</item>
+<item historyLabel="LightsFunctions.c" index="3">
+<position info="not_deleted" x="186" y="0"/>
+</item>
+<item historyLabel="LightsFunctions.h" index="4">
+<position info="not_deleted" x="86" y="0"/>
+</item>
+<item historyLabel="Project.c" index="2">
+<position info="not_deleted" x="411" y="0"/>
+</item>
+<item historyLabel="LightsFunctions.c" index="3">
+<position info="not_deleted" x="186" y="0"/>
+</item>
+<item historyLabel="Project.c" index="2">
+<position info="not_deleted" x="411" y="0"/>
+</item>
+<item historyLabel="LightsFunctions.c" index="3">
+<position info="not_deleted" x="186" y="0"/>
+</item>
+<item historyLabel="LightsFunctions.h" index="4">
+<position info="not_deleted" x="86" y="0"/>
+</item>
+<item active="true" historyLabel="Project.c" index="2">
+<position info="not_deleted" x="411" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
