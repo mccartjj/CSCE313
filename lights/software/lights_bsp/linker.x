@@ -4,7 +4,7 @@
  * Machine generated for CPU 'cpu_0' in SOPC Builder design 'nios_system'
  * SOPC Builder design path: ../../nios_system.sopcinfo
  *
- * Generated: Thu Jan 16 13:16:35 EST 2014
+ * Generated: Wed Feb 05 16:55:06 EST 2014
  */
 
 /*
@@ -52,10 +52,14 @@ MEMORY
 {
     reset : ORIGIN = 0x800000, LENGTH = 32
     sdram_0 : ORIGIN = 0x800020, LENGTH = 8388576
+    cfi_flash_0 : ORIGIN = 0x1400000, LENGTH = 4194304
+    sram_0 : ORIGIN = 0x1880000, LENGTH = 524288
 }
 
 /* Define symbols for each memory base-address */
 __alt_mem_sdram_0 = 0x800000;
+__alt_mem_cfi_flash_0 = 0x1400000;
+__alt_mem_sram_0 = 0x1880000;
 
 OUTPUT_FORMAT( "elf32-littlenios2",
                "elf32-littlenios2",
@@ -318,6 +322,40 @@ SECTIONS
     } > sdram_0
 
     PROVIDE (_alt_partition_sdram_0_load_addr = LOADADDR(.sdram_0));
+
+    /*
+     *
+     * This section's LMA is set to the .text region.
+     * crt0 will copy to this section's specified mapped region virtual memory address (VMA)
+     *
+     */
+
+    .cfi_flash_0 : AT ( LOADADDR (.sdram_0) + SIZEOF (.sdram_0) )
+    {
+        PROVIDE (_alt_partition_cfi_flash_0_start = ABSOLUTE(.));
+        *(.cfi_flash_0. cfi_flash_0.*)
+        . = ALIGN(4);
+        PROVIDE (_alt_partition_cfi_flash_0_end = ABSOLUTE(.));
+    } > cfi_flash_0
+
+    PROVIDE (_alt_partition_cfi_flash_0_load_addr = LOADADDR(.cfi_flash_0));
+
+    /*
+     *
+     * This section's LMA is set to the .text region.
+     * crt0 will copy to this section's specified mapped region virtual memory address (VMA)
+     *
+     */
+
+    .sram_0 : AT ( LOADADDR (.cfi_flash_0) + SIZEOF (.cfi_flash_0) )
+    {
+        PROVIDE (_alt_partition_sram_0_start = ABSOLUTE(.));
+        *(.sram_0. sram_0.*)
+        . = ALIGN(4);
+        PROVIDE (_alt_partition_sram_0_end = ABSOLUTE(.));
+    } > sram_0
+
+    PROVIDE (_alt_partition_sram_0_load_addr = LOADADDR(.sram_0));
 
     /*
      * Stabs debugging sections.

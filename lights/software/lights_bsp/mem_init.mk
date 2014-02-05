@@ -161,22 +161,42 @@ RESET_ADDRESS ?= 0x00800000
 # Pre-Initialized Memory Descriptions
 #-------------------------------------
 
-# Memory: sdram_0
-MEM_0 := sdram_0
-$(MEM_0)_NAME := sdram_0
+# Memory: cfi_flash_0
+MEM_0 := cfi_flash_0
+$(MEM_0)_NAME := cfi_flash_0
 DAT_FILES += $(HDL_SIM_DIR)/$(MEM_0).dat
 HDL_SIM_INSTALL_FILES += $(HDL_SIM_INSTALL_DIR)/$(MEM_0).dat
 SYM_FILES += $(HDL_SIM_DIR)/$(MEM_0).sym
 HDL_SIM_INSTALL_FILES += $(HDL_SIM_INSTALL_DIR)/$(MEM_0).sym
-$(MEM_0)_START := 0x00800000
-$(MEM_0)_END := 0x00ffffff
-$(MEM_0)_HIERARCHICAL_PATH := sdram_0
-$(MEM_0)_WIDTH := 16
+FLASH_FILES += $(MEM_0).flash
+$(MEM_0)_START := 0x01400000
+$(MEM_0)_END := 0x017fffff
+$(MEM_0)_HIERARCHICAL_PATH := cfi_flash_0
+$(MEM_0)_WIDTH := 8
 $(MEM_0)_ENDIANNESS := --little-endian-mem
 $(MEM_0)_CREATE_LANES := 0
+$(MEM_0)_CFI_FLAGS := --base=$($(MEM_0)_START) --end=$($(MEM_0)_END) --reset=$(RESET_ADDRESS)
+$(MEM_0)_BOOT_LOADER_FLAG := --boot="$(BOOT_LOADER_CFI)"
+
+.PHONY: cfi_flash_0
+cfi_flash_0: check_elf_exists $(HDL_SIM_DIR)/$(MEM_0).dat $(HDL_SIM_DIR)/$(MEM_0).sym $(MEM_0).flash
+
+# Memory: sdram_0
+MEM_1 := sdram_0
+$(MEM_1)_NAME := sdram_0
+DAT_FILES += $(HDL_SIM_DIR)/$(MEM_1).dat
+HDL_SIM_INSTALL_FILES += $(HDL_SIM_INSTALL_DIR)/$(MEM_1).dat
+SYM_FILES += $(HDL_SIM_DIR)/$(MEM_1).sym
+HDL_SIM_INSTALL_FILES += $(HDL_SIM_INSTALL_DIR)/$(MEM_1).sym
+$(MEM_1)_START := 0x00800000
+$(MEM_1)_END := 0x00ffffff
+$(MEM_1)_HIERARCHICAL_PATH := sdram_0
+$(MEM_1)_WIDTH := 16
+$(MEM_1)_ENDIANNESS := --little-endian-mem
+$(MEM_1)_CREATE_LANES := 0
 
 .PHONY: sdram_0
-sdram_0: check_elf_exists $(HDL_SIM_DIR)/$(MEM_0).dat $(HDL_SIM_DIR)/$(MEM_0).sym
+sdram_0: check_elf_exists $(HDL_SIM_DIR)/$(MEM_1).dat $(HDL_SIM_DIR)/$(MEM_1).sym
 
 
 #END OF BSP SPECIFIC

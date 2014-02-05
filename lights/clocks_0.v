@@ -57,6 +57,7 @@ module clocks_0 (
 	// outputs
 	sys_clk,
 	SDRAM_CLK,
+	VGA_CLK,
 
 	readdata
 );
@@ -83,6 +84,7 @@ input				address;
 // Outputs
 output				sys_clk;
 output				SDRAM_CLK;
+output				VGA_CLK;
 
 output reg	[ 7: 0]	readdata;
 
@@ -99,7 +101,6 @@ wire				clk_locked;
 wire				audio_clk_locked;
 
 wire				video_in_clk;
-wire				VGA_CLK;
 
 // Internal Registers
 

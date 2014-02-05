@@ -1,5 +1,5 @@
 Flow report for lights
-Mon Jan 27 15:43:04 2014
+Wed Feb  5 16:52:31 2014
 Quartus II 32-bit Version 12.0 Build 178 05/31/2012 SJ Full Version
 
 
@@ -38,20 +38,20 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------+
 ; Flow Summary                                                                   ;
 +------------------------------------+-------------------------------------------+
-; Flow Status                        ; Successful - Mon Jan 27 15:43:04 2014     ;
+; Flow Status                        ; Successful - Wed Feb  5 16:52:31 2014     ;
 ; Quartus II 32-bit Version          ; 12.0 Build 178 05/31/2012 SJ Full Version ;
 ; Revision Name                      ; lights                                    ;
 ; Top-level Entity Name              ; lights                                    ;
 ; Family                             ; Cyclone II                                ;
 ; Device                             ; EP2C35F672C6                              ;
 ; Timing Models                      ; Final                                     ;
-; Total logic elements               ; 3,824 / 33,216 ( 12 % )                   ;
-;     Total combinational functions  ; 3,252 / 33,216 ( 10 % )                   ;
-;     Dedicated logic registers      ; 2,450 / 33,216 ( 7 % )                    ;
-; Total registers                    ; 2518                                      ;
-; Total pins                         ; 157 / 475 ( 33 % )                        ;
+; Total logic elements               ; 5,456 / 33,216 ( 16 % )                   ;
+;     Total combinational functions  ; 4,700 / 33,216 ( 14 % )                   ;
+;     Dedicated logic registers      ; 3,530 / 33,216 ( 11 % )                   ;
+; Total registers                    ; 3647                                      ;
+; Total pins                         ; 265 / 475 ( 56 % )                        ;
 ; Total virtual pins                 ; 0                                         ;
-; Total memory bits                  ; 64,896 / 483,840 ( 13 % )                 ;
+; Total memory bits                  ; 154,112 / 483,840 ( 32 % )                ;
 ; Embedded Multiplier 9-bit elements ; 4 / 70 ( 6 % )                            ;
 ; Total PLLs                         ; 1 / 4 ( 25 % )                            ;
 +------------------------------------+-------------------------------------------+
@@ -62,7 +62,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 01/27/2014 15:42:15 ;
+; Start date & time ; 02/05/2014 16:51:14 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; lights              ;
 +-------------------+---------------------+
@@ -73,7 +73,7 @@ applicable agreement for further details.
 +-------------------------------------+--------------------------------+---------------+-------------+----------------+
 ; Assignment Name                     ; Value                          ; Default Value ; Entity Name ; Section Id     ;
 +-------------------------------------+--------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 26403096133564.139085533430653 ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID               ; 26403096133564.139163707309369 ; --            ; --          ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT              ; Vhdl                           ; --            ; --          ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (VHDL)         ; <None>        ; --          ; --             ;
 ; IP_TOOL_ENV                         ; sopc                           ; --            ; nios_system ; --             ;
@@ -84,7 +84,7 @@ applicable agreement for further details.
 ; PARTITION_COLOR                     ; 16764057                       ; --            ; --          ; Top            ;
 ; PARTITION_FITTER_PRESERVATION_LEVEL ; PLACEMENT_AND_ROUTING          ; --            ; --          ; Top            ;
 ; PARTITION_NETLIST_TYPE              ; SOURCE                         ; --            ; --          ; Top            ;
-; SOPC_BUILDER_SIGNATURE_ID           ; 1803732A7FBC00000143D56E87EC   ; --            ; --          ; --             ;
+; SOPC_BUILDER_SIGNATURE_ID           ; 1803732A7FBC00000144040120BF   ; --            ; --          ; --             ;
 +-------------------------------------+--------------------------------+---------------+-------------+----------------+
 
 
@@ -93,12 +93,12 @@ applicable agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:18     ; 1.0                     ; --                  ; 00:00:16                           ;
-; Fitter                    ; 00:00:20     ; 2.0                     ; --                  ; 00:00:25                           ;
-; TimeQuest Timing Analyzer ; 00:00:02     ; 1.0                     ; --                  ; 00:00:02                           ;
-; Assembler                 ; 00:00:03     ; 1.0                     ; --                  ; 00:00:02                           ;
-; EDA Netlist Writer        ; 00:00:03     ; 1.0                     ; --                  ; 00:00:02                           ;
-; Total                     ; 00:00:46     ; --                      ; --                  ; 00:00:47                           ;
+; Analysis & Synthesis      ; 00:00:33     ; 1.0                     ; --                  ; 00:00:26                           ;
+; Fitter                    ; 00:00:28     ; 1.7                     ; --                  ; 00:00:34                           ;
+; Assembler                 ; 00:00:03     ; 1.0                     ; --                  ; 00:00:03                           ;
+; TimeQuest Timing Analyzer ; 00:00:03     ; 1.0                     ; --                  ; 00:00:02                           ;
+; EDA Netlist Writer        ; 00:00:04     ; 1.0                     ; --                  ; 00:00:03                           ;
+; Total                     ; 00:01:11     ; --                      ; --                  ; 00:01:08                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -109,8 +109,8 @@ applicable agreement for further details.
 +---------------------------+------------------+----------------+------------+----------------+
 ; Analysis & Synthesis      ; c3po             ; Ubuntu 12.04.4 ; 12         ; i686           ;
 ; Fitter                    ; c3po             ; Ubuntu 12.04.4 ; 12         ; i686           ;
-; TimeQuest Timing Analyzer ; c3po             ; Ubuntu 12.04.4 ; 12         ; i686           ;
 ; Assembler                 ; c3po             ; Ubuntu 12.04.4 ; 12         ; i686           ;
+; TimeQuest Timing Analyzer ; c3po             ; Ubuntu 12.04.4 ; 12         ; i686           ;
 ; EDA Netlist Writer        ; c3po             ; Ubuntu 12.04.4 ; 12         ; i686           ;
 +---------------------------+------------------+----------------+------------+----------------+
 
@@ -120,8 +120,8 @@ applicable agreement for further details.
 ------------
 quartus_map --read_settings_files=on --write_settings_files=off lights -c lights
 quartus_fit --read_settings_files=off --write_settings_files=off lights -c lights
-quartus_sta lights -c lights
 quartus_asm --read_settings_files=off --write_settings_files=off lights -c lights
+quartus_sta lights -c lights
 quartus_eda --read_settings_files=off --write_settings_files=off lights -c lights
 
 

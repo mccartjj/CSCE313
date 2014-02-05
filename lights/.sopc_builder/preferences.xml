@@ -4,19 +4,20 @@
  <systemtable filter="Default">
   <columns>
    <opcodeName visible="0" />
-   <connections preferredWidth="47" />
+   <connections preferredWidth="175" />
    <irq preferredWidth="34" />
    <export visible="0" />
+   <name preferredWidth="312" />
   </columns>
  </systemtable>
  <clocktable>
   <columns>
-   <clockname preferredWidth="83" />
-   <clocksource preferredWidth="84" />
-   <frequency preferredWidth="83" />
+   <clockname preferredWidth="219" />
+   <clocksource preferredWidth="219" />
+   <frequency preferredWidth="218" />
   </columns>
  </clocktable>
- <window width="774" height="743" x="163" y="69" />
+ <window width="1217" height="1029" x="64" y="-4" />
  <library
-   expandedCategories="Library/Peripherals/Microcontroller Peripherals,Library/Peripherals,Project,Library" />
+   expandedCategories="Library/Memories and Memory Controllers/External Memory Interfaces,Library/University Program,Library/Memories and Memory Controllers/External Memory Interfaces/Flash Interfaces,Library,Library/Memories and Memory Controllers,Project,Library/University Program/Memory" />
 </preferences>

@@ -4,7 +4,7 @@
  * Machine generated for CPU 'cpu_0' in SOPC Builder design 'nios_system'
  * SOPC Builder design path: ../../nios_system.sopcinfo
  *
- * Generated: Mon Jan 27 15:43:39 EST 2014
+ * Generated: Wed Feb 05 16:56:39 EST 2014
  */
 
 /*
@@ -62,7 +62,7 @@
 
 #define ALT_CPU_ARCHITECTURE "altera_nios2"
 #define ALT_CPU_BIG_ENDIAN 0
-#define ALT_CPU_BREAK_ADDR 0x1000820
+#define ALT_CPU_BREAK_ADDR 0x1902820
 #define ALT_CPU_CPU_FREQ 50000000u
 #define ALT_CPU_CPU_ID_SIZE 1
 #define ALT_CPU_CPU_ID_VALUE 0x0
@@ -96,7 +96,7 @@
  */
 
 #define NIOS2_BIG_ENDIAN 0
-#define NIOS2_BREAK_ADDR 0x1000820
+#define NIOS2_BREAK_ADDR 0x1902820
 #define NIOS2_CPU_FREQ 50000000u
 #define NIOS2_CPU_ID_SIZE 1
 #define NIOS2_CPU_ID_VALUE 0x0
@@ -127,6 +127,7 @@
  *
  */
 
+#define __ALTERA_AVALON_CFI_FLASH
 #define __ALTERA_AVALON_JTAG_UART
 #define __ALTERA_AVALON_LCD_16207
 #define __ALTERA_AVALON_NEW_SDRAM_CONTROLLER
@@ -134,6 +135,9 @@
 #define __ALTERA_AVALON_SYSID
 #define __ALTERA_NIOS2
 #define __ALTERA_UP_AVALON_CLOCKS
+#define __ALTERA_UP_AVALON_SRAM
+#define __ALTERA_UP_AVALON_VIDEO_CHARACTER_BUFFER_WITH_DMA
+#define __ALTERA_UP_AVALON_VIDEO_PIXEL_BUFFER_DMA
 
 
 /*
@@ -142,7 +146,7 @@
  */
 
 #define ALT_MODULE_CLASS_HEX0 altera_avalon_pio
-#define HEX0_BASE 0x0
+#define HEX0_BASE 0x1903030
 #define HEX0_BIT_CLEARING_EDGE_REGISTER 0
 #define HEX0_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define HEX0_CAPTURE 0
@@ -169,7 +173,7 @@
  */
 
 #define ALT_MODULE_CLASS_HEX1 altera_avalon_pio
-#define HEX1_BASE 0x10
+#define HEX1_BASE 0x19030a0
 #define HEX1_BIT_CLEARING_EDGE_REGISTER 0
 #define HEX1_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define HEX1_CAPTURE 0
@@ -196,7 +200,7 @@
  */
 
 #define ALT_MODULE_CLASS_HEX2 altera_avalon_pio
-#define HEX2_BASE 0x20
+#define HEX2_BASE 0x1903040
 #define HEX2_BIT_CLEARING_EDGE_REGISTER 0
 #define HEX2_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define HEX2_CAPTURE 0
@@ -223,7 +227,7 @@
  */
 
 #define ALT_MODULE_CLASS_HEX3 altera_avalon_pio
-#define HEX3_BASE 0x30
+#define HEX3_BASE 0x1903050
 #define HEX3_BIT_CLEARING_EDGE_REGISTER 0
 #define HEX3_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define HEX3_CAPTURE 0
@@ -250,7 +254,7 @@
  */
 
 #define ALT_MODULE_CLASS_HEX4 altera_avalon_pio
-#define HEX4_BASE 0x40
+#define HEX4_BASE 0x1903060
 #define HEX4_BIT_CLEARING_EDGE_REGISTER 0
 #define HEX4_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define HEX4_CAPTURE 0
@@ -277,7 +281,7 @@
  */
 
 #define ALT_MODULE_CLASS_HEX5 altera_avalon_pio
-#define HEX5_BASE 0x50
+#define HEX5_BASE 0x1903070
 #define HEX5_BIT_CLEARING_EDGE_REGISTER 0
 #define HEX5_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define HEX5_CAPTURE 0
@@ -304,7 +308,7 @@
  */
 
 #define ALT_MODULE_CLASS_HEX6 altera_avalon_pio
-#define HEX6_BASE 0x60
+#define HEX6_BASE 0x1903080
 #define HEX6_BIT_CLEARING_EDGE_REGISTER 0
 #define HEX6_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define HEX6_CAPTURE 0
@@ -331,7 +335,7 @@
  */
 
 #define ALT_MODULE_CLASS_HEX7 altera_avalon_pio
-#define HEX7_BASE 0x70
+#define HEX7_BASE 0x1903090
 #define HEX7_BIT_CLEARING_EDGE_REGISTER 0
 #define HEX7_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define HEX7_CAPTURE 0
@@ -368,18 +372,18 @@
 #define ALT_NUM_INTERNAL_INTERRUPT_CONTROLLERS 1
 #define ALT_NUM_INTERRUPT_CONTROLLERS 1
 #define ALT_STDERR "/dev/lcd_0"
-#define ALT_STDERR_BASE 0x1001020
+#define ALT_STDERR_BASE 0x1903020
 #define ALT_STDERR_DEV lcd_0
 #define ALT_STDERR_PRESENT
 #define ALT_STDERR_TYPE "altera_avalon_lcd_16207"
 #define ALT_STDIN "/dev/jtag_uart_0"
-#define ALT_STDIN_BASE 0x1001038
+#define ALT_STDIN_BASE 0x19030c8
 #define ALT_STDIN_DEV jtag_uart_0
 #define ALT_STDIN_IS_JTAG_UART
 #define ALT_STDIN_PRESENT
 #define ALT_STDIN_TYPE "altera_avalon_jtag_uart"
 #define ALT_STDOUT "/dev/jtag_uart_0"
-#define ALT_STDOUT_BASE 0x1001038
+#define ALT_STDOUT_BASE 0x19030c8
 #define ALT_STDOUT_DEV jtag_uart_0
 #define ALT_STDOUT_IS_JTAG_UART
 #define ALT_STDOUT_PRESENT
@@ -388,12 +392,41 @@
 
 
 /*
+ * altera_ro_zipfs configuration
+ *
+ */
+
+#define ALTERA_RO_ZIPFS_BASE 0x1400000
+#define ALTERA_RO_ZIPFS_NAME "myFileSystem"
+#define ALTERA_RO_ZIPFS_OFFSET 0x0
+
+
+/*
+ * cfi_flash_0 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_cfi_flash_0 altera_avalon_cfi_flash
+#define CFI_FLASH_0_BASE 0x1400000
+#define CFI_FLASH_0_HOLD_VALUE 0
+#define CFI_FLASH_0_IRQ -1
+#define CFI_FLASH_0_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define CFI_FLASH_0_NAME "/dev/cfi_flash_0"
+#define CFI_FLASH_0_SETUP_VALUE 0
+#define CFI_FLASH_0_SIZE 4194304u
+#define CFI_FLASH_0_SPAN 4194304
+#define CFI_FLASH_0_TIMING_UNITS "ns"
+#define CFI_FLASH_0_TYPE "altera_avalon_cfi_flash"
+#define CFI_FLASH_0_WAIT_VALUE 100
+
+
+/*
  * clocks_0 configuration
  *
  */
 
 #define ALT_MODULE_CLASS_clocks_0 altera_up_avalon_clocks
-#define CLOCKS_0_BASE 0x1001040
+#define CLOCKS_0_BASE 0x19030d8
 #define CLOCKS_0_IRQ -1
 #define CLOCKS_0_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define CLOCKS_0_NAME "/dev/clocks_0"
@@ -417,7 +450,7 @@
  */
 
 #define ALT_MODULE_CLASS_jtag_uart_0 altera_avalon_jtag_uart
-#define JTAG_UART_0_BASE 0x1001038
+#define JTAG_UART_0_BASE 0x19030c8
 #define JTAG_UART_0_IRQ 0
 #define JTAG_UART_0_IRQ_INTERRUPT_CONTROLLER_ID 0
 #define JTAG_UART_0_NAME "/dev/jtag_uart_0"
@@ -435,7 +468,7 @@
  */
 
 #define ALT_MODULE_CLASS_keys altera_avalon_pio
-#define KEYS_BASE 0x1001010
+#define KEYS_BASE 0x1903010
 #define KEYS_BIT_CLEARING_EDGE_REGISTER 0
 #define KEYS_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define KEYS_CAPTURE 1
@@ -462,7 +495,7 @@
  */
 
 #define ALT_MODULE_CLASS_lcd_0 altera_avalon_lcd_16207
-#define LCD_0_BASE 0x1001020
+#define LCD_0_BASE 0x1903020
 #define LCD_0_IRQ -1
 #define LCD_0_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define LCD_0_NAME "/dev/lcd_0"
@@ -476,7 +509,7 @@
  */
 
 #define ALT_MODULE_CLASS_leds altera_avalon_pio
-#define LEDS_BASE 0x1001000
+#define LEDS_BASE 0x1903000
 #define LEDS_BIT_CLEARING_EDGE_REGISTER 0
 #define LEDS_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define LEDS_CAPTURE 0
@@ -537,18 +570,74 @@
 
 
 /*
+ * sram_0 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_sram_0 altera_up_avalon_sram
+#define SRAM_0_BASE 0x1880000
+#define SRAM_0_IRQ -1
+#define SRAM_0_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define SRAM_0_NAME "/dev/sram_0"
+#define SRAM_0_SPAN 524288
+#define SRAM_0_TYPE "altera_up_avalon_sram"
+
+
+/*
  * sysid configuration
  *
  */
 
 #define ALT_MODULE_CLASS_sysid altera_avalon_sysid
-#define SYSID_BASE 0x1001030
+#define SYSID_BASE 0x19030c0
 #define SYSID_ID 0u
 #define SYSID_IRQ -1
 #define SYSID_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define SYSID_NAME "/dev/sysid"
 #define SYSID_SPAN 8
-#define SYSID_TIMESTAMP 1390855222u
+#define SYSID_TIMESTAMP 1391636583u
 #define SYSID_TYPE "altera_avalon_sysid"
+
+
+/*
+ * video_character_buffer_with_dma_0_avalon_char_buffer_slave configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_video_character_buffer_with_dma_0_avalon_char_buffer_slave altera_up_avalon_video_character_buffer_with_dma
+#define VIDEO_CHARACTER_BUFFER_WITH_DMA_0_AVALON_CHAR_BUFFER_SLAVE_BASE 0x1900000
+#define VIDEO_CHARACTER_BUFFER_WITH_DMA_0_AVALON_CHAR_BUFFER_SLAVE_IRQ -1
+#define VIDEO_CHARACTER_BUFFER_WITH_DMA_0_AVALON_CHAR_BUFFER_SLAVE_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define VIDEO_CHARACTER_BUFFER_WITH_DMA_0_AVALON_CHAR_BUFFER_SLAVE_NAME "/dev/video_character_buffer_with_dma_0_avalon_char_buffer_slave"
+#define VIDEO_CHARACTER_BUFFER_WITH_DMA_0_AVALON_CHAR_BUFFER_SLAVE_SPAN 8192
+#define VIDEO_CHARACTER_BUFFER_WITH_DMA_0_AVALON_CHAR_BUFFER_SLAVE_TYPE "altera_up_avalon_video_character_buffer_with_dma"
+
+
+/*
+ * video_character_buffer_with_dma_0_avalon_char_control_slave configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_video_character_buffer_with_dma_0_avalon_char_control_slave altera_up_avalon_video_character_buffer_with_dma
+#define VIDEO_CHARACTER_BUFFER_WITH_DMA_0_AVALON_CHAR_CONTROL_SLAVE_BASE 0x19030d0
+#define VIDEO_CHARACTER_BUFFER_WITH_DMA_0_AVALON_CHAR_CONTROL_SLAVE_IRQ -1
+#define VIDEO_CHARACTER_BUFFER_WITH_DMA_0_AVALON_CHAR_CONTROL_SLAVE_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define VIDEO_CHARACTER_BUFFER_WITH_DMA_0_AVALON_CHAR_CONTROL_SLAVE_NAME "/dev/video_character_buffer_with_dma_0_avalon_char_control_slave"
+#define VIDEO_CHARACTER_BUFFER_WITH_DMA_0_AVALON_CHAR_CONTROL_SLAVE_SPAN 8
+#define VIDEO_CHARACTER_BUFFER_WITH_DMA_0_AVALON_CHAR_CONTROL_SLAVE_TYPE "altera_up_avalon_video_character_buffer_with_dma"
+
+
+/*
+ * video_pixel_buffer_dma_0 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_video_pixel_buffer_dma_0 altera_up_avalon_video_pixel_buffer_dma
+#define VIDEO_PIXEL_BUFFER_DMA_0_BASE 0x19030b0
+#define VIDEO_PIXEL_BUFFER_DMA_0_IRQ -1
+#define VIDEO_PIXEL_BUFFER_DMA_0_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define VIDEO_PIXEL_BUFFER_DMA_0_NAME "/dev/video_pixel_buffer_dma_0"
+#define VIDEO_PIXEL_BUFFER_DMA_0_SPAN 16
+#define VIDEO_PIXEL_BUFFER_DMA_0_TYPE "altera_up_avalon_video_pixel_buffer_dma"
 
 #endif /* __SYSTEM_H_ */

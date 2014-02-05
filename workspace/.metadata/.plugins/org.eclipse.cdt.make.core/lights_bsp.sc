@@ -276,6 +276,7 @@
 <definedSymbol symbol="__hal__=1"/>
 <definedSymbol symbol="ALT_NO_INSTRUCTION_EMULATION=1"/>
 <definedSymbol symbol="ALT_SINGLE_THREADED=1"/>
+<definedSymbol symbol="RO_ZIPFS=1"/>
 </collector>
 </instance>
 <instance id="preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.205980991;preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.205980991.;cdt.managedbuild.tool.gnu.c.compiler.base.2118956054;cdt.managedbuild.tool.gnu.c.compiler.input.2025699393">
@@ -539,6 +540,7 @@
 <definedSymbol symbol="__hal__=1"/>
 <definedSymbol symbol="ALT_NO_INSTRUCTION_EMULATION=1"/>
 <definedSymbol symbol="ALT_SINGLE_THREADED=1"/>
+<definedSymbol symbol="RO_ZIPFS=1"/>
 </collector>
 </instance>
 </scannerInfo>
