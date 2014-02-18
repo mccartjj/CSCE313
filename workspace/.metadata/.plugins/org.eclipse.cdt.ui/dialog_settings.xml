@@ -1,22 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
-	<item value="845" key="org.eclipse.cdt.uiformatter_pagemodify_dialog.preferred_height"/>
-	<item value="105" key="org.eclipse.cdt.uiformatter_page.white_space.c_view.option"/>
-	<item value="1" key="org.eclipse.cdt.uiformatter_page.line_wrapping_tab_page.last_category_index"/>
 	<item value="0" key="org.eclipse.cdt.uiformatter_page.white_space_tab_page.node"/>
+	<item value="1" key="org.eclipse.cdt.uiformatter_page.line_wrapping_tab_page.last_category_index"/>
+	<item value="105" key="org.eclipse.cdt.uiformatter_page.white_space.c_view.option"/>
+	<item value="845" key="org.eclipse.cdt.uiformatter_pagemodify_dialog.preferred_height"/>
 	<item value="65" key="org.eclipse.cdt.uiformatter_pagemodify_dialog.preferred_x"/>
-	<item value="24" key="org.eclipse.cdt.uiformatter_pagemodify_dialog.preferred_y"/>
 	<item value="2" key="org.eclipse.cdt.uiformatter_pagemodify_dialog.last_focus"/>
+	<item value="24" key="org.eclipse.cdt.uiformatter_pagemodify_dialog.preferred_y"/>
 	<item value="1215" key="org.eclipse.cdt.uiformatter_pagemodify_dialog.preferred_width"/>
 	<item value="Default C source template" key="LastUsedSourceTemplate"/>
-	<item value="0" key="formatter_page.modify_dialog_tab_page.last_focus_index"/>
 	<item value="Default C header template" key="LastUsedHeaderTemplate"/>
+	<item value="0" key="formatter_page.modify_dialog_tab_page.last_focus_index"/>
 	<item value="101" key="org.eclipse.cdt.uiformatter_page.white_space.c_view.inner"/>
 	<section name="completion_proposal_size">
 	</section>
 	<section name="org.eclipse.cdt.ui.text.hover.CMacroExpansionExploration.internal">
 		<item value="643" key="size.width"/>
 		<item value="174" key="size.height"/>
+	</section>
+	<section name="CRenameRefactoringInputPage">
 	</section>
 	<section name="org.eclipse.cdt.ui.text.hover.CMacroExpansionExploration">
 	</section>

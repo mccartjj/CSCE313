@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="19" version="2.0">
+<workbench progressCount="18" version="2.0">
 <workbenchAdvisor/>
-<window height="768" maximized="true" width="1020" x="73" y="70">
+<window height="1001" width="609" x="66" y="24">
 <fastViewData fastViewLocation="1024"/>
 <perspectiveBar>
 <itemSize x="160"/>
@@ -10,11 +10,11 @@
 <coolItem id="group.file" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.file" itemType="typeToolBarContribution" x="166" y="30"/>
 <coolItem id="additions" itemType="typeGroupMarker"/>
-<coolItem id="org.eclipse.cdt.ui.CElementCreationActionSet" itemType="typeToolBarContribution" x="156" y="30"/>
+<coolItem id="org.eclipse.cdt.ui.CElementCreationActionSet" itemType="typeToolBarContribution" x="239" y="30"/>
 <coolItem id="org.eclipse.cdt.ui.buildConfigActionSet" itemType="typeToolBarContribution" x="82" y="30"/>
 <coolItem id="org.eclipse.debug.ui.launchActionSet" itemType="typeToolBarContribution" x="120" y="30"/>
 <coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="104" y="30"/>
-<coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="68" y="30"/>
+<coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="181" y="30"/>
 <coolItem id="group.nav" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="184" y="30"/>
 <coolItem id="group.editor" itemType="typeGroupMarker"/>
@@ -39,15 +39,15 @@
 </editorArea>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="Project.c" partName="Project.c" path="/acct/s1/mccartjj/CSCE313/lights/software/lights/Project.c" title="Project.c" tooltip="lights/Project.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/lights/Project.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="19" selectionOffset="325" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1156" selectionTopPixel="345"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="VideoFunctions.h" partName="VideoFunctions.h" path="/acct/s1/mccartjj/CSCE313/lights/software/lights/VideoFunctions.h" title="VideoFunctions.h" tooltip="lights/VideoFunctions.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/lights/VideoFunctions.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="23" selectionOffset="519" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="533" selectionTopPixel="198"/>
 </editor>
 <editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="VideoFunctions.c" partName="VideoFunctions.c" path="/acct/s1/mccartjj/CSCE313/lights/software/lights/VideoFunctions.c" title="VideoFunctions.c" tooltip="lights/VideoFunctions.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/lights/VideoFunctions.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="331" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="4442" selectionTopPixel="2097"/>
 </editor>
 </editors>
 <views>
@@ -64,8 +64,8 @@
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
 <expanded>
-<category IMemento.internal.id="Warnings"/>
 <category IMemento.internal.id="Errors"/>
+<category IMemento.internal.id="Warnings (2 items)"/>
 </expanded>
 <columnWidths org.eclipse.ui.ide.locationField="73" org.eclipse.ui.ide.markerType="272" org.eclipse.ui.ide.pathField="143" org.eclipse.ui.ide.resourceField="108" org.eclipse.ui.ide.severityAndDescriptionField="350"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
@@ -73,7 +73,6 @@
 <visible IMemento.internal.id="org.eclipse.ui.ide.pathField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.locationField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.markerType"/>
-<DESCENDING_FIELDS IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
 </viewState>
 </view>
 <view id="org.eclipse.ui.console.ConsoleView" partName="Console">
@@ -235,14 +234,19 @@
 <new_wizard_action id="com.altera.sbtgui.ui.newLibrary"/>
 <perspective_action id="com.altera.sbtgui.ui.debugPerspective"/>
 <hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
-<view id="org.eclipse.ui.navigator.ProjectExplorer"/>
 <view id="org.eclipse.ui.views.ProblemView"/>
 <view id="org.eclipse.ui.views.TaskList"/>
 <view id="org.eclipse.ui.console.ConsoleView"/>
 <view id="org.eclipse.ui.views.PropertySheet"/>
 <view id="org.eclipse.ui.views.ProgressView"/>
-<view id="org.eclipse.ui.views.ContentOutline"/>
-<fastViewBars/>
+<view id="org.eclipse.ui.navigator.ProjectExplorer"/>
+<fastViewBars>
+<fastViewBar fastViewLocation="131072" id="topRight" orientation="512" selectedTabId="org.eclipse.ui.views.ContentOutline" style="0">
+<fastViews>
+<view id="org.eclipse.ui.views.ContentOutline" ratio="0.3"/>
+</fastViews>
+</fastViewBar>
+</fastViewBars>
 <layout>
 <mainWindow>
 <info folder="true" part="topLeft">
@@ -264,7 +268,7 @@
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
-<info part="org.eclipse.ui.editorss" ratio="0.24950495" ratioLeft="252" ratioRight="758" relationship="2" relative="topLeft"/>
+<info part="org.eclipse.ui.editorss" ratio="0.1886121" ratioLeft="106" ratioRight="456" relationship="2" relative="topLeft"/>
 <info folder="true" part="bottom" ratio="0.7492625" ratioLeft="508" ratioRight="170" relationship="4" relative="org.eclipse.ui.editorss">
 <folder activePageID="com.altera.sbtgui.launch.hardware.ByteStreamConsoleView:USB-Blaster on localhost [1-1.3].1.0" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
@@ -287,11 +291,9 @@
 </folder>
 </info>
 <info folder="true" part="topRight" ratio="0.74934036" ratioLeft="568" ratioRight="190" relationship="2" relative="org.eclipse.ui.editorss">
-<folder activePageID="org.eclipse.ui.views.ContentOutline" appearance="2" expanded="2">
-<page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
-<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
-<part id="0"/>
-</presentation>
+<folder appearance="2" expanded="0">
+<page content="org.eclipse.ui.views.ContentOutline" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
 </mainWindow>
@@ -301,159 +303,159 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/lights/Project.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/lights/VideoFunctions.h"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/lights/VideoFunctions.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/lights/VideoFunctions.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/lights/Project.c"/>
 </editors>
-<item historyLabel="VideoFunctions.c" index="2">
-<position info="not_deleted" x="402" y="0"/>
-</item>
-<item historyLabel="Project.c" index="0">
-<position info="not_deleted" x="325" y="19"/>
+<item historyLabel="VideoFunctions.c" index="0">
+<position info="not_deleted" x="4951" y="0"/>
 </item>
 <item historyLabel="VideoFunctions.h" index="1">
-<position info="not_deleted" x="204" y="0"/>
+<position info="not_deleted" x="574" y="26"/>
 </item>
-<item historyLabel="VideoFunctions.c" index="2">
-<position info="not_deleted" x="402" y="0"/>
-</item>
-<item historyLabel="VideoFunctions.h" index="1">
-<position info="not_deleted" x="544" y="0"/>
-</item>
-<item historyLabel="VideoFunctions.c" index="2">
-<position info="not_deleted" x="402" y="0"/>
+<item historyLabel="VideoFunctions.c" index="0">
+<position info="not_deleted" x="5812" y="0"/>
 </item>
 <item historyLabel="VideoFunctions.h" index="1">
-<position info="not_deleted" x="544" y="0"/>
+<position info="not_deleted" x="574" y="26"/>
+</item>
+<item historyLabel="VideoFunctions.c" index="0">
+<position info="not_deleted" x="5812" y="0"/>
+</item>
+<item historyLabel="VideoFunctions.c" index="0">
+<position info="not_deleted" x="5768" y="0"/>
+</item>
+<item historyLabel="Project.c" index="2">
+<position info="not_deleted" x="1163" y="0"/>
+</item>
+<item historyLabel="VideoFunctions.c" index="0">
+<position info="not_deleted" x="5768" y="0"/>
+</item>
+<item historyLabel="VideoFunctions.c" index="0">
+<position info="not_deleted" x="5693" y="0"/>
+</item>
+<item historyLabel="VideoFunctions.c" index="0">
+<position info="not_deleted" x="5810" y="0"/>
+</item>
+<item historyLabel="Project.c" index="2">
+<position info="not_deleted" x="1163" y="0"/>
 </item>
 <item historyLabel="VideoFunctions.h" index="1">
-<position info="not_deleted" x="314" y="0"/>
+<position info="not_deleted" x="601" y="0"/>
 </item>
-<item historyLabel="VideoFunctions.h" index="1">
-<position info="not_deleted" x="728" y="0"/>
+<item historyLabel="VideoFunctions.c" index="0">
+<position info="not_deleted" x="5810" y="0"/>
 </item>
-<item historyLabel="VideoFunctions.c" index="2">
-<position info="not_deleted" x="402" y="0"/>
+<item historyLabel="Project.c" index="2">
+<position info="not_deleted" x="1163" y="0"/>
 </item>
-<item historyLabel="VideoFunctions.h" index="1">
-<position info="not_deleted" x="728" y="0"/>
-</item>
-<item historyLabel="VideoFunctions.c" index="2">
-<position info="not_deleted" x="402" y="0"/>
-</item>
-<item historyLabel="VideoFunctions.h" index="1">
-<position info="not_deleted" x="300" y="0"/>
-</item>
-<item historyLabel="VideoFunctions.c" index="2">
+<item historyLabel="Project.c" index="2">
 <position/>
 </item>
-<item historyLabel="VideoFunctions.h" index="1">
+<item historyLabel="Project.c" index="2">
 <position/>
 </item>
-<item historyLabel="VideoFunctions.c" index="2">
+<item historyLabel="VideoFunctions.c" index="0">
+<position info="not_deleted" x="5561" y="0"/>
+</item>
+<item historyLabel="VideoFunctions.h" index="1">
+<position info="not_deleted" x="601" y="0"/>
+</item>
+<item historyLabel="VideoFunctions.c" index="0">
+<position info="not_deleted" x="5561" y="0"/>
+</item>
+<item historyLabel="VideoFunctions.c" index="0">
+<position info="not_deleted" x="4535" y="0"/>
+</item>
+<item historyLabel="Project.c" index="2">
 <position/>
 </item>
-<item historyLabel="VideoFunctions.h" index="1">
-<position info="not_deleted" x="571" y="0"/>
+<item historyLabel="Project.c" index="2">
+<position info="not_deleted" x="1163" y="0"/>
 </item>
-<item historyLabel="VideoFunctions.c" index="2">
-<position/>
+<item historyLabel="VideoFunctions.c" index="0">
+<position info="not_deleted" x="4535" y="0"/>
 </item>
-<item historyLabel="VideoFunctions.h" index="1">
-<position info="not_deleted" x="728" y="0"/>
+<item historyLabel="Project.c" index="2">
+<position info="not_deleted" x="1163" y="0"/>
 </item>
-<item historyLabel="VideoFunctions.c" index="2">
-<position/>
-</item>
-<item historyLabel="VideoFunctions.h" index="1">
-<position info="not_deleted" x="204" y="0"/>
-</item>
-<item historyLabel="VideoFunctions.c" index="2">
-<position/>
+<item historyLabel="VideoFunctions.c" index="0">
+<position info="not_deleted" x="4449" y="28"/>
 </item>
 <item historyLabel="VideoFunctions.h" index="1">
-<position info="not_deleted" x="663" y="0"/>
+<position info="not_deleted" x="533" y="0"/>
 </item>
-<item historyLabel="VideoFunctions.c" index="2">
-<position info="not_deleted" x="434" y="0"/>
+<item historyLabel="VideoFunctions.c" index="0">
+<position info="not_deleted" x="4448" y="0"/>
 </item>
-<item historyLabel="VideoFunctions.h" index="1">
-<position info="not_deleted" x="728" y="0"/>
+<item historyLabel="Project.c" index="2">
+<position info="not_deleted" x="1163" y="0"/>
 </item>
-<item historyLabel="VideoFunctions.c" index="2">
-<position info="not_deleted" x="434" y="0"/>
+<item historyLabel="Project.c" index="2">
+<position info="not_deleted" x="907" y="0"/>
 </item>
-<item historyLabel="VideoFunctions.h" index="1">
-<position info="not_deleted" x="728" y="0"/>
-</item>
-<item historyLabel="VideoFunctions.c" index="2">
-<position info="not_deleted" x="434" y="0"/>
+<item historyLabel="Project.c" index="2">
+<position info="not_deleted" x="888" y="0"/>
 </item>
 <item historyLabel="VideoFunctions.h" index="1">
-<position info="not_deleted" x="728" y="0"/>
+<position info="not_deleted" x="533" y="0"/>
 </item>
-<item historyLabel="VideoFunctions.c" index="2">
-<position info="not_deleted" x="831" y="0"/>
+<item historyLabel="Project.c" index="2">
+<position info="not_deleted" x="888" y="0"/>
 </item>
-<item historyLabel="VideoFunctions.h" index="1">
-<position info="not_deleted" x="667" y="0"/>
+<item historyLabel="Project.c" index="2">
+<position info="not_deleted" x="972" y="0"/>
 </item>
-<item historyLabel="VideoFunctions.c" index="2">
-<position info="not_deleted" x="831" y="0"/>
-</item>
-<item historyLabel="VideoFunctions.h" index="1">
-<position info="not_deleted" x="667" y="0"/>
-</item>
-<item historyLabel="VideoFunctions.c" index="2">
-<position info="not_deleted" x="831" y="0"/>
+<item historyLabel="Project.c" index="2">
+<position info="not_deleted" x="836" y="4"/>
 </item>
 <item historyLabel="VideoFunctions.h" index="1">
-<position info="not_deleted" x="667" y="0"/>
+<position info="not_deleted" x="533" y="0"/>
 </item>
-<item historyLabel="VideoFunctions.c" index="2">
-<position info="not_deleted" x="831" y="0"/>
+<item historyLabel="Project.c" index="2">
+<position info="not_deleted" x="836" y="4"/>
 </item>
-<item historyLabel="VideoFunctions.h" index="1">
-<position info="not_deleted" x="667" y="0"/>
+<item historyLabel="Project.c" index="2">
+<position info="not_deleted" x="909" y="0"/>
 </item>
-<item historyLabel="VideoFunctions.h" index="1">
-<position info="not_deleted" x="728" y="0"/>
+<item historyLabel="VideoFunctions.c" index="0">
+<position info="not_deleted" x="1956" y="0"/>
 </item>
-<item historyLabel="VideoFunctions.c" index="2">
-<position info="not_deleted" x="831" y="0"/>
+<item historyLabel="Project.c" index="2">
+<position info="not_deleted" x="519" y="0"/>
 </item>
-<item historyLabel="VideoFunctions.h" index="1">
-<position info="not_deleted" x="728" y="0"/>
+<item historyLabel="VideoFunctions.c" index="0">
+<position info="not_deleted" x="2182" y="0"/>
 </item>
-<item historyLabel="VideoFunctions.c" index="2">
-<position info="not_deleted" x="831" y="0"/>
+<item historyLabel="Project.c" index="2">
+<position info="not_deleted" x="519" y="0"/>
 </item>
-<item historyLabel="VideoFunctions.h" index="1">
-<position info="not_deleted" x="728" y="0"/>
+<item historyLabel="Project.c" index="2">
+<position info="not_deleted" x="1062" y="0"/>
 </item>
-<item historyLabel="VideoFunctions.c" index="2">
-<position info="not_deleted" x="831" y="0"/>
+<item historyLabel="Project.c" index="2">
+<position info="not_deleted" x="1156" y="0"/>
 </item>
-<item historyLabel="VideoFunctions.c" index="2">
-<position info="not_deleted" x="503" y="0"/>
+<item historyLabel="Project.c" index="2">
+<position info="not_deleted" x="1162" y="1"/>
 </item>
-<item historyLabel="VideoFunctions.h" index="1">
-<position info="not_deleted" x="685" y="43"/>
+<item historyLabel="Project.c" index="2">
+<position info="not_deleted" x="1062" y="0"/>
 </item>
-<item historyLabel="VideoFunctions.c" index="2">
-<position info="not_deleted" x="792" y="1"/>
+<item historyLabel="Project.c" index="2">
+<position info="not_deleted" x="1156" y="0"/>
 </item>
-<item historyLabel="VideoFunctions.h" index="1">
-<position info="not_deleted" x="685" y="43"/>
+<item historyLabel="VideoFunctions.c" index="0">
+<position info="not_deleted" x="2182" y="0"/>
 </item>
-<item historyLabel="VideoFunctions.h" index="1">
-<position info="not_deleted" x="519" y="23"/>
+<item historyLabel="VideoFunctions.c" index="0">
+<position info="not_deleted" x="4200" y="0"/>
 </item>
-<item historyLabel="VideoFunctions.c" index="2">
-<position info="not_deleted" x="792" y="1"/>
+<item historyLabel="VideoFunctions.c" index="0">
+<position info="not_deleted" x="3901" y="0"/>
 </item>
-<item active="true" historyLabel="VideoFunctions.c" index="2">
-<position info="not_deleted" x="1087" y="0"/>
+<item active="true" historyLabel="VideoFunctions.c" index="0">
+<position info="not_deleted" x="3846" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -461,6 +463,12 @@
 <workbenchWindowAdvisor/>
 <actionBarAdvisor/>
 <trimLayout>
+<trimArea IMemento.internal.id="16384">
+<trimItem IMemento.internal.id="topLeft"/>
+</trimArea>
+<trimArea IMemento.internal.id="131072">
+<trimItem IMemento.internal.id="topRight"/>
+</trimArea>
 <trimArea IMemento.internal.id="128">
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
 </trimArea>
@@ -468,6 +476,7 @@
 <trimItem IMemento.internal.id="org.eclise.ui.internal.FastViewBar"/>
 <trimItem IMemento.internal.id="org.eclipse.jface.action.StatusLineManager"/>
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.progress.ProgressRegion"/>
+<trimItem IMemento.internal.id="bottom"/>
 </trimArea>
 </trimLayout>
 </window>

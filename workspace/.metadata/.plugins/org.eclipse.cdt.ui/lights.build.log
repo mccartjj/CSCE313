@@ -18,7 +18,7 @@ perl: warning: Please check that your locale settings:
 	LANG = "C"
     are supported and installed on your system.
 perl: warning: Falling back to the standard locale ("C").
-Info: (lights.elf) 78 KBytes program size (code + initialized data).
+Info: (lights.elf) 79 KBytes program size (code + initialized data).
 Info:              8105 KBytes free for stack + heap.
 Info: Creating lights.objdump
 nios2-elf-objdump --disassemble --syms --all-header --source lights.elf >lights.objdump
