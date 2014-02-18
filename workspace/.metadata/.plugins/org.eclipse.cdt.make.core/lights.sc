@@ -173,12 +173,16 @@
 <definedSymbol symbol="__DBL_DECIMAL_DIG__=17"/>
 <definedSymbol symbol="__DBL_MAX__=double(1.79769313486231570815e+308L)"/>
 <definedSymbol symbol="__DBL_MAX__=1.7976931348623157e+308"/>
+<definedSymbol symbol="__DBL_MAX__=((double)1.7976931348623157e+308L)"/>
 <definedSymbol symbol="__DBL_MIN__=double(2.22507385850720138309e-308L)"/>
 <definedSymbol symbol="__DBL_MIN__=2.2250738585072014e-308"/>
+<definedSymbol symbol="__DBL_MIN__=((double)2.2250738585072014e-308L)"/>
 <definedSymbol symbol="__DBL_EPSILON__=double(2.22044604925031308085e-16L)"/>
 <definedSymbol symbol="__DBL_EPSILON__=2.2204460492503131e-16"/>
+<definedSymbol symbol="__DBL_EPSILON__=((double)2.2204460492503131e-16L)"/>
 <definedSymbol symbol="__DBL_DENORM_MIN__=double(4.94065645841246544177e-324L)"/>
 <definedSymbol symbol="__DBL_DENORM_MIN__=4.9406564584124654e-324"/>
+<definedSymbol symbol="__DBL_DENORM_MIN__=((double)4.9406564584124654e-324L)"/>
 <definedSymbol symbol="__DBL_HAS_DENORM__=1"/>
 <definedSymbol symbol="__DBL_HAS_INFINITY__=1"/>
 <definedSymbol symbol="__DBL_HAS_QUIET_NAN__=1"/>
@@ -276,6 +280,7 @@
 <definedSymbol symbol="__hal__=1"/>
 <definedSymbol symbol="ALT_NO_INSTRUCTION_EMULATION=1"/>
 <definedSymbol symbol="ALT_SINGLE_THREADED=1"/>
+<definedSymbol symbol="RO_ZIPFS=1"/>
 </collector>
 </instance>
 <instance id="preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.278750585;preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.278750585.;cdt.managedbuild.tool.gnu.c.compiler.base.275643986;cdt.managedbuild.tool.gnu.c.compiler.input.586591904">
@@ -437,12 +442,16 @@
 <definedSymbol symbol="__DBL_DECIMAL_DIG__=17"/>
 <definedSymbol symbol="__DBL_MAX__=((double)1.79769313486231570815e+308L)"/>
 <definedSymbol symbol="__DBL_MAX__=1.7976931348623157e+308"/>
+<definedSymbol symbol="__DBL_MAX__=((double)1.7976931348623157e+308L)"/>
 <definedSymbol symbol="__DBL_MIN__=((double)2.22507385850720138309e-308L)"/>
 <definedSymbol symbol="__DBL_MIN__=2.2250738585072014e-308"/>
+<definedSymbol symbol="__DBL_MIN__=((double)2.2250738585072014e-308L)"/>
 <definedSymbol symbol="__DBL_EPSILON__=((double)2.22044604925031308085e-16L)"/>
 <definedSymbol symbol="__DBL_EPSILON__=2.2204460492503131e-16"/>
+<definedSymbol symbol="__DBL_EPSILON__=((double)2.2204460492503131e-16L)"/>
 <definedSymbol symbol="__DBL_DENORM_MIN__=((double)4.94065645841246544177e-324L)"/>
 <definedSymbol symbol="__DBL_DENORM_MIN__=4.9406564584124654e-324"/>
+<definedSymbol symbol="__DBL_DENORM_MIN__=((double)4.9406564584124654e-324L)"/>
 <definedSymbol symbol="__DBL_HAS_DENORM__=1"/>
 <definedSymbol symbol="__DBL_HAS_INFINITY__=1"/>
 <definedSymbol symbol="__DBL_HAS_QUIET_NAN__=1"/>
@@ -539,6 +548,7 @@
 <definedSymbol symbol="__hal__=1"/>
 <definedSymbol symbol="ALT_NO_INSTRUCTION_EMULATION=1"/>
 <definedSymbol symbol="ALT_SINGLE_THREADED=1"/>
+<definedSymbol symbol="RO_ZIPFS=1"/>
 </collector>
 </instance>
 </scannerInfo>

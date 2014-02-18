@@ -6,7 +6,7 @@
    {
       datum _sortIndex
       {
-         value = "9";
+         value = "10";
          type = "int";
       }
    }
@@ -14,7 +14,7 @@
    {
       datum _sortIndex
       {
-         value = "10";
+         value = "11";
          type = "int";
       }
    }
@@ -22,7 +22,7 @@
    {
       datum _sortIndex
       {
-         value = "11";
+         value = "12";
          type = "int";
       }
    }
@@ -30,7 +30,7 @@
    {
       datum _sortIndex
       {
-         value = "12";
+         value = "13";
          type = "int";
       }
    }
@@ -38,7 +38,7 @@
    {
       datum _sortIndex
       {
-         value = "13";
+         value = "14";
          type = "int";
       }
    }
@@ -46,7 +46,7 @@
    {
       datum _sortIndex
       {
-         value = "14";
+         value = "15";
          type = "int";
       }
    }
@@ -54,7 +54,7 @@
    {
       datum _sortIndex
       {
-         value = "15";
+         value = "16";
          type = "int";
       }
    }
@@ -62,7 +62,7 @@
    {
       datum _sortIndex
       {
-         value = "16";
+         value = "17";
          type = "int";
       }
    }
@@ -118,7 +118,7 @@
    {
       datum _sortIndex
       {
-         value = "26";
+         value = "27";
          type = "int";
       }
       datum megawizard_uipreferences
@@ -131,7 +131,7 @@
    {
       datum _sortIndex
       {
-         value = "0";
+         value = "1";
          type = "int";
       }
    }
@@ -139,16 +139,8 @@
    {
       datum _sortIndex
       {
-         value = "3";
+         value = "4";
          type = "int";
-      }
-   }
-   element sysid.control_slave
-   {
-      datum baseAddress
-      {
-         value = "26226880";
-         type = "long";
       }
    }
    element lcd_0.control_slave
@@ -159,17 +151,33 @@
          type = "long";
       }
    }
+   element sysid.control_slave
+   {
+      datum baseAddress
+      {
+         value = "26226880";
+         type = "long";
+      }
+   }
    element cpu_0
    {
       datum _sortIndex
       {
-         value = "1";
+         value = "2";
          type = "int";
       }
       datum megawizard_uipreferences
       {
          value = "{}";
          type = "String";
+      }
+   }
+   element cpu_0_altera_nios_custom_instr_floating_point_inst
+   {
+      datum _sortIndex
+      {
+         value = "0";
+         type = "int";
       }
    }
    element cpu_0.jtag_debug_module
@@ -184,7 +192,7 @@
    {
       datum _sortIndex
       {
-         value = "5";
+         value = "6";
          type = "int";
       }
    }
@@ -192,7 +200,7 @@
    {
       datum _sortIndex
       {
-         value = "7";
+         value = "8";
          type = "int";
       }
    }
@@ -200,7 +208,7 @@
    {
       datum _sortIndex
       {
-         value = "8";
+         value = "9";
          type = "int";
       }
       datum megawizard_uipreferences
@@ -213,58 +221,18 @@
    {
       datum _sortIndex
       {
-         value = "6";
+         value = "7";
          type = "int";
       }
    }
    element nios_system
    {
    }
-   element sdram_0.s1
-   {
-      datum baseAddress
-      {
-         value = "8388608";
-         type = "long";
-      }
-   }
-   element HEX6.s1
-   {
-      datum baseAddress
-      {
-         value = "26226816";
-         type = "long";
-      }
-   }
    element leds.s1
    {
       datum baseAddress
       {
          value = "26226688";
-         type = "long";
-      }
-   }
-   element HEX3.s1
-   {
-      datum baseAddress
-      {
-         value = "26226768";
-         type = "long";
-      }
-   }
-   element HEX0.s1
-   {
-      datum baseAddress
-      {
-         value = "26226736";
-         type = "long";
-      }
-   }
-   element HEX1.s1
-   {
-      datum baseAddress
-      {
-         value = "26226848";
          type = "long";
       }
    }
@@ -276,11 +244,27 @@
          type = "long";
       }
    }
-   element HEX4.s1
+   element HEX0.s1
    {
       datum baseAddress
       {
-         value = "26226784";
+         value = "26226736";
+         type = "long";
+      }
+   }
+   element HEX2.s1
+   {
+      datum baseAddress
+      {
+         value = "26226752";
+         type = "long";
+      }
+   }
+   element HEX1.s1
+   {
+      datum baseAddress
+      {
+         value = "26226848";
          type = "long";
       }
    }
@@ -300,11 +284,35 @@
          type = "long";
       }
    }
-   element HEX2.s1
+   element HEX4.s1
    {
       datum baseAddress
       {
-         value = "26226752";
+         value = "26226784";
+         type = "long";
+      }
+   }
+   element HEX6.s1
+   {
+      datum baseAddress
+      {
+         value = "26226816";
+         type = "long";
+      }
+   }
+   element HEX3.s1
+   {
+      datum baseAddress
+      {
+         value = "26226768";
+         type = "long";
+      }
+   }
+   element sdram_0.s1
+   {
+      datum baseAddress
+      {
+         value = "8388608";
          type = "long";
       }
    }
@@ -320,7 +328,7 @@
    {
       datum _sortIndex
       {
-         value = "2";
+         value = "3";
          type = "int";
       }
       datum megawizard_uipreferences
@@ -341,7 +349,7 @@
    {
       datum _sortIndex
       {
-         value = "17";
+         value = "18";
          type = "int";
       }
    }
@@ -357,7 +365,7 @@
    {
       datum _sortIndex
       {
-         value = "4";
+         value = "5";
          type = "int";
       }
    }
@@ -365,7 +373,7 @@
    {
       datum _sortIndex
       {
-         value = "25";
+         value = "26";
          type = "int";
       }
       datum megawizard_uipreferences
@@ -386,7 +394,7 @@
    {
       datum _sortIndex
       {
-         value = "21";
+         value = "22";
          type = "int";
       }
    }
@@ -394,7 +402,7 @@
    {
       datum _sortIndex
       {
-         value = "22";
+         value = "23";
          type = "int";
       }
    }
@@ -402,7 +410,7 @@
    {
       datum _sortIndex
       {
-         value = "23";
+         value = "24";
          type = "int";
       }
    }
@@ -410,7 +418,7 @@
    {
       datum _sortIndex
       {
-         value = "18";
+         value = "19";
          type = "int";
       }
    }
@@ -418,7 +426,7 @@
    {
       datum _sortIndex
       {
-         value = "19";
+         value = "20";
          type = "int";
       }
    }
@@ -426,7 +434,7 @@
    {
       datum _sortIndex
       {
-         value = "20";
+         value = "21";
          type = "int";
       }
    }
@@ -434,7 +442,7 @@
    {
       datum _sortIndex
       {
-         value = "24";
+         value = "25";
          type = "int";
       }
    }
@@ -452,8 +460,8 @@
  <parameter name="maxAdditionalLatency" value="0" />
  <parameter name="projectName" value="lights.qpf" />
  <parameter name="sopcBorderPoints" value="true" />
- <parameter name="systemHash" value="31012786823" />
- <parameter name="timeStamp" value="1391636582589" />
+ <parameter name="systemHash" value="21487069268" />
+ <parameter name="timeStamp" value="1392675219193" />
  <parameter name="useTestBenchNamingPattern" value="false" />
  <module kind="clock_source" version="12.0" enabled="1" name="clk_0">
   <parameter name="clockFrequency" value="50000000" />
@@ -530,7 +538,7 @@
   <parameter name="mmu_TLBMissExcOffset" value="0" />
   <parameter name="manuallyAssignCpuID" value="false" />
   <parameter name="internalIrqMaskSystemInfo" value="1" />
-  <parameter name="instSlaveMapParam"><![CDATA[<address-map><slave name='sdram_0.s1' start='0x800000' end='0x1000000' /><slave name='cfi_flash_0.s1' start='0x1400000' end='0x1800000' /><slave name='sram_0.avalon_sram_slave' start='0x1880000' end='0x1900000' /><slave name='cpu_0.jtag_debug_module' start='0x1902800' end='0x1903000' /></address-map>]]></parameter>
+  <parameter name="instSlaveMapParam"><![CDATA[<address-map><slave name='sdram_0.s1' start='0x800000' end='0x1000000' /><slave name='cfi_flash_0.s1' start='0x1400000' end='0x1800000' /><slave name='cpu_0.jtag_debug_module' start='0x1902800' end='0x1903000' /></address-map>]]></parameter>
   <parameter name="instAddrWidth" value="25" />
   <parameter name="impl" value="Fast" />
   <parameter name="icache_size" value="_4096" />
@@ -556,7 +564,7 @@
   <parameter name="dcache_bursts" value="false" />
   <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='sdram_0.s1' start='0x800000' end='0x1000000' /><slave name='cfi_flash_0.s1' start='0x1400000' end='0x1800000' /><slave name='sram_0.avalon_sram_slave' start='0x1880000' end='0x1900000' /><slave name='video_character_buffer_with_dma_0.avalon_char_buffer_slave' start='0x1900000' end='0x1902000' /><slave name='cpu_0.jtag_debug_module' start='0x1902800' end='0x1903000' /><slave name='leds.s1' start='0x1903000' end='0x1903010' /><slave name='keys.s1' start='0x1903010' end='0x1903020' /><slave name='lcd_0.control_slave' start='0x1903020' end='0x1903030' /><slave name='HEX0.s1' start='0x1903030' end='0x1903040' /><slave name='HEX2.s1' start='0x1903040' end='0x1903050' /><slave name='HEX3.s1' start='0x1903050' end='0x1903060' /><slave name='HEX4.s1' start='0x1903060' end='0x1903070' /><slave name='HEX5.s1' start='0x1903070' end='0x1903080' /><slave name='HEX6.s1' start='0x1903080' end='0x1903090' /><slave name='HEX7.s1' start='0x1903090' end='0x19030A0' /><slave name='HEX1.s1' start='0x19030A0' end='0x19030B0' /><slave name='video_pixel_buffer_dma_0.avalon_control_slave' start='0x19030B0' end='0x19030C0' /><slave name='sysid.control_slave' start='0x19030C0' end='0x19030C8' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x19030C8' end='0x19030D0' /><slave name='video_character_buffer_with_dma_0.avalon_char_control_slave' start='0x19030D0' end='0x19030D8' /><slave name='clocks_0.avalon_clocks_slave' start='0x19030D8' end='0x19030DA' /></address-map>]]></parameter>
   <parameter name="dataAddrWidth" value="25" />
-  <parameter name="customInstSlavesSystemInfo" value="&lt;info/&gt;" />
+  <parameter name="customInstSlavesSystemInfo"><![CDATA[<info><slave name="altera_nios_custom_instr_floating_point_inst" baseAddress="252" addressSpan="4" clockCycleType="VARIABLE" /></info>]]></parameter>
   <parameter name="cpuReset" value="false" />
   <parameter name="cpuID" value="0" />
   <parameter name="clockFrequency" value="50000000" />
@@ -881,6 +889,14 @@
   <parameter name="timingUnits" value="NS" />
   <parameter name="waitTime" value="100" />
  </module>
+ <module
+   kind="altera_nios_custom_instr_floating_point"
+   version="12.0"
+   enabled="1"
+   name="cpu_0_altera_nios_custom_instr_floating_point_inst">
+  <parameter name="useDivider" value="0" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone II" />
+ </module>
  <connection
    kind="avalon"
    version="12.0"
@@ -1020,14 +1036,6 @@
   <parameter name="baseAddress" value="0x019030a0" />
  </connection>
  <connection kind="clock" version="12.0" start="clocks_0.sys_clk" end="HEX1.clk" />
- <connection
-   kind="avalon"
-   version="12.0"
-   start="cpu_0.instruction_master"
-   end="sram_0.avalon_sram_slave">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01880000" />
- </connection>
  <connection
    kind="avalon"
    version="12.0"
@@ -1173,4 +1181,13 @@
    version="12.0"
    start="clk_0.clk"
    end="tri_state_bridge_0.clk" />
+ <connection
+   kind="nios_custom_instruction"
+   version="12.0"
+   start="cpu_0.custom_instruction_master"
+   end="cpu_0_altera_nios_custom_instr_floating_point_inst.s1">
+  <parameter name="CIName">altera_nios_custom_instr_floating_point_inst</parameter>
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="252" />
+ </connection>
 </system>

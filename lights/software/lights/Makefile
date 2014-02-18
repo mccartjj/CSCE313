@@ -144,6 +144,7 @@ ELF := lights.elf
 # Paths to C, C++, and assembly source files.
 C_SRCS += LightsFunctions.c
 C_SRCS += Project.c
+C_SRCS += VideoFunctions.c
 CXX_SRCS :=
 ASM_SRCS :=
 

@@ -118,7 +118,7 @@ module cpu_0_test_bench (
   input   [  5: 0] W_iw_opx;
   input   [ 24: 0] W_pcb;
   input            W_valid;
-  input   [ 55: 0] W_vinst;
+  input   [423: 0] W_vinst;
   input            W_wr_dst_reg;
   input            clk;
   input   [ 24: 0] d_address;
@@ -198,6 +198,7 @@ module cpu_0_test_bench (
   wire             W_op_cmpltui;
   wire             W_op_cmpne;
   wire             W_op_cmpnei;
+  wire             W_op_cpu_0_altera_nios_custom_instr_floating_point_inst_s1;
   wire             W_op_crst;
   wire             W_op_custom;
   wire             W_op_div;
@@ -425,6 +426,7 @@ module cpu_0_test_bench (
   assign W_op_rsvx56 = W_op_opx & (W_iw_opx == 56);
   assign W_op_rsvx60 = W_op_opx & (W_iw_opx == 60);
   assign W_op_rsvx63 = W_op_opx & (W_iw_opx == 63);
+  assign W_op_cpu_0_altera_nios_custom_instr_floating_point_inst_s1 = W_op_custom & 1'b1;
   assign W_op_opx = W_iw_op == 58;
   assign W_op_custom = W_iw_op == 50;
   always @(posedge clk or negedge reset_n)

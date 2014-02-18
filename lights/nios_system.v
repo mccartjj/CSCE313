@@ -2510,7 +2510,6 @@ module cpu_0_jtag_debug_module_arbitrator (
                                              cpu_0_instruction_master_address_to_slave,
                                              cpu_0_instruction_master_latency_counter,
                                              cpu_0_instruction_master_read,
-                                             cpu_0_instruction_master_read_data_valid_sram_0_avalon_sram_slave_shift_register,
                                              cpu_0_jtag_debug_module_readdata,
                                              cpu_0_jtag_debug_module_resetrequest,
                                              reset_n,
@@ -2530,7 +2529,6 @@ module cpu_0_jtag_debug_module_arbitrator (
                                              cpu_0_jtag_debug_module_chipselect,
                                              cpu_0_jtag_debug_module_debugaccess,
                                              cpu_0_jtag_debug_module_readdata_from_sa,
-                                             cpu_0_jtag_debug_module_reset_n,
                                              cpu_0_jtag_debug_module_resetrequest_from_sa,
                                              cpu_0_jtag_debug_module_write,
                                              cpu_0_jtag_debug_module_writedata,
@@ -2552,7 +2550,6 @@ module cpu_0_jtag_debug_module_arbitrator (
   output           cpu_0_jtag_debug_module_chipselect;
   output           cpu_0_jtag_debug_module_debugaccess;
   output  [ 31: 0] cpu_0_jtag_debug_module_readdata_from_sa;
-  output           cpu_0_jtag_debug_module_reset_n;
   output           cpu_0_jtag_debug_module_resetrequest_from_sa;
   output           cpu_0_jtag_debug_module_write;
   output  [ 31: 0] cpu_0_jtag_debug_module_writedata;
@@ -2569,7 +2566,6 @@ module cpu_0_jtag_debug_module_arbitrator (
   input   [ 24: 0] cpu_0_instruction_master_address_to_slave;
   input            cpu_0_instruction_master_latency_counter;
   input            cpu_0_instruction_master_read;
-  input            cpu_0_instruction_master_read_data_valid_sram_0_avalon_sram_slave_shift_register;
   input   [ 31: 0] cpu_0_jtag_debug_module_readdata;
   input            cpu_0_jtag_debug_module_resetrequest;
   input            reset_n;
@@ -2619,7 +2615,6 @@ module cpu_0_jtag_debug_module_arbitrator (
   wire             cpu_0_jtag_debug_module_non_bursting_master_requests;
   wire    [ 31: 0] cpu_0_jtag_debug_module_readdata_from_sa;
   reg              cpu_0_jtag_debug_module_reg_firsttransfer;
-  wire             cpu_0_jtag_debug_module_reset_n;
   wire             cpu_0_jtag_debug_module_resetrequest_from_sa;
   reg     [  1: 0] cpu_0_jtag_debug_module_saved_chosen_master_vector;
   reg              cpu_0_jtag_debug_module_slavearbiterlockenable;
@@ -2757,7 +2752,7 @@ module cpu_0_jtag_debug_module_arbitrator (
   //cpu_0_data_master_continuerequest continued request, which is an e_mux
   assign cpu_0_data_master_continuerequest = last_cycle_cpu_0_data_master_granted_slave_cpu_0_jtag_debug_module & cpu_0_data_master_requests_cpu_0_jtag_debug_module;
 
-  assign cpu_0_instruction_master_qualified_request_cpu_0_jtag_debug_module = cpu_0_instruction_master_requests_cpu_0_jtag_debug_module & ~((cpu_0_instruction_master_read & ((cpu_0_instruction_master_latency_counter != 0) | (|cpu_0_instruction_master_read_data_valid_sram_0_avalon_sram_slave_shift_register))) | cpu_0_data_master_arbiterlock);
+  assign cpu_0_instruction_master_qualified_request_cpu_0_jtag_debug_module = cpu_0_instruction_master_requests_cpu_0_jtag_debug_module & ~((cpu_0_instruction_master_read & ((cpu_0_instruction_master_latency_counter != 0))) | cpu_0_data_master_arbiterlock);
   //local readdatavalid cpu_0_instruction_master_read_data_valid_cpu_0_jtag_debug_module, which is an e_mux
   assign cpu_0_instruction_master_read_data_valid_cpu_0_jtag_debug_module = cpu_0_instruction_master_granted_cpu_0_jtag_debug_module & cpu_0_instruction_master_read & ~cpu_0_jtag_debug_module_waits_for_read;
 
@@ -2816,9 +2811,6 @@ module cpu_0_jtag_debug_module_arbitrator (
 
 
   assign cpu_0_jtag_debug_module_begintransfer = cpu_0_jtag_debug_module_begins_xfer;
-  //cpu_0_jtag_debug_module_reset_n assignment, which is an e_assign
-  assign cpu_0_jtag_debug_module_reset_n = reset_n;
-
   //assign cpu_0_jtag_debug_module_resetrequest_from_sa = cpu_0_jtag_debug_module_resetrequest so that symbol knows where to group signals which may go to master only, which is an e_assign
   assign cpu_0_jtag_debug_module_resetrequest_from_sa = cpu_0_jtag_debug_module_resetrequest;
 
@@ -2930,6 +2922,62 @@ module cpu_0_jtag_debug_module_arbitrator (
 //////////////// END SIMULATION-ONLY CONTENTS
 
 //synthesis translate_on
+
+endmodule
+
+
+// synthesis translate_off
+`timescale 1ns / 1ps
+// synthesis translate_on
+
+// turn off superfluous verilog processor warnings 
+// altera message_level Level1 
+// altera message_off 10034 10035 10036 10037 10230 10240 10030 
+
+module cpu_0_custom_instruction_master_arbitrator (
+                                                    // inputs:
+                                                     clk,
+                                                     cpu_0_altera_nios_custom_instr_floating_point_inst_s1_done_from_sa,
+                                                     cpu_0_altera_nios_custom_instr_floating_point_inst_s1_result_from_sa,
+                                                     cpu_0_custom_instruction_master_multi_start,
+                                                     reset_n,
+
+                                                    // outputs:
+                                                     cpu_0_altera_nios_custom_instr_floating_point_inst_s1_select,
+                                                     cpu_0_custom_instruction_master_multi_done,
+                                                     cpu_0_custom_instruction_master_multi_result,
+                                                     cpu_0_custom_instruction_master_reset_n,
+                                                     cpu_0_custom_instruction_master_start_cpu_0_altera_nios_custom_instr_floating_point_inst_s1
+                                                  )
+;
+
+  output           cpu_0_altera_nios_custom_instr_floating_point_inst_s1_select;
+  output           cpu_0_custom_instruction_master_multi_done;
+  output  [ 31: 0] cpu_0_custom_instruction_master_multi_result;
+  output           cpu_0_custom_instruction_master_reset_n;
+  output           cpu_0_custom_instruction_master_start_cpu_0_altera_nios_custom_instr_floating_point_inst_s1;
+  input            clk;
+  input            cpu_0_altera_nios_custom_instr_floating_point_inst_s1_done_from_sa;
+  input   [ 31: 0] cpu_0_altera_nios_custom_instr_floating_point_inst_s1_result_from_sa;
+  input            cpu_0_custom_instruction_master_multi_start;
+  input            reset_n;
+
+  wire             cpu_0_altera_nios_custom_instr_floating_point_inst_s1_select;
+  wire             cpu_0_custom_instruction_master_multi_done;
+  wire    [ 31: 0] cpu_0_custom_instruction_master_multi_result;
+  wire             cpu_0_custom_instruction_master_reset_n;
+  wire             cpu_0_custom_instruction_master_start_cpu_0_altera_nios_custom_instr_floating_point_inst_s1;
+  assign cpu_0_altera_nios_custom_instr_floating_point_inst_s1_select = 1'b1;
+  assign cpu_0_custom_instruction_master_start_cpu_0_altera_nios_custom_instr_floating_point_inst_s1 = cpu_0_altera_nios_custom_instr_floating_point_inst_s1_select & cpu_0_custom_instruction_master_multi_start;
+  //cpu_0_custom_instruction_master_multi_result mux, which is an e_mux
+  assign cpu_0_custom_instruction_master_multi_result = {32 {cpu_0_altera_nios_custom_instr_floating_point_inst_s1_select}} & cpu_0_altera_nios_custom_instr_floating_point_inst_s1_result_from_sa;
+
+  //multi_done mux, which is an e_mux
+  assign cpu_0_custom_instruction_master_multi_done = {1 {cpu_0_altera_nios_custom_instr_floating_point_inst_s1_select}} & cpu_0_altera_nios_custom_instr_floating_point_inst_s1_done_from_sa;
+
+  //cpu_0_custom_instruction_master_reset_n local reset_n, which is an e_assign
+  assign cpu_0_custom_instruction_master_reset_n = reset_n;
+
 
 endmodule
 
@@ -3860,32 +3908,25 @@ module cpu_0_instruction_master_arbitrator (
                                               cpu_0_instruction_master_granted_cpu_0_jtag_debug_module,
                                               cpu_0_instruction_master_granted_nios_system_clock_0_in,
                                               cpu_0_instruction_master_granted_nios_system_clock_3_in,
-                                              cpu_0_instruction_master_granted_sram_0_avalon_sram_slave,
                                               cpu_0_instruction_master_qualified_request_cpu_0_jtag_debug_module,
                                               cpu_0_instruction_master_qualified_request_nios_system_clock_0_in,
                                               cpu_0_instruction_master_qualified_request_nios_system_clock_3_in,
-                                              cpu_0_instruction_master_qualified_request_sram_0_avalon_sram_slave,
                                               cpu_0_instruction_master_read,
                                               cpu_0_instruction_master_read_data_valid_cpu_0_jtag_debug_module,
                                               cpu_0_instruction_master_read_data_valid_nios_system_clock_0_in,
                                               cpu_0_instruction_master_read_data_valid_nios_system_clock_3_in,
-                                              cpu_0_instruction_master_read_data_valid_sram_0_avalon_sram_slave,
-                                              cpu_0_instruction_master_read_data_valid_sram_0_avalon_sram_slave_shift_register,
                                               cpu_0_instruction_master_requests_cpu_0_jtag_debug_module,
                                               cpu_0_instruction_master_requests_nios_system_clock_0_in,
                                               cpu_0_instruction_master_requests_nios_system_clock_3_in,
-                                              cpu_0_instruction_master_requests_sram_0_avalon_sram_slave,
                                               cpu_0_jtag_debug_module_readdata_from_sa,
                                               d1_cpu_0_jtag_debug_module_end_xfer,
                                               d1_nios_system_clock_0_in_end_xfer,
                                               d1_nios_system_clock_3_in_end_xfer,
-                                              d1_sram_0_avalon_sram_slave_end_xfer,
                                               nios_system_clock_0_in_readdata_from_sa,
                                               nios_system_clock_0_in_waitrequest_from_sa,
                                               nios_system_clock_3_in_readdata_from_sa,
                                               nios_system_clock_3_in_waitrequest_from_sa,
                                               reset_n,
-                                              sram_0_avalon_sram_slave_readdata_from_sa,
 
                                              // outputs:
                                               cpu_0_instruction_master_address_to_slave,
@@ -3908,43 +3949,33 @@ module cpu_0_instruction_master_arbitrator (
   input            cpu_0_instruction_master_granted_cpu_0_jtag_debug_module;
   input            cpu_0_instruction_master_granted_nios_system_clock_0_in;
   input            cpu_0_instruction_master_granted_nios_system_clock_3_in;
-  input            cpu_0_instruction_master_granted_sram_0_avalon_sram_slave;
   input            cpu_0_instruction_master_qualified_request_cpu_0_jtag_debug_module;
   input            cpu_0_instruction_master_qualified_request_nios_system_clock_0_in;
   input            cpu_0_instruction_master_qualified_request_nios_system_clock_3_in;
-  input            cpu_0_instruction_master_qualified_request_sram_0_avalon_sram_slave;
   input            cpu_0_instruction_master_read;
   input            cpu_0_instruction_master_read_data_valid_cpu_0_jtag_debug_module;
   input            cpu_0_instruction_master_read_data_valid_nios_system_clock_0_in;
   input            cpu_0_instruction_master_read_data_valid_nios_system_clock_3_in;
-  input            cpu_0_instruction_master_read_data_valid_sram_0_avalon_sram_slave;
-  input            cpu_0_instruction_master_read_data_valid_sram_0_avalon_sram_slave_shift_register;
   input            cpu_0_instruction_master_requests_cpu_0_jtag_debug_module;
   input            cpu_0_instruction_master_requests_nios_system_clock_0_in;
   input            cpu_0_instruction_master_requests_nios_system_clock_3_in;
-  input            cpu_0_instruction_master_requests_sram_0_avalon_sram_slave;
   input   [ 31: 0] cpu_0_jtag_debug_module_readdata_from_sa;
   input            d1_cpu_0_jtag_debug_module_end_xfer;
   input            d1_nios_system_clock_0_in_end_xfer;
   input            d1_nios_system_clock_3_in_end_xfer;
-  input            d1_sram_0_avalon_sram_slave_end_xfer;
   input   [ 15: 0] nios_system_clock_0_in_readdata_from_sa;
   input            nios_system_clock_0_in_waitrequest_from_sa;
   input   [  7: 0] nios_system_clock_3_in_readdata_from_sa;
   input            nios_system_clock_3_in_waitrequest_from_sa;
   input            reset_n;
-  input   [ 15: 0] sram_0_avalon_sram_slave_readdata_from_sa;
 
   reg              active_and_waiting_last_time;
   reg     [ 24: 0] cpu_0_instruction_master_address_last_time;
   wire    [ 24: 0] cpu_0_instruction_master_address_to_slave;
   reg     [  1: 0] cpu_0_instruction_master_dbs_address;
   wire    [  1: 0] cpu_0_instruction_master_dbs_increment;
-  reg     [  1: 0] cpu_0_instruction_master_dbs_rdv_counter;
-  wire    [  1: 0] cpu_0_instruction_master_dbs_rdv_counter_inc;
   wire             cpu_0_instruction_master_is_granted_some_slave;
   reg              cpu_0_instruction_master_latency_counter;
-  wire    [  1: 0] cpu_0_instruction_master_next_dbs_rdv_counter;
   reg              cpu_0_instruction_master_read_but_no_slave_selected;
   reg              cpu_0_instruction_master_read_last_time;
   wire    [ 31: 0] cpu_0_instruction_master_readdata;
@@ -3957,9 +3988,6 @@ module cpu_0_instruction_master_arbitrator (
   reg     [  7: 0] dbs_8_reg_segment_2;
   wire             dbs_count_enable;
   wire             dbs_counter_overflow;
-  reg     [ 15: 0] dbs_latent_16_reg_segment_0;
-  wire             dbs_rdv_count_enable;
-  wire             dbs_rdv_counter_overflow;
   wire             latency_load_value;
   wire    [  1: 0] next_dbs_address;
   wire             p1_cpu_0_instruction_master_latency_counter;
@@ -3967,7 +3995,6 @@ module cpu_0_instruction_master_arbitrator (
   wire    [  7: 0] p1_dbs_8_reg_segment_0;
   wire    [  7: 0] p1_dbs_8_reg_segment_1;
   wire    [  7: 0] p1_dbs_8_reg_segment_2;
-  wire    [ 15: 0] p1_dbs_latent_16_reg_segment_0;
   wire             pre_dbs_count_enable;
   wire             pre_flush_cpu_0_instruction_master_readdatavalid;
   wire             r_1;
@@ -3983,7 +4010,7 @@ module cpu_0_instruction_master_arbitrator (
   assign r_2 = 1 & (cpu_0_instruction_master_qualified_request_nios_system_clock_0_in | ~cpu_0_instruction_master_requests_nios_system_clock_0_in) & ((~cpu_0_instruction_master_qualified_request_nios_system_clock_0_in | ~cpu_0_instruction_master_read | (1 & ~nios_system_clock_0_in_waitrequest_from_sa & (cpu_0_instruction_master_dbs_address[1]) & cpu_0_instruction_master_read)));
 
   //r_3 master_run cascaded wait assignment, which is an e_assign
-  assign r_3 = 1 & (cpu_0_instruction_master_qualified_request_nios_system_clock_3_in | ~cpu_0_instruction_master_requests_nios_system_clock_3_in) & ((~cpu_0_instruction_master_qualified_request_nios_system_clock_3_in | ~cpu_0_instruction_master_read | (1 & ~nios_system_clock_3_in_waitrequest_from_sa & (cpu_0_instruction_master_dbs_address[1] & cpu_0_instruction_master_dbs_address[0]) & cpu_0_instruction_master_read))) & 1 & (cpu_0_instruction_master_qualified_request_sram_0_avalon_sram_slave | ~cpu_0_instruction_master_requests_sram_0_avalon_sram_slave) & (cpu_0_instruction_master_granted_sram_0_avalon_sram_slave | ~cpu_0_instruction_master_qualified_request_sram_0_avalon_sram_slave) & ((~cpu_0_instruction_master_qualified_request_sram_0_avalon_sram_slave | ~cpu_0_instruction_master_read | (1 & (cpu_0_instruction_master_dbs_address[1]) & cpu_0_instruction_master_read)));
+  assign r_3 = 1 & (cpu_0_instruction_master_qualified_request_nios_system_clock_3_in | ~cpu_0_instruction_master_requests_nios_system_clock_3_in) & ((~cpu_0_instruction_master_qualified_request_nios_system_clock_3_in | ~cpu_0_instruction_master_read | (1 & ~nios_system_clock_3_in_waitrequest_from_sa & (cpu_0_instruction_master_dbs_address[1] & cpu_0_instruction_master_dbs_address[0]) & cpu_0_instruction_master_read)));
 
   //optimize select-logic by passing only those address bits which matter.
   assign cpu_0_instruction_master_address_to_slave = cpu_0_instruction_master_address[24 : 0];
@@ -4001,11 +4028,10 @@ module cpu_0_instruction_master_arbitrator (
   //some slave is getting selected, which is an e_mux
   assign cpu_0_instruction_master_is_granted_some_slave = cpu_0_instruction_master_granted_cpu_0_jtag_debug_module |
     cpu_0_instruction_master_granted_nios_system_clock_0_in |
-    cpu_0_instruction_master_granted_nios_system_clock_3_in |
-    cpu_0_instruction_master_granted_sram_0_avalon_sram_slave;
+    cpu_0_instruction_master_granted_nios_system_clock_3_in;
 
   //latent slave read data valids which may be flushed, which is an e_mux
-  assign pre_flush_cpu_0_instruction_master_readdatavalid = cpu_0_instruction_master_read_data_valid_sram_0_avalon_sram_slave & dbs_rdv_counter_overflow;
+  assign pre_flush_cpu_0_instruction_master_readdatavalid = 0;
 
   //latent slave read data valid which is not flushed, which is an e_mux
   assign cpu_0_instruction_master_readdatavalid = cpu_0_instruction_master_read_but_no_slave_selected |
@@ -4016,9 +4042,7 @@ module cpu_0_instruction_master_arbitrator (
     (cpu_0_instruction_master_read_data_valid_nios_system_clock_0_in & dbs_counter_overflow) |
     cpu_0_instruction_master_read_but_no_slave_selected |
     pre_flush_cpu_0_instruction_master_readdatavalid |
-    (cpu_0_instruction_master_read_data_valid_nios_system_clock_3_in & dbs_counter_overflow) |
-    cpu_0_instruction_master_read_but_no_slave_selected |
-    pre_flush_cpu_0_instruction_master_readdatavalid;
+    (cpu_0_instruction_master_read_data_valid_nios_system_clock_3_in & dbs_counter_overflow);
 
   //cpu_0/instruction_master readdata mux, which is an e_mux
   assign cpu_0_instruction_master_readdata = ({32 {~(cpu_0_instruction_master_qualified_request_cpu_0_jtag_debug_module & cpu_0_instruction_master_read)}} | cpu_0_jtag_debug_module_readdata_from_sa) &
@@ -4027,9 +4051,7 @@ module cpu_0_instruction_master_arbitrator (
     ({32 {~(cpu_0_instruction_master_qualified_request_nios_system_clock_3_in & cpu_0_instruction_master_read)}} | {nios_system_clock_3_in_readdata_from_sa[7 : 0],
     dbs_8_reg_segment_2,
     dbs_8_reg_segment_1,
-    dbs_8_reg_segment_0}) &
-    ({32 {~cpu_0_instruction_master_read_data_valid_sram_0_avalon_sram_slave}} | {sram_0_avalon_sram_slave_readdata_from_sa[15 : 0],
-    dbs_latent_16_reg_segment_0});
+    dbs_8_reg_segment_0});
 
   //actual waitrequest port, which is an e_assign
   assign cpu_0_instruction_master_waitrequest = ~cpu_0_instruction_master_run;
@@ -4068,7 +4090,6 @@ module cpu_0_instruction_master_arbitrator (
   //dbs count increment, which is an e_mux
   assign cpu_0_instruction_master_dbs_increment = (cpu_0_instruction_master_requests_nios_system_clock_0_in)? 2 :
     (cpu_0_instruction_master_requests_nios_system_clock_3_in)? 1 :
-    (cpu_0_instruction_master_requests_sram_0_avalon_sram_slave)? 2 :
     0;
 
   //dbs counter overflow, which is an e_assign
@@ -4092,8 +4113,7 @@ module cpu_0_instruction_master_arbitrator (
 
   //pre dbs count enable, which is an e_mux
   assign pre_dbs_count_enable = (cpu_0_instruction_master_granted_nios_system_clock_0_in & cpu_0_instruction_master_read & 1 & 1 & ~nios_system_clock_0_in_waitrequest_from_sa) |
-    (cpu_0_instruction_master_granted_nios_system_clock_3_in & cpu_0_instruction_master_read & 1 & 1 & ~nios_system_clock_3_in_waitrequest_from_sa) |
-    (cpu_0_instruction_master_granted_sram_0_avalon_sram_slave & cpu_0_instruction_master_read & 1 & 1);
+    (cpu_0_instruction_master_granted_nios_system_clock_3_in & cpu_0_instruction_master_read & 1 & 1 & ~nios_system_clock_3_in_waitrequest_from_sa);
 
   //input to dbs-8 stored 0, which is an e_mux
   assign p1_dbs_8_reg_segment_0 = nios_system_clock_3_in_readdata_from_sa;
@@ -4133,41 +4153,6 @@ module cpu_0_instruction_master_arbitrator (
           dbs_8_reg_segment_2 <= p1_dbs_8_reg_segment_2;
     end
 
-
-  //input to latent dbs-16 stored 0, which is an e_mux
-  assign p1_dbs_latent_16_reg_segment_0 = sram_0_avalon_sram_slave_readdata_from_sa;
-
-  //dbs register for latent dbs-16 segment 0, which is an e_register
-  always @(posedge clk or negedge reset_n)
-    begin
-      if (reset_n == 0)
-          dbs_latent_16_reg_segment_0 <= 0;
-      else if (dbs_rdv_count_enable & ((cpu_0_instruction_master_dbs_rdv_counter[1]) == 0))
-          dbs_latent_16_reg_segment_0 <= p1_dbs_latent_16_reg_segment_0;
-    end
-
-
-  //p1 dbs rdv counter, which is an e_assign
-  assign cpu_0_instruction_master_next_dbs_rdv_counter = cpu_0_instruction_master_dbs_rdv_counter + cpu_0_instruction_master_dbs_rdv_counter_inc;
-
-  //cpu_0_instruction_master_rdv_inc_mux, which is an e_mux
-  assign cpu_0_instruction_master_dbs_rdv_counter_inc = 2;
-
-  //master any slave rdv, which is an e_mux
-  assign dbs_rdv_count_enable = cpu_0_instruction_master_read_data_valid_sram_0_avalon_sram_slave;
-
-  //dbs rdv counter, which is an e_register
-  always @(posedge clk or negedge reset_n)
-    begin
-      if (reset_n == 0)
-          cpu_0_instruction_master_dbs_rdv_counter <= 0;
-      else if (dbs_rdv_count_enable)
-          cpu_0_instruction_master_dbs_rdv_counter <= cpu_0_instruction_master_next_dbs_rdv_counter;
-    end
-
-
-  //dbs rdv counter overflow, which is an e_assign
-  assign dbs_rdv_counter_overflow = cpu_0_instruction_master_dbs_rdv_counter[1] & ~cpu_0_instruction_master_next_dbs_rdv_counter[1];
 
 
 //synthesis translate_off
@@ -4228,6 +4213,84 @@ module cpu_0_instruction_master_arbitrator (
 //////////////// END SIMULATION-ONLY CONTENTS
 
 //synthesis translate_on
+
+endmodule
+
+
+// synthesis translate_off
+`timescale 1ns / 1ps
+// synthesis translate_on
+
+// turn off superfluous verilog processor warnings 
+// altera message_level Level1 
+// altera message_off 10034 10035 10036 10037 10230 10240 10030 
+
+module cpu_0_altera_nios_custom_instr_floating_point_inst_s1_arbitrator (
+                                                                          // inputs:
+                                                                           clk,
+                                                                           cpu_0_altera_nios_custom_instr_floating_point_inst_s1_done,
+                                                                           cpu_0_altera_nios_custom_instr_floating_point_inst_s1_result,
+                                                                           cpu_0_altera_nios_custom_instr_floating_point_inst_s1_select,
+                                                                           cpu_0_custom_instruction_master_multi_clk_en,
+                                                                           cpu_0_custom_instruction_master_multi_dataa,
+                                                                           cpu_0_custom_instruction_master_multi_datab,
+                                                                           cpu_0_custom_instruction_master_multi_n,
+                                                                           cpu_0_custom_instruction_master_start_cpu_0_altera_nios_custom_instr_floating_point_inst_s1,
+                                                                           reset_n,
+
+                                                                          // outputs:
+                                                                           cpu_0_altera_nios_custom_instr_floating_point_inst_s1_clk_en,
+                                                                           cpu_0_altera_nios_custom_instr_floating_point_inst_s1_dataa,
+                                                                           cpu_0_altera_nios_custom_instr_floating_point_inst_s1_datab,
+                                                                           cpu_0_altera_nios_custom_instr_floating_point_inst_s1_done_from_sa,
+                                                                           cpu_0_altera_nios_custom_instr_floating_point_inst_s1_n,
+                                                                           cpu_0_altera_nios_custom_instr_floating_point_inst_s1_reset,
+                                                                           cpu_0_altera_nios_custom_instr_floating_point_inst_s1_result_from_sa,
+                                                                           cpu_0_altera_nios_custom_instr_floating_point_inst_s1_start
+                                                                        )
+;
+
+  output           cpu_0_altera_nios_custom_instr_floating_point_inst_s1_clk_en;
+  output  [ 31: 0] cpu_0_altera_nios_custom_instr_floating_point_inst_s1_dataa;
+  output  [ 31: 0] cpu_0_altera_nios_custom_instr_floating_point_inst_s1_datab;
+  output           cpu_0_altera_nios_custom_instr_floating_point_inst_s1_done_from_sa;
+  output  [  1: 0] cpu_0_altera_nios_custom_instr_floating_point_inst_s1_n;
+  output           cpu_0_altera_nios_custom_instr_floating_point_inst_s1_reset;
+  output  [ 31: 0] cpu_0_altera_nios_custom_instr_floating_point_inst_s1_result_from_sa;
+  output           cpu_0_altera_nios_custom_instr_floating_point_inst_s1_start;
+  input            clk;
+  input            cpu_0_altera_nios_custom_instr_floating_point_inst_s1_done;
+  input   [ 31: 0] cpu_0_altera_nios_custom_instr_floating_point_inst_s1_result;
+  input            cpu_0_altera_nios_custom_instr_floating_point_inst_s1_select;
+  input            cpu_0_custom_instruction_master_multi_clk_en;
+  input   [ 31: 0] cpu_0_custom_instruction_master_multi_dataa;
+  input   [ 31: 0] cpu_0_custom_instruction_master_multi_datab;
+  input   [  7: 0] cpu_0_custom_instruction_master_multi_n;
+  input            cpu_0_custom_instruction_master_start_cpu_0_altera_nios_custom_instr_floating_point_inst_s1;
+  input            reset_n;
+
+  wire             cpu_0_altera_nios_custom_instr_floating_point_inst_s1_clk_en;
+  wire    [ 31: 0] cpu_0_altera_nios_custom_instr_floating_point_inst_s1_dataa;
+  wire    [ 31: 0] cpu_0_altera_nios_custom_instr_floating_point_inst_s1_datab;
+  wire             cpu_0_altera_nios_custom_instr_floating_point_inst_s1_done_from_sa;
+  wire    [  1: 0] cpu_0_altera_nios_custom_instr_floating_point_inst_s1_n;
+  wire             cpu_0_altera_nios_custom_instr_floating_point_inst_s1_reset;
+  wire    [ 31: 0] cpu_0_altera_nios_custom_instr_floating_point_inst_s1_result_from_sa;
+  wire             cpu_0_altera_nios_custom_instr_floating_point_inst_s1_start;
+  assign cpu_0_altera_nios_custom_instr_floating_point_inst_s1_clk_en = cpu_0_custom_instruction_master_multi_clk_en;
+  assign cpu_0_altera_nios_custom_instr_floating_point_inst_s1_dataa = cpu_0_custom_instruction_master_multi_dataa;
+  assign cpu_0_altera_nios_custom_instr_floating_point_inst_s1_datab = cpu_0_custom_instruction_master_multi_datab;
+  assign cpu_0_altera_nios_custom_instr_floating_point_inst_s1_n = cpu_0_custom_instruction_master_multi_n;
+  assign cpu_0_altera_nios_custom_instr_floating_point_inst_s1_start = cpu_0_custom_instruction_master_start_cpu_0_altera_nios_custom_instr_floating_point_inst_s1;
+  //assign cpu_0_altera_nios_custom_instr_floating_point_inst_s1_result_from_sa = cpu_0_altera_nios_custom_instr_floating_point_inst_s1_result so that symbol knows where to group signals which may go to master only, which is an e_assign
+  assign cpu_0_altera_nios_custom_instr_floating_point_inst_s1_result_from_sa = cpu_0_altera_nios_custom_instr_floating_point_inst_s1_result;
+
+  //assign cpu_0_altera_nios_custom_instr_floating_point_inst_s1_done_from_sa = cpu_0_altera_nios_custom_instr_floating_point_inst_s1_done so that symbol knows where to group signals which may go to master only, which is an e_assign
+  assign cpu_0_altera_nios_custom_instr_floating_point_inst_s1_done_from_sa = cpu_0_altera_nios_custom_instr_floating_point_inst_s1_done;
+
+  //cpu_0_altera_nios_custom_instr_floating_point_inst/s1 local reset_n, which is an e_assign
+  assign cpu_0_altera_nios_custom_instr_floating_point_inst_s1_reset = ~reset_n;
+
 
 endmodule
 
@@ -5422,7 +5485,6 @@ module nios_system_clock_0_in_arbitrator (
                                             cpu_0_instruction_master_dbs_address,
                                             cpu_0_instruction_master_latency_counter,
                                             cpu_0_instruction_master_read,
-                                            cpu_0_instruction_master_read_data_valid_sram_0_avalon_sram_slave_shift_register,
                                             nios_system_clock_0_in_endofpacket,
                                             nios_system_clock_0_in_readdata,
                                             nios_system_clock_0_in_waitrequest,
@@ -5465,7 +5527,6 @@ module nios_system_clock_0_in_arbitrator (
   input   [  1: 0] cpu_0_instruction_master_dbs_address;
   input            cpu_0_instruction_master_latency_counter;
   input            cpu_0_instruction_master_read;
-  input            cpu_0_instruction_master_read_data_valid_sram_0_avalon_sram_slave_shift_register;
   input            nios_system_clock_0_in_endofpacket;
   input   [ 15: 0] nios_system_clock_0_in_readdata;
   input            nios_system_clock_0_in_waitrequest;
@@ -5595,7 +5656,7 @@ module nios_system_clock_0_in_arbitrator (
   //cpu_0_instruction_master_continuerequest continued request, which is an e_assign
   assign cpu_0_instruction_master_continuerequest = 1;
 
-  assign cpu_0_instruction_master_qualified_request_nios_system_clock_0_in = cpu_0_instruction_master_requests_nios_system_clock_0_in & ~((cpu_0_instruction_master_read & ((cpu_0_instruction_master_latency_counter != 0) | (|cpu_0_instruction_master_read_data_valid_sram_0_avalon_sram_slave_shift_register))));
+  assign cpu_0_instruction_master_qualified_request_nios_system_clock_0_in = cpu_0_instruction_master_requests_nios_system_clock_0_in & ~((cpu_0_instruction_master_read & ((cpu_0_instruction_master_latency_counter != 0))));
   //local readdatavalid cpu_0_instruction_master_read_data_valid_nios_system_clock_0_in, which is an e_mux
   assign cpu_0_instruction_master_read_data_valid_nios_system_clock_0_in = cpu_0_instruction_master_granted_nios_system_clock_0_in & cpu_0_instruction_master_read & ~nios_system_clock_0_in_waits_for_read;
 
@@ -6970,7 +7031,6 @@ module nios_system_clock_3_in_arbitrator (
                                             cpu_0_instruction_master_dbs_address,
                                             cpu_0_instruction_master_latency_counter,
                                             cpu_0_instruction_master_read,
-                                            cpu_0_instruction_master_read_data_valid_sram_0_avalon_sram_slave_shift_register,
                                             nios_system_clock_3_in_endofpacket,
                                             nios_system_clock_3_in_readdata,
                                             nios_system_clock_3_in_waitrequest,
@@ -7011,7 +7071,6 @@ module nios_system_clock_3_in_arbitrator (
   input   [  1: 0] cpu_0_instruction_master_dbs_address;
   input            cpu_0_instruction_master_latency_counter;
   input            cpu_0_instruction_master_read;
-  input            cpu_0_instruction_master_read_data_valid_sram_0_avalon_sram_slave_shift_register;
   input            nios_system_clock_3_in_endofpacket;
   input   [  7: 0] nios_system_clock_3_in_readdata;
   input            nios_system_clock_3_in_waitrequest;
@@ -7141,7 +7200,7 @@ module nios_system_clock_3_in_arbitrator (
   //cpu_0_instruction_master_continuerequest continued request, which is an e_assign
   assign cpu_0_instruction_master_continuerequest = 1;
 
-  assign cpu_0_instruction_master_qualified_request_nios_system_clock_3_in = cpu_0_instruction_master_requests_nios_system_clock_3_in & ~((cpu_0_instruction_master_read & ((cpu_0_instruction_master_latency_counter != 0) | (|cpu_0_instruction_master_read_data_valid_sram_0_avalon_sram_slave_shift_register))));
+  assign cpu_0_instruction_master_qualified_request_nios_system_clock_3_in = cpu_0_instruction_master_requests_nios_system_clock_3_in & ~((cpu_0_instruction_master_read & ((cpu_0_instruction_master_latency_counter != 0))));
   //local readdatavalid cpu_0_instruction_master_read_data_valid_nios_system_clock_3_in, which is an e_mux
   assign cpu_0_instruction_master_read_data_valid_nios_system_clock_3_in = cpu_0_instruction_master_granted_nios_system_clock_3_in & cpu_0_instruction_master_read & ~nios_system_clock_3_in_waits_for_read;
 
@@ -9308,167 +9367,6 @@ endmodule
 // altera message_level Level1 
 // altera message_off 10034 10035 10036 10037 10230 10240 10030 
 
-module rdv_fifo_for_cpu_0_instruction_master_to_sram_0_avalon_sram_slave_module (
-                                                                                  // inputs:
-                                                                                   clear_fifo,
-                                                                                   clk,
-                                                                                   data_in,
-                                                                                   read,
-                                                                                   reset_n,
-                                                                                   sync_reset,
-                                                                                   write,
-
-                                                                                  // outputs:
-                                                                                   data_out,
-                                                                                   empty,
-                                                                                   fifo_contains_ones_n,
-                                                                                   full
-                                                                                )
-;
-
-  output           data_out;
-  output           empty;
-  output           fifo_contains_ones_n;
-  output           full;
-  input            clear_fifo;
-  input            clk;
-  input            data_in;
-  input            read;
-  input            reset_n;
-  input            sync_reset;
-  input            write;
-
-  wire             data_out;
-  wire             empty;
-  reg              fifo_contains_ones_n;
-  wire             full;
-  reg              full_0;
-  reg              full_1;
-  wire             full_2;
-  reg     [  2: 0] how_many_ones;
-  wire    [  2: 0] one_count_minus_one;
-  wire    [  2: 0] one_count_plus_one;
-  wire             p0_full_0;
-  wire             p0_stage_0;
-  wire             p1_full_1;
-  wire             p1_stage_1;
-  reg              stage_0;
-  reg              stage_1;
-  wire    [  2: 0] updated_one_count;
-  assign data_out = stage_0;
-  assign full = full_1;
-  assign empty = !full_0;
-  assign full_2 = 0;
-  //data_1, which is an e_mux
-  assign p1_stage_1 = ((full_2 & ~clear_fifo) == 0)? data_in :
-    data_in;
-
-  //data_reg_1, which is an e_register
-  always @(posedge clk or negedge reset_n)
-    begin
-      if (reset_n == 0)
-          stage_1 <= 0;
-      else if (clear_fifo | sync_reset | read | (write & !full_1))
-          if (sync_reset & full_1 & !((full_2 == 0) & read & write))
-              stage_1 <= 0;
-          else 
-            stage_1 <= p1_stage_1;
-    end
-
-
-  //control_1, which is an e_mux
-  assign p1_full_1 = ((read & !write) == 0)? full_0 :
-    0;
-
-  //control_reg_1, which is an e_register
-  always @(posedge clk or negedge reset_n)
-    begin
-      if (reset_n == 0)
-          full_1 <= 0;
-      else if (clear_fifo | (read ^ write) | (write & !full_0))
-          if (clear_fifo)
-              full_1 <= 0;
-          else 
-            full_1 <= p1_full_1;
-    end
-
-
-  //data_0, which is an e_mux
-  assign p0_stage_0 = ((full_1 & ~clear_fifo) == 0)? data_in :
-    stage_1;
-
-  //data_reg_0, which is an e_register
-  always @(posedge clk or negedge reset_n)
-    begin
-      if (reset_n == 0)
-          stage_0 <= 0;
-      else if (clear_fifo | sync_reset | read | (write & !full_0))
-          if (sync_reset & full_0 & !((full_1 == 0) & read & write))
-              stage_0 <= 0;
-          else 
-            stage_0 <= p0_stage_0;
-    end
-
-
-  //control_0, which is an e_mux
-  assign p0_full_0 = ((read & !write) == 0)? 1 :
-    full_1;
-
-  //control_reg_0, which is an e_register
-  always @(posedge clk or negedge reset_n)
-    begin
-      if (reset_n == 0)
-          full_0 <= 0;
-      else if (clear_fifo | (read ^ write) | (write & !full_0))
-          if (clear_fifo & ~write)
-              full_0 <= 0;
-          else 
-            full_0 <= p0_full_0;
-    end
-
-
-  assign one_count_plus_one = how_many_ones + 1;
-  assign one_count_minus_one = how_many_ones - 1;
-  //updated_one_count, which is an e_mux
-  assign updated_one_count = ((((clear_fifo | sync_reset) & !write)))? 0 :
-    ((((clear_fifo | sync_reset) & write)))? |data_in :
-    ((read & (|data_in) & write & (|stage_0)))? how_many_ones :
-    ((write & (|data_in)))? one_count_plus_one :
-    ((read & (|stage_0)))? one_count_minus_one :
-    how_many_ones;
-
-  //counts how many ones in the data pipeline, which is an e_register
-  always @(posedge clk or negedge reset_n)
-    begin
-      if (reset_n == 0)
-          how_many_ones <= 0;
-      else if (clear_fifo | sync_reset | read | write)
-          how_many_ones <= updated_one_count;
-    end
-
-
-  //this fifo contains ones in the data pipeline, which is an e_register
-  always @(posedge clk or negedge reset_n)
-    begin
-      if (reset_n == 0)
-          fifo_contains_ones_n <= 1;
-      else if (clear_fifo | sync_reset | read | write)
-          fifo_contains_ones_n <= ~(|updated_one_count);
-    end
-
-
-
-endmodule
-
-
-// synthesis translate_off
-`timescale 1ns / 1ps
-// synthesis translate_on
-
-// turn off superfluous verilog processor warnings 
-// altera message_level Level1 
-// altera message_off 10034 10035 10036 10037 10230 10240 10030 
-
 module rdv_fifo_for_video_pixel_buffer_dma_0_avalon_pixel_dma_master_to_sram_0_avalon_sram_slave_module (
                                                                                                           // inputs:
                                                                                                            clear_fifo,
@@ -9640,10 +9538,6 @@ module sram_0_avalon_sram_slave_arbitrator (
                                               cpu_0_data_master_latency_counter,
                                               cpu_0_data_master_read,
                                               cpu_0_data_master_write,
-                                              cpu_0_instruction_master_address_to_slave,
-                                              cpu_0_instruction_master_dbs_address,
-                                              cpu_0_instruction_master_latency_counter,
-                                              cpu_0_instruction_master_read,
                                               reset_n,
                                               sram_0_avalon_sram_slave_readdata,
                                               sram_0_avalon_sram_slave_readdatavalid,
@@ -9660,11 +9554,6 @@ module sram_0_avalon_sram_slave_arbitrator (
                                               cpu_0_data_master_read_data_valid_sram_0_avalon_sram_slave,
                                               cpu_0_data_master_read_data_valid_sram_0_avalon_sram_slave_shift_register,
                                               cpu_0_data_master_requests_sram_0_avalon_sram_slave,
-                                              cpu_0_instruction_master_granted_sram_0_avalon_sram_slave,
-                                              cpu_0_instruction_master_qualified_request_sram_0_avalon_sram_slave,
-                                              cpu_0_instruction_master_read_data_valid_sram_0_avalon_sram_slave,
-                                              cpu_0_instruction_master_read_data_valid_sram_0_avalon_sram_slave_shift_register,
-                                              cpu_0_instruction_master_requests_sram_0_avalon_sram_slave,
                                               d1_sram_0_avalon_sram_slave_end_xfer,
                                               sram_0_avalon_sram_slave_address,
                                               sram_0_avalon_sram_slave_byteenable,
@@ -9687,11 +9576,6 @@ module sram_0_avalon_sram_slave_arbitrator (
   output           cpu_0_data_master_read_data_valid_sram_0_avalon_sram_slave;
   output           cpu_0_data_master_read_data_valid_sram_0_avalon_sram_slave_shift_register;
   output           cpu_0_data_master_requests_sram_0_avalon_sram_slave;
-  output           cpu_0_instruction_master_granted_sram_0_avalon_sram_slave;
-  output           cpu_0_instruction_master_qualified_request_sram_0_avalon_sram_slave;
-  output           cpu_0_instruction_master_read_data_valid_sram_0_avalon_sram_slave;
-  output           cpu_0_instruction_master_read_data_valid_sram_0_avalon_sram_slave_shift_register;
-  output           cpu_0_instruction_master_requests_sram_0_avalon_sram_slave;
   output           d1_sram_0_avalon_sram_slave_end_xfer;
   output  [ 17: 0] sram_0_avalon_sram_slave_address;
   output  [  1: 0] sram_0_avalon_sram_slave_byteenable;
@@ -9713,10 +9597,6 @@ module sram_0_avalon_sram_slave_arbitrator (
   input            cpu_0_data_master_latency_counter;
   input            cpu_0_data_master_read;
   input            cpu_0_data_master_write;
-  input   [ 24: 0] cpu_0_instruction_master_address_to_slave;
-  input   [  1: 0] cpu_0_instruction_master_dbs_address;
-  input            cpu_0_instruction_master_latency_counter;
-  input            cpu_0_instruction_master_read;
   input            reset_n;
   input   [ 15: 0] sram_0_avalon_sram_slave_readdata;
   input            sram_0_avalon_sram_slave_readdatavalid;
@@ -9740,17 +9620,6 @@ module sram_0_avalon_sram_slave_arbitrator (
   wire             cpu_0_data_master_read_data_valid_sram_0_avalon_sram_slave_shift_register;
   wire             cpu_0_data_master_requests_sram_0_avalon_sram_slave;
   wire             cpu_0_data_master_saved_grant_sram_0_avalon_sram_slave;
-  wire             cpu_0_instruction_master_arbiterlock;
-  wire             cpu_0_instruction_master_arbiterlock2;
-  wire             cpu_0_instruction_master_continuerequest;
-  wire             cpu_0_instruction_master_granted_sram_0_avalon_sram_slave;
-  wire             cpu_0_instruction_master_qualified_request_sram_0_avalon_sram_slave;
-  wire             cpu_0_instruction_master_rdv_fifo_empty_sram_0_avalon_sram_slave;
-  wire             cpu_0_instruction_master_rdv_fifo_output_from_sram_0_avalon_sram_slave;
-  wire             cpu_0_instruction_master_read_data_valid_sram_0_avalon_sram_slave;
-  wire             cpu_0_instruction_master_read_data_valid_sram_0_avalon_sram_slave_shift_register;
-  wire             cpu_0_instruction_master_requests_sram_0_avalon_sram_slave;
-  wire             cpu_0_instruction_master_saved_grant_sram_0_avalon_sram_slave;
   reg              d1_reasons_to_wait;
   reg              d1_sram_0_avalon_sram_slave_end_xfer;
   reg              enable_nonzero_assertions;
@@ -9758,35 +9627,33 @@ module sram_0_avalon_sram_slave_arbitrator (
   wire             in_a_read_cycle;
   wire             in_a_write_cycle;
   reg              last_cycle_cpu_0_data_master_granted_slave_sram_0_avalon_sram_slave;
-  reg              last_cycle_cpu_0_instruction_master_granted_slave_sram_0_avalon_sram_slave;
   reg              last_cycle_video_pixel_buffer_dma_0_avalon_pixel_dma_master_granted_slave_sram_0_avalon_sram_slave;
   wire             saved_chosen_master_btw_video_pixel_buffer_dma_0_avalon_pixel_dma_master_and_sram_0_avalon_sram_slave;
   wire    [ 24: 0] shifted_address_to_sram_0_avalon_sram_slave_from_cpu_0_data_master;
-  wire    [ 24: 0] shifted_address_to_sram_0_avalon_sram_slave_from_cpu_0_instruction_master;
   wire    [ 31: 0] shifted_address_to_sram_0_avalon_sram_slave_from_video_pixel_buffer_dma_0_avalon_pixel_dma_master;
   wire    [ 17: 0] sram_0_avalon_sram_slave_address;
   wire             sram_0_avalon_sram_slave_allgrants;
   wire             sram_0_avalon_sram_slave_allow_new_arb_cycle;
   wire             sram_0_avalon_sram_slave_any_bursting_master_saved_grant;
   wire             sram_0_avalon_sram_slave_any_continuerequest;
-  reg     [  2: 0] sram_0_avalon_sram_slave_arb_addend;
+  reg     [  1: 0] sram_0_avalon_sram_slave_arb_addend;
   wire             sram_0_avalon_sram_slave_arb_counter_enable;
   reg     [  2: 0] sram_0_avalon_sram_slave_arb_share_counter;
   wire    [  2: 0] sram_0_avalon_sram_slave_arb_share_counter_next_value;
   wire    [  2: 0] sram_0_avalon_sram_slave_arb_share_set_values;
-  wire    [  2: 0] sram_0_avalon_sram_slave_arb_winner;
+  wire    [  1: 0] sram_0_avalon_sram_slave_arb_winner;
   wire             sram_0_avalon_sram_slave_arbitration_holdoff_internal;
   wire             sram_0_avalon_sram_slave_beginbursttransfer_internal;
   wire             sram_0_avalon_sram_slave_begins_xfer;
   wire    [  1: 0] sram_0_avalon_sram_slave_byteenable;
-  wire    [  5: 0] sram_0_avalon_sram_slave_chosen_master_double_vector;
-  wire    [  2: 0] sram_0_avalon_sram_slave_chosen_master_rot_left;
+  wire    [  3: 0] sram_0_avalon_sram_slave_chosen_master_double_vector;
+  wire    [  1: 0] sram_0_avalon_sram_slave_chosen_master_rot_left;
   wire             sram_0_avalon_sram_slave_end_xfer;
   wire             sram_0_avalon_sram_slave_firsttransfer;
-  wire    [  2: 0] sram_0_avalon_sram_slave_grant_vector;
+  wire    [  1: 0] sram_0_avalon_sram_slave_grant_vector;
   wire             sram_0_avalon_sram_slave_in_a_read_cycle;
   wire             sram_0_avalon_sram_slave_in_a_write_cycle;
-  wire    [  2: 0] sram_0_avalon_sram_slave_master_qreq_vector;
+  wire    [  1: 0] sram_0_avalon_sram_slave_master_qreq_vector;
   wire             sram_0_avalon_sram_slave_move_on_to_next_transaction;
   wire             sram_0_avalon_sram_slave_non_bursting_master_requests;
   wire             sram_0_avalon_sram_slave_read;
@@ -9794,7 +9661,7 @@ module sram_0_avalon_sram_slave_arbitrator (
   wire             sram_0_avalon_sram_slave_readdatavalid_from_sa;
   reg              sram_0_avalon_sram_slave_reg_firsttransfer;
   wire             sram_0_avalon_sram_slave_reset;
-  reg     [  2: 0] sram_0_avalon_sram_slave_saved_chosen_master_vector;
+  reg     [  1: 0] sram_0_avalon_sram_slave_saved_chosen_master_vector;
   reg              sram_0_avalon_sram_slave_slavearbiterlockenable;
   wire             sram_0_avalon_sram_slave_slavearbiterlockenable2;
   wire             sram_0_avalon_sram_slave_unreg_firsttransfer;
@@ -9822,7 +9689,7 @@ module sram_0_avalon_sram_slave_arbitrator (
     end
 
 
-  assign sram_0_avalon_sram_slave_begins_xfer = ~d1_reasons_to_wait & ((cpu_0_data_master_qualified_request_sram_0_avalon_sram_slave | cpu_0_instruction_master_qualified_request_sram_0_avalon_sram_slave | video_pixel_buffer_dma_0_avalon_pixel_dma_master_qualified_request_sram_0_avalon_sram_slave));
+  assign sram_0_avalon_sram_slave_begins_xfer = ~d1_reasons_to_wait & ((cpu_0_data_master_qualified_request_sram_0_avalon_sram_slave | video_pixel_buffer_dma_0_avalon_pixel_dma_master_qualified_request_sram_0_avalon_sram_slave));
   //assign sram_0_avalon_sram_slave_readdatavalid_from_sa = sram_0_avalon_sram_slave_readdatavalid so that symbol knows where to group signals which may go to master only, which is an e_assign
   assign sram_0_avalon_sram_slave_readdatavalid_from_sa = sram_0_avalon_sram_slave_readdatavalid;
 
@@ -9832,25 +9699,15 @@ module sram_0_avalon_sram_slave_arbitrator (
   assign cpu_0_data_master_requests_sram_0_avalon_sram_slave = ({cpu_0_data_master_address_to_slave[24 : 19] , 19'b0} == 25'h1880000) & (cpu_0_data_master_read | cpu_0_data_master_write);
   //sram_0_avalon_sram_slave_arb_share_counter set values, which is an e_mux
   assign sram_0_avalon_sram_slave_arb_share_set_values = (cpu_0_data_master_granted_sram_0_avalon_sram_slave)? 2 :
-    (cpu_0_instruction_master_granted_sram_0_avalon_sram_slave)? 2 :
     (video_pixel_buffer_dma_0_avalon_pixel_dma_master_granted_sram_0_avalon_sram_slave)? 2 :
     (cpu_0_data_master_granted_sram_0_avalon_sram_slave)? 2 :
-    (cpu_0_instruction_master_granted_sram_0_avalon_sram_slave)? 2 :
-    (video_pixel_buffer_dma_0_avalon_pixel_dma_master_granted_sram_0_avalon_sram_slave)? 2 :
-    (cpu_0_data_master_granted_sram_0_avalon_sram_slave)? 2 :
-    (cpu_0_instruction_master_granted_sram_0_avalon_sram_slave)? 2 :
     (video_pixel_buffer_dma_0_avalon_pixel_dma_master_granted_sram_0_avalon_sram_slave)? 2 :
     1;
 
   //sram_0_avalon_sram_slave_non_bursting_master_requests mux, which is an e_mux
   assign sram_0_avalon_sram_slave_non_bursting_master_requests = cpu_0_data_master_requests_sram_0_avalon_sram_slave |
-    cpu_0_instruction_master_requests_sram_0_avalon_sram_slave |
     video_pixel_buffer_dma_0_avalon_pixel_dma_master_requests_sram_0_avalon_sram_slave |
     cpu_0_data_master_requests_sram_0_avalon_sram_slave |
-    cpu_0_instruction_master_requests_sram_0_avalon_sram_slave |
-    video_pixel_buffer_dma_0_avalon_pixel_dma_master_requests_sram_0_avalon_sram_slave |
-    cpu_0_data_master_requests_sram_0_avalon_sram_slave |
-    cpu_0_instruction_master_requests_sram_0_avalon_sram_slave |
     video_pixel_buffer_dma_0_avalon_pixel_dma_master_requests_sram_0_avalon_sram_slave;
 
   //sram_0_avalon_sram_slave_any_bursting_master_saved_grant mux, which is an e_mux
@@ -9861,11 +9718,6 @@ module sram_0_avalon_sram_slave_arbitrator (
 
   //sram_0_avalon_sram_slave_allgrants all slave grants, which is an e_mux
   assign sram_0_avalon_sram_slave_allgrants = (|sram_0_avalon_sram_slave_grant_vector) |
-    (|sram_0_avalon_sram_slave_grant_vector) |
-    (|sram_0_avalon_sram_slave_grant_vector) |
-    (|sram_0_avalon_sram_slave_grant_vector) |
-    (|sram_0_avalon_sram_slave_grant_vector) |
-    (|sram_0_avalon_sram_slave_grant_vector) |
     (|sram_0_avalon_sram_slave_grant_vector) |
     (|sram_0_avalon_sram_slave_grant_vector) |
     (|sram_0_avalon_sram_slave_grant_vector);
@@ -9908,34 +9760,6 @@ module sram_0_avalon_sram_slave_arbitrator (
   //cpu_0/data_master sram_0/avalon_sram_slave arbiterlock2, which is an e_assign
   assign cpu_0_data_master_arbiterlock2 = sram_0_avalon_sram_slave_slavearbiterlockenable2 & cpu_0_data_master_continuerequest;
 
-  //cpu_0/instruction_master sram_0/avalon_sram_slave arbiterlock, which is an e_assign
-  assign cpu_0_instruction_master_arbiterlock = sram_0_avalon_sram_slave_slavearbiterlockenable & cpu_0_instruction_master_continuerequest;
-
-  //cpu_0/instruction_master sram_0/avalon_sram_slave arbiterlock2, which is an e_assign
-  assign cpu_0_instruction_master_arbiterlock2 = sram_0_avalon_sram_slave_slavearbiterlockenable2 & cpu_0_instruction_master_continuerequest;
-
-  //cpu_0/instruction_master granted sram_0/avalon_sram_slave last time, which is an e_register
-  always @(posedge clk or negedge reset_n)
-    begin
-      if (reset_n == 0)
-          last_cycle_cpu_0_instruction_master_granted_slave_sram_0_avalon_sram_slave <= 0;
-      else 
-        last_cycle_cpu_0_instruction_master_granted_slave_sram_0_avalon_sram_slave <= cpu_0_instruction_master_saved_grant_sram_0_avalon_sram_slave ? 1 : (sram_0_avalon_sram_slave_arbitration_holdoff_internal | ~cpu_0_instruction_master_requests_sram_0_avalon_sram_slave) ? 0 : last_cycle_cpu_0_instruction_master_granted_slave_sram_0_avalon_sram_slave;
-    end
-
-
-  //cpu_0_instruction_master_continuerequest continued request, which is an e_mux
-  assign cpu_0_instruction_master_continuerequest = (last_cycle_cpu_0_instruction_master_granted_slave_sram_0_avalon_sram_slave & cpu_0_instruction_master_requests_sram_0_avalon_sram_slave) |
-    (last_cycle_cpu_0_instruction_master_granted_slave_sram_0_avalon_sram_slave & cpu_0_instruction_master_requests_sram_0_avalon_sram_slave);
-
-  //sram_0_avalon_sram_slave_any_continuerequest at least one master continues requesting, which is an e_mux
-  assign sram_0_avalon_sram_slave_any_continuerequest = cpu_0_instruction_master_continuerequest |
-    video_pixel_buffer_dma_0_avalon_pixel_dma_master_continuerequest |
-    cpu_0_data_master_continuerequest |
-    video_pixel_buffer_dma_0_avalon_pixel_dma_master_continuerequest |
-    cpu_0_data_master_continuerequest |
-    cpu_0_instruction_master_continuerequest;
-
   //video_pixel_buffer_dma_0/avalon_pixel_dma_master sram_0/avalon_sram_slave arbiterlock2, which is an e_assign
   assign video_pixel_buffer_dma_0_avalon_pixel_dma_master_arbiterlock2 = sram_0_avalon_sram_slave_slavearbiterlockenable2 & video_pixel_buffer_dma_0_avalon_pixel_dma_master_continuerequest;
 
@@ -9950,10 +9774,13 @@ module sram_0_avalon_sram_slave_arbitrator (
 
 
   //video_pixel_buffer_dma_0_avalon_pixel_dma_master_continuerequest continued request, which is an e_mux
-  assign video_pixel_buffer_dma_0_avalon_pixel_dma_master_continuerequest = (last_cycle_video_pixel_buffer_dma_0_avalon_pixel_dma_master_granted_slave_sram_0_avalon_sram_slave & video_pixel_buffer_dma_0_avalon_pixel_dma_master_requests_sram_0_avalon_sram_slave) |
-    (last_cycle_video_pixel_buffer_dma_0_avalon_pixel_dma_master_granted_slave_sram_0_avalon_sram_slave & video_pixel_buffer_dma_0_avalon_pixel_dma_master_requests_sram_0_avalon_sram_slave);
+  assign video_pixel_buffer_dma_0_avalon_pixel_dma_master_continuerequest = last_cycle_video_pixel_buffer_dma_0_avalon_pixel_dma_master_granted_slave_sram_0_avalon_sram_slave & video_pixel_buffer_dma_0_avalon_pixel_dma_master_requests_sram_0_avalon_sram_slave;
 
-  assign cpu_0_data_master_qualified_request_sram_0_avalon_sram_slave = cpu_0_data_master_requests_sram_0_avalon_sram_slave & ~((cpu_0_data_master_read & ((cpu_0_data_master_latency_counter != 0) | (1 < cpu_0_data_master_latency_counter))) | ((!cpu_0_data_master_byteenable_sram_0_avalon_sram_slave) & cpu_0_data_master_write) | cpu_0_instruction_master_arbiterlock | (video_pixel_buffer_dma_0_avalon_pixel_dma_master_arbiterlock & (saved_chosen_master_btw_video_pixel_buffer_dma_0_avalon_pixel_dma_master_and_sram_0_avalon_sram_slave)));
+  //sram_0_avalon_sram_slave_any_continuerequest at least one master continues requesting, which is an e_mux
+  assign sram_0_avalon_sram_slave_any_continuerequest = video_pixel_buffer_dma_0_avalon_pixel_dma_master_continuerequest |
+    cpu_0_data_master_continuerequest;
+
+  assign cpu_0_data_master_qualified_request_sram_0_avalon_sram_slave = cpu_0_data_master_requests_sram_0_avalon_sram_slave & ~((cpu_0_data_master_read & ((cpu_0_data_master_latency_counter != 0) | (1 < cpu_0_data_master_latency_counter))) | ((!cpu_0_data_master_byteenable_sram_0_avalon_sram_slave) & cpu_0_data_master_write) | (video_pixel_buffer_dma_0_avalon_pixel_dma_master_arbiterlock & (saved_chosen_master_btw_video_pixel_buffer_dma_0_avalon_pixel_dma_master_and_sram_0_avalon_sram_slave)));
   //unique name for sram_0_avalon_sram_slave_move_on_to_next_transaction, which is an e_assign
   assign sram_0_avalon_sram_slave_move_on_to_next_transaction = sram_0_avalon_sram_slave_readdatavalid_from_sa;
 
@@ -9980,7 +9807,7 @@ module sram_0_avalon_sram_slave_arbitrator (
   //sram_0_avalon_sram_slave_writedata mux, which is an e_mux
   assign sram_0_avalon_sram_slave_writedata = cpu_0_data_master_dbs_write_16;
 
-  assign cpu_0_instruction_master_requests_sram_0_avalon_sram_slave = (({cpu_0_instruction_master_address_to_slave[24 : 19] , 19'b0} == 25'h1880000) & (cpu_0_instruction_master_read)) & cpu_0_instruction_master_read;
+  assign video_pixel_buffer_dma_0_avalon_pixel_dma_master_requests_sram_0_avalon_sram_slave = (({video_pixel_buffer_dma_0_avalon_pixel_dma_master_address_to_slave[31 : 19] , 19'b0} == 32'h1880000) & (video_pixel_buffer_dma_0_avalon_pixel_dma_master_read)) & video_pixel_buffer_dma_0_avalon_pixel_dma_master_read;
   //cpu_0/data_master granted sram_0/avalon_sram_slave last time, which is an e_register
   always @(posedge clk or negedge reset_n)
     begin
@@ -9992,32 +9819,9 @@ module sram_0_avalon_sram_slave_arbitrator (
 
 
   //cpu_0_data_master_continuerequest continued request, which is an e_mux
-  assign cpu_0_data_master_continuerequest = (last_cycle_cpu_0_data_master_granted_slave_sram_0_avalon_sram_slave & cpu_0_data_master_requests_sram_0_avalon_sram_slave) |
-    (last_cycle_cpu_0_data_master_granted_slave_sram_0_avalon_sram_slave & cpu_0_data_master_requests_sram_0_avalon_sram_slave);
+  assign cpu_0_data_master_continuerequest = last_cycle_cpu_0_data_master_granted_slave_sram_0_avalon_sram_slave & cpu_0_data_master_requests_sram_0_avalon_sram_slave;
 
-  assign cpu_0_instruction_master_qualified_request_sram_0_avalon_sram_slave = cpu_0_instruction_master_requests_sram_0_avalon_sram_slave & ~((cpu_0_instruction_master_read & ((cpu_0_instruction_master_latency_counter != 0) | (1 < cpu_0_instruction_master_latency_counter))) | cpu_0_data_master_arbiterlock | (video_pixel_buffer_dma_0_avalon_pixel_dma_master_arbiterlock & (saved_chosen_master_btw_video_pixel_buffer_dma_0_avalon_pixel_dma_master_and_sram_0_avalon_sram_slave)));
-  //rdv_fifo_for_cpu_0_instruction_master_to_sram_0_avalon_sram_slave, which is an e_fifo_with_registered_outputs
-  rdv_fifo_for_cpu_0_instruction_master_to_sram_0_avalon_sram_slave_module rdv_fifo_for_cpu_0_instruction_master_to_sram_0_avalon_sram_slave
-    (
-      .clear_fifo           (1'b0),
-      .clk                  (clk),
-      .data_in              (cpu_0_instruction_master_granted_sram_0_avalon_sram_slave),
-      .data_out             (cpu_0_instruction_master_rdv_fifo_output_from_sram_0_avalon_sram_slave),
-      .empty                (),
-      .fifo_contains_ones_n (cpu_0_instruction_master_rdv_fifo_empty_sram_0_avalon_sram_slave),
-      .full                 (),
-      .read                 (sram_0_avalon_sram_slave_move_on_to_next_transaction),
-      .reset_n              (reset_n),
-      .sync_reset           (1'b0),
-      .write                (in_a_read_cycle & ~sram_0_avalon_sram_slave_waits_for_read)
-    );
-
-  assign cpu_0_instruction_master_read_data_valid_sram_0_avalon_sram_slave_shift_register = ~cpu_0_instruction_master_rdv_fifo_empty_sram_0_avalon_sram_slave;
-  //local readdatavalid cpu_0_instruction_master_read_data_valid_sram_0_avalon_sram_slave, which is an e_mux
-  assign cpu_0_instruction_master_read_data_valid_sram_0_avalon_sram_slave = (sram_0_avalon_sram_slave_readdatavalid_from_sa & cpu_0_instruction_master_rdv_fifo_output_from_sram_0_avalon_sram_slave) & ~ cpu_0_instruction_master_rdv_fifo_empty_sram_0_avalon_sram_slave;
-
-  assign video_pixel_buffer_dma_0_avalon_pixel_dma_master_requests_sram_0_avalon_sram_slave = (({video_pixel_buffer_dma_0_avalon_pixel_dma_master_address_to_slave[31 : 19] , 19'b0} == 32'h1880000) & (video_pixel_buffer_dma_0_avalon_pixel_dma_master_read)) & video_pixel_buffer_dma_0_avalon_pixel_dma_master_read;
-  assign video_pixel_buffer_dma_0_avalon_pixel_dma_master_qualified_request_sram_0_avalon_sram_slave = video_pixel_buffer_dma_0_avalon_pixel_dma_master_requests_sram_0_avalon_sram_slave & ~((video_pixel_buffer_dma_0_avalon_pixel_dma_master_read & ((video_pixel_buffer_dma_0_avalon_pixel_dma_master_latency_counter != 0) | (1 < video_pixel_buffer_dma_0_avalon_pixel_dma_master_latency_counter))) | cpu_0_data_master_arbiterlock | cpu_0_instruction_master_arbiterlock);
+  assign video_pixel_buffer_dma_0_avalon_pixel_dma_master_qualified_request_sram_0_avalon_sram_slave = video_pixel_buffer_dma_0_avalon_pixel_dma_master_requests_sram_0_avalon_sram_slave & ~((video_pixel_buffer_dma_0_avalon_pixel_dma_master_read & ((video_pixel_buffer_dma_0_avalon_pixel_dma_master_latency_counter != 0) | (1 < video_pixel_buffer_dma_0_avalon_pixel_dma_master_latency_counter))) | cpu_0_data_master_arbiterlock);
   //rdv_fifo_for_video_pixel_buffer_dma_0_avalon_pixel_dma_master_to_sram_0_avalon_sram_slave, which is an e_fifo_with_registered_outputs
   rdv_fifo_for_video_pixel_buffer_dma_0_avalon_pixel_dma_master_to_sram_0_avalon_sram_slave_module rdv_fifo_for_video_pixel_buffer_dma_0_avalon_pixel_dma_master_to_sram_0_avalon_sram_slave
     (
@@ -10039,7 +9843,7 @@ module sram_0_avalon_sram_slave_arbitrator (
   assign video_pixel_buffer_dma_0_avalon_pixel_dma_master_read_data_valid_sram_0_avalon_sram_slave = (sram_0_avalon_sram_slave_readdatavalid_from_sa & video_pixel_buffer_dma_0_avalon_pixel_dma_master_rdv_fifo_output_from_sram_0_avalon_sram_slave) & ~ video_pixel_buffer_dma_0_avalon_pixel_dma_master_rdv_fifo_empty_sram_0_avalon_sram_slave;
 
   //allow new arb cycle for sram_0/avalon_sram_slave, which is an e_assign
-  assign sram_0_avalon_sram_slave_allow_new_arb_cycle = ~cpu_0_data_master_arbiterlock & ~cpu_0_instruction_master_arbiterlock & ~(video_pixel_buffer_dma_0_avalon_pixel_dma_master_arbiterlock & (saved_chosen_master_btw_video_pixel_buffer_dma_0_avalon_pixel_dma_master_and_sram_0_avalon_sram_slave));
+  assign sram_0_avalon_sram_slave_allow_new_arb_cycle = ~cpu_0_data_master_arbiterlock & ~(video_pixel_buffer_dma_0_avalon_pixel_dma_master_arbiterlock & (saved_chosen_master_btw_video_pixel_buffer_dma_0_avalon_pixel_dma_master_and_sram_0_avalon_sram_slave));
 
   //video_pixel_buffer_dma_0/avalon_pixel_dma_master assignment into master qualified-requests vector for sram_0/avalon_sram_slave, which is an e_assign
   assign sram_0_avalon_sram_slave_master_qreq_vector[0] = video_pixel_buffer_dma_0_avalon_pixel_dma_master_qualified_request_sram_0_avalon_sram_slave;
@@ -10053,23 +9857,14 @@ module sram_0_avalon_sram_slave_arbitrator (
   //saved chosen master btw video_pixel_buffer_dma_0/avalon_pixel_dma_master and sram_0/avalon_sram_slave, which is an e_assign
   assign saved_chosen_master_btw_video_pixel_buffer_dma_0_avalon_pixel_dma_master_and_sram_0_avalon_sram_slave = sram_0_avalon_sram_slave_saved_chosen_master_vector[0];
 
-  //cpu_0/instruction_master assignment into master qualified-requests vector for sram_0/avalon_sram_slave, which is an e_assign
-  assign sram_0_avalon_sram_slave_master_qreq_vector[1] = cpu_0_instruction_master_qualified_request_sram_0_avalon_sram_slave;
-
-  //cpu_0/instruction_master grant sram_0/avalon_sram_slave, which is an e_assign
-  assign cpu_0_instruction_master_granted_sram_0_avalon_sram_slave = sram_0_avalon_sram_slave_grant_vector[1];
-
-  //cpu_0/instruction_master saved-grant sram_0/avalon_sram_slave, which is an e_assign
-  assign cpu_0_instruction_master_saved_grant_sram_0_avalon_sram_slave = sram_0_avalon_sram_slave_arb_winner[1] && cpu_0_instruction_master_requests_sram_0_avalon_sram_slave;
-
   //cpu_0/data_master assignment into master qualified-requests vector for sram_0/avalon_sram_slave, which is an e_assign
-  assign sram_0_avalon_sram_slave_master_qreq_vector[2] = cpu_0_data_master_qualified_request_sram_0_avalon_sram_slave;
+  assign sram_0_avalon_sram_slave_master_qreq_vector[1] = cpu_0_data_master_qualified_request_sram_0_avalon_sram_slave;
 
   //cpu_0/data_master grant sram_0/avalon_sram_slave, which is an e_assign
-  assign cpu_0_data_master_granted_sram_0_avalon_sram_slave = sram_0_avalon_sram_slave_grant_vector[2];
+  assign cpu_0_data_master_granted_sram_0_avalon_sram_slave = sram_0_avalon_sram_slave_grant_vector[1];
 
   //cpu_0/data_master saved-grant sram_0/avalon_sram_slave, which is an e_assign
-  assign cpu_0_data_master_saved_grant_sram_0_avalon_sram_slave = sram_0_avalon_sram_slave_arb_winner[2] && cpu_0_data_master_requests_sram_0_avalon_sram_slave;
+  assign cpu_0_data_master_saved_grant_sram_0_avalon_sram_slave = sram_0_avalon_sram_slave_arb_winner[1] && cpu_0_data_master_requests_sram_0_avalon_sram_slave;
 
   //sram_0/avalon_sram_slave chosen-master double-vector, which is an e_assign
   assign sram_0_avalon_sram_slave_chosen_master_double_vector = {sram_0_avalon_sram_slave_master_qreq_vector, sram_0_avalon_sram_slave_master_qreq_vector} & ({~sram_0_avalon_sram_slave_master_qreq_vector, ~sram_0_avalon_sram_slave_master_qreq_vector} + sram_0_avalon_sram_slave_arb_addend);
@@ -10088,9 +9883,8 @@ module sram_0_avalon_sram_slave_arbitrator (
 
 
   //onehot encoding of chosen master
-  assign sram_0_avalon_sram_slave_grant_vector = {(sram_0_avalon_sram_slave_chosen_master_double_vector[2] | sram_0_avalon_sram_slave_chosen_master_double_vector[5]),
-    (sram_0_avalon_sram_slave_chosen_master_double_vector[1] | sram_0_avalon_sram_slave_chosen_master_double_vector[4]),
-    (sram_0_avalon_sram_slave_chosen_master_double_vector[0] | sram_0_avalon_sram_slave_chosen_master_double_vector[3])};
+  assign sram_0_avalon_sram_slave_grant_vector = {(sram_0_avalon_sram_slave_chosen_master_double_vector[1] | sram_0_avalon_sram_slave_chosen_master_double_vector[3]),
+    (sram_0_avalon_sram_slave_chosen_master_double_vector[0] | sram_0_avalon_sram_slave_chosen_master_double_vector[2])};
 
   //sram_0/avalon_sram_slave chosen master rotated left, which is an e_assign
   assign sram_0_avalon_sram_slave_chosen_master_rot_left = (sram_0_avalon_sram_slave_arb_winner << 1) ? (sram_0_avalon_sram_slave_arb_winner << 1) : 1;
@@ -10131,7 +9925,7 @@ module sram_0_avalon_sram_slave_arbitrator (
   assign sram_0_avalon_sram_slave_arbitration_holdoff_internal = sram_0_avalon_sram_slave_begins_xfer & sram_0_avalon_sram_slave_firsttransfer;
 
   //sram_0_avalon_sram_slave_read assignment, which is an e_mux
-  assign sram_0_avalon_sram_slave_read = (cpu_0_data_master_granted_sram_0_avalon_sram_slave & cpu_0_data_master_read) | (cpu_0_instruction_master_granted_sram_0_avalon_sram_slave & cpu_0_instruction_master_read) | (video_pixel_buffer_dma_0_avalon_pixel_dma_master_granted_sram_0_avalon_sram_slave & video_pixel_buffer_dma_0_avalon_pixel_dma_master_read);
+  assign sram_0_avalon_sram_slave_read = (cpu_0_data_master_granted_sram_0_avalon_sram_slave & cpu_0_data_master_read) | (video_pixel_buffer_dma_0_avalon_pixel_dma_master_granted_sram_0_avalon_sram_slave & video_pixel_buffer_dma_0_avalon_pixel_dma_master_read);
 
   //sram_0_avalon_sram_slave_write assignment, which is an e_mux
   assign sram_0_avalon_sram_slave_write = cpu_0_data_master_granted_sram_0_avalon_sram_slave & cpu_0_data_master_write;
@@ -10142,12 +9936,7 @@ module sram_0_avalon_sram_slave_arbitrator (
 
   //sram_0_avalon_sram_slave_address mux, which is an e_mux
   assign sram_0_avalon_sram_slave_address = (cpu_0_data_master_granted_sram_0_avalon_sram_slave)? (shifted_address_to_sram_0_avalon_sram_slave_from_cpu_0_data_master >> 1) :
-    (cpu_0_instruction_master_granted_sram_0_avalon_sram_slave)? (shifted_address_to_sram_0_avalon_sram_slave_from_cpu_0_instruction_master >> 1) :
     (shifted_address_to_sram_0_avalon_sram_slave_from_video_pixel_buffer_dma_0_avalon_pixel_dma_master >> 1);
-
-  assign shifted_address_to_sram_0_avalon_sram_slave_from_cpu_0_instruction_master = {cpu_0_instruction_master_address_to_slave >> 2,
-    cpu_0_instruction_master_dbs_address[1],
-    {1 {1'b0}}};
 
   assign shifted_address_to_sram_0_avalon_sram_slave_from_video_pixel_buffer_dma_0_avalon_pixel_dma_master = {video_pixel_buffer_dma_0_avalon_pixel_dma_master_address_to_slave >> 2,
     video_pixel_buffer_dma_0_avalon_pixel_dma_master_dbs_address[1],
@@ -10167,7 +9956,7 @@ module sram_0_avalon_sram_slave_arbitrator (
   assign sram_0_avalon_sram_slave_waits_for_read = sram_0_avalon_sram_slave_in_a_read_cycle & 0;
 
   //sram_0_avalon_sram_slave_in_a_read_cycle assignment, which is an e_assign
-  assign sram_0_avalon_sram_slave_in_a_read_cycle = (cpu_0_data_master_granted_sram_0_avalon_sram_slave & cpu_0_data_master_read) | (cpu_0_instruction_master_granted_sram_0_avalon_sram_slave & cpu_0_instruction_master_read) | (video_pixel_buffer_dma_0_avalon_pixel_dma_master_granted_sram_0_avalon_sram_slave & video_pixel_buffer_dma_0_avalon_pixel_dma_master_read);
+  assign sram_0_avalon_sram_slave_in_a_read_cycle = (cpu_0_data_master_granted_sram_0_avalon_sram_slave & cpu_0_data_master_read) | (video_pixel_buffer_dma_0_avalon_pixel_dma_master_granted_sram_0_avalon_sram_slave & video_pixel_buffer_dma_0_avalon_pixel_dma_master_read);
 
   //in_a_read_cycle assignment, which is an e_mux
   assign in_a_read_cycle = sram_0_avalon_sram_slave_in_a_read_cycle;
@@ -10207,7 +9996,7 @@ cpu_0_data_master_byteenable_sram_0_avalon_sram_slave_segment_0} = cpu_0_data_ma
   //grant signals are active simultaneously, which is an e_process
   always @(posedge clk)
     begin
-      if (cpu_0_data_master_granted_sram_0_avalon_sram_slave + cpu_0_instruction_master_granted_sram_0_avalon_sram_slave + video_pixel_buffer_dma_0_avalon_pixel_dma_master_granted_sram_0_avalon_sram_slave > 1)
+      if (cpu_0_data_master_granted_sram_0_avalon_sram_slave + video_pixel_buffer_dma_0_avalon_pixel_dma_master_granted_sram_0_avalon_sram_slave > 1)
         begin
           $write("%0d ns: > 1 of grant signals are active simultaneously", $time);
           $stop;
@@ -10218,7 +10007,7 @@ cpu_0_data_master_byteenable_sram_0_avalon_sram_slave_segment_0} = cpu_0_data_ma
   //saved_grant signals are active simultaneously, which is an e_process
   always @(posedge clk)
     begin
-      if (cpu_0_data_master_saved_grant_sram_0_avalon_sram_slave + cpu_0_instruction_master_saved_grant_sram_0_avalon_sram_slave + video_pixel_buffer_dma_0_avalon_pixel_dma_master_saved_grant_sram_0_avalon_sram_slave > 1)
+      if (cpu_0_data_master_saved_grant_sram_0_avalon_sram_slave + video_pixel_buffer_dma_0_avalon_pixel_dma_master_saved_grant_sram_0_avalon_sram_slave > 1)
         begin
           $write("%0d ns: > 1 of saved_grant signals are active simultaneously", $time);
           $stop;
@@ -13398,6 +13187,37 @@ module nios_system (
   wire             clocks_0_avalon_clocks_slave_address;
   wire    [  7: 0] clocks_0_avalon_clocks_slave_readdata;
   wire    [  7: 0] clocks_0_avalon_clocks_slave_readdata_from_sa;
+  wire             cpu_0_altera_nios_custom_instr_floating_point_inst_s1_clk_en;
+  wire    [ 31: 0] cpu_0_altera_nios_custom_instr_floating_point_inst_s1_dataa;
+  wire    [ 31: 0] cpu_0_altera_nios_custom_instr_floating_point_inst_s1_datab;
+  wire             cpu_0_altera_nios_custom_instr_floating_point_inst_s1_done;
+  wire             cpu_0_altera_nios_custom_instr_floating_point_inst_s1_done_from_sa;
+  wire    [  1: 0] cpu_0_altera_nios_custom_instr_floating_point_inst_s1_n;
+  wire             cpu_0_altera_nios_custom_instr_floating_point_inst_s1_reset;
+  wire    [ 31: 0] cpu_0_altera_nios_custom_instr_floating_point_inst_s1_result;
+  wire    [ 31: 0] cpu_0_altera_nios_custom_instr_floating_point_inst_s1_result_from_sa;
+  wire             cpu_0_altera_nios_custom_instr_floating_point_inst_s1_select;
+  wire             cpu_0_altera_nios_custom_instr_floating_point_inst_s1_start;
+  wire    [  4: 0] cpu_0_custom_instruction_master_multi_a;
+  wire    [  4: 0] cpu_0_custom_instruction_master_multi_b;
+  wire    [  4: 0] cpu_0_custom_instruction_master_multi_c;
+  wire             cpu_0_custom_instruction_master_multi_clk;
+  wire             cpu_0_custom_instruction_master_multi_clk_en;
+  wire    [ 31: 0] cpu_0_custom_instruction_master_multi_dataa;
+  wire    [ 31: 0] cpu_0_custom_instruction_master_multi_datab;
+  wire             cpu_0_custom_instruction_master_multi_done;
+  wire             cpu_0_custom_instruction_master_multi_estatus;
+  wire    [ 31: 0] cpu_0_custom_instruction_master_multi_ipending;
+  wire    [  7: 0] cpu_0_custom_instruction_master_multi_n;
+  wire             cpu_0_custom_instruction_master_multi_readra;
+  wire             cpu_0_custom_instruction_master_multi_readrb;
+  wire             cpu_0_custom_instruction_master_multi_reset;
+  wire    [ 31: 0] cpu_0_custom_instruction_master_multi_result;
+  wire             cpu_0_custom_instruction_master_multi_start;
+  wire             cpu_0_custom_instruction_master_multi_status;
+  wire             cpu_0_custom_instruction_master_multi_writerc;
+  wire             cpu_0_custom_instruction_master_reset_n;
+  wire             cpu_0_custom_instruction_master_start_cpu_0_altera_nios_custom_instr_floating_point_inst_s1;
   wire    [ 24: 0] cpu_0_data_master_address;
   wire    [ 24: 0] cpu_0_data_master_address_to_slave;
   wire    [  3: 0] cpu_0_data_master_byteenable;
@@ -13509,24 +13329,19 @@ module nios_system (
   wire             cpu_0_instruction_master_granted_cpu_0_jtag_debug_module;
   wire             cpu_0_instruction_master_granted_nios_system_clock_0_in;
   wire             cpu_0_instruction_master_granted_nios_system_clock_3_in;
-  wire             cpu_0_instruction_master_granted_sram_0_avalon_sram_slave;
   wire             cpu_0_instruction_master_latency_counter;
   wire             cpu_0_instruction_master_qualified_request_cpu_0_jtag_debug_module;
   wire             cpu_0_instruction_master_qualified_request_nios_system_clock_0_in;
   wire             cpu_0_instruction_master_qualified_request_nios_system_clock_3_in;
-  wire             cpu_0_instruction_master_qualified_request_sram_0_avalon_sram_slave;
   wire             cpu_0_instruction_master_read;
   wire             cpu_0_instruction_master_read_data_valid_cpu_0_jtag_debug_module;
   wire             cpu_0_instruction_master_read_data_valid_nios_system_clock_0_in;
   wire             cpu_0_instruction_master_read_data_valid_nios_system_clock_3_in;
-  wire             cpu_0_instruction_master_read_data_valid_sram_0_avalon_sram_slave;
-  wire             cpu_0_instruction_master_read_data_valid_sram_0_avalon_sram_slave_shift_register;
   wire    [ 31: 0] cpu_0_instruction_master_readdata;
   wire             cpu_0_instruction_master_readdatavalid;
   wire             cpu_0_instruction_master_requests_cpu_0_jtag_debug_module;
   wire             cpu_0_instruction_master_requests_nios_system_clock_0_in;
   wire             cpu_0_instruction_master_requests_nios_system_clock_3_in;
-  wire             cpu_0_instruction_master_requests_sram_0_avalon_sram_slave;
   wire             cpu_0_instruction_master_waitrequest;
   wire    [  8: 0] cpu_0_jtag_debug_module_address;
   wire             cpu_0_jtag_debug_module_begintransfer;
@@ -13535,7 +13350,6 @@ module nios_system (
   wire             cpu_0_jtag_debug_module_debugaccess;
   wire    [ 31: 0] cpu_0_jtag_debug_module_readdata;
   wire    [ 31: 0] cpu_0_jtag_debug_module_readdata_from_sa;
-  wire             cpu_0_jtag_debug_module_reset_n;
   wire             cpu_0_jtag_debug_module_resetrequest;
   wire             cpu_0_jtag_debug_module_resetrequest_from_sa;
   wire             cpu_0_jtag_debug_module_write;
@@ -14237,41 +14051,53 @@ module nios_system (
 
   cpu_0_jtag_debug_module_arbitrator the_cpu_0_jtag_debug_module
     (
-      .clk                                                                              (sys_clk),
-      .cpu_0_data_master_address_to_slave                                               (cpu_0_data_master_address_to_slave),
-      .cpu_0_data_master_byteenable                                                     (cpu_0_data_master_byteenable),
-      .cpu_0_data_master_debugaccess                                                    (cpu_0_data_master_debugaccess),
-      .cpu_0_data_master_granted_cpu_0_jtag_debug_module                                (cpu_0_data_master_granted_cpu_0_jtag_debug_module),
-      .cpu_0_data_master_latency_counter                                                (cpu_0_data_master_latency_counter),
-      .cpu_0_data_master_qualified_request_cpu_0_jtag_debug_module                      (cpu_0_data_master_qualified_request_cpu_0_jtag_debug_module),
-      .cpu_0_data_master_read                                                           (cpu_0_data_master_read),
-      .cpu_0_data_master_read_data_valid_cpu_0_jtag_debug_module                        (cpu_0_data_master_read_data_valid_cpu_0_jtag_debug_module),
-      .cpu_0_data_master_read_data_valid_sram_0_avalon_sram_slave_shift_register        (cpu_0_data_master_read_data_valid_sram_0_avalon_sram_slave_shift_register),
-      .cpu_0_data_master_requests_cpu_0_jtag_debug_module                               (cpu_0_data_master_requests_cpu_0_jtag_debug_module),
-      .cpu_0_data_master_write                                                          (cpu_0_data_master_write),
-      .cpu_0_data_master_writedata                                                      (cpu_0_data_master_writedata),
-      .cpu_0_instruction_master_address_to_slave                                        (cpu_0_instruction_master_address_to_slave),
-      .cpu_0_instruction_master_granted_cpu_0_jtag_debug_module                         (cpu_0_instruction_master_granted_cpu_0_jtag_debug_module),
-      .cpu_0_instruction_master_latency_counter                                         (cpu_0_instruction_master_latency_counter),
-      .cpu_0_instruction_master_qualified_request_cpu_0_jtag_debug_module               (cpu_0_instruction_master_qualified_request_cpu_0_jtag_debug_module),
-      .cpu_0_instruction_master_read                                                    (cpu_0_instruction_master_read),
-      .cpu_0_instruction_master_read_data_valid_cpu_0_jtag_debug_module                 (cpu_0_instruction_master_read_data_valid_cpu_0_jtag_debug_module),
-      .cpu_0_instruction_master_read_data_valid_sram_0_avalon_sram_slave_shift_register (cpu_0_instruction_master_read_data_valid_sram_0_avalon_sram_slave_shift_register),
-      .cpu_0_instruction_master_requests_cpu_0_jtag_debug_module                        (cpu_0_instruction_master_requests_cpu_0_jtag_debug_module),
-      .cpu_0_jtag_debug_module_address                                                  (cpu_0_jtag_debug_module_address),
-      .cpu_0_jtag_debug_module_begintransfer                                            (cpu_0_jtag_debug_module_begintransfer),
-      .cpu_0_jtag_debug_module_byteenable                                               (cpu_0_jtag_debug_module_byteenable),
-      .cpu_0_jtag_debug_module_chipselect                                               (cpu_0_jtag_debug_module_chipselect),
-      .cpu_0_jtag_debug_module_debugaccess                                              (cpu_0_jtag_debug_module_debugaccess),
-      .cpu_0_jtag_debug_module_readdata                                                 (cpu_0_jtag_debug_module_readdata),
-      .cpu_0_jtag_debug_module_readdata_from_sa                                         (cpu_0_jtag_debug_module_readdata_from_sa),
-      .cpu_0_jtag_debug_module_reset_n                                                  (cpu_0_jtag_debug_module_reset_n),
-      .cpu_0_jtag_debug_module_resetrequest                                             (cpu_0_jtag_debug_module_resetrequest),
-      .cpu_0_jtag_debug_module_resetrequest_from_sa                                     (cpu_0_jtag_debug_module_resetrequest_from_sa),
-      .cpu_0_jtag_debug_module_write                                                    (cpu_0_jtag_debug_module_write),
-      .cpu_0_jtag_debug_module_writedata                                                (cpu_0_jtag_debug_module_writedata),
-      .d1_cpu_0_jtag_debug_module_end_xfer                                              (d1_cpu_0_jtag_debug_module_end_xfer),
-      .reset_n                                                                          (sys_clk_reset_n)
+      .clk                                                                       (sys_clk),
+      .cpu_0_data_master_address_to_slave                                        (cpu_0_data_master_address_to_slave),
+      .cpu_0_data_master_byteenable                                              (cpu_0_data_master_byteenable),
+      .cpu_0_data_master_debugaccess                                             (cpu_0_data_master_debugaccess),
+      .cpu_0_data_master_granted_cpu_0_jtag_debug_module                         (cpu_0_data_master_granted_cpu_0_jtag_debug_module),
+      .cpu_0_data_master_latency_counter                                         (cpu_0_data_master_latency_counter),
+      .cpu_0_data_master_qualified_request_cpu_0_jtag_debug_module               (cpu_0_data_master_qualified_request_cpu_0_jtag_debug_module),
+      .cpu_0_data_master_read                                                    (cpu_0_data_master_read),
+      .cpu_0_data_master_read_data_valid_cpu_0_jtag_debug_module                 (cpu_0_data_master_read_data_valid_cpu_0_jtag_debug_module),
+      .cpu_0_data_master_read_data_valid_sram_0_avalon_sram_slave_shift_register (cpu_0_data_master_read_data_valid_sram_0_avalon_sram_slave_shift_register),
+      .cpu_0_data_master_requests_cpu_0_jtag_debug_module                        (cpu_0_data_master_requests_cpu_0_jtag_debug_module),
+      .cpu_0_data_master_write                                                   (cpu_0_data_master_write),
+      .cpu_0_data_master_writedata                                               (cpu_0_data_master_writedata),
+      .cpu_0_instruction_master_address_to_slave                                 (cpu_0_instruction_master_address_to_slave),
+      .cpu_0_instruction_master_granted_cpu_0_jtag_debug_module                  (cpu_0_instruction_master_granted_cpu_0_jtag_debug_module),
+      .cpu_0_instruction_master_latency_counter                                  (cpu_0_instruction_master_latency_counter),
+      .cpu_0_instruction_master_qualified_request_cpu_0_jtag_debug_module        (cpu_0_instruction_master_qualified_request_cpu_0_jtag_debug_module),
+      .cpu_0_instruction_master_read                                             (cpu_0_instruction_master_read),
+      .cpu_0_instruction_master_read_data_valid_cpu_0_jtag_debug_module          (cpu_0_instruction_master_read_data_valid_cpu_0_jtag_debug_module),
+      .cpu_0_instruction_master_requests_cpu_0_jtag_debug_module                 (cpu_0_instruction_master_requests_cpu_0_jtag_debug_module),
+      .cpu_0_jtag_debug_module_address                                           (cpu_0_jtag_debug_module_address),
+      .cpu_0_jtag_debug_module_begintransfer                                     (cpu_0_jtag_debug_module_begintransfer),
+      .cpu_0_jtag_debug_module_byteenable                                        (cpu_0_jtag_debug_module_byteenable),
+      .cpu_0_jtag_debug_module_chipselect                                        (cpu_0_jtag_debug_module_chipselect),
+      .cpu_0_jtag_debug_module_debugaccess                                       (cpu_0_jtag_debug_module_debugaccess),
+      .cpu_0_jtag_debug_module_readdata                                          (cpu_0_jtag_debug_module_readdata),
+      .cpu_0_jtag_debug_module_readdata_from_sa                                  (cpu_0_jtag_debug_module_readdata_from_sa),
+      .cpu_0_jtag_debug_module_resetrequest                                      (cpu_0_jtag_debug_module_resetrequest),
+      .cpu_0_jtag_debug_module_resetrequest_from_sa                              (cpu_0_jtag_debug_module_resetrequest_from_sa),
+      .cpu_0_jtag_debug_module_write                                             (cpu_0_jtag_debug_module_write),
+      .cpu_0_jtag_debug_module_writedata                                         (cpu_0_jtag_debug_module_writedata),
+      .d1_cpu_0_jtag_debug_module_end_xfer                                       (d1_cpu_0_jtag_debug_module_end_xfer),
+      .reset_n                                                                   (sys_clk_reset_n)
+    );
+
+  cpu_0_custom_instruction_master_arbitrator the_cpu_0_custom_instruction_master
+    (
+      .clk                                                                                         (sys_clk),
+      .cpu_0_altera_nios_custom_instr_floating_point_inst_s1_done_from_sa                          (cpu_0_altera_nios_custom_instr_floating_point_inst_s1_done_from_sa),
+      .cpu_0_altera_nios_custom_instr_floating_point_inst_s1_result_from_sa                        (cpu_0_altera_nios_custom_instr_floating_point_inst_s1_result_from_sa),
+      .cpu_0_altera_nios_custom_instr_floating_point_inst_s1_select                                (cpu_0_altera_nios_custom_instr_floating_point_inst_s1_select),
+      .cpu_0_custom_instruction_master_multi_done                                                  (cpu_0_custom_instruction_master_multi_done),
+      .cpu_0_custom_instruction_master_multi_result                                                (cpu_0_custom_instruction_master_multi_result),
+      .cpu_0_custom_instruction_master_multi_start                                                 (cpu_0_custom_instruction_master_multi_start),
+      .cpu_0_custom_instruction_master_reset_n                                                     (cpu_0_custom_instruction_master_reset_n),
+      .cpu_0_custom_instruction_master_start_cpu_0_altera_nios_custom_instr_floating_point_inst_s1 (cpu_0_custom_instruction_master_start_cpu_0_altera_nios_custom_instr_floating_point_inst_s1),
+      .reset_n                                                                                     (sys_clk_reset_n)
     );
 
   cpu_0_data_master_arbitrator the_cpu_0_data_master
@@ -14435,47 +14261,58 @@ module nios_system (
 
   cpu_0_instruction_master_arbitrator the_cpu_0_instruction_master
     (
-      .clk                                                                              (sys_clk),
-      .cpu_0_instruction_master_address                                                 (cpu_0_instruction_master_address),
-      .cpu_0_instruction_master_address_to_slave                                        (cpu_0_instruction_master_address_to_slave),
-      .cpu_0_instruction_master_dbs_address                                             (cpu_0_instruction_master_dbs_address),
-      .cpu_0_instruction_master_granted_cpu_0_jtag_debug_module                         (cpu_0_instruction_master_granted_cpu_0_jtag_debug_module),
-      .cpu_0_instruction_master_granted_nios_system_clock_0_in                          (cpu_0_instruction_master_granted_nios_system_clock_0_in),
-      .cpu_0_instruction_master_granted_nios_system_clock_3_in                          (cpu_0_instruction_master_granted_nios_system_clock_3_in),
-      .cpu_0_instruction_master_granted_sram_0_avalon_sram_slave                        (cpu_0_instruction_master_granted_sram_0_avalon_sram_slave),
-      .cpu_0_instruction_master_latency_counter                                         (cpu_0_instruction_master_latency_counter),
-      .cpu_0_instruction_master_qualified_request_cpu_0_jtag_debug_module               (cpu_0_instruction_master_qualified_request_cpu_0_jtag_debug_module),
-      .cpu_0_instruction_master_qualified_request_nios_system_clock_0_in                (cpu_0_instruction_master_qualified_request_nios_system_clock_0_in),
-      .cpu_0_instruction_master_qualified_request_nios_system_clock_3_in                (cpu_0_instruction_master_qualified_request_nios_system_clock_3_in),
-      .cpu_0_instruction_master_qualified_request_sram_0_avalon_sram_slave              (cpu_0_instruction_master_qualified_request_sram_0_avalon_sram_slave),
-      .cpu_0_instruction_master_read                                                    (cpu_0_instruction_master_read),
-      .cpu_0_instruction_master_read_data_valid_cpu_0_jtag_debug_module                 (cpu_0_instruction_master_read_data_valid_cpu_0_jtag_debug_module),
-      .cpu_0_instruction_master_read_data_valid_nios_system_clock_0_in                  (cpu_0_instruction_master_read_data_valid_nios_system_clock_0_in),
-      .cpu_0_instruction_master_read_data_valid_nios_system_clock_3_in                  (cpu_0_instruction_master_read_data_valid_nios_system_clock_3_in),
-      .cpu_0_instruction_master_read_data_valid_sram_0_avalon_sram_slave                (cpu_0_instruction_master_read_data_valid_sram_0_avalon_sram_slave),
-      .cpu_0_instruction_master_read_data_valid_sram_0_avalon_sram_slave_shift_register (cpu_0_instruction_master_read_data_valid_sram_0_avalon_sram_slave_shift_register),
-      .cpu_0_instruction_master_readdata                                                (cpu_0_instruction_master_readdata),
-      .cpu_0_instruction_master_readdatavalid                                           (cpu_0_instruction_master_readdatavalid),
-      .cpu_0_instruction_master_requests_cpu_0_jtag_debug_module                        (cpu_0_instruction_master_requests_cpu_0_jtag_debug_module),
-      .cpu_0_instruction_master_requests_nios_system_clock_0_in                         (cpu_0_instruction_master_requests_nios_system_clock_0_in),
-      .cpu_0_instruction_master_requests_nios_system_clock_3_in                         (cpu_0_instruction_master_requests_nios_system_clock_3_in),
-      .cpu_0_instruction_master_requests_sram_0_avalon_sram_slave                       (cpu_0_instruction_master_requests_sram_0_avalon_sram_slave),
-      .cpu_0_instruction_master_waitrequest                                             (cpu_0_instruction_master_waitrequest),
-      .cpu_0_jtag_debug_module_readdata_from_sa                                         (cpu_0_jtag_debug_module_readdata_from_sa),
-      .d1_cpu_0_jtag_debug_module_end_xfer                                              (d1_cpu_0_jtag_debug_module_end_xfer),
-      .d1_nios_system_clock_0_in_end_xfer                                               (d1_nios_system_clock_0_in_end_xfer),
-      .d1_nios_system_clock_3_in_end_xfer                                               (d1_nios_system_clock_3_in_end_xfer),
-      .d1_sram_0_avalon_sram_slave_end_xfer                                             (d1_sram_0_avalon_sram_slave_end_xfer),
-      .nios_system_clock_0_in_readdata_from_sa                                          (nios_system_clock_0_in_readdata_from_sa),
-      .nios_system_clock_0_in_waitrequest_from_sa                                       (nios_system_clock_0_in_waitrequest_from_sa),
-      .nios_system_clock_3_in_readdata_from_sa                                          (nios_system_clock_3_in_readdata_from_sa),
-      .nios_system_clock_3_in_waitrequest_from_sa                                       (nios_system_clock_3_in_waitrequest_from_sa),
-      .reset_n                                                                          (sys_clk_reset_n),
-      .sram_0_avalon_sram_slave_readdata_from_sa                                        (sram_0_avalon_sram_slave_readdata_from_sa)
+      .clk                                                                (sys_clk),
+      .cpu_0_instruction_master_address                                   (cpu_0_instruction_master_address),
+      .cpu_0_instruction_master_address_to_slave                          (cpu_0_instruction_master_address_to_slave),
+      .cpu_0_instruction_master_dbs_address                               (cpu_0_instruction_master_dbs_address),
+      .cpu_0_instruction_master_granted_cpu_0_jtag_debug_module           (cpu_0_instruction_master_granted_cpu_0_jtag_debug_module),
+      .cpu_0_instruction_master_granted_nios_system_clock_0_in            (cpu_0_instruction_master_granted_nios_system_clock_0_in),
+      .cpu_0_instruction_master_granted_nios_system_clock_3_in            (cpu_0_instruction_master_granted_nios_system_clock_3_in),
+      .cpu_0_instruction_master_latency_counter                           (cpu_0_instruction_master_latency_counter),
+      .cpu_0_instruction_master_qualified_request_cpu_0_jtag_debug_module (cpu_0_instruction_master_qualified_request_cpu_0_jtag_debug_module),
+      .cpu_0_instruction_master_qualified_request_nios_system_clock_0_in  (cpu_0_instruction_master_qualified_request_nios_system_clock_0_in),
+      .cpu_0_instruction_master_qualified_request_nios_system_clock_3_in  (cpu_0_instruction_master_qualified_request_nios_system_clock_3_in),
+      .cpu_0_instruction_master_read                                      (cpu_0_instruction_master_read),
+      .cpu_0_instruction_master_read_data_valid_cpu_0_jtag_debug_module   (cpu_0_instruction_master_read_data_valid_cpu_0_jtag_debug_module),
+      .cpu_0_instruction_master_read_data_valid_nios_system_clock_0_in    (cpu_0_instruction_master_read_data_valid_nios_system_clock_0_in),
+      .cpu_0_instruction_master_read_data_valid_nios_system_clock_3_in    (cpu_0_instruction_master_read_data_valid_nios_system_clock_3_in),
+      .cpu_0_instruction_master_readdata                                  (cpu_0_instruction_master_readdata),
+      .cpu_0_instruction_master_readdatavalid                             (cpu_0_instruction_master_readdatavalid),
+      .cpu_0_instruction_master_requests_cpu_0_jtag_debug_module          (cpu_0_instruction_master_requests_cpu_0_jtag_debug_module),
+      .cpu_0_instruction_master_requests_nios_system_clock_0_in           (cpu_0_instruction_master_requests_nios_system_clock_0_in),
+      .cpu_0_instruction_master_requests_nios_system_clock_3_in           (cpu_0_instruction_master_requests_nios_system_clock_3_in),
+      .cpu_0_instruction_master_waitrequest                               (cpu_0_instruction_master_waitrequest),
+      .cpu_0_jtag_debug_module_readdata_from_sa                           (cpu_0_jtag_debug_module_readdata_from_sa),
+      .d1_cpu_0_jtag_debug_module_end_xfer                                (d1_cpu_0_jtag_debug_module_end_xfer),
+      .d1_nios_system_clock_0_in_end_xfer                                 (d1_nios_system_clock_0_in_end_xfer),
+      .d1_nios_system_clock_3_in_end_xfer                                 (d1_nios_system_clock_3_in_end_xfer),
+      .nios_system_clock_0_in_readdata_from_sa                            (nios_system_clock_0_in_readdata_from_sa),
+      .nios_system_clock_0_in_waitrequest_from_sa                         (nios_system_clock_0_in_waitrequest_from_sa),
+      .nios_system_clock_3_in_readdata_from_sa                            (nios_system_clock_3_in_readdata_from_sa),
+      .nios_system_clock_3_in_waitrequest_from_sa                         (nios_system_clock_3_in_waitrequest_from_sa),
+      .reset_n                                                            (sys_clk_reset_n)
     );
 
   cpu_0 the_cpu_0
     (
+      .A_ci_multi_a                          (cpu_0_custom_instruction_master_multi_a),
+      .A_ci_multi_b                          (cpu_0_custom_instruction_master_multi_b),
+      .A_ci_multi_c                          (cpu_0_custom_instruction_master_multi_c),
+      .A_ci_multi_clk_en                     (cpu_0_custom_instruction_master_multi_clk_en),
+      .A_ci_multi_clock                      (cpu_0_custom_instruction_master_multi_clk),
+      .A_ci_multi_dataa                      (cpu_0_custom_instruction_master_multi_dataa),
+      .A_ci_multi_datab                      (cpu_0_custom_instruction_master_multi_datab),
+      .A_ci_multi_done                       (cpu_0_custom_instruction_master_multi_done),
+      .A_ci_multi_estatus                    (cpu_0_custom_instruction_master_multi_estatus),
+      .A_ci_multi_ipending                   (cpu_0_custom_instruction_master_multi_ipending),
+      .A_ci_multi_n                          (cpu_0_custom_instruction_master_multi_n),
+      .A_ci_multi_readra                     (cpu_0_custom_instruction_master_multi_readra),
+      .A_ci_multi_readrb                     (cpu_0_custom_instruction_master_multi_readrb),
+      .A_ci_multi_reset                      (cpu_0_custom_instruction_master_multi_reset),
+      .A_ci_multi_result                     (cpu_0_custom_instruction_master_multi_result),
+      .A_ci_multi_start                      (cpu_0_custom_instruction_master_multi_start),
+      .A_ci_multi_status                     (cpu_0_custom_instruction_master_multi_status),
+      .A_ci_multi_writerc                    (cpu_0_custom_instruction_master_multi_writerc),
       .clk                                   (sys_clk),
       .d_address                             (cpu_0_data_master_address),
       .d_byteenable                          (cpu_0_data_master_byteenable),
@@ -14501,7 +14338,42 @@ module nios_system (
       .jtag_debug_module_select              (cpu_0_jtag_debug_module_chipselect),
       .jtag_debug_module_write               (cpu_0_jtag_debug_module_write),
       .jtag_debug_module_writedata           (cpu_0_jtag_debug_module_writedata),
-      .reset_n                               (cpu_0_jtag_debug_module_reset_n)
+      .reset_n                               (cpu_0_custom_instruction_master_reset_n)
+    );
+
+  cpu_0_altera_nios_custom_instr_floating_point_inst_s1_arbitrator the_cpu_0_altera_nios_custom_instr_floating_point_inst_s1
+    (
+      .clk                                                                                         (sys_clk),
+      .cpu_0_altera_nios_custom_instr_floating_point_inst_s1_clk_en                                (cpu_0_altera_nios_custom_instr_floating_point_inst_s1_clk_en),
+      .cpu_0_altera_nios_custom_instr_floating_point_inst_s1_dataa                                 (cpu_0_altera_nios_custom_instr_floating_point_inst_s1_dataa),
+      .cpu_0_altera_nios_custom_instr_floating_point_inst_s1_datab                                 (cpu_0_altera_nios_custom_instr_floating_point_inst_s1_datab),
+      .cpu_0_altera_nios_custom_instr_floating_point_inst_s1_done                                  (cpu_0_altera_nios_custom_instr_floating_point_inst_s1_done),
+      .cpu_0_altera_nios_custom_instr_floating_point_inst_s1_done_from_sa                          (cpu_0_altera_nios_custom_instr_floating_point_inst_s1_done_from_sa),
+      .cpu_0_altera_nios_custom_instr_floating_point_inst_s1_n                                     (cpu_0_altera_nios_custom_instr_floating_point_inst_s1_n),
+      .cpu_0_altera_nios_custom_instr_floating_point_inst_s1_reset                                 (cpu_0_altera_nios_custom_instr_floating_point_inst_s1_reset),
+      .cpu_0_altera_nios_custom_instr_floating_point_inst_s1_result                                (cpu_0_altera_nios_custom_instr_floating_point_inst_s1_result),
+      .cpu_0_altera_nios_custom_instr_floating_point_inst_s1_result_from_sa                        (cpu_0_altera_nios_custom_instr_floating_point_inst_s1_result_from_sa),
+      .cpu_0_altera_nios_custom_instr_floating_point_inst_s1_select                                (cpu_0_altera_nios_custom_instr_floating_point_inst_s1_select),
+      .cpu_0_altera_nios_custom_instr_floating_point_inst_s1_start                                 (cpu_0_altera_nios_custom_instr_floating_point_inst_s1_start),
+      .cpu_0_custom_instruction_master_multi_clk_en                                                (cpu_0_custom_instruction_master_multi_clk_en),
+      .cpu_0_custom_instruction_master_multi_dataa                                                 (cpu_0_custom_instruction_master_multi_dataa),
+      .cpu_0_custom_instruction_master_multi_datab                                                 (cpu_0_custom_instruction_master_multi_datab),
+      .cpu_0_custom_instruction_master_multi_n                                                     (cpu_0_custom_instruction_master_multi_n),
+      .cpu_0_custom_instruction_master_start_cpu_0_altera_nios_custom_instr_floating_point_inst_s1 (cpu_0_custom_instruction_master_start_cpu_0_altera_nios_custom_instr_floating_point_inst_s1),
+      .reset_n                                                                                     (sys_clk_reset_n)
+    );
+
+  cpu_0_altera_nios_custom_instr_floating_point_inst the_cpu_0_altera_nios_custom_instr_floating_point_inst
+    (
+      .clk    (sys_clk),
+      .clk_en (cpu_0_altera_nios_custom_instr_floating_point_inst_s1_clk_en),
+      .dataa  (cpu_0_altera_nios_custom_instr_floating_point_inst_s1_dataa),
+      .datab  (cpu_0_altera_nios_custom_instr_floating_point_inst_s1_datab),
+      .done   (cpu_0_altera_nios_custom_instr_floating_point_inst_s1_done),
+      .n      (cpu_0_altera_nios_custom_instr_floating_point_inst_s1_n),
+      .reset  (cpu_0_altera_nios_custom_instr_floating_point_inst_s1_reset),
+      .result (cpu_0_altera_nios_custom_instr_floating_point_inst_s1_result),
+      .start  (cpu_0_altera_nios_custom_instr_floating_point_inst_s1_start)
     );
 
   jtag_uart_0_avalon_jtag_slave_arbitrator the_jtag_uart_0_avalon_jtag_slave
@@ -14670,30 +14542,29 @@ module nios_system (
 
   nios_system_clock_0_in_arbitrator the_nios_system_clock_0_in
     (
-      .clk                                                                              (sys_clk),
-      .cpu_0_instruction_master_address_to_slave                                        (cpu_0_instruction_master_address_to_slave),
-      .cpu_0_instruction_master_dbs_address                                             (cpu_0_instruction_master_dbs_address),
-      .cpu_0_instruction_master_granted_nios_system_clock_0_in                          (cpu_0_instruction_master_granted_nios_system_clock_0_in),
-      .cpu_0_instruction_master_latency_counter                                         (cpu_0_instruction_master_latency_counter),
-      .cpu_0_instruction_master_qualified_request_nios_system_clock_0_in                (cpu_0_instruction_master_qualified_request_nios_system_clock_0_in),
-      .cpu_0_instruction_master_read                                                    (cpu_0_instruction_master_read),
-      .cpu_0_instruction_master_read_data_valid_nios_system_clock_0_in                  (cpu_0_instruction_master_read_data_valid_nios_system_clock_0_in),
-      .cpu_0_instruction_master_read_data_valid_sram_0_avalon_sram_slave_shift_register (cpu_0_instruction_master_read_data_valid_sram_0_avalon_sram_slave_shift_register),
-      .cpu_0_instruction_master_requests_nios_system_clock_0_in                         (cpu_0_instruction_master_requests_nios_system_clock_0_in),
-      .d1_nios_system_clock_0_in_end_xfer                                               (d1_nios_system_clock_0_in_end_xfer),
-      .nios_system_clock_0_in_address                                                   (nios_system_clock_0_in_address),
-      .nios_system_clock_0_in_byteenable                                                (nios_system_clock_0_in_byteenable),
-      .nios_system_clock_0_in_endofpacket                                               (nios_system_clock_0_in_endofpacket),
-      .nios_system_clock_0_in_endofpacket_from_sa                                       (nios_system_clock_0_in_endofpacket_from_sa),
-      .nios_system_clock_0_in_nativeaddress                                             (nios_system_clock_0_in_nativeaddress),
-      .nios_system_clock_0_in_read                                                      (nios_system_clock_0_in_read),
-      .nios_system_clock_0_in_readdata                                                  (nios_system_clock_0_in_readdata),
-      .nios_system_clock_0_in_readdata_from_sa                                          (nios_system_clock_0_in_readdata_from_sa),
-      .nios_system_clock_0_in_reset_n                                                   (nios_system_clock_0_in_reset_n),
-      .nios_system_clock_0_in_waitrequest                                               (nios_system_clock_0_in_waitrequest),
-      .nios_system_clock_0_in_waitrequest_from_sa                                       (nios_system_clock_0_in_waitrequest_from_sa),
-      .nios_system_clock_0_in_write                                                     (nios_system_clock_0_in_write),
-      .reset_n                                                                          (sys_clk_reset_n)
+      .clk                                                               (sys_clk),
+      .cpu_0_instruction_master_address_to_slave                         (cpu_0_instruction_master_address_to_slave),
+      .cpu_0_instruction_master_dbs_address                              (cpu_0_instruction_master_dbs_address),
+      .cpu_0_instruction_master_granted_nios_system_clock_0_in           (cpu_0_instruction_master_granted_nios_system_clock_0_in),
+      .cpu_0_instruction_master_latency_counter                          (cpu_0_instruction_master_latency_counter),
+      .cpu_0_instruction_master_qualified_request_nios_system_clock_0_in (cpu_0_instruction_master_qualified_request_nios_system_clock_0_in),
+      .cpu_0_instruction_master_read                                     (cpu_0_instruction_master_read),
+      .cpu_0_instruction_master_read_data_valid_nios_system_clock_0_in   (cpu_0_instruction_master_read_data_valid_nios_system_clock_0_in),
+      .cpu_0_instruction_master_requests_nios_system_clock_0_in          (cpu_0_instruction_master_requests_nios_system_clock_0_in),
+      .d1_nios_system_clock_0_in_end_xfer                                (d1_nios_system_clock_0_in_end_xfer),
+      .nios_system_clock_0_in_address                                    (nios_system_clock_0_in_address),
+      .nios_system_clock_0_in_byteenable                                 (nios_system_clock_0_in_byteenable),
+      .nios_system_clock_0_in_endofpacket                                (nios_system_clock_0_in_endofpacket),
+      .nios_system_clock_0_in_endofpacket_from_sa                        (nios_system_clock_0_in_endofpacket_from_sa),
+      .nios_system_clock_0_in_nativeaddress                              (nios_system_clock_0_in_nativeaddress),
+      .nios_system_clock_0_in_read                                       (nios_system_clock_0_in_read),
+      .nios_system_clock_0_in_readdata                                   (nios_system_clock_0_in_readdata),
+      .nios_system_clock_0_in_readdata_from_sa                           (nios_system_clock_0_in_readdata_from_sa),
+      .nios_system_clock_0_in_reset_n                                    (nios_system_clock_0_in_reset_n),
+      .nios_system_clock_0_in_waitrequest                                (nios_system_clock_0_in_waitrequest),
+      .nios_system_clock_0_in_waitrequest_from_sa                        (nios_system_clock_0_in_waitrequest_from_sa),
+      .nios_system_clock_0_in_write                                      (nios_system_clock_0_in_write),
+      .reset_n                                                           (sys_clk_reset_n)
     );
 
   nios_system_clock_0_out_arbitrator the_nios_system_clock_0_out
@@ -14905,29 +14776,28 @@ module nios_system (
 
   nios_system_clock_3_in_arbitrator the_nios_system_clock_3_in
     (
-      .clk                                                                              (sys_clk),
-      .cpu_0_instruction_master_address_to_slave                                        (cpu_0_instruction_master_address_to_slave),
-      .cpu_0_instruction_master_dbs_address                                             (cpu_0_instruction_master_dbs_address),
-      .cpu_0_instruction_master_granted_nios_system_clock_3_in                          (cpu_0_instruction_master_granted_nios_system_clock_3_in),
-      .cpu_0_instruction_master_latency_counter                                         (cpu_0_instruction_master_latency_counter),
-      .cpu_0_instruction_master_qualified_request_nios_system_clock_3_in                (cpu_0_instruction_master_qualified_request_nios_system_clock_3_in),
-      .cpu_0_instruction_master_read                                                    (cpu_0_instruction_master_read),
-      .cpu_0_instruction_master_read_data_valid_nios_system_clock_3_in                  (cpu_0_instruction_master_read_data_valid_nios_system_clock_3_in),
-      .cpu_0_instruction_master_read_data_valid_sram_0_avalon_sram_slave_shift_register (cpu_0_instruction_master_read_data_valid_sram_0_avalon_sram_slave_shift_register),
-      .cpu_0_instruction_master_requests_nios_system_clock_3_in                         (cpu_0_instruction_master_requests_nios_system_clock_3_in),
-      .d1_nios_system_clock_3_in_end_xfer                                               (d1_nios_system_clock_3_in_end_xfer),
-      .nios_system_clock_3_in_address                                                   (nios_system_clock_3_in_address),
-      .nios_system_clock_3_in_endofpacket                                               (nios_system_clock_3_in_endofpacket),
-      .nios_system_clock_3_in_endofpacket_from_sa                                       (nios_system_clock_3_in_endofpacket_from_sa),
-      .nios_system_clock_3_in_nativeaddress                                             (nios_system_clock_3_in_nativeaddress),
-      .nios_system_clock_3_in_read                                                      (nios_system_clock_3_in_read),
-      .nios_system_clock_3_in_readdata                                                  (nios_system_clock_3_in_readdata),
-      .nios_system_clock_3_in_readdata_from_sa                                          (nios_system_clock_3_in_readdata_from_sa),
-      .nios_system_clock_3_in_reset_n                                                   (nios_system_clock_3_in_reset_n),
-      .nios_system_clock_3_in_waitrequest                                               (nios_system_clock_3_in_waitrequest),
-      .nios_system_clock_3_in_waitrequest_from_sa                                       (nios_system_clock_3_in_waitrequest_from_sa),
-      .nios_system_clock_3_in_write                                                     (nios_system_clock_3_in_write),
-      .reset_n                                                                          (sys_clk_reset_n)
+      .clk                                                               (sys_clk),
+      .cpu_0_instruction_master_address_to_slave                         (cpu_0_instruction_master_address_to_slave),
+      .cpu_0_instruction_master_dbs_address                              (cpu_0_instruction_master_dbs_address),
+      .cpu_0_instruction_master_granted_nios_system_clock_3_in           (cpu_0_instruction_master_granted_nios_system_clock_3_in),
+      .cpu_0_instruction_master_latency_counter                          (cpu_0_instruction_master_latency_counter),
+      .cpu_0_instruction_master_qualified_request_nios_system_clock_3_in (cpu_0_instruction_master_qualified_request_nios_system_clock_3_in),
+      .cpu_0_instruction_master_read                                     (cpu_0_instruction_master_read),
+      .cpu_0_instruction_master_read_data_valid_nios_system_clock_3_in   (cpu_0_instruction_master_read_data_valid_nios_system_clock_3_in),
+      .cpu_0_instruction_master_requests_nios_system_clock_3_in          (cpu_0_instruction_master_requests_nios_system_clock_3_in),
+      .d1_nios_system_clock_3_in_end_xfer                                (d1_nios_system_clock_3_in_end_xfer),
+      .nios_system_clock_3_in_address                                    (nios_system_clock_3_in_address),
+      .nios_system_clock_3_in_endofpacket                                (nios_system_clock_3_in_endofpacket),
+      .nios_system_clock_3_in_endofpacket_from_sa                        (nios_system_clock_3_in_endofpacket_from_sa),
+      .nios_system_clock_3_in_nativeaddress                              (nios_system_clock_3_in_nativeaddress),
+      .nios_system_clock_3_in_read                                       (nios_system_clock_3_in_read),
+      .nios_system_clock_3_in_readdata                                   (nios_system_clock_3_in_readdata),
+      .nios_system_clock_3_in_readdata_from_sa                           (nios_system_clock_3_in_readdata_from_sa),
+      .nios_system_clock_3_in_reset_n                                    (nios_system_clock_3_in_reset_n),
+      .nios_system_clock_3_in_waitrequest                                (nios_system_clock_3_in_waitrequest),
+      .nios_system_clock_3_in_waitrequest_from_sa                        (nios_system_clock_3_in_waitrequest_from_sa),
+      .nios_system_clock_3_in_write                                      (nios_system_clock_3_in_write),
+      .reset_n                                                           (sys_clk_reset_n)
     );
 
   nios_system_clock_3_out_arbitrator the_nios_system_clock_3_out
@@ -15131,15 +15001,6 @@ module nios_system (
       .cpu_0_data_master_read_data_valid_sram_0_avalon_sram_slave_shift_register                                (cpu_0_data_master_read_data_valid_sram_0_avalon_sram_slave_shift_register),
       .cpu_0_data_master_requests_sram_0_avalon_sram_slave                                                      (cpu_0_data_master_requests_sram_0_avalon_sram_slave),
       .cpu_0_data_master_write                                                                                  (cpu_0_data_master_write),
-      .cpu_0_instruction_master_address_to_slave                                                                (cpu_0_instruction_master_address_to_slave),
-      .cpu_0_instruction_master_dbs_address                                                                     (cpu_0_instruction_master_dbs_address),
-      .cpu_0_instruction_master_granted_sram_0_avalon_sram_slave                                                (cpu_0_instruction_master_granted_sram_0_avalon_sram_slave),
-      .cpu_0_instruction_master_latency_counter                                                                 (cpu_0_instruction_master_latency_counter),
-      .cpu_0_instruction_master_qualified_request_sram_0_avalon_sram_slave                                      (cpu_0_instruction_master_qualified_request_sram_0_avalon_sram_slave),
-      .cpu_0_instruction_master_read                                                                            (cpu_0_instruction_master_read),
-      .cpu_0_instruction_master_read_data_valid_sram_0_avalon_sram_slave                                        (cpu_0_instruction_master_read_data_valid_sram_0_avalon_sram_slave),
-      .cpu_0_instruction_master_read_data_valid_sram_0_avalon_sram_slave_shift_register                         (cpu_0_instruction_master_read_data_valid_sram_0_avalon_sram_slave_shift_register),
-      .cpu_0_instruction_master_requests_sram_0_avalon_sram_slave                                               (cpu_0_instruction_master_requests_sram_0_avalon_sram_slave),
       .d1_sram_0_avalon_sram_slave_end_xfer                                                                     (d1_sram_0_avalon_sram_slave_end_xfer),
       .reset_n                                                                                                  (sys_clk_reset_n),
       .sram_0_avalon_sram_slave_address                                                                         (sram_0_avalon_sram_slave_address),
@@ -15903,6 +15764,10 @@ endmodule
 `include "video_vga_controller_0.v"
 `include "clocks_0.v"
 `include "video_alpha_blender_0.v"
+`include "/usr/local/3rdparty/altera/quartus12/ip/altera/nios2_ip/altera_nios_custom_instr_floating_point_qsys/fpoint_wrapper.v"
+`include "/usr/local/3rdparty/altera/quartus12/ip/altera/nios2_ip/altera_nios_custom_instr_floating_point_qsys/fpoint_qsys.v"
+`include "/usr/local/3rdparty/altera/quartus12/ip/altera/nios2_ip/altera_nios_custom_instr_floating_point_qsys/fpoint_hw_qsys.v"
+`include "cpu_0_altera_nios_custom_instr_floating_point_inst.v"
 `include "video_dual_clock_buffer_0.v"
 `include "video_pixel_buffer_dma_0.v"
 `include "leds.v"
@@ -15960,6 +15825,17 @@ module test_bench
   wire    [ 21: 0] address_to_the_cfi_flash_0;
   wire             clk;
   reg              clk_0;
+  wire    [  4: 0] cpu_0_custom_instruction_master_multi_a;
+  wire    [  4: 0] cpu_0_custom_instruction_master_multi_b;
+  wire    [  4: 0] cpu_0_custom_instruction_master_multi_c;
+  wire             cpu_0_custom_instruction_master_multi_clk;
+  wire             cpu_0_custom_instruction_master_multi_estatus;
+  wire    [ 31: 0] cpu_0_custom_instruction_master_multi_ipending;
+  wire             cpu_0_custom_instruction_master_multi_readra;
+  wire             cpu_0_custom_instruction_master_multi_readrb;
+  wire             cpu_0_custom_instruction_master_multi_reset;
+  wire             cpu_0_custom_instruction_master_multi_status;
+  wire             cpu_0_custom_instruction_master_multi_writerc;
   wire    [  7: 0] data_to_and_from_the_cfi_flash_0;
   wire    [  2: 0] in_port_to_the_keys;
   wire             jtag_uart_0_avalon_jtag_slave_dataavailable_from_sa;
