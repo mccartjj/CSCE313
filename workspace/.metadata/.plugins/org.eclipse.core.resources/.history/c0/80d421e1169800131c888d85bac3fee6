@@ -1,0 +1,37 @@
+/*
+ * VideoFunctions.h
+ *
+ *  Created on: Feb 6, 2014
+ *      Author: John McCarthy and Silas Rubinson, if he feels like it.
+ */
+
+#ifndef VIDEOFUNCTIONS_H_
+#define VIDEOFUNCTIONS_H_
+
+#include "system.h"
+#include "alt_types.h"
+#include "altera_up_avalon_video_pixel_buffer_dma.h"
+#include <stdio.h>
+
+	void setPixel(int row, int col, int color, int data);
+	alt_u8 getPixel(int row, int col, int color);
+	void setUpImage(void);
+	void rotateImage(float direction, float angle);
+	void scaleImage(float scalingFactor);
+	void printCharToScreen(int row, int col, char *input);
+	void clearScreen(void);
+	void displayImage();
+
+#define colSize 240
+#define rowSize 320
+#define dimension 3
+#define red 0
+#define green 1
+#define blue 2
+
+	FILE *myFile;
+	alt_u8 *myImage;
+	alt_up_pixel_buffer_dma_dev *myPixelBuffer;
+
+
+#endif /* VIDEOFUNCTIONS_H_ */

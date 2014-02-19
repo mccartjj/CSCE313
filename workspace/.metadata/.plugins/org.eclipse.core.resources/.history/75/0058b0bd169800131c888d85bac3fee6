@@ -1,0 +1,45 @@
+/*
+ * VideoFunctions.c
+ *
+ *  Created on: Feb 10, 2014
+ *      Author: John McCarthy and Silas Rubinson, I suppose.
+ */
+
+#include <altera_up_avalon_video_character_buffer_with_dma.h> //to write chars to video
+#include <altera_up_avalon_video_pixel_buffer_dma.h> //to swap front and back buffer
+#include <math.h>
+#include <stdlib.h>
+#include "VideoFunctions.h"
+#include "alt_types.h"
+#include "system.h"
+
+	extern FILE *myFile;
+	extern alt_u8 *myImage;
+	extern alt_u8 *changedImage;
+	extern alt_up_pixel_buffer_dma_dev *myPixelBuffer;
+
+void setUpImage(void){
+
+	myFile = fopen("myFileSystem/myfile.dat","rb");
+	if(myFile == NULL){
+		perror("error opening datafile");
+	}
+	myImage = (alt_u8 *)malloc(rowSize*colSize*dimension);
+	fread(myImage,sizeof(alt_u8),rowSize*colSize*dimension, myFile);
+	changedImage = (alt_u8 *)malloc(rowSize*colSize*dimension);
+	fread(changedImage,sizeof(alt_u8),rowSize*colSize*dimension, myFile);
+	myPixelBuffer = alt_up_pixel_buffer_dma_open_dev("/dev/video_pixel_buffer_dma_0");
+}
+
+void setPixel(int row, int col, int color, int data){
+	myImage[row*rowSize*dimension+col*dimension+color] = data;
+}
+
+alt_u8 getPixel(int row, int col, int color){
+	return myImage[row*rowSize*dimension + col*dimension + color];
+}
+
+void clearScreen(void){
+	alt_up_pixel_buffer_dma_clear_screen(myPixelBuffer,0);
+}
+

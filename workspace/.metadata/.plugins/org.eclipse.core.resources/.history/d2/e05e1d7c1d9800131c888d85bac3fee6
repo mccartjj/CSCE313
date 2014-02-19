@@ -1,0 +1,41 @@
+/*
+ * hello_world.c
+ *
+ * Authors: John McCarthy and Silas Rubinson
+ * Date: 16 January, 2014
+ *
+ * Description: Despite the title of the program, this class takes input from buttons
+ * ("keys") and uses that to determine the speed which lights cross an array of LED lights.
+ * :)
+ */
+
+#include <stdio.h>
+#include <unistd.h>
+#include "system.h"
+#include <time.h>
+#include <stdlib.h>
+#include "VideoFunctions.h"
+#include "altera_avalon_pio_regs.h"
+#include "alt_types.h"
+
+int main() {
+
+	alt_u32 current_value = 1;
+	alt_u32 current_state = 3;
+	alt_u8 current_direction = 0;
+	alt_u32 keys = 0;
+
+	printf("Program running (UART)...\n");
+	fprintf(stderr, "Program running (LCD)...\n");
+	while (1) {
+		int i = 0;
+		for(i = 0; i < 80; i=i+5){
+			printCharToScreen(i, 31, "I'm BOARD");
+			printCharToScreen(i+5, 36, "FRICK YOU DAWG");
+//			usleep(25000);
+		}
+		printCharToScreen(0, 59, "Test 1");
+		displayImage();
+	}
+	return 0;
+}

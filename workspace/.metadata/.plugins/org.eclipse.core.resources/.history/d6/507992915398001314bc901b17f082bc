@@ -1,0 +1,169 @@
+/*
+ * VideoFunctions.c
+ *
+ *  Created on: Feb 10, 2014
+ *      Author: John McCarthy and Silas Rubinson, I suppose.
+ */
+
+#include <altera_up_avalon_video_character_buffer_with_dma.h> //to write chars to video
+#include <altera_up_avalon_video_pixel_buffer_dma.h> //to swap front and back buffer
+#include <math.h>
+#include <stdlib.h>
+#include "VideoFunctions.h"
+#include "alt_types.h"
+#include "system.h"
+
+extern FILE *myFile;
+extern alt_u8 *myImage;
+extern alt_up_pixel_buffer_dma_dev *myPixelBuffer;
+
+void setUpImage(void) {
+	//all the set up to use this file
+
+	myFile = fopen("myFileSystem/myfile.dat", "rb");
+	if (myFile == NULL) {
+		perror("error opening dataFile");
+	}
+	myImage = (alt_u8 *) malloc(rowSize * colSize * dimension);
+	fread(myImage, sizeof(alt_u8), rowSize * colSize * dimension, myFile);
+	myPixelBuffer = alt_up_pixel_buffer_dma_open_dev(
+			"/dev/video_pixel_buffer_dma_0");
+}
+
+void drawPixelFromArray(int col, int row) {
+	//draws the pixel to the screen from the array where we have the image
+
+	alt_up_pixel_buffer_dma_draw(myPixelBuffer, (myImage[(col * rowSize
+			* dimension) + row * 3 + 2]) + (myImage[(col * rowSize * dimension)
+			+ row * 3 + 1] << 8) + (myImage[(col * rowSize * dimension) + row
+			* 3 + 0] << 16), row, col);
+}
+
+int getPixelFromArray(int col, int row) {
+	alt_u16 pixel;
+	pixel = (myImage[(col * rowSize * dimension) + row * 3 + 2])
+			+ (myImage[(col * rowSize * dimension) + row * 3 + 1] << 8)
+			+ (myImage[(col * rowSize * dimension) + row * 3 + 0] << 16);
+	return pixel;
+}
+
+void drawPixel(int col, int row, int color) {
+	//this prints an individual pixel to the specified row and column
+	alt_up_pixel_buffer_dma_draw(myPixelBuffer, color, row, col);
+}
+
+void clearScreen(void) {
+	//clears the part of the screen controlled by the pixel buffer
+	alt_up_pixel_buffer_dma_clear_screen(myPixelBuffer, 0);
+}
+
+void printCharToScreen(int row, int col, char *input) {
+	//clears the character buffer before replacing it. also leads to flashy lights.
+
+	alt_up_char_buffer_dev *myCharBuffer;
+	myCharBuffer = alt_up_char_buffer_open_dev(
+			"/dev/video_character_buffer_with_dma_0");
+	if (!myCharBuffer) {
+		printf("error opening character buffer \n also shits broken yo \n");
+	}
+	alt_up_char_buffer_clear(myCharBuffer);
+	alt_up_char_buffer_string(myCharBuffer, input, row, col);
+}
+void displayImage(void) {
+	//	displays the image loaded into the array myImage
+
+	clearScreen();
+	int i = 0;
+	int j = 0;
+
+	//the loop that goes gets all the indexes of the array where we have the image
+	for (i = 0; i < colSize; i++) {
+		for (j = 0; j < rowSize; j++) {
+			drawPixelFromArray(i, j);
+		}
+	}
+}
+
+void rotateImage(float direction, float angle) {
+	//rotates the image in increments of degrees
+
+	float col = 0;
+	float row = 0;
+	float rotatedCol = 0;
+	float rotatedRow = 0;
+
+	//converting the angle to rad
+	angle = angle * (PI / 180);
+
+	//calculating the value of the sin and cos
+	const float cosine = cosf(angle);
+	const float sine = sinf(angle);
+
+	//correction for the position
+	const float centerRow = rowSize / 2;
+	const float centerCol = colSize / 2;
+
+	clearScreen();
+
+	//the loop where we recompute where we place the pixels for rotation
+	for (col = 0; col < colSize; col++) {
+		for (row = 0; row < rowSize; row++) {
+
+			//correcting the position to center
+			row = row - centerRow;
+			col = col - centerCol;
+
+			//calculating the new position of the row and col
+			rotatedRow = (row * cosine) - (col * sine);
+			rotatedCol = (row * sine) + (col * cosine);
+
+			//correcting the position to center
+			rotatedRow = rotatedRow + centerRow;
+			rotatedCol = rotatedCol + centerCol;
+
+			row = row + centerRow;
+			col = col + centerCol;
+
+			//displaying the rotated image
+			drawPixel((int) roundf(rotatedCol), (int) roundf(rotatedRow), getPixelFromArray(col, row));
+		}
+	}
+
+}
+
+void scaleImage(float scalingFactor) {
+	//scales the image by the percentage given
+	int col = 0;
+	int row = 0;
+	float scaledCol = 0;
+	float scaledRow = 0;
+
+	//correction for the position
+	const float centerRow = rowSize / 2;
+	const float centerCol = colSize / 2;
+
+	clearScreen();
+
+	//the loop where we recompute where we place the pixels for scaling
+	for (col = 0; col < colSize; col++) {
+		for (row = 0; row < rowSize; row++) {
+
+			row = row - centerRow;
+			col = col - centerCol;
+
+			//calculating the new position of the row and col
+			scaledRow = row * scalingFactor;
+			scaledCol = col * scalingFactor;
+
+			scaledRow = scaledRow + centerRow;
+			scaledCol = scaledCol + centerCol;
+
+			row = row + centerRow;
+			col = col + centerCol;
+
+			//displaying the scaled image
+			drawPixel((int) roundf(scaledCol), (int) roundf(scaledRow), getPixelFromArray(col, row));
+
+		}
+	}
+}
