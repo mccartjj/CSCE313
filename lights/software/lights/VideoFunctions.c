@@ -129,41 +129,41 @@ void rotateImage(float direction, float angle) {
 
 			row = row + centerRow;
 			col = col + centerCol;
-			int roundedCol = (int) roundf(rotatedCol);
-			int roundedRow = (int) roundf(rotatedRow);
-			int intCol = (int) roundf(col);
-			int intRow = (int) roundf(row);
+//			int roundedCol = (int) roundf(rotatedCol);
+//			int roundedRow = (int) roundf(rotatedRow);
+//			int intCol = (int) roundf(col);
+//			int intRow = (int) roundf(row);
 
-			drawPixel((int) roundf(rotatedCol), (int) roundf(rotatedRow), getPixelFromArray(intCol, intRow));
+			drawPixel((int) roundf(rotatedCol), (int) roundf(rotatedRow), getPixelFromArray(col, row));
 			//putting the source pixel in its new destination
-			destImage[(roundedCol * rowSize * dimension) + (roundedRow * dimension) + red] = myImage[(intCol * rowSize * dimension) + intRow * dimension + red];
-			destImage[(roundedCol * rowSize * dimension) + (roundedRow * dimension) + green] = myImage[(intCol * rowSize * dimension) + intRow * dimension + green];
-			destImage[(roundedCol * rowSize * dimension) + (roundedRow * dimension) + blue] = myImage[(intCol * rowSize * dimension) + intRow * dimension + blue];
+//			destImage[(roundedCol * rowSize * dimension) + (roundedRow * dimension) + red] = myImage[(intCol * rowSize * dimension) + intRow * dimension + red];
+//			destImage[(roundedCol * rowSize * dimension) + (roundedRow * dimension) + green] = myImage[(intCol * rowSize * dimension) + intRow * dimension + green];
+//			destImage[(roundedCol * rowSize * dimension) + (roundedRow * dimension) + blue] = myImage[(intCol * rowSize * dimension) + intRow * dimension + blue];
 
 		}
 	}
 
-	for (col = 0; col < colSize; col++) {
-		for (row = 0; row < rowSize; row++) {
-
-			//correcting the position to center
-			row = row - centerRow;
-			col = col - centerCol;
-
-			//calculating the new position of the row and col
-			rotatedRow = (row * cosine) + (col * sine);
-			rotatedCol = -(row * sine) + (col * cosine);
-
-			//correcting the position to center
-			rotatedRow = rotatedRow + centerRow;
-			rotatedCol = rotatedCol + centerCol;
-
-			row = row + centerRow;
-			col = col + centerCol;
-
-			//			drawPixel((int) roundf(rotatedCol), (int) roundf(rotatedRow), getPixelFromDestArray((int) roundf(col),(int) roundf(row)));
-		}
-	}
+//	for (col = 0; col < colSize; col++) {
+//		for (row = 0; row < rowSize; row++) {
+//
+//			//correcting the position to center
+//			row = row - centerRow;
+//			col = col - centerCol;
+//
+//			//calculating the new position of the row and col
+//			rotatedRow = (row * cosine) + (col * sine);
+//			rotatedCol = -(row * sine) + (col * cosine);
+//
+//			//correcting the position to center
+//			rotatedRow = rotatedRow + centerRow;
+//			rotatedCol = rotatedCol + centerCol;
+//
+//			row = row + centerRow;
+//			col = col + centerCol;
+//
+//			//			drawPixel((int) roundf(rotatedCol), (int) roundf(rotatedRow), getPixelFromDestArray((int) roundf(col),(int) roundf(row)));
+//		}
+//	}
 }
 
 void bilinearInterpolation(void) {
@@ -248,7 +248,7 @@ void constantRotation(void) {
 	//Rotates in increments of 10 degrees for a full circle
 	printCharToScreen(0, 59, "Rotation");
 	int degree = 0;
-	for (degree = 10; degree < 360; degree += 10) {
+	for (degree = 0; degree < 360; degree += 10) {
 		rotateImage(1, degree);
 	}
 }
