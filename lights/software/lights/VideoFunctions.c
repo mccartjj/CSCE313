@@ -120,8 +120,8 @@ void rotateImage(float direction, float angle) {
 			col = col - centerCol;
 
 			//calculating the new position of the row and col
-			rotatedRow = (row * cosine) - (col * sine);
-			rotatedCol = (row * sine) + (col * cosine);
+			rotatedRow = (row * cosine) + (col * sine);
+			rotatedCol = -(row * sine) + (col * cosine);
 
 			//correcting the position to center
 			rotatedRow = rotatedRow + centerRow;
@@ -137,14 +137,28 @@ void rotateImage(float direction, float angle) {
 			int intCol = (int) roundf(col);
 			int intRow = (int) roundf(row);
 
-			drawPixel((int) roundf(rotatedCol), (int) roundf(rotatedRow), getPixelFromArray(col, row));
+//			drawPixel((int) roundf(rotatedCol), (int) roundf(rotatedRow), getPixelFromArray(col, row));
+
+//			destImage[(roundedCol * rowSize * dimension) + (roundedRow * dimension) + red] = getColorFromArray(col, row, red);
+//			destImage[(roundedCol * rowSize * dimension) + (roundedRow * dimension) + green] = getColorFromArray(col, row, green);
+//			destImage[(roundedCol * rowSize * dimension) + (roundedRow * dimension) + blue] = getColorFromArray(col, row, blue);
+//
+//			drawPixel((int) roundf(rotatedCol), (int) roundf(rotatedRow), getPixelFromDestArray(col, row));
+
+
 
 			//putting the source pixel in its new destination
-//			destImage[(roundedCol * rowSize * dimension) + (roundedRow * dimension) + red] = myImage[(intCol * rowSize * dimension) + intRow * dimension + red];
-//			destImage[(roundedCol * rowSize * dimension) + (roundedRow * dimension) + green] = myImage[(intCol * rowSize * dimension) + intRow * dimension + green];
-//			destImage[(roundedCol * rowSize * dimension) + (roundedRow * dimension) + blue] = myImage[(intCol * rowSize * dimension) + intRow * dimension + blue];
+			destImage[(intCol * rowSize * dimension) + intRow * dimension + red] = myImage[(roundedCol * rowSize * dimension) + (roundedRow * dimension) + red];
+			destImage[(intCol * rowSize * dimension) + intRow * dimension + green] = myImage[(roundedCol * rowSize * dimension) + (roundedRow * dimension) + green];
+			destImage[(intCol * rowSize * dimension) + intRow * dimension + blue] = myImage[(roundedCol * rowSize * dimension) + (roundedRow * dimension) + blue];
 
+			//drawPixel((int) roundf(rotatedCol), (int) roundf(rotatedRow), getPixelFromDestArray(col, row));
 
+			if(col > colSize || row > rowSize){
+
+			}else{
+				drawPixel((int) roundf(col), (int) roundf(row), getPixelFromDestArray(col, row));
+			}
 		}
 	}
 
