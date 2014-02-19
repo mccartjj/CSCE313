@@ -53,7 +53,7 @@ int main() {
 		}
 		else {
 			clearScreen();
-			printCharToScreen(5, 0, "John McCarthy and Silas Rubinson, Lab 2. Testing AA. Attempt 1.");
+			printCharToScreen(5, 0, "John McCarthy and Silas Rubinson, Lab 2. Fixing Aliasing. Attempt 21.");
 		}
 	}
 	return 0;

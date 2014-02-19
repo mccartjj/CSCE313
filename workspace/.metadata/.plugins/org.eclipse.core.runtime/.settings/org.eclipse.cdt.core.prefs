@@ -1,4 +1,4 @@
-#Thu Jan 16 13:37:35 EST 2014
+#Tue Feb 18 17:09:53 EST 2014
 org.eclipse.cdt.core.formatter.insert_new_line_before_catch_in_try_statement=insert
 org.eclipse.cdt.core.formatter.insert_space_after_comma_in_template_arguments=insert
 org.eclipse.cdt.core.formatter.continuation_indentation=2
@@ -22,7 +22,7 @@ org.eclipse.cdt.core.formatter.indent_access_specifier_compare_to_type_header=tr
 org.eclipse.cdt.core.formatter.insert_space_after_opening_paren_in_cast=do not insert
 org.eclipse.cdt.core.formatter.insert_space_before_opening_paren_in_for=insert
 org.eclipse.cdt.core.formatter.tabulation.char=tab
-org.eclipse.cdt.core.formatter.lineSplit=80
+org.eclipse.cdt.core.formatter.lineSplit=300
 org.eclipse.cdt.core.formatter.insert_space_after_colon_in_conditional=insert
 org.eclipse.cdt.core.formatter.insert_space_after_colon_in_labeled_statement=insert
 org.eclipse.cdt.core.formatter.insert_space_after_comma_in_array_initializer=insert
@@ -95,7 +95,7 @@ org.eclipse.cdt.core.formatter.indentation.size=4
 org.eclipse.cdt.core.formatter.insert_space_before_opening_angle_bracket_in_template_arguments=do not insert
 org.eclipse.cdt.core.formatter.insert_space_after_comma_in_method_declaration_throws=insert
 org.eclipse.cdt.core.formatter.format_guardian_clause_on_one_line=false
-org.eclipse.cdt.core.formatter.alignment_for_conditional_expression=80
+org.eclipse.cdt.core.formatter.alignment_for_conditional_expression=0
 org.eclipse.cdt.core.formatter.continuation_indentation_for_array_initializer=2
 org.eclipse.cdt.core.formatter.insert_space_before_colon_in_case=do not insert
 org.eclipse.cdt.core.formatter.insert_space_after_opening_paren_in_for=do not insert
