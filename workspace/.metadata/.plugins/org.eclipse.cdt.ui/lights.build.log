@@ -8,8 +8,6 @@ make --no-print-directory -C ../lights_bsp/
 Info: Compiling VideoFunctions.c to obj/default/VideoFunctions.o
 nios2-elf-gcc -xc -MP -MMD -c -I../lights_bsp//HAL/inc -I../lights_bsp/ -I../lights_bsp//drivers/inc  -DSYSTEM_BUS_WIDTH=32 -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED -DRO_ZIPFS    -O0 -g -Wall   -EL -mno-hw-div -mcustom-fpu-cfg=60-1 -mhw-mul -mno-hw-mulx  -o obj/default/VideoFunctions.o VideoFunctions.c
 VideoFunctions.c: In function 'rotateImage':
-VideoFunctions.c:134: warning: unused variable 'floorRow'
-VideoFunctions.c:133: warning: unused variable 'floorCol'
 VideoFunctions.c:99: warning: unused variable 'interPGreen'
 VideoFunctions.c:98: warning: unused variable 'interPBlue'
 VideoFunctions.c:97: warning: unused variable 'interPRed'

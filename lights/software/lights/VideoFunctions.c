@@ -130,34 +130,32 @@ void rotateImage(float direction, float angle) {
 			row = row + centerRow;
 			col = col + centerCol;
 
-			float floorCol = floorf(col);
-			float floorRow = floorf(row);
+
 			int roundedCol = (int) roundf(rotatedCol);
 			int roundedRow = (int) roundf(rotatedRow);
 			int intCol = (int) roundf(col);
 			int intRow = (int) roundf(row);
 
-//			drawPixel((int) roundf(rotatedCol), (int) roundf(rotatedRow), getPixelFromArray(col, row));
-
-//			destImage[(roundedCol * rowSize * dimension) + (roundedRow * dimension) + red] = getColorFromArray(col, row, red);
-//			destImage[(roundedCol * rowSize * dimension) + (roundedRow * dimension) + green] = getColorFromArray(col, row, green);
-//			destImage[(roundedCol * rowSize * dimension) + (roundedRow * dimension) + blue] = getColorFromArray(col, row, blue);
-//
-//			drawPixel((int) roundf(rotatedCol), (int) roundf(rotatedRow), getPixelFromDestArray(col, row));
-
-
-
-			//putting the source pixel in its new destination
-			destImage[(intCol * rowSize * dimension) + intRow * dimension + red] = myImage[(roundedCol * rowSize * dimension) + (roundedRow * dimension) + red];
-			destImage[(intCol * rowSize * dimension) + intRow * dimension + green] = myImage[(roundedCol * rowSize * dimension) + (roundedRow * dimension) + green];
-			destImage[(intCol * rowSize * dimension) + intRow * dimension + blue] = myImage[(roundedCol * rowSize * dimension) + (roundedRow * dimension) + blue];
-
-			//drawPixel((int) roundf(rotatedCol), (int) roundf(rotatedRow), getPixelFromDestArray(col, row));
-
 			if(col > colSize || row > rowSize){
 
 			}else{
+
+				destImage[(intCol * rowSize * dimension) + intRow * dimension + red] = myImage[(roundedCol * rowSize * dimension) + (roundedRow * dimension) + red];
+				destImage[(intCol * rowSize * dimension) + intRow * dimension + green] = myImage[(roundedCol * rowSize * dimension) + (roundedRow * dimension) + green];
+				destImage[(intCol * rowSize * dimension) + intRow * dimension + blue] = myImage[(roundedCol * rowSize * dimension) + (roundedRow * dimension) + blue];
+
 				drawPixel((int) roundf(col), (int) roundf(row), getPixelFromDestArray(col, row));
+
+
+//				float floorCol = floorf(col);
+//				float floorRow = floorf(row);
+//
+//									/*Method 1*/
+//				interPixel = (1-(col-floorCol))*(1-(row-floorRow))*getPixelFromDestArray(floorCol, floorRow)
+//					+((col-floorCol))*(1-(row-floorRow))*getPixelFromDestArray((floorCol+1), floorRow)
+//					+(1-(col-floorCol))*((row-floorRow))*getPixelFromDestArray((floorCol), (floorRow+1))
+//					+((col-floorCol))*((row-floorRow))*getPixelFromDestArray((floorCol+1), (floorRow+1));
+//				drawPixel((int) roundf(col), (int) roundf(row), interPixel);
 			}
 		}
 	}
@@ -166,14 +164,7 @@ void rotateImage(float direction, float angle) {
 
 void bilinearInterpolation(void) {
 
-	//	float floorCol = floorf(col);
-	//	float floorRow = floorf(row);
 
-	/*Method 1*/
-	//			interPixel = (1-(col-floorCol))*(1-(row-floorRow))*getPixelFromArray(floorCol, floorRow)
-	//						+((col-floorCol))*(1-(row-floorRow))*getPixelFromArray((floorCol+1), floorRow)
-	//						+(1-(col-floorCol))*((row-floorRow))*getPixelFromArray((floorCol), (floorRow+1))
-	//						+((col-floorCol))*((row-floorRow))*getPixelFromArray((floorCol+1), (floorRow+1));
 
 
 	/*Method 2*/
