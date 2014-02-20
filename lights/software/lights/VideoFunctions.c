@@ -2,7 +2,8 @@
  * VideoFunctions.c
  *
  *  Created on: Feb 10, 2014
- *      Author: John McCarthy and Silas Rubinson, I suppose.
+ *      Author: John McCarthy and Silas Rubinson.
+ *
  */
 
 #include <altera_up_avalon_video_character_buffer_with_dma.h> //to write chars to video
@@ -34,19 +35,20 @@ void setUpImage(void) {
 void drawPixelFromArray(int col, int row) {
 	//draws the pixel to the screen from the array where we have the image
 
-	alt_up_pixel_buffer_dma_draw(myPixelBuffer, (myImage[(col * rowSize * dimension) + row * 3 + 2]) + (myImage[(col * rowSize * dimension) + row * 3 + 1] << 8) + (myImage[(col * rowSize * dimension) + row * 3 + 0] << 16), row, col);
+	alt_up_pixel_buffer_dma_draw(myPixelBuffer, (myImage[(col * rsizexdim) + row * 3 + 2]) + (myImage[(col * rsizexdim) + row * 3 + 1] << 8) + (myImage[(col * rsizexdim) + row * 3 + 0] << 16), row,
+			col);
 }
 
 int getPixelFromArray(int col, int row) {
-	return (myImage[(col * rowSize * dimension) + row * 3 + red]) + (myImage[(col * rowSize * dimension) + row * 3 + green] << 8) + (myImage[(col * rowSize * dimension) + row * 3 + blue] << 16);
+	return (myImage[(col * rsizexdim) + row * 3 + red]) + (myImage[(col * rsizexdim) + row * 3 + green] << 8) + (myImage[(col * rsizexdim) + row * 3 + blue] << 16);
 }
 
 int getPixelFromDestArray(int col, int row) {
-	return (destImage[(col * rowSize * dimension) + row * 3 + red]) + (destImage[(col * rowSize * dimension) + row * 3 + green] << 8) + (destImage[(col * rowSize * dimension) + row * 3 + blue] << 16);
+	return (destImage[(col * rsizexdim) + row * 3 + red]) + (destImage[(col * rsizexdim) + row * 3 + green] << 8) + (destImage[(col * rsizexdim) + row * 3 + blue] << 16);
 }
 
 int getColorFromArray(int col, int row, int color) {
-	return myImage[(col * rowSize * dimension) + row * 3 + color];
+	return myImage[(col * rsizexdim) + row * 3 + color];
 }
 
 void drawPixel(int col, int row, int color) {
@@ -57,6 +59,12 @@ void drawPixel(int col, int row, int color) {
 void clearScreen(void) {
 	//clears the part of the screen controlled by the pixel buffer
 	alt_up_pixel_buffer_dma_clear_screen(myPixelBuffer, 0);
+}
+
+void clearCharBuffer(void){
+	alt_up_char_buffer_dev *myCharBuffer;
+	myCharBuffer = alt_up_char_buffer_open_dev("/dev/video_character_buffer_with_dma_0");
+	alt_up_char_buffer_clear(myCharBuffer);
 }
 
 void printCharToScreen(int row, int col, char *input) {
@@ -70,6 +78,16 @@ void printCharToScreen(int row, int col, char *input) {
 	alt_up_char_buffer_clear(myCharBuffer);
 	alt_up_char_buffer_string(myCharBuffer, input, row, col);
 }
+
+void printLineToScreen(int row, int col, char *input){
+		alt_up_char_buffer_dev *myCharBuffer;
+		myCharBuffer = alt_up_char_buffer_open_dev("/dev/video_character_buffer_with_dma_0");
+		if (!myCharBuffer) {
+			printf("error opening character buffer \n");
+		}
+		alt_up_char_buffer_string(myCharBuffer, input, row, col);
+}
+
 void displayImage(void) {
 	//	displays the image loaded into the array myImage
 
@@ -88,15 +106,11 @@ void displayImage(void) {
 void rotateImage(float direction, float angle) {
 	//rotates the image in increments of degrees
 
-	float col = 0;
-	float row = 0;
-	float rotatedCol = 0;
-	float rotatedRow = 0;
+	float col = 0.0;
+	float row = 0.0;
+	float rotatedCol = 0.0;
+	float rotatedRow = 0.0;
 
-	int interPixel = 0;
-	int interPRed = 0;
-	int interPBlue = 0;
-	int interPGreen = 0;
 
 	//converting the angle to rad
 	angle = angle * (PI / 180);
@@ -110,6 +124,7 @@ void rotateImage(float direction, float angle) {
 	const float centerCol = colSize / 2;
 
 	clearScreen();
+	memset(destImage, 0x0, 320 * 240 * 3);
 
 	//the loop where we recompute where we place the pixels for rotation
 	for (col = 0; col < colSize; col++) {
@@ -130,107 +145,27 @@ void rotateImage(float direction, float angle) {
 			row = row + centerRow;
 			col = col + centerCol;
 
-
 			int roundedCol = (int) roundf(rotatedCol);
 			int roundedRow = (int) roundf(rotatedRow);
 			int intCol = (int) roundf(col);
 			int intRow = (int) roundf(row);
 
-			if(col > colSize || row > rowSize){
+			if (rotatedCol > colSize || rotatedCol < 0 || rotatedRow > rowSize || rotatedRow < 0) {
+				drawPixel((int) roundf(col), (int) roundf(row), 0);
+			}
+			else {
+				int destCalc = (intCol * rsizexdim) + intRow * dimension;
+				int myImageCalc = (roundedCol * rsizexdim) + (roundedRow * dimension);
 
-			}else{
+				destImage[destCalc + red] = myImage[myImageCalc + red];
+				destImage[destCalc + green] = myImage[myImageCalc + green];
+				destImage[destCalc + blue] = myImage[myImageCalc + blue];
 
-				destImage[(intCol * rowSize * dimension) + intRow * dimension + red] = myImage[(roundedCol * rowSize * dimension) + (roundedRow * dimension) + red];
-				destImage[(intCol * rowSize * dimension) + intRow * dimension + green] = myImage[(roundedCol * rowSize * dimension) + (roundedRow * dimension) + green];
-				destImage[(intCol * rowSize * dimension) + intRow * dimension + blue] = myImage[(roundedCol * rowSize * dimension) + (roundedRow * dimension) + blue];
-
-				drawPixel((int) roundf(col), (int) roundf(row), getPixelFromDestArray(col, row));
-
-
-//				float floorCol = floorf(col);
-//				float floorRow = floorf(row);
-//
-//									/*Method 1*/
-//				interPixel = (1-(col-floorCol))*(1-(row-floorRow))*getPixelFromDestArray(floorCol, floorRow)
-//					+((col-floorCol))*(1-(row-floorRow))*getPixelFromDestArray((floorCol+1), floorRow)
-//					+(1-(col-floorCol))*((row-floorRow))*getPixelFromDestArray((floorCol), (floorRow+1))
-//					+((col-floorCol))*((row-floorRow))*getPixelFromDestArray((floorCol+1), (floorRow+1));
-//				drawPixel((int) roundf(col), (int) roundf(row), interPixel);
+//				drawPixel((int) roundf(col), (int) roundf(row), getPixelFromDestArray(col, row));
+				drawPixel((int) roundf(col), (int) roundf(row), bilinearInterpolation(rotatedCol, rotatedRow, col, row));
 			}
 		}
 	}
-
-}
-
-void bilinearInterpolation(void) {
-
-
-
-
-	/*Method 2*/
-
-	//
-	//			float weightrow = rotatedRow-floorf(rotatedRow);
-	//			float weightcol = rotatedCol-floorf(rotatedCol);
-	////
-	//			interPixel =   ((1.0-weightrow)*(1.0-weightcol)*getPixelFromArray(floorCol, floorRow))
-	//			             + ((1.0-weightrow)*(weightcol)*getPixelFromArray((floorCol+1), floorRow))
-	//			             + ((weightrow)*(1.0-weightcol)*getPixelFromArray((floorCol), (floorRow+1)))
-	//			             + ((weightrow)*(weightcol)*getPixelFromArray((floorCol+1), (floorRow+1)));
-
-	//				/*Method 3*/
-	//			float x = col;
-	//			float y = row;
-	//			float x1 = col - 1;
-	//			float x2 = col + 1;
-	//			float y1 = row - 1;
-	//			float y2 = row + 1;
-	//
-	//			interPixel = ((((x2-x)*(y2-y))/((x2-x1)*(y2-y1)))*getPixelFromArray(x1,y1))
-	//					+ ((((x-x1)*(y2-y))/((x2-x1)*(y2-y1)))*getPixelFromArray(x2,y1))
-	//					+ ((((x2-x)*(y-y1))/((x2-x1)*(y2-y1)))*getPixelFromArray(x1,y2))
-	//					+ ((((x-x1)*(y-y1))/((x2-x1)*(y2-y1)))*getPixelFromArray(x2,y2));
-
-	/*Method 4*/
-	//			interPRed = (1-(col-floorCol))*(1-(row-floorRow))*getColorFromArray(floorCol, floorRow, red)
-	//						+((col-floorCol))*(1-(row-floorRow))*getColorFromArray((floorCol+1), floorRow, red)
-	//						+(1-(col-floorCol))*((row-floorRow))*getColorFromArray((floorCol), (floorRow+1), red)
-	//						+((col-floorCol))*((row-floorRow))*getColorFromArray((floorCol+1), (floorRow+1), red);
-	//
-	//			interPGreen = (1-(col-floorCol))*(1-(row-floorRow))*getColorFromArray(floorCol, floorRow, green)
-	//						+((col-floorCol))*(1-(row-floorRow))*getColorFromArray((floorCol+1), floorRow, green)
-	//						+(1-(col-floorCol))*((row-floorRow))*getColorFromArray((floorCol), (floorRow+1), green)
-	//						+((col-floorCol))*((row-floorRow))*getColorFromArray((floorCol+1), (floorRow+1), green);
-	//
-	//			interPBlue = (1-(col-floorCol))*(1-(row-floorRow))*getColorFromArray(floorCol, floorRow, blue)
-	//						+((col-floorCol))*(1-(row-floorRow))*getColorFromArray((floorCol+1), floorRow, blue)
-	//						+(1-(col-floorCol))*((row-floorRow))*getColorFromArray((floorCol), (floorRow+1), blue)
-	//						+((col-floorCol))*((row-floorRow))*getColorFromArray((floorCol+1), (floorRow+1), blue);
-	//
-	//			interPixel = ((int) roundf(interPRed) << 16) + ((int) roundf(interPGreen) << 8) + interPBlue;
-
-	/*Method 5*/
-//	float weightrow = rotatedRow-floorf(rotatedRow);
-//				float weightcol = rotatedCol-floorf(rotatedCol);
-//
-//				interPRed = (1-weightcol)*(1-weightrow)*getColorFromArray(floorCol, floorRow, red)
-//							+(weightcol)*(1-weightrow)*getColorFromArray((floorCol+1), floorRow, red)
-//							+(1-weightcol)*(weightrow)*getColorFromArray((floorCol), (floorRow+1), red)
-//							+(weightcol)*(weightrow)*getColorFromArray((floorCol+1), (floorRow+1), red);
-//
-//				interPGreen = (1-weightcol)*(1-weightrow)*getColorFromArray(floorCol, floorRow, green)
-//				     		+(weightcol)*(1-weightrow)*getColorFromArray((floorCol+1), floorRow, green)
-//							+(1-weightcol)*(weightrow)*getColorFromArray((floorCol), (floorRow+1), green)
-//							+(weightcol)*(weightrow)*getColorFromArray((floorCol+1), (floorRow+1), green);
-//
-//				interPBlue = (1-weightcol)*(1-weightrow)*getColorFromArray(floorCol, floorRow, blue)
-//							+(weightcol)*(1-weightrow)*getColorFromArray((floorCol+1), floorRow, blue)
-//							+(1-weightcol)*(weightrow)*getColorFromArray((floorCol), (floorRow+1), blue)
-//							+(weightcol)*(weightrow)*getColorFromArray((floorCol+1), (floorRow+1), blue);
-//
-//				interPixel = (interPRed) + (interPGreen << 8) + (interPBlue << 16);
-//
-//				drawPixel((int) roundf(rotatedCol), (int) roundf(rotatedRow), interPixel);
 }
 
 void constantRotation(void) {
@@ -273,8 +208,7 @@ void scaleImage(float scalingFactor) {
 			col = col + centerCol;
 
 			//displaying the scaled image
-			drawPixel((int) roundf(scaledCol), (int) roundf(scaledRow), getPixelFromArray(col, row));
-
+			drawPixel((int) roundf(scaledCol), (int) roundf(scaledRow), bilinearInterpolation(col, row, scaledCol, scaledRow));
 		}
 	}
 }
@@ -289,5 +223,37 @@ void shrinkAndResize(void) {
 	for (i = 0.1; i <= 1; i = i + 0.1) {
 		scaleImage(i);
 	}
+}
+
+int bilinearInterpolation(float col, float row, float changedCol, float changedRow) {
+	//For scale, use col, row, scaledC, scaledR
+	//For rotate, the opposite, rotatedC, rotatedR, col, row
+	//returns an integer holding the data for the pixel value averaged from the corners of the original
+
+	float weightrow = 0.0;
+	float weightcol = 0.0;
+	int interPRed = 0;
+	int interPGreen = 0;
+	int interPBlue = 0;
+
+	weightrow = changedRow - floorf(changedRow);
+	weightcol = changedCol - floorf(changedCol);
+
+	interPRed = ((1 - weightcol) * (1 - weightrow) * getColorFromArray(col, row, red))
+			+ ((1 - weightcol) * (weightrow) * getColorFromArray((col), (row + 1), red))
+			+ ((weightcol) * (1	- weightrow) * getColorFromArray((col + 1), row, red))
+			+ ((weightcol) * (weightrow) * getColorFromArray((col + 1), (row + 1), red));
+
+	interPGreen = ((1 - weightcol) * (1 - weightrow) * getColorFromArray(col, row, green))
+			+ ((weightcol) * (1 - weightrow) * getColorFromArray((col + 1), row, green))
+			+ ((1 - weightcol) * (weightrow) * getColorFromArray((col), (row + 1), green))
+			+ ((weightcol) * (weightrow) * getColorFromArray((col + 1), (row + 1), green));
+
+	interPBlue = (1 - weightcol) * (1 - weightrow) * getColorFromArray(col, row, blue)
+			+ ((weightcol) * (1 - weightrow) * getColorFromArray((col + 1), row, blue))
+			+ ((1 - weightcol) * (weightrow) * getColorFromArray((col), (row + 1), blue))
+			+ ((weightcol) * (weightrow) * getColorFromArray((col + 1), (row + 1), blue));
+
+	return ((interPRed) + (interPGreen << 8) + (interPBlue << 16));
 }
 

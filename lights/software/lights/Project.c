@@ -1,8 +1,8 @@
 /*
- * hello_world.c
+ * Project.c
  *
  * Authors: John McCarthy and Silas Rubinson
- * Date: 16 January, 2014
+ * Date: 6 February, 2014
  *
  * Description: TODO fix description
  */
@@ -53,7 +53,29 @@ int main() {
 		}
 		else {
 			clearScreen();
-			printCharToScreen(5, 0, "John McCarthy and Silas Rubinson, Lab 2. Fixing Aliasing. Attempt 21.");
+			clearCharBuffer();
+			printLineToScreen(0, 0, "John McCarthy and Silas Rubinson, Lab 2.");
+			printLineToScreen(0, 1, "Key 3: View Original Image.");
+			printLineToScreen(0, 2, "Key 2: Rotate 360.");
+			printLineToScreen(0, 3, "Key 1: Shrink and Expand.");
+			printLineToScreen(0, 4, "Key 0: Reset.");
+			printLineToScreen(0, 5, "Due to the nature of the board, the keys will be ignored until after");
+			printLineToScreen(0, 6, "each process is completed. Please be patient.");
+
+			printLineToScreen(0, 10, "                           _______________________________");
+			printLineToScreen(0, 11, "                           |                             |");
+			printLineToScreen(0, 12, "                           |_____________________________|");
+			printLineToScreen(0, 13, "                           \\                             /");
+			printLineToScreen(0, 14, "                            \\                           /");
+			printLineToScreen(0, 15, "                             \\                         /");
+			printLineToScreen(0, 16, "                              \\                       /");
+			printLineToScreen(0, 17, "                               \\                     /");
+			printLineToScreen(0, 18, "                                \\                   /");
+			printLineToScreen(0, 19, "                                 \\                 /");
+			printLineToScreen(0, 20, "                                  \\               /");
+			printLineToScreen(0, 21, "                                   \\             /");
+			printLineToScreen(0, 22, "                                    \\           /");
+
 		}
 	}
 	return 0;

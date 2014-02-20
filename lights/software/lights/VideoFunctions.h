@@ -27,6 +27,7 @@
 
 	//displays the image in myImage array
 	void displayImage(void);
+	int bilinearInterpolation(float col, float row, float changedCol, float changedRow);
 
 	//240
 #define colSize 240
@@ -37,6 +38,7 @@
 	//3
 #define dimension 3
 
+#define rsizexdim 960
 	//0
 #define red 2
 
