@@ -62,19 +62,6 @@ int main() {
 			printLineToScreen(0, 5, "Due to the nature of the board, the keys will be ignored until after");
 			printLineToScreen(0, 6, "each process is completed. Please be patient.");
 
-			printLineToScreen(0, 10, "                           _______________________________");
-			printLineToScreen(0, 11, "                           |                             |");
-			printLineToScreen(0, 12, "                           |_____________________________|");
-			printLineToScreen(0, 13, "                           \\                             /");
-			printLineToScreen(0, 14, "                            \\                           /");
-			printLineToScreen(0, 15, "                             \\                         /");
-			printLineToScreen(0, 16, "                              \\                       /");
-			printLineToScreen(0, 17, "                               \\                     /");
-			printLineToScreen(0, 18, "                                \\                   /");
-			printLineToScreen(0, 19, "                                 \\                 /");
-			printLineToScreen(0, 20, "                                  \\               /");
-			printLineToScreen(0, 21, "                                   \\             /");
-			printLineToScreen(0, 22, "                                    \\           /");
 
 		}
 	}
