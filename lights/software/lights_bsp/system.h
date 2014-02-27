@@ -4,7 +4,7 @@
  * Machine generated for CPU 'cpu_0' in SOPC Builder design 'nios_system'
  * SOPC Builder design path: ../../nios_system.sopcinfo
  *
- * Generated: Tue Feb 18 14:51:56 EST 2014
+ * Generated: Wed Feb 26 15:47:14 EST 2014
  */
 
 /*
@@ -141,6 +141,7 @@
 #define __ALTERA_AVALON_JTAG_UART
 #define __ALTERA_AVALON_LCD_16207
 #define __ALTERA_AVALON_NEW_SDRAM_CONTROLLER
+#define __ALTERA_AVALON_PERFORMANCE_COUNTER
 #define __ALTERA_AVALON_PIO
 #define __ALTERA_AVALON_SYSID
 #define __ALTERA_NIOS2
@@ -542,6 +543,21 @@
 
 
 /*
+ * performance_counter_0 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_performance_counter_0 altera_avalon_performance_counter
+#define PERFORMANCE_COUNTER_0_BASE 0x0
+#define PERFORMANCE_COUNTER_0_HOW_MANY_SECTIONS 2
+#define PERFORMANCE_COUNTER_0_IRQ -1
+#define PERFORMANCE_COUNTER_0_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define PERFORMANCE_COUNTER_0_NAME "/dev/performance_counter_0"
+#define PERFORMANCE_COUNTER_0_SPAN 64
+#define PERFORMANCE_COUNTER_0_TYPE "altera_avalon_performance_counter"
+
+
+/*
  * sdram_0 configuration
  *
  */
@@ -606,7 +622,7 @@
 #define SYSID_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define SYSID_NAME "/dev/sysid"
 #define SYSID_SPAN 8
-#define SYSID_TIMESTAMP 1392752956u
+#define SYSID_TIMESTAMP 1393447299u
 #define SYSID_TYPE "altera_avalon_sysid"
 
 

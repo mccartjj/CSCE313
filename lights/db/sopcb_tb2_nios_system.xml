@@ -585,7 +585,7 @@
    <SOPCModuleParameter>
     <C>117</C>
     <Name>dataSlaveMapParam</Name>
-    <Value><![CDATA[<address-map><slave name='sdram_0.s1' start='0x800000' end='0x1000000' /><slave name='cfi_flash_0.s1' start='0x1400000' end='0x1800000' /><slave name='sram_0.avalon_sram_slave' start='0x1880000' end='0x1900000' /><slave name='video_character_buffer_with_dma_0.avalon_char_buffer_slave' start='0x1900000' end='0x1902000' /><slave name='cpu_0.jtag_debug_module' start='0x1902800' end='0x1903000' /><slave name='leds.s1' start='0x1903000' end='0x1903010' /><slave name='keys.s1' start='0x1903010' end='0x1903020' /><slave name='lcd_0.control_slave' start='0x1903020' end='0x1903030' /><slave name='HEX0.s1' start='0x1903030' end='0x1903040' /><slave name='HEX2.s1' start='0x1903040' end='0x1903050' /><slave name='HEX3.s1' start='0x1903050' end='0x1903060' /><slave name='HEX4.s1' start='0x1903060' end='0x1903070' /><slave name='HEX5.s1' start='0x1903070' end='0x1903080' /><slave name='HEX6.s1' start='0x1903080' end='0x1903090' /><slave name='HEX7.s1' start='0x1903090' end='0x19030A0' /><slave name='HEX1.s1' start='0x19030A0' end='0x19030B0' /><slave name='video_pixel_buffer_dma_0.avalon_control_slave' start='0x19030B0' end='0x19030C0' /><slave name='sysid.control_slave' start='0x19030C0' end='0x19030C8' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x19030C8' end='0x19030D0' /><slave name='video_character_buffer_with_dma_0.avalon_char_control_slave' start='0x19030D0' end='0x19030D8' /><slave name='clocks_0.avalon_clocks_slave' start='0x19030D8' end='0x19030DA' /></address-map>]]></Value>
+    <Value><![CDATA[<address-map><slave name='performance_counter_0.control_slave' start='0x0' end='0x40' /><slave name='sdram_0.s1' start='0x800000' end='0x1000000' /><slave name='cfi_flash_0.s1' start='0x1400000' end='0x1800000' /><slave name='sram_0.avalon_sram_slave' start='0x1880000' end='0x1900000' /><slave name='video_character_buffer_with_dma_0.avalon_char_buffer_slave' start='0x1900000' end='0x1902000' /><slave name='cpu_0.jtag_debug_module' start='0x1902800' end='0x1903000' /><slave name='leds.s1' start='0x1903000' end='0x1903010' /><slave name='keys.s1' start='0x1903010' end='0x1903020' /><slave name='lcd_0.control_slave' start='0x1903020' end='0x1903030' /><slave name='HEX0.s1' start='0x1903030' end='0x1903040' /><slave name='HEX2.s1' start='0x1903040' end='0x1903050' /><slave name='HEX3.s1' start='0x1903050' end='0x1903060' /><slave name='HEX4.s1' start='0x1903060' end='0x1903070' /><slave name='HEX5.s1' start='0x1903070' end='0x1903080' /><slave name='HEX6.s1' start='0x1903080' end='0x1903090' /><slave name='HEX7.s1' start='0x1903090' end='0x19030A0' /><slave name='HEX1.s1' start='0x19030A0' end='0x19030B0' /><slave name='video_pixel_buffer_dma_0.avalon_control_slave' start='0x19030B0' end='0x19030C0' /><slave name='sysid.control_slave' start='0x19030C0' end='0x19030C8' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x19030C8' end='0x19030D0' /><slave name='video_character_buffer_with_dma_0.avalon_char_control_slave' start='0x19030D0' end='0x19030D8' /><slave name='clocks_0.avalon_clocks_slave' start='0x19030D8' end='0x19030DA' /></address-map>]]></Value>
    </SOPCModuleParameter>
    <SOPCModuleParameter>
     <C>118</C>
@@ -797,7 +797,7 @@
    <SOPCModuleParameter>
     <C>160</C>
     <Name>timestamp</Name>
-    <Value>1392752956</Value>
+    <Value>1393447299</Value>
    </SOPCModuleParameter>
   </SOPCModule>
   <SOPCModule>
@@ -1882,7 +1882,16 @@
     <Value>Cyclone II</Value>
    </SOPCModuleParameter>
   </SOPCModule>
-  <SystemID>1183650838</SystemID>
+  <SOPCModule>
+   <C>382</C>
+   <ModuleType>altera_avalon_performance_counter</ModuleType>
+   <SOPCModuleParameter>
+    <C>383</C>
+    <Name>numberOfSections</Name>
+    <Value>2</Value>
+   </SOPCModuleParameter>
+  </SOPCModule>
+  <SystemID>1878009178</SystemID>
  </SOPCSystem>
  <SchemaVersion>schema_2011-12-20</SchemaVersion>
 </ProgramExecution>

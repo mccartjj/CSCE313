@@ -30,6 +30,8 @@ void setUpImage(void) {
 	destImage = (alt_u8 *) malloc(rowSize * colSize * dimension);
 	fread(myImage, sizeof(alt_u8), rowSize * colSize * dimension, myFile);
 	myPixelBuffer = alt_up_pixel_buffer_dma_open_dev("/dev/video_pixel_buffer_dma_0");
+	PERF_RESET(PERFORMANCE_COUNTER_0_BASE);
+
 }
 
 void drawPixelFromArray(int col, int row) {
@@ -124,7 +126,7 @@ void rotateImage(float direction, float angle) {
 	const float centerCol = colSize / 2;
 
 	clearScreen();
-	memset(destImage, 0x0, 320 * 240 * 3);
+	memset(destImage, 0x0, rowSize * colSize * dimension);
 
 	//the loop where we recompute where we place the pixels for rotation
 	for (col = 0; col < colSize; col++) {
@@ -161,19 +163,107 @@ void rotateImage(float direction, float angle) {
 				destImage[destCalc + green] = myImage[myImageCalc + green];
 				destImage[destCalc + blue] = myImage[myImageCalc + blue];
 
-//				drawPixel((int) roundf(col), (int) roundf(row), getPixelFromDestArray(col, row));
 				drawPixel((int) roundf(col), (int) roundf(row), bilinearInterpolation(rotatedCol, rotatedRow, col, row));
 			}
 		}
 	}
 }
 
+void rotateImageFixedPoint(int direction, float angle){
+	//rotates the image in increments of degrees
+
+		//these are (32,4) fixed point numbers
+		int col = 0;
+		int row = 0;
+		int rotatedCol = 0;
+		int rotatedRow = 0;
+
+
+		//converting the angle to rad
+		angle = angle * (PI / 180);
+
+		//calculating the value of the sin and cos
+		const float cosineFloat = cosf(angle);
+		const float sineFloat = sinf(angle);
+
+		//changing the cos and sin to (32,4) fixed point numbers
+		int cosine = (int) roundf(cosineFloat) * 16;
+		int sine = (int) roundf(sineFloat) * 16;
+
+		//correction for the position and making it a (32,4) fixed point number
+		const int centerRow = (rowSize / 2) * 16;
+		const int centerCol = (colSize / 2) * 16;
+
+		clearScreen();
+		memset(destImage, 0x0, rowSize * colSize * dimension);
+
+		//the loop where we recompute where we place the pixels for rotation
+		for (col = 0; col < (colSize * 16); col = col + 16) {
+			for (row = 0; row < (rowSize * 16); row = row + 16) {
+
+				//correcting the position to center
+				row = row - centerRow;
+				col = col - centerCol;
+
+				//calculating the new position of the row and col
+				rotatedRow = (row * cosine) + (col * sine);
+				rotatedCol = -(row * sine) + (col * cosine);
+
+				//correcting the position to center
+				rotatedRow = rotatedRow + centerRow;
+				rotatedCol = rotatedCol + centerCol;
+
+				row = row + centerRow;
+				col = col + centerCol;
+
+				//converting back to (32,0) fixed point numbers
+				int roundedCol = toInt(rotatedCol);
+				int roundedRow = toInt(rotatedRow);
+				int intCol = toInt(col);
+				int intRow = toInt(row);
+
+				if (toInt(rotatedCol) > colSize || toInt(rotatedCol) < 0 || toInt(rotatedRow) > rowSize || toInt(rotatedRow) < 0) {
+					drawPixel(toInt(col), toInt(row), 0);
+				}
+				else {
+					int destCalc = (intCol * rsizexdim) + intRow * dimension;
+					int myImageCalc = (roundedCol * rsizexdim) + (roundedRow * dimension);
+
+					destImage[destCalc + red] = myImage[myImageCalc + red];
+					destImage[destCalc + green] = myImage[myImageCalc + green];
+					destImage[destCalc + blue] = myImage[myImageCalc + blue];
+
+					drawPixel((int) roundf(col), (int) roundf(row), bilinearInterpolation(toInt(rotatedCol), toInt(rotatedRow), toInt(col), toInt(row)));
+				}
+			}
+		}
+}
+
 void constantRotation(void) {
+	printf("Rotation Beginning\n");
+	fprintf(stderr, "Rotation Begin. \n");
 	//Rotates in increments of 10 degrees for a full circle
 	printCharToScreen(0, 59, "Rotation");
 	int degree = 0;
 	for (degree = 0; degree < 360; degree += 10) {
+
+		//begin timing the rotation
+		PERF_START_MEASURING(PERFORMANCE_COUNTER_0_BASE);
+		PERF_BEGIN(PERFORMANCE_COUNTER_0_BASE, 1);
+
 		rotateImage(1, degree);
+
+		//end timing the rotation
+		PERF_END(PERFORMANCE_COUNTER_0_BASE, 1);
+		PERF_STOP_MEASURING(PERFORMANCE_COUNTER_0_BASE);
+
+		//getting the average pixel render time
+		unsigned long time = perf_get_section_time((void*)PERFORMANCE_COUNTER_0_BASE, 1);
+		time = time / (colSize*rowSize);
+
+		//printing average time for pixel render
+		printf("Average rendering cycles per pixel (ROTATION): %lu \n", time);
+		fprintf(stderr, "ROT_AVG: %lu \n", time);
 	}
 }
 
@@ -255,5 +345,21 @@ int bilinearInterpolation(float col, float row, float changedCol, float changedR
 			+ ((weightcol) * (weightrow) * getColorFromArray((col + 1), (row + 1), blue));
 
 	return ((interPRed) + (interPGreen << 8) + (interPBlue << 16));
+}
+
+//changes a (32,4) fixed point number to a (32,0) fixed point number
+int toInt(int fixedPoint)
+{
+	//checking if bit 3 is 1
+	if(fixedPoint & 4){
+		//since bit 3 was a 1 we need to round up after shifting right by 4
+		fixedPoint = fixedPoint >> 4;
+		return fixedPoint + 1;
+	}
+
+	else{
+		//since bit 3 was 0 we only need to shift the number right by 4 to change it to a (32, 0) fixed point
+		return fixedPoint >> 4;
+	}
 }
 

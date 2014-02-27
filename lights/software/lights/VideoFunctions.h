@@ -12,12 +12,14 @@
 #include "alt_types.h"
 #include "altera_up_avalon_video_pixel_buffer_dma.h"
 #include <stdio.h>
+#include <altera_avalon_performance_counter.h>
 
 	void drawPixelFromArray(int col, int row);
 	int getPixelFromArray(int col, int row);
 	void drawPixel(int col, int row, int color);
 	void setUpImage(void);
 	void rotateImage(float direction, float angle);
+	void rotateImageFixedPoint(int direction, float angle);
 	void constantRotation(void);
 	void scaleImage(float scalingFactor);
 	void shrinkAndResize(void);
@@ -28,6 +30,9 @@
 	//displays the image in myImage array
 	void displayImage(void);
 	int bilinearInterpolation(float col, float row, float changedCol, float changedRow);
+
+	//changes a (32,4) fixed point number to a (32,0) fixed point number
+	int toInt(int fixedPoint);
 
 	//240
 #define colSize 240

@@ -237,6 +237,14 @@ altera_avalon_lcd_16207_driver_C_LIB_SRCS := \
 	$(altera_avalon_lcd_16207_driver_SRCS_ROOT)/src/altera_avalon_lcd_16207.c \
 	$(altera_avalon_lcd_16207_driver_SRCS_ROOT)/src/altera_avalon_lcd_16207_fd.c
 
+# altera_avalon_performance_counter_driver sources root 
+altera_avalon_performance_counter_driver_SRCS_ROOT := drivers
+
+# altera_avalon_performance_counter_driver sources 
+altera_avalon_performance_counter_driver_C_LIB_SRCS := \
+	$(altera_avalon_performance_counter_driver_SRCS_ROOT)/src/altera_avalon_performance_counter.c \
+	$(altera_avalon_performance_counter_driver_SRCS_ROOT)/src/perf_print_formatted_report.c
+
 # altera_avalon_pio_driver sources root 
 altera_avalon_pio_driver_SRCS_ROOT := drivers
 
@@ -368,6 +376,7 @@ COMPONENT_C_LIB_SRCS += \
 	$(altera_avalon_cfi_flash_driver_C_LIB_SRCS) \
 	$(altera_avalon_jtag_uart_driver_C_LIB_SRCS) \
 	$(altera_avalon_lcd_16207_driver_C_LIB_SRCS) \
+	$(altera_avalon_performance_counter_driver_C_LIB_SRCS) \
 	$(altera_avalon_sysid_driver_C_LIB_SRCS) \
 	$(altera_nios2_hal_driver_C_LIB_SRCS) \
 	$(altera_ro_zipfs_C_LIB_SRCS) \

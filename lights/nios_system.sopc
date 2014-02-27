@@ -159,6 +159,14 @@
          type = "long";
       }
    }
+   element performance_counter_0.control_slave
+   {
+      datum baseAddress
+      {
+         value = "0";
+         type = "long";
+      }
+   }
    element cpu_0
    {
       datum _sortIndex
@@ -228,12 +236,12 @@
    element nios_system
    {
    }
-   element leds.s1
+   element performance_counter_0
    {
-      datum baseAddress
+      datum _sortIndex
       {
-         value = "26226688";
-         type = "long";
+         value = "28";
+         type = "int";
       }
    }
    element cfi_flash_0.s1
@@ -244,19 +252,27 @@
          type = "long";
       }
    }
-   element HEX0.s1
+   element leds.s1
    {
       datum baseAddress
       {
-         value = "26226736";
+         value = "26226688";
          type = "long";
       }
    }
-   element HEX2.s1
+   element HEX6.s1
    {
       datum baseAddress
       {
-         value = "26226752";
+         value = "26226816";
+         type = "long";
+      }
+   }
+   element HEX4.s1
+   {
+      datum baseAddress
+      {
+         value = "26226784";
          type = "long";
       }
    }
@@ -276,35 +292,11 @@
          type = "long";
       }
    }
-   element HEX7.s1
+   element HEX2.s1
    {
       datum baseAddress
       {
-         value = "26226832";
-         type = "long";
-      }
-   }
-   element HEX4.s1
-   {
-      datum baseAddress
-      {
-         value = "26226784";
-         type = "long";
-      }
-   }
-   element HEX6.s1
-   {
-      datum baseAddress
-      {
-         value = "26226816";
-         type = "long";
-      }
-   }
-   element HEX3.s1
-   {
-      datum baseAddress
-      {
-         value = "26226768";
+         value = "26226752";
          type = "long";
       }
    }
@@ -316,11 +308,35 @@
          type = "long";
       }
    }
+   element HEX3.s1
+   {
+      datum baseAddress
+      {
+         value = "26226768";
+         type = "long";
+      }
+   }
    element keys.s1
    {
       datum baseAddress
       {
          value = "26226704";
+         type = "long";
+      }
+   }
+   element HEX0.s1
+   {
+      datum baseAddress
+      {
+         value = "26226736";
+         type = "long";
+      }
+   }
+   element HEX7.s1
+   {
+      datum baseAddress
+      {
+         value = "26226832";
          type = "long";
       }
    }
@@ -460,8 +476,8 @@
  <parameter name="maxAdditionalLatency" value="0" />
  <parameter name="projectName" value="lights.qpf" />
  <parameter name="sopcBorderPoints" value="true" />
- <parameter name="systemHash" value="21487069268" />
- <parameter name="timeStamp" value="1392675219193" />
+ <parameter name="systemHash" value="18510090390" />
+ <parameter name="timeStamp" value="1393447299255" />
  <parameter name="useTestBenchNamingPattern" value="false" />
  <module kind="clock_source" version="12.0" enabled="1" name="clk_0">
   <parameter name="clockFrequency" value="50000000" />
@@ -562,7 +578,7 @@
   <parameter name="dcache_numTCDM" value="_0" />
   <parameter name="dcache_lineSize" value="_32" />
   <parameter name="dcache_bursts" value="false" />
-  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='sdram_0.s1' start='0x800000' end='0x1000000' /><slave name='cfi_flash_0.s1' start='0x1400000' end='0x1800000' /><slave name='sram_0.avalon_sram_slave' start='0x1880000' end='0x1900000' /><slave name='video_character_buffer_with_dma_0.avalon_char_buffer_slave' start='0x1900000' end='0x1902000' /><slave name='cpu_0.jtag_debug_module' start='0x1902800' end='0x1903000' /><slave name='leds.s1' start='0x1903000' end='0x1903010' /><slave name='keys.s1' start='0x1903010' end='0x1903020' /><slave name='lcd_0.control_slave' start='0x1903020' end='0x1903030' /><slave name='HEX0.s1' start='0x1903030' end='0x1903040' /><slave name='HEX2.s1' start='0x1903040' end='0x1903050' /><slave name='HEX3.s1' start='0x1903050' end='0x1903060' /><slave name='HEX4.s1' start='0x1903060' end='0x1903070' /><slave name='HEX5.s1' start='0x1903070' end='0x1903080' /><slave name='HEX6.s1' start='0x1903080' end='0x1903090' /><slave name='HEX7.s1' start='0x1903090' end='0x19030A0' /><slave name='HEX1.s1' start='0x19030A0' end='0x19030B0' /><slave name='video_pixel_buffer_dma_0.avalon_control_slave' start='0x19030B0' end='0x19030C0' /><slave name='sysid.control_slave' start='0x19030C0' end='0x19030C8' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x19030C8' end='0x19030D0' /><slave name='video_character_buffer_with_dma_0.avalon_char_control_slave' start='0x19030D0' end='0x19030D8' /><slave name='clocks_0.avalon_clocks_slave' start='0x19030D8' end='0x19030DA' /></address-map>]]></parameter>
+  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='performance_counter_0.control_slave' start='0x0' end='0x40' /><slave name='sdram_0.s1' start='0x800000' end='0x1000000' /><slave name='cfi_flash_0.s1' start='0x1400000' end='0x1800000' /><slave name='sram_0.avalon_sram_slave' start='0x1880000' end='0x1900000' /><slave name='video_character_buffer_with_dma_0.avalon_char_buffer_slave' start='0x1900000' end='0x1902000' /><slave name='cpu_0.jtag_debug_module' start='0x1902800' end='0x1903000' /><slave name='leds.s1' start='0x1903000' end='0x1903010' /><slave name='keys.s1' start='0x1903010' end='0x1903020' /><slave name='lcd_0.control_slave' start='0x1903020' end='0x1903030' /><slave name='HEX0.s1' start='0x1903030' end='0x1903040' /><slave name='HEX2.s1' start='0x1903040' end='0x1903050' /><slave name='HEX3.s1' start='0x1903050' end='0x1903060' /><slave name='HEX4.s1' start='0x1903060' end='0x1903070' /><slave name='HEX5.s1' start='0x1903070' end='0x1903080' /><slave name='HEX6.s1' start='0x1903080' end='0x1903090' /><slave name='HEX7.s1' start='0x1903090' end='0x19030A0' /><slave name='HEX1.s1' start='0x19030A0' end='0x19030B0' /><slave name='video_pixel_buffer_dma_0.avalon_control_slave' start='0x19030B0' end='0x19030C0' /><slave name='sysid.control_slave' start='0x19030C0' end='0x19030C8' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x19030C8' end='0x19030D0' /><slave name='video_character_buffer_with_dma_0.avalon_char_control_slave' start='0x19030D0' end='0x19030D8' /><slave name='clocks_0.avalon_clocks_slave' start='0x19030D8' end='0x19030DA' /></address-map>]]></parameter>
   <parameter name="dataAddrWidth" value="25" />
   <parameter name="customInstSlavesSystemInfo"><![CDATA[<info><slave name="altera_nios_custom_instr_floating_point_inst" baseAddress="252" addressSpan="4" clockCycleType="VARIABLE" /></info>]]></parameter>
   <parameter name="cpuReset" value="false" />
@@ -897,6 +913,13 @@
   <parameter name="useDivider" value="0" />
   <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone II" />
  </module>
+ <module
+   kind="altera_avalon_performance_counter"
+   version="12.0"
+   enabled="1"
+   name="performance_counter_0">
+  <parameter name="numberOfSections" value="2" />
+ </module>
  <connection
    kind="avalon"
    version="12.0"
@@ -1190,4 +1213,17 @@
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="252" />
  </connection>
+ <connection
+   kind="avalon"
+   version="12.0"
+   start="cpu_0.data_master"
+   end="performance_counter_0.control_slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0000" />
+ </connection>
+ <connection
+   kind="clock"
+   version="12.0"
+   start="clocks_0.sys_clk"
+   end="performance_counter_0.clk" />
 </system>

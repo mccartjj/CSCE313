@@ -15,6 +15,7 @@
 #include "VideoFunctions.h"
 #include "altera_avalon_pio_regs.h"
 #include "alt_types.h"
+#include <altera_avalon_performance_counter.h>
 
 #define key3 3
 #define key2 5
@@ -43,7 +44,11 @@ int main() {
 
 		if (current_state == key3) {
 			printCharToScreen(0, 59, "Original Image");
+			//begin using the performance counter
+			PERF_BEGIN(PERFORMANCE_COUNTER_0_BASE, 1);
 			displayImage();
+			//end using the p_counter
+			PERF_END(PERFORMANCE_COUNTER_0_BASE, 1);
 		}
 		else if (current_state == key2) {
 			constantRotation();
