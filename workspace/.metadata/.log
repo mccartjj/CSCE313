@@ -10787,3 +10787,297 @@ java.lang.NullPointerException
 
 !ENTRY com.altera.sbtgui.launch 1 0 2014-02-26 17:15:30.463
 !MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-4]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x19030c0 /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf]
+!SESSION 2014-02-27 13:49:10.200 -----------------------------------------------
+eclipse.buildId=M20100909-0800
+java.version=1.6.0_23
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=linux, ARCH=x86, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+Command-line arguments:  -os linux -ws gtk -arch x86 -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 13:50:41.543
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-4]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=0x19030c0]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2014-02-27 13:50:42.798
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [3-4]', --device=1, --instance=0, --stop, --accept-bad-sysid, --sidp=0x19030c0] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 13:50:42.839
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-4]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x19030c0 /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2014-02-27 13:50:44.084
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [3-4]', --device=1, --instance=0, --go, --accept-bad-sysid, --sidp=0x19030c0, /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 4 0 2014-02-27 13:50:44.088
+!MESSAGE Downloading ELF Process failed
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 13:50:50.403
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-4]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=0x19030c0]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2014-02-27 13:50:51.614
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [3-4]', --device=1, --instance=0, --stop, --accept-bad-sysid, --sidp=0x19030c0] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 13:50:51.654
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-4]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x19030c0 /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2014-02-27 13:50:52.877
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [3-4]', --device=1, --instance=0, --go, --accept-bad-sysid, --sidp=0x19030c0, /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 4 0 2014-02-27 13:50:52.879
+!MESSAGE Downloading ELF Process failed
+!SESSION 2014-02-27 13:51:10.891 -----------------------------------------------
+eclipse.buildId=M20100909-0800
+java.version=1.6.0_23
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=linux, ARCH=x86, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+Command-line arguments:  -os linux -ws gtk -arch x86 -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 13:51:53.286
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-4]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=0x19030c0]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2014-02-27 13:51:54.524
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [3-4]', --device=1, --instance=0, --stop, --accept-bad-sysid, --sidp=0x19030c0] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 13:51:54.566
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-4]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x19030c0 /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2014-02-27 13:51:55.810
+!MESSAGE Failed Executing: [nios2-download, '--cable=USB-Blaster on localhost [3-4]', --device=1, --instance=0, --go, --accept-bad-sysid, --sidp=0x19030c0, /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 4 0 2014-02-27 13:51:55.814
+!MESSAGE Downloading ELF Process failed
+!SESSION 2014-02-27 13:52:36.241 -----------------------------------------------
+eclipse.buildId=M20100909-0800
+java.version=1.6.0_23
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=linux, ARCH=x86, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+Command-line arguments:  -os linux -ws gtk -arch x86 -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 13:53:37.535
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=0x19030c0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 13:53:38.981
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x19030c0 /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 14:04:22.703
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [3-2]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 14:04:43.356
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=0x19030c0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 14:04:44.887
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x19030c0 /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 14:05:52.878
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [3-2]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 14:06:13.460
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=0x19030c0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 14:06:15.162
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x19030c0 /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 14:11:53.131
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [3-2]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 14:12:13.720
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=0x19030c0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 14:12:15.222
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x19030c0 /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 14:16:28.499
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=0x19030c0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 14:16:30.200
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x19030c0 /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 14:17:24.321
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [3-2]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 14:17:44.908
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=0x19030c0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 14:17:46.608
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x19030c0 /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 14:18:02.490
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [3-2]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 14:18:23.071
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=0x19030c0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 14:18:24.656
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x19030c0 /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 14:23:48.949
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [3-2]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 14:24:09.523
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=0x19030c0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 14:24:11.252
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x19030c0 /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 14:26:10.357
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [3-2]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 14:26:30.942
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=0x19030c0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 14:26:32.647
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x19030c0 /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 14:29:29.547
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=0x19030c0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 14:29:31.259
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x19030c0 /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 14:37:19.555
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=0x19030c0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 14:37:21.048
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x19030c0 /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 14:48:26.642
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [3-2]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 14:48:47.226
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=0x19030c0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 14:48:48.910
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x19030c0 /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 14:50:10.817
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=0x19030c0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 14:50:12.712
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x19030c0 /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 14:51:49.470
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [3-2]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 14:52:10.060
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=0x19030c0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 14:52:11.820
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x19030c0 /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 14:52:54.238
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [3-2]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 14:53:14.820
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=0x19030c0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 14:53:16.520
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x19030c0 /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 14:57:35.869
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [3-2]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 14:57:56.453
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=0x19030c0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 14:57:58.098
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x19030c0 /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 15:19:21.970
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [3-2]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 15:19:42.552
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=0x19030c0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 15:19:44.376
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x19030c0 /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 15:21:14.866
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [3-2]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 15:21:35.448
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=0x19030c0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 15:21:37.157
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x19030c0 /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 15:22:27.635
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [3-2]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 15:22:48.215
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=0x19030c0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 15:22:49.729
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x19030c0 /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 15:22:56.280
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [3-2]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 15:23:16.857
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=0x19030c0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 15:23:18.579
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x19030c0 /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 15:47:33.039
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [3-2]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 15:47:53.634
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=0x19030c0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 15:47:55.352
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x19030c0 /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 15:48:50.457
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [3-2]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 15:49:11.035
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=0x19030c0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 15:49:12.773
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x19030c0 /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 15:50:29.102
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [3-2]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 15:50:49.681
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=0x19030c0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 15:50:51.228
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x19030c0 /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 15:52:07.267
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [3-2]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 15:52:27.854
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=0x19030c0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 15:52:29.460
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x19030c0 /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 15:52:34.231
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [3-2]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 15:52:54.802
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=0x19030c0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 15:52:56.681
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x19030c0 /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 16:02:46.825
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [3-2]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 16:03:07.402
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=0x19030c0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 16:03:09.215
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x19030c0 /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 16:12:41.658
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [3-2]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 16:13:02.234
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --stop --accept-bad-sysid --sidp=0x19030c0]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-02-27 16:13:03.925
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --go --accept-bad-sysid --sidp=0x19030c0 /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf]

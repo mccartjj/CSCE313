@@ -233,7 +233,9 @@ void rotateImageFixedPoint(int direction, float angle){
 					destImage[destCalc + green] = myImage[myImageCalc + green];
 					destImage[destCalc + blue] = myImage[myImageCalc + blue];
 
-					drawPixel((int) roundf(col), (int) roundf(row), bilinearInterpolation(toInt(rotatedCol), toInt(rotatedRow), toInt(col), toInt(row)));
+					//with out bilinear
+					drawPixel(intCol, intRow, getPixelFromArray(roundedCol, roundedRow));
+//					drawPixel((int) roundf(col), (int) roundf(row), bilinearInterpolation(toInt(rotatedCol), toInt(rotatedRow), toInt(col), toInt(row)));
 				}
 			}
 		}
@@ -245,6 +247,10 @@ void constantRotation(void) {
 	//Rotates in increments of 10 degrees for a full circle
 	printCharToScreen(0, 59, "Rotation");
 	int degree = 0;
+//	double averageTime = 0.0;
+	double averageCycles = 0.0;
+//	double totalTime = 0.0;
+	unsigned long totalCycles = 0;
 	for (degree = 0; degree < 360; degree += 10) {
 
 		//begin timing the rotation
@@ -258,13 +264,30 @@ void constantRotation(void) {
 		PERF_STOP_MEASURING(PERFORMANCE_COUNTER_0_BASE);
 
 		//getting the average pixel render time
-		unsigned long time = perf_get_section_time((void*)PERFORMANCE_COUNTER_0_BASE, 1);
-		time = time / (colSize*rowSize);
+		unsigned long cycles = perf_get_section_time((void*)PERFORMANCE_COUNTER_0_BASE, 1);
 
-		//printing average time for pixel render
-		printf("Average rendering cycles per pixel (ROTATION): %lu \n", time);
-		fprintf(stderr, "ROT_AVG: %lu \n", time);
+		//turning this time into seconds for John's sanity.
+//		double timeSecs = (double)cycles/(double)ALT_CPU_FREQ;
+//		totalTime = totalTime + timeSecs;
+
+		//slowed down the rotation for some reason, commented out until we need it
+		cycles = cycles / (colSize*rowSize);
+		totalCycles = totalCycles + cycles;
+
+		//printing average time for pixel render and average time in seconds
+		printf("------------------------------------------\n");
+		printf("Degrees: %d.\nCycles: %lu \n", degree, cycles);
+		fprintf(stderr, "Deg %d Cyc %lu \n", degree, cycles);
+		PERF_RESET(PERFORMANCE_COUNTER_0_BASE);
 	}
+		averageCycles = totalCycles / 36;
+//		averageTime = totalTime / 36;
+		printf("------------------------------------------\n");
+		printf("Total Cycles: %lu.\nAverage Cycles: %g\n", totalCycles, averageCycles);
+//		printf("Total cycles: %lu.\n", totalCycles);
+//		printf("Total time: %g seconds.\nAverage Time: %g\n", totalTime, averageTime);
+//		printf("Total time: %g seconds.\n", totalTime);
+		printf("------------------------------------------\n");
 }
 
 void scaleImage(float scalingFactor) {
@@ -322,7 +345,7 @@ int bilinearInterpolation(float col, float row, float changedCol, float changedR
 
 	float weightrow = 0.0;
 	float weightcol = 0.0;
-	int interPRed = 0;
+	int interPRed = 0;(int) roundf(row)
 	int interPGreen = 0;
 	int interPBlue = 0;
 

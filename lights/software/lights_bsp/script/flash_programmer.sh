@@ -13,5 +13,5 @@
 #
 # Programming File: "../flash/myfile_cfi_flash_0.flash" To Device: cfi_flash_0
 #
-/usr/local/3rdparty/altera/quartus12/nios2eds/bin/nios2-flash-programmer "../flash/myfile_cfi_flash_0.flash" --base=0x1400000 --sidp=0x19030C0 --id=0x0 --timestamp=1393447299 --device=1 --instance=0 '--cable=USB-Blaster on localhost [1-1.4]' --program --verbose 
+/usr/local/3rdparty/altera/quartus12/nios2eds/bin/nios2-flash-programmer "../flash/myfile_cfi_flash_0.flash" --base=0x1400000 --sidp=0x19030C0 --id=0x0 --timestamp=1393447299 --device=1 --instance=0 '--cable=USB-Blaster on localhost [3-2]' --program --verbose 
 

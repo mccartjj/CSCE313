@@ -15,6 +15,8 @@
 #include <altera_avalon_performance_counter.h>
 
 	void drawPixelFromArray(int col, int row);
+
+	//returns the color of the pixel already shifted
 	int getPixelFromArray(int col, int row);
 	void drawPixel(int col, int row, int color);
 	void setUpImage(void);
@@ -44,6 +46,8 @@
 #define dimension 3
 
 #define rsizexdim 960
+
+#define colXrow 76800
 	//0
 #define red 2
 
