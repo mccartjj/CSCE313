@@ -826,7 +826,7 @@ SYSTEM nios_system
       WIZARD_SCRIPT_ARGUMENTS 
       {
          cache_has_dcache = "1";
-         cache_dcache_size = "2048";
+         cache_dcache_size = "4096";
          cache_dcache_line_size = "32";
          cache_dcache_bursts = "0";
          cache_dcache_ram_block_type = "AUTO";
@@ -1013,7 +1013,7 @@ SYSTEM nios_system
             }
             CONSTANT nasys_dcache_size
             {
-               value = "2048";
+               value = "4096";
                comment = "Size in bytes of data cache";
             }
             CONSTANT nasys_dcache_line_size
@@ -1050,7 +1050,7 @@ SYSTEM nios_system
          {
             Settings_Summary = "Nios II/f
             <br>&nbsp;&nbsp;4-Kbyte Instruction Cache
-            <br>&nbsp;&nbsp;2-Kbyte Data Cache
+            <br>&nbsp;&nbsp;4-Kbyte Data Cache
             <br>&nbsp;&nbsp;JTAG Debug Module
             ";
             MESSAGES 
@@ -2642,7 +2642,7 @@ SYSTEM nios_system
          Has_Clock = "1";
          View 
          {
-            Settings_Summary = "System ID (at last Generate):<br> <b>00000000</b>    (unique ID tag) <br> <b>530E5183</b> (timestamp: Wed Feb 26, 2014 @3:41 PM)";
+            Settings_Summary = "System ID (at last Generate):<br> <b>00000000</b>    (unique ID tag) <br> <b>530FC634</b> (timestamp: Thu Feb 27, 2014 @6:11 PM)";
             MESSAGES 
             {
             }
@@ -2651,7 +2651,7 @@ SYSTEM nios_system
       WIZARD_SCRIPT_ARGUMENTS 
       {
          id = "0u";
-         timestamp = "1393447299u";
+         timestamp = "1393542708u";
          regenerate_values = "0";
          MAKE 
          {
@@ -2660,7 +2660,7 @@ SYSTEM nios_system
                verifysysid 
                {
                   All_Depends_On = "0";
-                  Command = "nios2-download $(JTAG_CABLE)                                --sidp=0x019030c0 --id=0 --timestamp=1393447299";
+                  Command = "nios2-download $(JTAG_CABLE)                                --sidp=0x019030c0 --id=0 --timestamp=1393542708";
                   Is_Phony = "1";
                   Target_File = "dummy_verifysysid_file";
                }

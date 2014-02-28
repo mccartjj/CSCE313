@@ -1,5 +1,5 @@
 Assembler report for lights
-Wed Feb 26 15:46:04 2014
+Thu Feb 27 18:15:13 2014
 Quartus II 32-bit Version 12.0 Build 178 05/31/2012 SJ Full Version
 
 
@@ -39,7 +39,7 @@ applicable agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Wed Feb 26 15:46:04 2014 ;
+; Assembler Status      ; Successful - Thu Feb 27 18:15:13 2014 ;
 ; Revision Name         ; lights                                ;
 ; Top-level Entity Name ; lights                                ;
 ; Family                ; Cyclone II                            ;
@@ -52,7 +52,8 @@ applicable agreement for further details.
 +-----------------------------------------------------------------------------+----------+---------------+
 ; Option                                                                      ; Setting  ; Default Value ;
 +-----------------------------------------------------------------------------+----------+---------------+
-; Use smart compilation                                                       ; Off      ; Off           ;
+; Use smart compilation                                                       ; On       ; Off           ;
+; Maximum processors allowed for parallel compilation                         ; All      ;               ;
 ; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation  ; On       ; On            ;
 ; Enable compact report table                                                 ; Off      ; Off           ;
 ; Generate compressed bitstreams                                              ; On       ; On            ;
@@ -107,7 +108,7 @@ applicable agreement for further details.
 +----------------+---------------------+
 ; Device         ; EP2C35F672C6        ;
 ; JTAG usercode  ; 0xFFFFFFFF          ;
-; Checksum       ; 0x00895EFD          ;
+; Checksum       ; 0x008DD0BB          ;
 +----------------+---------------------+
 
 
@@ -118,7 +119,7 @@ applicable agreement for further details.
 +--------------------+-----------------+
 ; Device             ; EPCS16          ;
 ; JTAG usercode      ; 0x00000000      ;
-; Checksum           ; 0x1BE913F7      ;
+; Checksum           ; 0x1BE21AD1      ;
 ; Compression Ratio  ; 2               ;
 +--------------------+-----------------+
 
@@ -129,13 +130,13 @@ applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 32-bit Assembler
     Info: Version 12.0 Build 178 05/31/2012 SJ Full Version
-    Info: Processing started: Wed Feb 26 15:46:01 2014
+    Info: Processing started: Thu Feb 27 18:15:10 2014
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off lights -c lights
 Info (115031): Writing out detailed assembly data for power analysis
 Info (115030): Assembler is generating device programming files
 Info: Quartus II 32-bit Assembler was successful. 0 errors, 0 warnings
     Info: Peak virtual memory: 378 megabytes
-    Info: Processing ended: Wed Feb 26 15:46:04 2014
+    Info: Processing ended: Thu Feb 27 18:15:13 2014
     Info: Elapsed time: 00:00:03
     Info: Total CPU time (on all processors): 00:00:03
 

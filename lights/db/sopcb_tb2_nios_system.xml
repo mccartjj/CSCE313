@@ -555,7 +555,7 @@
    <SOPCModuleParameter>
     <C>111</C>
     <Name>dcache_size</Name>
-    <Value>_2048</Value>
+    <Value>_4096</Value>
    </SOPCModuleParameter>
    <SOPCModuleParameter>
     <C>112</C>
@@ -797,7 +797,7 @@
    <SOPCModuleParameter>
     <C>160</C>
     <Name>timestamp</Name>
-    <Value>1393447299</Value>
+    <Value>1393542708</Value>
    </SOPCModuleParameter>
   </SOPCModule>
   <SOPCModule>
@@ -1891,7 +1891,7 @@
     <Value>2</Value>
    </SOPCModuleParameter>
   </SOPCModule>
-  <SystemID>1878009178</SystemID>
+  <SystemID>1973401240</SystemID>
  </SOPCSystem>
  <SchemaVersion>schema_2011-12-20</SchemaVersion>
 </ProgramExecution>

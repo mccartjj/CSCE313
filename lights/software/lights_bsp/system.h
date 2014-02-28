@@ -4,7 +4,7 @@
  * Machine generated for CPU 'cpu_0' in SOPC Builder design 'nios_system'
  * SOPC Builder design path: ../../nios_system.sopcinfo
  *
- * Generated: Wed Feb 26 15:47:14 EST 2014
+ * Generated: Thu Feb 27 18:19:11 EST 2014
  */
 
 /*
@@ -70,7 +70,7 @@
 #define ALT_CPU_DATA_ADDR_WIDTH 0x19
 #define ALT_CPU_DCACHE_LINE_SIZE 32
 #define ALT_CPU_DCACHE_LINE_SIZE_LOG2 5
-#define ALT_CPU_DCACHE_SIZE 2048
+#define ALT_CPU_DCACHE_SIZE 4096
 #define ALT_CPU_EXCEPTION_ADDR 0x800020
 #define ALT_CPU_FLUSHDA_SUPPORTED
 #define ALT_CPU_FREQ 50000000
@@ -104,7 +104,7 @@
 #define NIOS2_DATA_ADDR_WIDTH 0x19
 #define NIOS2_DCACHE_LINE_SIZE 32
 #define NIOS2_DCACHE_LINE_SIZE_LOG2 5
-#define NIOS2_DCACHE_SIZE 2048
+#define NIOS2_DCACHE_SIZE 4096
 #define NIOS2_EXCEPTION_ADDR 0x800020
 #define NIOS2_FLUSHDA_SUPPORTED
 #define NIOS2_HARDWARE_DIVIDE_PRESENT 0
@@ -622,7 +622,7 @@
 #define SYSID_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define SYSID_NAME "/dev/sysid"
 #define SYSID_SPAN 8
-#define SYSID_TIMESTAMP 1393447299u
+#define SYSID_TIMESTAMP 1393542708u
 #define SYSID_TYPE "altera_avalon_sysid"
 
 
