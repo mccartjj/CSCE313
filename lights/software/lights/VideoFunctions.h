@@ -32,9 +32,13 @@
 	//displays the image in myImage array
 	void displayImage(void);
 	int bilinearInterpolation(float col, float row, float changedCol, float changedRow);
+	alt_32 bilinearInterpolationFP(alt_32 col, alt_32 row, alt_32 changedCol, alt_32 changedRow);
 
 	//changes a (32,4) fixed point number to a (32,0) fixed point number
-	int toInt(int fixedPoint);
+	alt_32 toInt(alt_32 fixedPoint);
+
+	//changes a (32,8) fixed point number to a (32,0) fixed point number
+	alt_32 toInt8(alt_32 fixedPoint);
 
 	//240
 #define colSize 240
@@ -62,8 +66,6 @@
 
 	//the array holding the image in the flash
 	alt_u8 *myImage;
-
-	alt_u8 *destImage;
 
 	//the pixel buffer
 	alt_up_pixel_buffer_dma_dev *myPixelBuffer;

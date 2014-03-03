@@ -126,7 +126,7 @@ void rotateImage(float direction, float angle) {
 	const float centerCol = colSize / 2;
 
 	clearScreen();
-	memset(destImage, 0x0, 320 * 240 * 3);
+	memset(destImage, 0x0, rowSize * colSize * dimension);
 
 	//the loop where we recompute where we place the pixels for rotation
 	for (col = 0; col < colSize; col++) {
@@ -156,44 +156,140 @@ void rotateImage(float direction, float angle) {
 				drawPixel((int) roundf(col), (int) roundf(row), 0);
 			}
 			else {
-				int destCalc = (intCol * rsizexdim) + intRow * dimension;
+				/*int destCalc = (intCol * rsizexdim) + intRow * dimension;
 				int myImageCalc = (roundedCol * rsizexdim) + (roundedRow * dimension);
 
 				destImage[destCalc + red] = myImage[myImageCalc + red];
 				destImage[destCalc + green] = myImage[myImageCalc + green];
 				destImage[destCalc + blue] = myImage[myImageCalc + blue];
+				*/
 
-//				drawPixel((int) roundf(col), (int) roundf(row), getPixelFromDestArray(col, row));
 				drawPixel((int) roundf(col), (int) roundf(row), bilinearInterpolation(rotatedCol, rotatedRow, col, row));
 			}
 		}
 	}
 }
 
+void rotateImageFixedPoint(int direction, float angle){
+	//rotates the image in increments of degrees
+
+		//these are (32,4) fixed point numbers
+		alt_32 col = 0;
+		alt_32 row = 0;
+		alt_32 rotatedCol = 0;
+		alt_32 rotatedRow = 0;
+
+		//converting the angle to rad
+		angle = angle * (PI / 180);
+
+		//calculating the value of the sin and cos
+		const float cosineFloat = cosf(angle);
+		const float sineFloat = sinf(angle);
+
+		//changing the cos and sin to (32,4) fixed point numbers
+		alt_32 cosine = (alt_32) ((cosineFloat) * 16);
+		alt_32 sine = (alt_32) ((sineFloat) * 16);
+
+		//correction for the position and making it a (32,4) fixed point number
+		const alt_32 centerRow = (rowSize / 2);
+		const alt_32 centerCol = (colSize / 2);
+
+		clearScreen();
+		memset(destImage, 0x0, rowSize * colSize * dimension);
+
+		//the loop where we recompute where we place the pixels for rotation
+		for (col = 0; col < (colSize); col++) {
+			for (row = 0; row < (rowSize); row++) {
+
+				//correcting the position to center
+				row = row - centerRow;
+				col = col - centerCol;
+
+				//calculating the new position of the row and col
+				rotatedRow = (row * cosine) + (col * sine);
+				rotatedCol = -(row * sine) + (col * cosine);
+
+				//correcting the position to center
+				rotatedRow = rotatedRow + (centerRow * 16);
+				rotatedCol = rotatedCol + (centerCol * 16);
+
+				row = row + centerRow;
+				col = col + centerCol;
+
+				alt_32 biCol = rotatedCol;
+				alt_32 biRow = rotatedRow;
+
+				rotatedCol = toInt(rotatedCol);
+				rotatedRow = toInt(rotatedRow);
+
+//				alt_32 intCol = col;
+//				alt_32 intRow = row;
+
+				if (rotatedCol > colSize || rotatedCol < 0 || rotatedRow > rowSize || rotatedRow < 0) {
+					drawPixel(col, row, 0);
+				}
+				else {
+					/*
+					int destCalc = (intCol * rsizexdim) + intRow * dimension;
+					int myImageCalc = (rotatedCol * rsizexdim) + (rotatedRow * dimension);
+
+					destImage[destCalc + red] = myImage[myImageCalc + red];
+					destImage[destCalc + green] = myImage[myImageCalc + green];
+					destImage[destCalc + blue] = myImage[myImageCalc + blue];
+					*/
+
+//					drawPixel(intCol, intRow, getPixelFromArray(rotatedCol, rotatedRow));
+					drawPixel(col, row, bilinearInterpolationFP(biCol, biRow, col, row));
+				}
+			}
+		}
+}
+
 void constantRotation(void) {
 	printf("Rotation Beginning\n");
-	fprintf(stderr, "Rotation Beginning \n");
+	fprintf(stderr, "Rotation Begin. \n");
 	//Rotates in increments of 10 degrees for a full circle
 	printCharToScreen(0, 59, "Rotation");
 	int degree = 0;
+//	double averageTime = 0.0;
+	double averageCycles = 0.0;
+//	double totalTime = 0.0;
+	unsigned long totalCycles = 0;
 	for (degree = 0; degree < 360; degree += 10) {
 
+		//begin timing the rotation
 		PERF_START_MEASURING(PERFORMANCE_COUNTER_0_BASE);
 		PERF_BEGIN(PERFORMANCE_COUNTER_0_BASE, 1);
 
-		rotateImage(1, degree);
+//		rotateImage(1, degree);
+		rotateImageFixedPoint(1, degree);
 
+
+		//end timing the rotation
 		PERF_END(PERFORMANCE_COUNTER_0_BASE, 1);
 		PERF_STOP_MEASURING(PERFORMANCE_COUNTER_0_BASE);
 
-		int time = perf_get_section_time((void*)PERFORMANCE_COUNTER_0_BASE, 1);
-		time = time / (colSize*rowSize);
+		//getting the average pixel render time
+		unsigned long cycles = perf_get_section_time((void*)PERFORMANCE_COUNTER_0_BASE, 1);
 
-		printf("TEST LINE \n");
-		printf("Average rendering time per pixel (ROTATION): " + time);
-		fprintf(stderr, "WORKING\n");
-		fprintf(stderr, "AVG Rotation time: \n" + time);
+		//turning this time into seconds for John's sanity.
+//		double timeSecs = (double)cycles/(double)ALT_CPU_FREQ;
+//		totalTime = totalTime + timeSecs;
+
+		//slowed down the rotation for some reason, commented out until we need it
+		cycles = cycles / (colSize*rowSize);
+		totalCycles = totalCycles + cycles;
+
+		//printing average time for pixel render and average time in seconds
+		printf("------------------------------------------\n");
+		printf("Degrees: %d.\nCycles: %lu \n", degree, cycles);
+		fprintf(stderr, "Deg %d Cyc %lu \n", degree, cycles);
+		PERF_RESET(PERFORMANCE_COUNTER_0_BASE);
 	}
+		averageCycles = totalCycles / 36;
+		printf("------------------------------------------\n");
+		printf("Total Cycles: %lu.\nAverage Cycles: %g\n", totalCycles, averageCycles);
+		printf("------------------------------------------\n");
 }
 
 void scaleImage(float scalingFactor) {
@@ -244,6 +340,41 @@ void shrinkAndResize(void) {
 	}
 }
 
+alt_32 bilinearInterpolationFP(alt_32 col, alt_32 row, alt_32 changedCol, alt_32 changedRow) {
+	//For scale, use col, row, scaledC, scaledR
+	//For rotate, the opposite, rotatedC, rotatedR, col, row
+	//returns an integer holding the data for the pixel value averaged from the corners of the original
+
+	alt_32 weightrow = 0;
+	alt_32 weightcol = 0;
+	alt_32 interPRed = 0;
+	alt_32 interPGreen = 0;
+	alt_32 interPBlue = 0;
+
+	weightrow = changedRow & 0xFFFFFFF0;
+	weightcol = changedCol & 0xFFFFFFF0;
+
+//	this is a (32,8)
+	interPRed = ((16 - weightcol) * (16 - weightrow) * getColorFromArray(col, row, red))
+			+ ((16 - weightcol) * (weightrow) * getColorFromArray((col), (row + 1), red))
+			+ ((weightcol) * (16	- weightrow) * getColorFromArray((col + 1), row, red))
+			+ ((weightcol) * (weightrow) * getColorFromArray((col + 1), (row + 1), red));
+
+	//	this is a (32,8)
+	interPGreen = ((16 - weightcol) * (16 - weightrow) * getColorFromArray(col, row, green))
+			+ ((weightcol) * (16 - weightrow) * getColorFromArray((col + 1), row, green))
+			+ ((16 - weightcol) * (weightrow) * getColorFromArray((col), (row + 1), green))
+			+ ((weightcol) * (weightrow) * getColorFromArray((col + 1), (row + 1), green));
+
+	//	this is a (32,8)
+	interPBlue = (16 - weightcol) * (16 - weightrow) * getColorFromArray(col, row, blue)
+			+ ((weightcol) * (16 - weightrow) * getColorFromArray((col + 1), row, blue))
+			+ ((16 - weightcol) * (weightrow) * getColorFromArray((col), (row + 1), blue))
+			+ ((weightcol) * (weightrow) * getColorFromArray((col + 1), (row + 1), blue));
+
+	return ((toInt8(interPRed)) + (toInt8(interPGreen) << 8) + (toInt8(interPBlue) << 16));
+}
+
 int bilinearInterpolation(float col, float row, float changedCol, float changedRow) {
 	//For scale, use col, row, scaledC, scaledR
 	//For rotate, the opposite, rotatedC, rotatedR, col, row
@@ -274,5 +405,37 @@ int bilinearInterpolation(float col, float row, float changedCol, float changedR
 			+ ((weightcol) * (weightrow) * getColorFromArray((col + 1), (row + 1), blue));
 
 	return ((interPRed) + (interPGreen << 8) + (interPBlue << 16));
+}
+
+//changes a (32,4) fixed point number to a (32,0) fixed point number
+alt_32 toInt(alt_32 fixedPoint)
+{
+	//checking if bit 3 is 1
+	if(fixedPoint & 8){
+		//since bit 3 was a 1 we need to round up after shifting right by 4
+		fixedPoint = fixedPoint / 16;
+		return fixedPoint + 1;
+	}
+
+	else{
+		//since bit 3 was 0 we only need to shift the number right by 4 to change it to a (32, 0) fixed point
+		return fixedPoint / 16;
+	}
+}
+
+//changes a (32,8) fixed point number to a (32,0) fixed point number
+alt_32 toInt8(alt_32 fixedPoint)
+{
+	//checking if bit 3 is 1
+	if(fixedPoint & 128){
+		//since bit 3 was a 1 we need to round up after shifting right by 4
+		fixedPoint = fixedPoint / 256;
+		return fixedPoint + 1;
+	}
+
+	else{
+		//since bit 3 was 0 we only need to shift the number right by 4 to change it to a (32, 0) fixed point
+		return fixedPoint / 256;
+	}
 }
 
