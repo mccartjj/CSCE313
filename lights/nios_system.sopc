@@ -143,11 +143,11 @@
          type = "int";
       }
    }
-   element performance_counter_0.control_slave
+   element sysid.control_slave
    {
       datum baseAddress
       {
-         value = "0";
+         value = "26226880";
          type = "long";
       }
    }
@@ -159,11 +159,11 @@
          type = "long";
       }
    }
-   element sysid.control_slave
+   element performance_counter_0.control_slave
    {
       datum baseAddress
       {
-         value = "26226880";
+         value = "0";
          type = "long";
       }
    }
@@ -244,75 +244,11 @@
          type = "int";
       }
    }
-   element sdram_0.s1
-   {
-      datum baseAddress
-      {
-         value = "8388608";
-         type = "long";
-      }
-   }
-   element HEX5.s1
-   {
-      datum baseAddress
-      {
-         value = "26226800";
-         type = "long";
-      }
-   }
-   element keys.s1
-   {
-      datum baseAddress
-      {
-         value = "26226704";
-         type = "long";
-      }
-   }
-   element leds.s1
-   {
-      datum baseAddress
-      {
-         value = "26226688";
-         type = "long";
-      }
-   }
-   element HEX7.s1
-   {
-      datum baseAddress
-      {
-         value = "26226832";
-         type = "long";
-      }
-   }
-   element HEX0.s1
-   {
-      datum baseAddress
-      {
-         value = "26226736";
-         type = "long";
-      }
-   }
    element HEX4.s1
    {
       datum baseAddress
       {
          value = "26226784";
-         type = "long";
-      }
-   }
-   element HEX1.s1
-   {
-      datum baseAddress
-      {
-         value = "26226848";
-         type = "long";
-      }
-   }
-   element HEX3.s1
-   {
-      datum baseAddress
-      {
-         value = "26226768";
          type = "long";
       }
    }
@@ -324,6 +260,46 @@
          type = "long";
       }
    }
+   element HEX7.s1
+   {
+      datum baseAddress
+      {
+         value = "26226832";
+         type = "long";
+      }
+   }
+   element keys.s1
+   {
+      datum baseAddress
+      {
+         value = "26226704";
+         type = "long";
+      }
+   }
+   element HEX0.s1
+   {
+      datum baseAddress
+      {
+         value = "26226736";
+         type = "long";
+      }
+   }
+   element sdram_0.s1
+   {
+      datum baseAddress
+      {
+         value = "8388608";
+         type = "long";
+      }
+   }
+   element leds.s1
+   {
+      datum baseAddress
+      {
+         value = "26226688";
+         type = "long";
+      }
+   }
    element cfi_flash_0.s1
    {
       datum baseAddress
@@ -332,11 +308,35 @@
          type = "long";
       }
    }
+   element HEX3.s1
+   {
+      datum baseAddress
+      {
+         value = "26226768";
+         type = "long";
+      }
+   }
    element HEX6.s1
    {
       datum baseAddress
       {
          value = "26226816";
+         type = "long";
+      }
+   }
+   element HEX1.s1
+   {
+      datum baseAddress
+      {
+         value = "26226848";
+         type = "long";
+      }
+   }
+   element HEX5.s1
+   {
+      datum baseAddress
+      {
+         value = "26226800";
          type = "long";
       }
    }
@@ -476,8 +476,8 @@
  <parameter name="maxAdditionalLatency" value="0" />
  <parameter name="projectName" value="lights.qpf" />
  <parameter name="sopcBorderPoints" value="true" />
- <parameter name="systemHash" value="19435001156" />
- <parameter name="timeStamp" value="1393542708336" />
+ <parameter name="systemHash" value="18403740330" />
+ <parameter name="timeStamp" value="1394056125139" />
  <parameter name="useTestBenchNamingPattern" value="false" />
  <module kind="clock_source" version="12.0" enabled="1" name="clk_0">
   <parameter name="clockFrequency" value="50000000" />
@@ -572,7 +572,7 @@
   <parameter name="debug_debugReqSignals" value="false" />
   <parameter name="debug_assignJtagInstanceID" value="false" />
   <parameter name="debug_OCIOnchipTrace" value="_128" />
-  <parameter name="dcache_size" value="_4096" />
+  <parameter name="dcache_size" value="_16384" />
   <parameter name="dcache_ramBlockType" value="Automatic" />
   <parameter name="dcache_omitDataMaster" value="false" />
   <parameter name="dcache_numTCDM" value="_0" />

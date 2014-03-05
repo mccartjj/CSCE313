@@ -23,6 +23,7 @@
 	void rotateImage(float direction, float angle);
 	void rotateImageFixedPoint(int direction, float angle);
 	void constantRotation(void);
+	void constantRotationFP(void);
 	void scaleImage(float scalingFactor);
 	void shrinkAndResize(void);
 	//clears the character buffer before replacing it. also leads to flashy lights.

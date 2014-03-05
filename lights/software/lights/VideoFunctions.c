@@ -231,7 +231,49 @@ void constantRotation(void) {
 		PERF_BEGIN(PERFORMANCE_COUNTER_0_BASE, 1);
 
 		rotateImage(1, degree);
-//		rotateImageFixedPoint(1, degree);
+
+		//end timing the rotation
+		PERF_END(PERFORMANCE_COUNTER_0_BASE, 1);
+		PERF_STOP_MEASURING(PERFORMANCE_COUNTER_0_BASE);
+
+		//getting the average pixel render time
+		unsigned long cycles = perf_get_section_time((void*)PERFORMANCE_COUNTER_0_BASE, 1);
+
+		//getting cycles per pixel
+		cycles = cycles / (colSize*rowSize);
+		totalCycles = totalCycles + cycles;
+
+		//printing average time for pixel render and average time in seconds
+		printf("------------------------------------------\n");
+		printf("Degrees: %d.\nCycles: %lu \n", degree, cycles);
+		fprintf(stderr, "Deg %d Cyc %lu \n", degree, cycles);
+		PERF_RESET(PERFORMANCE_COUNTER_0_BASE);
+	}
+	averageCycles = totalCycles / 36;
+	printf("------------------------------------------\n");
+	printf("Total Cycles: %lu.\nAverage Cycles: %g\n", totalCycles, averageCycles);
+	printf("------------------------------------------\n");
+}
+
+void constantRotationFP(void) {
+	//Rotates in increments of 10 degrees for a full circle
+
+	printf("Rotation Beginning\n");
+	fprintf(stderr, "Rotation Begin. \n");
+
+	printCharToScreen(0, 59, "Rotation");
+
+	int degree = 0;
+	double averageCycles = 0.0;
+	unsigned long totalCycles = 0;
+
+	for (degree = 0; degree < 360; degree += 10) {
+
+		//begin timing the rotation
+		PERF_START_MEASURING(PERFORMANCE_COUNTER_0_BASE);
+		PERF_BEGIN(PERFORMANCE_COUNTER_0_BASE, 1);
+
+		rotateImageFixedPoint(1, degree);
 
 
 		//end timing the rotation
@@ -395,15 +437,15 @@ alt_32 toInt(alt_32 fixedPoint)
 //changes a (32,8) fixed point number to a (32,0) fixed point number
 alt_32 toInt8(alt_32 fixedPoint)
 {
-	//checking if bit 3 is 1
+	//checking if bit 8 is 1
 	if(fixedPoint & 128){
-		//since bit 3 was a 1 we need to round up after shifting right by 4
+		//since bit 8 was a 1 we need to round up after shifting right by 4
 		fixedPoint = fixedPoint / 256;
 		return fixedPoint + 1;
 	}
 
 	else{
-		//since bit 3 was 0 we only need to shift the number right by 4 to change it to a (32, 0) fixed point
+		//since bit 8 was 0 we only need to shift the number right by 4 to change it to a (32, 0) fixed point
 		return fixedPoint / 256;
 	}
 }
