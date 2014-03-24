@@ -4,20 +4,20 @@
  <systemtable filter="Default">
   <columns>
    <opcodeName visible="0" />
-   <connections preferredWidth="175" />
-   <irq preferredWidth="34" />
+   <connections preferredWidth="207" />
+   <irq preferredWidth="47" />
    <export visible="0" />
    <name preferredWidth="312" />
   </columns>
  </systemtable>
  <clocktable>
   <columns>
-   <clockname preferredWidth="219" />
-   <clocksource preferredWidth="219" />
-   <frequency preferredWidth="218" />
+   <clockname preferredWidth="244" />
+   <clocksource preferredWidth="244" />
+   <frequency preferredWidth="244" />
   </columns>
  </clocktable>
  <window width="1217" height="952" x="65" y="24" />
  <library
-   expandedCategories="Library/Peripherals/Debug and Performance,Project,Library/Peripherals,Library" />
+   expandedCategories="Project,Library/Interface Protocols,Library/Bridges/Memory Mapped,Library/Bridges,Library/Interface Protocols/Serial,Library" />
 </preferences>

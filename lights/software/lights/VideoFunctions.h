@@ -13,6 +13,8 @@
 #include "altera_up_avalon_video_pixel_buffer_dma.h"
 #include <stdio.h>
 #include <altera_avalon_performance_counter.h>
+#include <altera_avalon_mailbox.h>
+
 
 	void drawPixelFromArray(int col, int row);
 
@@ -41,6 +43,10 @@
 	//changes a (32,8) fixed point number to a (32,0) fixed point number
 	alt_32 toInt8(alt_32 fixedPoint);
 
+	void barrier(alt_u8 barrierNum);
+
+
+
 	//240
 #define colSize 240
 
@@ -62,6 +68,8 @@
 	//2
 #define blue 0
 #define PI 3.14159265
+
+#define NUM_CPUS 2
 
 	FILE *myFile;
 

@@ -4,7 +4,7 @@
  * Machine generated for CPU 'cpu_0' in SOPC Builder design 'nios_system'
  * SOPC Builder design path: ../../nios_system.sopcinfo
  *
- * Generated: Wed Feb 26 15:47:14 EST 2014
+ * Generated: Wed Mar 19 16:24:50 EDT 2014
  */
 
 /*
@@ -62,6 +62,7 @@
 #include "altera_avalon_cfi_flash.h"
 #include "altera_avalon_jtag_uart.h"
 #include "altera_avalon_lcd_16207.h"
+#include "altera_avalon_mailbox.h"
 #include "altera_avalon_performance_counter.h"
 #include "altera_avalon_sysid.h"
 #include "altera_ro_zipfs.h"
@@ -76,6 +77,8 @@ ALTERA_NIOS2_IRQ_INSTANCE ( CPU_0, cpu_0);
 ALTERA_AVALON_CFI_FLASH_INSTANCE ( CFI_FLASH_0, cfi_flash_0);
 ALTERA_AVALON_JTAG_UART_INSTANCE ( JTAG_UART_0, jtag_uart_0);
 ALTERA_AVALON_LCD_16207_INSTANCE ( LCD_0, lcd_0);
+ALTERA_AVALON_MAILBOX_INSTANCE ( MAILBOX_0, mailbox_0);
+ALTERA_AVALON_MAILBOX_INSTANCE ( MAILBOX_1, mailbox_1);
 ALTERA_AVALON_PERFORMANCE_COUNTER_INSTANCE ( PERFORMANCE_COUNTER_0, performance_counter_0);
 ALTERA_AVALON_SYSID_INSTANCE ( SYSID, sysid);
 ALTERA_RO_ZIPFS_INSTANCE ( ALTERA_RO_ZIPFS, altera_ro_zipfs);
@@ -106,6 +109,8 @@ void alt_sys_init( void )
     ALTERA_AVALON_CFI_FLASH_INIT ( CFI_FLASH_0, cfi_flash_0);
     ALTERA_AVALON_JTAG_UART_INIT ( JTAG_UART_0, jtag_uart_0);
     ALTERA_AVALON_LCD_16207_INIT ( LCD_0, lcd_0);
+    ALTERA_AVALON_MAILBOX_INIT ( MAILBOX_0, mailbox_0);
+    ALTERA_AVALON_MAILBOX_INIT ( MAILBOX_1, mailbox_1);
     ALTERA_AVALON_PERFORMANCE_COUNTER_INIT ( PERFORMANCE_COUNTER_0, performance_counter_0);
     ALTERA_AVALON_SYSID_INIT ( SYSID, sysid);
     ALTERA_RO_ZIPFS_INIT ( ALTERA_RO_ZIPFS, altera_ro_zipfs);

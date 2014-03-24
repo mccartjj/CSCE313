@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="19" version="2.0">
+<workbench progressCount="20" version="2.0">
 <workbenchAdvisor/>
 <window height="991" maximized="true" width="723" x="65" y="46">
 <fastViewData fastViewLocation="1024"/>
@@ -18,13 +18,14 @@
 <coolItem id="group.nav" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="184" y="30"/>
 <coolItem id="group.editor" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.cdt.ui.editor.asm.AsmEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.cdt.make.editor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.ui.DefaultTextEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.eclipse.cdt.ui.editor.CEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="group.help" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.help" itemType="typeToolBarContribution" x="-1" y="-1"/>
 </coolbarLayout>
-<page aggregateWorkingSetId="Aggregate for window 1389896126291" focus="true" label="Workspace - Nios II">
+<page aggregateWorkingSetId="Aggregate for window 1389896126291" focus="true" label="Workspace - Nios II Debug">
 <editors>
 <editorArea activeWorkbook="DefaultEditorWorkbook">
 <info part="DefaultEditorWorkbook">
@@ -33,66 +34,31 @@
 <part id="0"/>
 <part id="1"/>
 <part id="2"/>
-<part id="4"/>
-<part id="3"/>
-<part id="5"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="Project.c" partName="Project.c" path="/acct/s1/mccartjj/CSCE313/lights/software/lights/Project.c" title="Project.c" tooltip="lights/Project.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/lights/Project.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2" selectionTopPixel="0"/>
-</editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="VideoFunctions.h" partName="VideoFunctions.h" path="/acct/s1/mccartjj/CSCE313/lights/software/lights/VideoFunctions.h" title="VideoFunctions.h" tooltip="lights/VideoFunctions.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/lights/VideoFunctions.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="720" selectionTopPixel="80"/>
+<editorState selectionHorizontalPixel="0" selectionLength="8" selectionOffset="1703" selectionTopPixel="713"/>
 </editor>
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="VideoFunctions.c" partName="VideoFunctions.c" path="/acct/s1/mccartjj/CSCE313/lights/software/lights/VideoFunctions.c" title="VideoFunctions.c" tooltip="lights/VideoFunctions.c" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="VideoFunctions.c" partName="VideoFunctions.c" path="/acct/s1/mccartjj/CSCE313/lights/software/lights/VideoFunctions.c" title="VideoFunctions.c" tooltip="lights/VideoFunctions.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/lights/VideoFunctions.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="1" selectionOffset="658" selectionTopPixel="6986"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="14731" selectionTopPixel="7763"/>
 </editor>
-<editor id="org.eclipse.ui.DefaultTextEditor" name="cycles4kDC" partName="cycles4kDC" path="/acct/s1/mccartjj/CSCE313/lights/software/lights/cycles4kDC" title="cycles4kDC" tooltip="lights/cycles4kDC" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/lights/cycles4kDC"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2820" selectionTopPixel="864"/>
-</editor>
-<editor id="org.eclipse.ui.DefaultTextEditor" name="cyclesNoDC" partName="cyclesNoDC" path="/acct/s1/mccartjj/CSCE313/lights/software/lights/cyclesNoDC" title="cyclesNoDC" tooltip="lights/cyclesNoDC" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/lights/cyclesNoDC"/>
-<editorState selectionHorizontalPixel="0" selectionLength="5" selectionOffset="2722" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.ui.DefaultTextEditor" name="cycles16kDC" partName="cycles16kDC" path="/acct/s1/mccartjj/CSCE313/lights/software/lights/cycles16kDC" title="cycles16kDC" tooltip="lights/cycles16kDC" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/lights/cycles16kDC"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2169" selectionTopPixel="0"/>
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="altera_avalon_mutex.c" partName="altera_avalon_mutex.c" path="/acct/s1/mccartjj/CSCE313/lights/software/lights_bsp/drivers/src/altera_avalon_mutex.c" title="altera_avalon_mutex.c" tooltip="lights_bsp/drivers/src/altera_avalon_mutex.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/lights_bsp/drivers/src/altera_avalon_mutex.c"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="4498" selectionTopPixel="1941"/>
 </editor>
 </editors>
 <views>
-<view id="org.eclipse.ui.navigator.ProjectExplorer" partName="Project Explorer">
-<viewState CommonNavigator.LINKING_ENABLED="0" CommonNavigator.LINKING_ENABLED.delayed="0" org.eclipse.cdt.ui.cview.groupincludes="false" org.eclipse.cdt.ui.cview.groupmacros="false" org.eclipse.cdt.ui.editor.CUChildren="true" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0"/>
-</view>
 <view id="org.eclipse.ui.views.ProgressView" partName="Progress">
 <viewState/>
 </view>
-<view id="org.eclipse.ui.views.PropertySheet" partName="Properties">
+<view id="org.eclipse.debug.ui.MemoryView" partName="Memory"/>
+<view id="org.eclipse.debug.ui.DebugView" partName="Debug">
 <viewState/>
 </view>
-<view id="org.eclipse.cdt.make.ui.views.MakeView" partName="Make Target"/>
-<view id="org.eclipse.ui.views.ProblemView" partName="Problems">
-<viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
-<expanded>
-<category IMemento.internal.id="Warnings (5 items)"/>
-</expanded>
-<columnWidths org.eclipse.ui.ide.locationField="73" org.eclipse.ui.ide.markerType="384" org.eclipse.ui.ide.pathField="143" org.eclipse.ui.ide.resourceField="108" org.eclipse.ui.ide.severityAndDescriptionField="350"/>
-<visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
-<visible IMemento.internal.id="org.eclipse.ui.ide.resourceField"/>
-<visible IMemento.internal.id="org.eclipse.ui.ide.pathField"/>
-<visible IMemento.internal.id="org.eclipse.ui.ide.locationField"/>
-<visible IMemento.internal.id="org.eclipse.ui.ide.markerType"/>
-</viewState>
-</view>
-<view id="org.eclipse.ui.console.ConsoleView" partName="Console">
-<viewState/>
-</view>
-<view id="org.eclipse.mylyn.tasks.ui.views.tasks" partName="Task List"/>
 <view id="org.eclipse.ui.views.TaskList" partName="Tasks">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.completionField" categoryGroup="none" markerContentGenerator="org.eclipse.ui.ide.tasksGenerator" partName="Tasks">
 <columnWidths org.eclipse.ui.ide.completionField="40" org.eclipse.ui.ide.descriptionField="353" org.eclipse.ui.ide.locationField="73" org.eclipse.ui.ide.markerType="240" org.eclipse.ui.ide.pathField="143" org.eclipse.ui.ide.priorityField="19" org.eclipse.ui.ide.resourceField="108"/>
@@ -105,11 +71,41 @@
 <visible IMemento.internal.id="org.eclipse.ui.ide.markerType"/>
 </viewState>
 </view>
+<view id="org.eclipse.debug.ui.VariableView" partName="Variables">
+<viewState/>
+</view>
+<view id="org.eclipse.debug.ui.BreakpointView" partName="Breakpoints"/>
 <view id="org.eclipse.ui.views.ContentOutline" partName="Outline">
 <viewState/>
 </view>
+<view id="org.eclipse.ui.navigator.ProjectExplorer" partName="Project Explorer">
+<viewState CommonNavigator.LINKING_ENABLED="0" CommonNavigator.LINKING_ENABLED.delayed="0" org.eclipse.cdt.ui.cview.groupincludes="false" org.eclipse.cdt.ui.cview.groupmacros="false" org.eclipse.cdt.ui.editor.CUChildren="true" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0"/>
+</view>
+<view id="org.eclipse.ui.views.PropertySheet" partName="Properties">
+<viewState/>
+</view>
+<view id="org.eclipse.cdt.make.ui.views.MakeView" partName="Make Target"/>
+<view id="org.eclipse.debug.ui.RegisterView" partName="Registers"/>
+<view id="org.eclipse.ui.views.ProblemView" partName="Problems">
+<viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
+<expanded>
+<category IMemento.internal.id="Warnings (5 items)"/>
+<category IMemento.internal.id="Warnings"/>
+</expanded>
+<columnWidths org.eclipse.ui.ide.locationField="73" org.eclipse.ui.ide.markerType="384" org.eclipse.ui.ide.pathField="143" org.eclipse.ui.ide.resourceField="108" org.eclipse.ui.ide.severityAndDescriptionField="336"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.resourceField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.pathField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.locationField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.markerType"/>
+</viewState>
+</view>
+<view id="org.eclipse.ui.console.ConsoleView" partName="Console">
+<viewState/>
+</view>
+<view id="org.eclipse.mylyn.tasks.ui.views.tasks" partName="Task List"/>
 </views>
-<perspectives activePart="org.eclipse.cdt.ui.editor.CEditor" activePerspective="com.altera.sbtgui.ui.cPerspective">
+<perspectives activePart="com.altera.sbtgui.launch.hardware.ByteStreamConsoleView:USB-Blaster on localhost [3-2].1.0" activePerspective="com.altera.sbtgui.ui.debugPerspective">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.eclipse.cdt.internal.ui.CPerspectiveFactory" id="org.eclipse.cdt.ui.CPerspective" label="C/C++"/>
 <alwaysOnActionSet id="org.eclipse.mylyn.context.ui.actionSet"/>
@@ -233,6 +229,7 @@
 <alwaysOnActionSet id="org.eclipse.cdt.ui.CElementCreationActionSet"/>
 <alwaysOnActionSet id="org.eclipse.ui.NavigateActionSet"/>
 <alwaysOnActionSet id="org.eclipse.debug.ui.launchActionSet"/>
+<alwaysOnActionSet id="org.eclipse.debug.ui.debugActionSet"/>
 <show_view_action id="org.eclipse.ui.console.ConsoleView"/>
 <show_view_action id="org.eclipse.search.ui.views.SearchView"/>
 <show_view_action id="org.eclipse.ui.views.ContentOutline"/>
@@ -250,14 +247,15 @@
 <hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
 <view id="org.eclipse.ui.views.ProblemView"/>
 <view id="org.eclipse.ui.views.TaskList"/>
-<view id="org.eclipse.ui.console.ConsoleView"/>
 <view id="org.eclipse.ui.views.PropertySheet"/>
 <view id="org.eclipse.ui.views.ProgressView"/>
+<view id="org.eclipse.ui.console.ConsoleView"/>
+<view id="org.eclipse.debug.ui.DebugView"/>
 <view id="org.eclipse.ui.navigator.ProjectExplorer"/>
 <fastViewBars>
 <fastViewBar fastViewLocation="131072" id="topRight" orientation="512" selectedTabId="org.eclipse.ui.views.ContentOutline" style="0">
 <fastViews>
-<view id="org.eclipse.ui.views.ContentOutline" ratio="0.3"/>
+<view id="org.eclipse.ui.views.ContentOutline" ratio="0.29923275"/>
 </fastViews>
 </fastViewBar>
 </fastViewBars>
@@ -283,13 +281,15 @@
 </folder>
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.16068377" ratioLeft="188" ratioRight="982" relationship="2" relative="topLeft"/>
-<info folder="true" part="bottom" ratio="0.83648497" ratioLeft="752" ratioRight="147" relationship="4" relative="org.eclipse.ui.editorss">
-<folder activePageID="com.altera.sbtgui.launch.hardware.ByteStreamConsoleView:USB-Blaster on localhost [3-2].1.0" appearance="2" expanded="2">
+<info folder="true" part="bottom" ratio="0.7730812" ratioLeft="695" ratioRight="204" relationship="4" relative="org.eclipse.ui.editorss">
+<folder activePageID="com.altera.sbtgui.launch.hardware.ByteStreamConsoleView:USB-Blaster on localhost [3-2].1.1" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
 <page content="org.eclipse.ui.views.TaskList" label="Tasks"/>
-<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
 <page content="org.eclipse.ui.views.PropertySheet" label="Properties"/>
 <page content="org.eclipse.ui.views.ProgressView" label="Progress"/>
+<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
+<page content="org.eclipse.debug.ui.DebugView" label="Debug"/>
+<page content="com.altera.sbtgui.launch.hardware.ByteStreamConsoleView:USB-Blaster on localhost [3-2].1.1" label="Nios II Console"/>
 <page content="com.altera.sbtgui.launch.hardware.ByteStreamConsoleView:USB-Blaster on localhost [3-2].1.0" label="Nios II Console"/>
 <page content="com.altera.sbtgui.launch.hardware.ByteStreamConsoleView:USB-Blaster on localhost [3-4].1.0" label="LabelNotFound"/>
 <page content="com.altera.sbtgui.launch.hardware.ByteStreamConsoleView:USB-Blaster on localhost [1-1.3].1.0" label="LabelNotFound"/>
@@ -303,6 +303,8 @@
 <part id="3"/>
 <part id="4"/>
 <part id="5"/>
+<part id="6"/>
+<part id="7"/>
 </presentation>
 </folder>
 </info>
@@ -315,166 +317,273 @@
 </mainWindow>
 </layout>
 </perspective>
+<perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
+<descriptor class="com.altera.sbtgui.ui.Nios2DebugPerspectiveFactory" id="com.altera.sbtgui.ui.debugPerspective" label="Nios II Debug"/>
+<alwaysOnActionSet id="org.eclipse.mylyn.context.ui.actionSet"/>
+<alwaysOnActionSet id="org.eclipse.mylyn.doc.actionSet"/>
+<alwaysOnActionSet id="org.eclipse.mylyn.tasks.ui.navigation"/>
+<alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
+<alwaysOnActionSet id="org.eclipse.search.searchActionSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.annotationNavigation"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.navigation"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.convertLineDelimitersTo"/>
+<alwaysOnActionSet id="org.eclipse.ui.externaltools.ExternalToolsSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.keyBindings"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.openFiles"/>
+<alwaysOnActionSet id="org.eclipse.debug.ui.launchActionSet"/>
+<alwaysOnActionSet id="org.eclipse.debug.ui.debugActionSet"/>
+<show_view_action id="org.eclipse.debug.ui.DebugView"/>
+<show_view_action id="org.eclipse.debug.ui.VariableView"/>
+<show_view_action id="org.eclipse.debug.ui.BreakpointView"/>
+<show_view_action id="org.eclipse.debug.ui.ExpressionView"/>
+<show_view_action id="org.eclipse.ui.views.ContentOutline"/>
+<show_view_action id="org.eclipse.ui.console.ConsoleView"/>
+<show_view_action id="org.eclipse.ui.views.TaskList"/>
+<show_view_action id="com.altera.sbtgui.launch.hardware.ByteStreamConsoleView"/>
+<show_view_action id="org.eclipse.debug.ui.RegisterView"/>
+<show_view_action id="org.eclipse.debug.ui.MemoryView"/>
+<show_view_action id="org.eclipse.cdt.debug.ui.DisassemblyView"/>
+<new_wizard_action id="com.altera.sbtgui.ui.newSoftwareExample"/>
+<new_wizard_action id="com.altera.sbtgui.ui.newApplication"/>
+<new_wizard_action id="com.altera.sbtgui.ui.newBsp"/>
+<new_wizard_action id="com.altera.sbtgui.ui.newLibrary"/>
+<perspective_action id="com.altera.sbtgui.ui.cPerspective"/>
+<hide_toolbar_item_id id="org.eclipse.ui.edit.text.toggleShowSelectedElementOnly"/>
+<view id="org.eclipse.ui.console.ConsoleView"/>
+<view id="org.eclipse.ui.views.TaskList"/>
+<view id="org.eclipse.debug.ui.VariableView"/>
+<view id="org.eclipse.debug.ui.BreakpointView"/>
+<view id="org.eclipse.debug.ui.RegisterView"/>
+<view id="org.eclipse.debug.ui.MemoryView"/>
+<view id="org.eclipse.ui.views.ContentOutline"/>
+<view id="org.eclipse.debug.ui.DebugView"/>
+<fastViewBars/>
+<layout>
+<mainWindow>
+<info folder="true" part="org.eclipse.debug.internal.ui.NavigatorFolderView">
+<folder activePageID="org.eclipse.debug.ui.DebugView" appearance="2" expanded="2">
+<page content="org.eclipse.debug.ui.DebugView" label="Debug"/>
+<page content="org.eclipse.ui.views.ResourceNavigator" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="stickyFolderRight" ratio="0.7493606" ratioLeft="879" ratioRight="294" relationship="2" relative="org.eclipse.debug.internal.ui.NavigatorFolderView">
+<folder appearance="2" expanded="2">
+<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
+<page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
+</folder>
+</info>
+<info folder="true" part="org.eclipse.debug.internal.ui.ConsoleFolderView" ratio="0.7494457" ratioLeft="676" ratioRight="226" relationship="4" relative="org.eclipse.debug.internal.ui.NavigatorFolderView">
+<folder activePageID="com.altera.sbtgui.launch.hardware.ByteStreamConsoleView:USB-Blaster on localhost [3-2].1.0" appearance="2" expanded="2">
+<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
+<page content="org.eclipse.ui.views.TaskList" label="Tasks"/>
+<page content="com.altera.sbtgui.launch.hardware.ByteStreamConsoleView:USB-Blaster on localhost [3-2].1.0" label="Nios II Console"/>
+<page content="com.altera.sbtgui.launch.hardware.ByteStreamConsoleView:USB-Blaster on localhost [3-2].1.1" label="Nios II Console"/>
+<page content="org.eclipse.ui.views.BookmarkView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.views.PropertySheet" label="LabelNotFound"/>
+<page content="com.altera.sbtgui.launch.hardware.ByteStreamConsoleView:*" label="LabelNotFound"/>
+<page content="com.altera.sbtgui.launch.hardware.ByteStreamConsoleView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="1"/>
+<part id="2"/>
+<part id="3"/>
+</presentation>
+</folder>
+</info>
+<info part="org.eclipse.ui.editorss" ratio="0.44970414" ratioLeft="304" ratioRight="372" relationship="4" relative="org.eclipse.debug.internal.ui.NavigatorFolderView"/>
+<info folder="true" part="org.eclipse.debug.internal.ui.OutlineFolderView" ratio="0.7493606" ratioLeft="879" ratioRight="294" relationship="2" relative="org.eclipse.ui.editorss">
+<folder activePageID="org.eclipse.ui.views.ContentOutline" appearance="2" expanded="2">
+<page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="org.eclipse.debug.internal.ui.ToolsFolderView" ratio="0.49957374" ratioLeft="586" ratioRight="587" relationship="2" relative="org.eclipse.debug.internal.ui.NavigatorFolderView">
+<folder activePageID="org.eclipse.debug.ui.VariableView" appearance="2" expanded="2">
+<page content="org.eclipse.debug.ui.VariableView" label="Variables"/>
+<page content="org.eclipse.debug.ui.BreakpointView" label="Breakpoints"/>
+<page content="org.eclipse.debug.ui.RegisterView" label="Registers"/>
+<page content="org.eclipse.debug.ui.MemoryView" label="Memory"/>
+<page content="org.eclipse.debug.ui.ExpressionView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="1"/>
+<part id="2"/>
+<part id="3"/>
+</presentation>
+</folder>
+</info>
+</mainWindow>
+</layout>
+</perspective>
 </perspectives>
 <workingSets/>
 <navigationHistory>
 <editors>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/lights/VideoFunctions.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Lab4/VideoFunctions.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/lights/Project.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/lights/cycles4kDC"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/lights/cyclesNoDC"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/lights/cycles16kDC"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Lab4_bsp/drivers/src/altera_avalon_mutex.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/lights_bsp/drivers/src/altera_avalon_mutex.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Lab4_bsp/drivers/src/altera_avalon_mailbox.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/lights/VideoFunctions.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Lab4/VideoFunctions.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.asm.AsmEditor" path="/lights_bsp/HAL/src/crt0.S"/>
 </editors>
-<item historyLabel="Project.c" index="1">
-<position info="not_deleted" x="427" y="0"/>
-</item>
-<item historyLabel="cyclesNoDC" index="3">
-<position info="not_deleted" x="5422" y="0"/>
-</item>
-<item historyLabel="cycles4kDC" index="2">
-<position info="not_deleted" x="2819" y="0"/>
-</item>
-<item historyLabel="cyclesNoDC" index="3">
-<position info="not_deleted" x="2771" y="0"/>
+<item historyLabel="altera_avalon_mutex.c" index="4">
+<position info="not_deleted" x="3220" y="0"/>
 </item>
 <item historyLabel="VideoFunctions.c" index="0">
-<position info="not_deleted" x="6143" y="0"/>
+<position/>
 </item>
-<item historyLabel="cyclesNoDC" index="3">
-<position info="not_deleted" x="58" y="0"/>
+<item historyLabel="VideoFunctions.c" index="1">
+<position info="not_deleted" x="14817" y="0"/>
 </item>
-<item historyLabel="cycles16kDC" index="4">
-<position info="not_deleted" x="5523" y="0"/>
+<item historyLabel="altera_avalon_mailbox.c" index="5">
+<position info="not_deleted" x="5715" y="0"/>
 </item>
-<item historyLabel="cyclesNoDC" index="3">
-<position info="not_deleted" x="58" y="0"/>
+<item historyLabel="altera_avalon_mutex.c" index="3">
+<position info="not_deleted" x="4448" y="0"/>
 </item>
-<item historyLabel="cycles4kDC" index="2">
-<position info="not_deleted" x="2819" y="0"/>
+<item historyLabel="altera_avalon_mutex.c" index="3">
+<position info="not_deleted" x="3220" y="0"/>
 </item>
-<item historyLabel="cyclesNoDC" index="3">
-<position info="not_deleted" x="58" y="0"/>
+<item historyLabel="VideoFunctions.c" index="1">
+<position info="not_deleted" x="14817" y="0"/>
 </item>
-<item historyLabel="cycles4kDC" index="2">
-<position info="not_deleted" x="2819" y="0"/>
+<item historyLabel="VideoFunctions.c" index="0">
+<position/>
 </item>
-<item historyLabel="cycles16kDC" index="4">
-<position info="not_deleted" x="5523" y="0"/>
-</item>
-<item historyLabel="cyclesNoDC" index="3">
-<position info="not_deleted" x="58" y="0"/>
-</item>
-<item historyLabel="cycles4kDC" index="2">
-<position info="not_deleted" x="2819" y="0"/>
-</item>
-<item historyLabel="cyclesNoDC" index="3">
-<position info="not_deleted" x="58" y="0"/>
-</item>
-<item historyLabel="cycles16kDC" index="4">
-<position info="not_deleted" x="5523" y="0"/>
-</item>
-<item historyLabel="cycles4kDC" index="2">
-<position info="not_deleted" x="2819" y="0"/>
-</item>
-<item historyLabel="cyclesNoDC" index="3">
-<position info="not_deleted" x="58" y="0"/>
-</item>
-<item historyLabel="cycles4kDC" index="2">
-<position info="not_deleted" x="2819" y="0"/>
-</item>
-<item historyLabel="cycles16kDC" index="4">
-<position info="not_deleted" x="5523" y="0"/>
-</item>
-<item historyLabel="cycles4kDC" index="2">
-<position info="not_deleted" x="2819" y="0"/>
-</item>
-<item historyLabel="cycles16kDC" index="4">
-<position info="not_deleted" x="5523" y="0"/>
-</item>
-<item historyLabel="cycles4kDC" index="2">
-<position info="not_deleted" x="67" y="0"/>
-</item>
-<item historyLabel="cycles16kDC" index="4">
-<position info="not_deleted" x="2905" y="0"/>
-</item>
-<item historyLabel="cycles4kDC" index="2">
-<position info="not_deleted" x="67" y="0"/>
-</item>
-<item historyLabel="cycles16kDC" index="4">
-<position info="not_deleted" x="2821" y="0"/>
-</item>
-<item historyLabel="cycles4kDC" index="2">
-<position info="not_deleted" x="67" y="0"/>
-</item>
-<item historyLabel="cycles16kDC" index="4">
-<position info="not_deleted" x="2821" y="0"/>
-</item>
-<item historyLabel="cyclesNoDC" index="3">
-<position info="not_deleted" x="58" y="0"/>
-</item>
-<item historyLabel="cycles4kDC" index="2">
-<position info="not_deleted" x="461" y="0"/>
-</item>
-<item historyLabel="cycles16kDC" index="4">
-<position info="not_deleted" x="2821" y="0"/>
-</item>
-<item historyLabel="cyclesNoDC" index="3">
-<position info="not_deleted" x="2722" y="5"/>
-</item>
-<item historyLabel="cycles4kDC" index="2">
-<position info="not_deleted" x="5520" y="3"/>
-</item>
-<item historyLabel="cycles16kDC" index="4">
-<position info="not_deleted" x="151" y="0"/>
-</item>
-<item historyLabel="cycles4kDC" index="2">
-<position info="not_deleted" x="2820" y="0"/>
-</item>
-<item historyLabel="cycles16kDC" index="4">
-<position info="not_deleted" x="2820" y="0"/>
-</item>
-<item historyLabel="Project.c" index="1">
-<position info="not_deleted" x="462" y="0"/>
-</item>
-<item historyLabel="cycles4kDC" index="2">
-<position info="not_deleted" x="2820" y="0"/>
-</item>
-<item historyLabel="cycles16kDC" index="4">
-<position info="not_deleted" x="2169" y="0"/>
-</item>
-<item historyLabel="cycles4kDC" index="2">
-<position info="not_deleted" x="2820" y="0"/>
-</item>
-<item historyLabel="cyclesNoDC" index="3">
-<position info="not_deleted" x="2722" y="5"/>
-</item>
-<item historyLabel="Project.c" index="1">
-<position info="not_deleted" x="447" y="0"/>
-</item>
-<item historyLabel="VideoFunctions.h" index="5">
+<item historyLabel="VideoFunctions.h" index="6">
 <position info="not_deleted" x="720" y="0"/>
 </item>
 <item historyLabel="VideoFunctions.c" index="0">
-<position info="not_deleted" x="71" y="33"/>
+<position/>
 </item>
-<item historyLabel="Project.c" index="1">
-<position info="not_deleted" x="447" y="0"/>
+<item historyLabel="VideoFunctions.h" index="6">
+<position info="not_deleted" x="1709" y="0"/>
 </item>
-<item historyLabel="cyclesNoDC" index="3">
-<position info="not_deleted" x="2722" y="5"/>
+<item historyLabel="VideoFunctions.c" index="0">
+<position info="not_deleted" x="14499" y="0"/>
 </item>
-<item historyLabel="cycles4kDC" index="2">
-<position info="not_deleted" x="2820" y="0"/>
+<item historyLabel="VideoFunctions.h" index="6">
+<position info="not_deleted" x="1709" y="0"/>
 </item>
-<item historyLabel="cycles16kDC" index="4">
-<position info="not_deleted" x="2169" y="0"/>
+<item historyLabel="VideoFunctions.c" index="0">
+<position info="not_deleted" x="8265" y="0"/>
 </item>
-<item historyLabel="Project.c" index="1">
-<position info="not_deleted" x="2" y="0"/>
+<item historyLabel="VideoFunctions.c" index="7">
+<position info="not_deleted" x="0" y="0"/>
 </item>
-<item active="true" historyLabel="VideoFunctions.c" index="0">
-<position info="not_deleted" x="71" y="33"/>
+<item historyLabel="VideoFunctions.c" index="0">
+<position info="not_deleted" x="8265" y="0"/>
+</item>
+<item historyLabel="VideoFunctions.c" index="7">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="VideoFunctions.c" index="7">
+<position info="not_deleted" x="8221" y="0"/>
+</item>
+<item historyLabel="VideoFunctions.c" index="0">
+<position info="not_deleted" x="8265" y="0"/>
+</item>
+<item historyLabel="VideoFunctions.c" index="0">
+<position info="not_deleted" x="8257" y="0"/>
+</item>
+<item historyLabel="VideoFunctions.c" index="0">
+<position info="not_deleted" x="14601" y="8"/>
+</item>
+<item historyLabel="VideoFunctions.h" index="6">
+<position info="not_deleted" x="1709" y="0"/>
+</item>
+<item historyLabel="VideoFunctions.c" index="0">
+<position info="not_deleted" x="14601" y="8"/>
+</item>
+<item historyLabel="VideoFunctions.c" index="0">
+<position info="not_deleted" x="15028" y="0"/>
+</item>
+<item historyLabel="VideoFunctions.c" index="0">
+<position info="not_deleted" x="15030" y="0"/>
+</item>
+<item historyLabel="VideoFunctions.c" index="0">
+<position info="not_deleted" x="8173" y="0"/>
+</item>
+<item historyLabel="Project.c" index="2">
+<position/>
+</item>
+<item historyLabel="Project.c" index="2">
+<position/>
+</item>
+<item historyLabel="VideoFunctions.c" index="0">
+<position info="not_deleted" x="7697" y="37"/>
+</item>
+<item historyLabel="Project.c" index="2">
+<position/>
+</item>
+<item historyLabel="VideoFunctions.c" index="0">
+<position info="not_deleted" x="7697" y="37"/>
+</item>
+<item historyLabel="Project.c" index="2">
+<position/>
+</item>
+<item historyLabel="VideoFunctions.c" index="0">
+<position info="not_deleted" x="395" y="34"/>
+</item>
+<item historyLabel="Project.c" index="2">
+<position/>
+</item>
+<item historyLabel="VideoFunctions.c" index="0">
+<position info="not_deleted" x="395" y="34"/>
+</item>
+<item historyLabel="VideoFunctions.c" index="0">
+<position info="not_deleted" x="14731" y="0"/>
+</item>
+<item historyLabel="VideoFunctions.c" index="0">
+<position info="not_deleted" x="15212" y="0"/>
+</item>
+<item historyLabel="VideoFunctions.c" index="0">
+<position info="not_deleted" x="15210" y="0"/>
+</item>
+<item historyLabel="VideoFunctions.c" index="0">
+<position info="not_deleted" x="14912" y="0"/>
+</item>
+<item historyLabel="VideoFunctions.h" index="6">
+<position info="not_deleted" x="1703" y="8"/>
+</item>
+<item historyLabel="VideoFunctions.c" index="0">
+<position info="not_deleted" x="14912" y="0"/>
+</item>
+<item historyLabel="Project.c" index="2">
+<position info="not_deleted" x="604" y="0"/>
+</item>
+<item historyLabel="VideoFunctions.c" index="0">
+<position info="not_deleted" x="14731" y="0"/>
+</item>
+<item historyLabel="crt0.S" index="8">
+<position info="not_deleted" x="7001" y="0"/>
+</item>
+<item historyLabel="altera_avalon_mutex.c" index="4">
+<position info="not_deleted" x="3382" y="0"/>
+</item>
+<item historyLabel="altera_avalon_mutex.c" index="4">
+<position info="not_deleted" x="3463" y="0"/>
+</item>
+<item historyLabel="altera_avalon_mutex.c" index="4">
+<position info="not_deleted" x="3382" y="0"/>
+</item>
+<item historyLabel="altera_avalon_mutex.c" index="4">
+<position info="not_deleted" x="3442" y="0"/>
+</item>
+<item historyLabel="altera_avalon_mutex.c" index="4">
+<position info="not_deleted" x="3491" y="0"/>
+</item>
+<item active="true" historyLabel="altera_avalon_mutex.c" index="4">
+<position info="not_deleted" x="4448" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -500,6 +609,36 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="altera_avalon_mutex.c" tooltip="lights_bsp/drivers/src/altera_avalon_mutex.c">
+<persistable path="/lights_bsp/drivers/src/altera_avalon_mutex.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.asm.AsmEditor" name="crt0.S" tooltip="lights_bsp/HAL/src/crt0.S">
+<persistable path="/lights_bsp/HAL/src/crt0.S"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="Project.c" tooltip="lights/Project.c">
+<persistable path="/lights/Project.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="VideoFunctions.c" tooltip="Lab4/VideoFunctions.c">
+<persistable path="/Lab4/VideoFunctions.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="VideoFunctions.c" tooltip="lights/VideoFunctions.c">
+<persistable path="/lights/VideoFunctions.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="altera_avalon_mutex.c" tooltip="Lab4_bsp/drivers/src/altera_avalon_mutex.c">
+<persistable path="/Lab4_bsp/drivers/src/altera_avalon_mutex.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.asm.AsmEditor" name="crt0.S" tooltip="Lab4_bsp/HAL/src/crt0.S">
+<persistable path="/Lab4_bsp/HAL/src/crt0.S"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="Project.c" tooltip="Lab4/Project.c">
+<persistable path="/Lab4/Project.c"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="VideoFunctions.h" tooltip="Lab4/VideoFunctions.h">
+<persistable path="/Lab4/VideoFunctions.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.make.editor" name="Makefile" tooltip="lights/Makefile">
+<persistable path="/lights/Makefile"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="cycles16kDC" tooltip="lights/cycles16kDC">
 <persistable path="/lights/cycles16kDC"/>
 </file>
@@ -514,36 +653,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="timeAfterOp.txt" tooltip="lights/timeAfterOp.txt">
 <persistable path="/lights/timeAfterOp.txt"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="time.txt" tooltip="lights/time.txt">
-<persistable path="/lights/time.txt"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="altera_avalon_performance_counter.h" tooltip="lights_bsp/drivers/inc/altera_avalon_performance_counter.h">
-<persistable path="/lights_bsp/drivers/inc/altera_avalon_performance_counter.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="LightsFunctions.h" tooltip="lights/LightsFunctions.h">
-<persistable path="/lights/LightsFunctions.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="LightsFunctions.c" tooltip="lights/LightsFunctions.c">
-<persistable path="/lights/LightsFunctions.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="VideoFunctions.c" tooltip="lights/VideoFunctions.c">
-<persistable path="/lights/VideoFunctions.c"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="VideoFunctions.h" tooltip="lights/VideoFunctions.h">
-<persistable path="/lights/VideoFunctions.h"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="settings.bsp" tooltip="lights_bsp/settings.bsp">
-<persistable path="/lights_bsp/settings.bsp"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.browser.editorSupport" name="summary.html" tooltip="lights_bsp/summary.html">
-<persistable path="/lights_bsp/summary.html"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.make.editor" name="Makefile" tooltip="lights/Makefile">
-<persistable path="/lights/Makefile"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="lightsAndOtherFunction.c" tooltip="lights/lightsAndOtherFunction.c">
-<persistable path="/lights/lightsAndOtherFunction.c"/>
 </file>
 </mruList>
 </workbench>

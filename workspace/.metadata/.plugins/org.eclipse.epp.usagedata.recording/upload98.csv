@@ -1,0 +1,351 @@
+what,kind,bundleId,bundleVersion,description,time
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.text.contentAssist.proposals",1395262040892
+activated,editor,org.eclipse.cdt.ui,5.2.1.201009141542,"org.eclipse.cdt.ui.editor.CEditor",1395262046647
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.copy",1395262051516
+activated,editor,org.eclipse.cdt.ui,5.2.1.201009141542,"org.eclipse.cdt.ui.editor.CEditor",1395262052589
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.paste",1395262054467
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.file.save",1395262060031
+activated,editor,org.eclipse.cdt.ui,5.2.1.201009141542,"org.eclipse.cdt.ui.editor.CEditor",1395262060784
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1395262062470
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1395262064782
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.file.save",1395262100086
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1395262103497
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1395262105887
+activated,editor,org.eclipse.cdt.ui,5.2.1.201009141542,"org.eclipse.cdt.ui.editor.CEditor",1395262119261
+activated,editor,org.eclipse.cdt.ui,5.2.1.201009141542,"org.eclipse.cdt.ui.editor.CEditor",1395262128117
+activated,editor,org.eclipse.cdt.ui,5.2.1.201009141542,"org.eclipse.cdt.ui.editor.CEditor",1395262130360
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.delete.line",1395262139465
+activated,editor,org.eclipse.cdt.ui,5.2.1.201009141542,"org.eclipse.cdt.ui.editor.CEditor",1395262141134
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.cut",1395262145130
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.delete",1395262146096
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.delete",1395262147335
+executed,command,org.eclipse.cdt.ui,5.2.1.201009141542,"org.eclipse.cdt.ui.edit.text.c.indent",1395262149010
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.file.save",1395262151449
+activated,editor,org.eclipse.cdt.ui,5.2.1.201009141542,"org.eclipse.cdt.ui.editor.CEditor",1395262151901
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.paste",1395262165637
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.file.save",1395262167468
+activated,view,com.altera.sbtgui.launch,12.0.0.178,"com.altera.sbtgui.launch.hardware.ByteStreamConsoleView",1395262171085
+activated,view,org.eclipse.ui.console,3.5.0.v20100526,"org.eclipse.ui.console.ConsoleView",1395262172127
+activated,view,com.altera.sbtgui.launch,12.0.0.178,"com.altera.sbtgui.launch.hardware.ByteStreamConsoleView",1395262175081
+activated,view,org.eclipse.ui.navigator.resources,3.4.201.M20100707-0800,"org.eclipse.ui.navigator.ProjectExplorer",1395262178924
+activated,view,com.altera.sbtgui.launch,12.0.0.178,"com.altera.sbtgui.launch.hardware.ByteStreamConsoleView",1395262181242
+activated,view,org.eclipse.ui.console,3.5.0.v20100526,"org.eclipse.ui.console.ConsoleView",1395262182339
+activated,view,com.altera.sbtgui.launch,12.0.0.178,"com.altera.sbtgui.launch.hardware.ByteStreamConsoleView",1395262185257
+activated,view,org.eclipse.ui.navigator.resources,3.4.201.M20100707-0800,"org.eclipse.ui.navigator.ProjectExplorer",1395262188507
+activated,view,com.altera.sbtgui.launch,12.0.0.178,"com.altera.sbtgui.launch.hardware.ByteStreamConsoleView",1395262240442
+activated,view,org.eclipse.ui.console,3.5.0.v20100526,"org.eclipse.ui.console.ConsoleView",1395262241526
+activated,view,com.altera.sbtgui.launch,12.0.0.178,"com.altera.sbtgui.launch.hardware.ByteStreamConsoleView",1395262244462
+activated,editor,org.eclipse.cdt.ui,5.2.1.201009141542,"org.eclipse.cdt.ui.editor.CEditor",1395262330671
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.undo",1395262349325
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.undo",1395262349853
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.undo",1395262350101
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.undo",1395262350358
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.undo",1395262350846
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.undo",1395262351282
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.undo",1395262351634
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.undo",1395262351918
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.undo",1395262352178
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.undo",1395262352419
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.undo",1395262352680
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.goto.lineEnd",1395262386370
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.file.saveAll",1395262398539
+activated,editor,org.eclipse.cdt.ui,5.2.1.201009141542,"org.eclipse.cdt.ui.editor.CEditor",1395262399364
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.goto.lineEnd",1395262417075
+error,log,,,"Unable to get CElement for Macro",1395262440600
+error,log,,,"Unable to get CElement for Macro",1395262440602
+error,log,,,"Unable to get CElement for Macro",1395262440604
+error,log,,,"Unable to get CElement for Macro",1395262440609
+error,log,,,"Unable to get CElement for Macro",1395262440610
+error,log,,,"Unable to get CElement for Macro",1395262440612
+error,log,,,"Unable to get CElement for Macro",1395262440614
+error,log,,,"Unable to get CElement for Macro",1395262440615
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.text.contentAssist.proposals",1395262440645
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.text.contentAssist.proposals",1395262445291
+activated,editor,org.eclipse.cdt.ui,5.2.1.201009141542,"org.eclipse.cdt.ui.editor.CEditor",1395262485745
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.text.contentAssist.proposals",1395262492585
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.text.contentAssist.proposals",1395262497129
+activated,editor,org.eclipse.cdt.ui,5.2.1.201009141542,"org.eclipse.cdt.ui.editor.CEditor",1395262508721
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.navigate.previous",1395262517144
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.text.contentAssist.proposals",1395262519675
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.text.contentAssist.proposals",1395262521531
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.text.contentAssist.proposals",1395262523304
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.text.contentAssist.proposals",1395262524947
+error,log,,,"Unable to get CElement for Macro",1395262535917
+error,log,,,"Unable to get CElement for Macro",1395262535919
+error,log,,,"Unable to get CElement for Macro",1395262535921
+error,log,,,"Unable to get CElement for Macro",1395262535923
+error,log,,,"Unable to get CElement for Macro",1395262535925
+error,log,,,"Unable to get CElement for Macro",1395262535927
+error,log,,,"Unable to get CElement for Macro",1395262535929
+error,log,,,"Unable to get CElement for Macro",1395262535931
+error,log,,,"Unable to get CElement for Macro",1395262535933
+error,log,,,"Unable to get CElement for Macro",1395262535935
+error,log,,,"Unable to get CElement for Macro",1395262535937
+error,log,,,"Unable to get CElement for Macro",1395262535939
+error,log,,,"Unable to get CElement for Macro",1395262535941
+error,log,,,"Unable to get CElement for Macro",1395262535943
+error,log,,,"Unable to get CElement for Macro",1395262535945
+error,log,,,"Unable to get CElement for Macro",1395262535947
+error,log,,,"Unable to get CElement for Macro",1395262535949
+error,log,,,"Unable to get CElement for Macro",1395262535950
+error,log,,,"Unable to get CElement for Macro",1395262535952
+error,log,,,"Unable to get CElement for Macro",1395262535954
+error,log,,,"Unable to get CElement for Macro",1395262535956
+error,log,,,"Unable to get CElement for Macro",1395262535958
+error,log,,,"Unable to get CElement for Macro",1395262535960
+error,log,,,"Unable to get CElement for Macro",1395262535962
+error,log,,,"Unable to get CElement for Macro",1395262535964
+error,log,,,"Unable to get CElement for Macro",1395262535966
+error,log,,,"Unable to get CElement for Macro",1395262535967
+error,log,,,"Unable to get CElement for Macro",1395262535969
+error,log,,,"Unable to get CElement for Macro",1395262535971
+error,log,,,"Unable to get CElement for Macro",1395262535973
+error,log,,,"Unable to get CElement for Macro",1395262535975
+error,log,,,"Unable to get CElement for Macro",1395262535977
+error,log,,,"Unable to get CElement for Macro",1395262535979
+error,log,,,"Unable to get CElement for Macro",1395262535981
+error,log,,,"Unable to get CElement for Macro",1395262535983
+error,log,,,"Unable to get CElement for Macro",1395262535985
+error,log,,,"Unable to get CElement for Macro",1395262535987
+error,log,,,"Unable to get CElement for Macro",1395262535989
+error,log,,,"Unable to get CElement for Macro",1395262535990
+error,log,,,"Unable to get CElement for Macro",1395262535992
+error,log,,,"Unable to get CElement for Macro",1395262535994
+error,log,,,"Unable to get CElement for Macro",1395262535996
+error,log,,,"Unable to get CElement for Macro",1395262535998
+error,log,,,"Unable to get CElement for Macro",1395262536000
+error,log,,,"Unable to get CElement for Macro",1395262536002
+error,log,,,"Unable to get CElement for Macro",1395262536004
+error,log,,,"Unable to get CElement for Macro",1395262536005
+error,log,,,"Unable to get CElement for Macro",1395262536007
+error,log,,,"Unable to get CElement for Macro",1395262536009
+error,log,,,"Unable to get CElement for Macro",1395262536011
+error,log,,,"Unable to get CElement for Macro",1395262536013
+error,log,,,"Unable to get CElement for Macro",1395262536015
+error,log,,,"Unable to get CElement for Macro",1395262536017
+error,log,,,"Unable to get CElement for Macro",1395262536019
+error,log,,,"Unable to get CElement for Macro",1395262536021
+error,log,,,"Unable to get CElement for Macro",1395262536023
+error,log,,,"Unable to get CElement for Macro",1395262536024
+error,log,,,"Unable to get CElement for Macro",1395262536027
+error,log,,,"Unable to get CElement for Macro",1395262536028
+error,log,,,"Unable to get CElement for Macro",1395262536030
+error,log,,,"Unable to get CElement for Macro",1395262536032
+error,log,,,"Unable to get CElement for Macro",1395262536034
+error,log,,,"Unable to get CElement for Macro",1395262536036
+error,log,,,"Unable to get CElement for Macro",1395262536038
+error,log,,,"Unable to get CElement for Macro",1395262536040
+error,log,,,"Unable to get CElement for Macro",1395262536041
+error,log,,,"Unable to get CElement for Macro",1395262536043
+error,log,,,"Unable to get CElement for Macro",1395262536045
+error,log,,,"Unable to get CElement for Macro",1395262536047
+error,log,,,"Unable to get CElement for Macro",1395262536049
+error,log,,,"Unable to get CElement for Macro",1395262536051
+error,log,,,"Unable to get CElement for Macro",1395262536052
+error,log,,,"Unable to get CElement for Macro",1395262536054
+error,log,,,"Unable to get CElement for Macro",1395262536056
+error,log,,,"Unable to get CElement for Macro",1395262536058
+error,log,,,"Unable to get CElement for Macro",1395262536060
+error,log,,,"Unable to get CElement for Macro",1395262536062
+error,log,,,"Unable to get CElement for Macro",1395262536063
+error,log,,,"Unable to get CElement for Macro",1395262536065
+error,log,,,"Unable to get CElement for Macro",1395262536067
+error,log,,,"Unable to get CElement for Macro",1395262536069
+error,log,,,"Unable to get CElement for Macro",1395262536071
+error,log,,,"Unable to get CElement for Macro",1395262536073
+error,log,,,"Unable to get CElement for Macro",1395262536074
+error,log,,,"Unable to get CElement for Macro",1395262536076
+error,log,,,"Unable to get CElement for Macro",1395262536078
+error,log,,,"Unable to get CElement for Macro",1395262536080
+error,log,,,"Unable to get CElement for Macro",1395262536082
+error,log,,,"Unable to get CElement for Macro",1395262536084
+error,log,,,"Unable to get CElement for Macro",1395262536086
+error,log,,,"Unable to get CElement for Macro",1395262536087
+error,log,,,"Unable to get CElement for Macro",1395262536089
+error,log,,,"Unable to get CElement for Macro",1395262536091
+error,log,,,"Unable to get CElement for Macro",1395262536093
+error,log,,,"Unable to get CElement for Macro",1395262536095
+error,log,,,"Unable to get CElement for Macro",1395262536097
+error,log,,,"Unable to get CElement for Macro",1395262536099
+error,log,,,"Unable to get CElement for Macro",1395262536100
+error,log,,,"Unable to get CElement for Macro",1395262536102
+error,log,,,"Unable to get CElement for Macro",1395262536104
+error,log,,,"Unable to get CElement for Macro",1395262536106
+error,log,,,"Unable to get CElement for Macro",1395262536108
+error,log,,,"Unable to get CElement for Macro",1395262536110
+error,log,,,"Unable to get CElement for Macro",1395262536112
+error,log,,,"Unable to get CElement for Macro",1395262536114
+error,log,,,"Unable to get CElement for Macro",1395262536115
+error,log,,,"Unable to get CElement for Macro",1395262536117
+error,log,,,"Unable to get CElement for Macro",1395262536119
+error,log,,,"Unable to get CElement for Macro",1395262536121
+error,log,,,"Unable to get CElement for Macro",1395262536123
+error,log,,,"Unable to get CElement for Macro",1395262536125
+error,log,,,"Unable to get CElement for Macro",1395262536127
+error,log,,,"Unable to get CElement for Macro",1395262536129
+error,log,,,"Unable to get CElement for Macro",1395262536131
+error,log,,,"Unable to get CElement for Macro",1395262536132
+error,log,,,"Unable to get CElement for Macro",1395262536134
+error,log,,,"Unable to get CElement for Macro",1395262536136
+error,log,,,"Unable to get CElement for Macro",1395262536138
+error,log,,,"Unable to get CElement for Macro",1395262536140
+error,log,,,"Unable to get CElement for Macro",1395262536142
+error,log,,,"Unable to get CElement for Macro",1395262536144
+error,log,,,"Unable to get CElement for Macro",1395262536146
+error,log,,,"Unable to get CElement for Macro",1395262536148
+error,log,,,"Unable to get CElement for Macro",1395262536150
+error,log,,,"Unable to get CElement for Macro",1395262536152
+error,log,,,"Unable to get CElement for Macro",1395262536154
+error,log,,,"Unable to get CElement for Macro",1395262536155
+error,log,,,"Unable to get CElement for Macro",1395262536157
+error,log,,,"Unable to get CElement for Macro",1395262536159
+error,log,,,"Unable to get CElement for Macro",1395262536161
+error,log,,,"Unable to get CElement for Macro",1395262536163
+error,log,,,"Unable to get CElement for Macro",1395262536164
+error,log,,,"Unable to get CElement for Macro",1395262536166
+error,log,,,"Unable to get CElement for Macro",1395262536167
+error,log,,,"Unable to get CElement for Macro",1395262536168
+error,log,,,"Unable to get CElement for Macro",1395262536170
+error,log,,,"Unable to get CElement for Macro",1395262536171
+error,log,,,"Unable to get CElement for Macro",1395262536172
+error,log,,,"Unable to get CElement for Macro",1395262536174
+error,log,,,"Unable to get CElement for Macro",1395262536175
+error,log,,,"Unable to get CElement for Macro",1395262536176
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.text.contentAssist.proposals",1395262536203
+activated,editor,org.eclipse.cdt.ui,5.2.1.201009141542,"org.eclipse.cdt.ui.editor.CEditor",1395262566536
+activated,editor,org.eclipse.cdt.ui,5.2.1.201009141542,"org.eclipse.cdt.ui.editor.CEditor",1395262580120
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.file.saveAll",1395262581222
+error,log,,,"Unable to get CElement for Macro",1395262610841
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.text.contentAssist.proposals",1395262610847
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.goto.lineEnd",1395262618137
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.goto.lineEnd",1395262653512
+error,log,,,"Unable to get CElement for Macro",1395262665670
+error,log,,,"Unable to get CElement for Macro",1395262665672
+error,log,,,"Unable to get CElement for Macro",1395262665673
+error,log,,,"Unable to get CElement for Macro",1395262665677
+error,log,,,"Unable to get CElement for Macro",1395262665678
+error,log,,,"Unable to get CElement for Macro",1395262665680
+error,log,,,"Unable to get CElement for Macro",1395262665682
+error,log,,,"Unable to get CElement for Macro",1395262665683
+error,log,,,"Unable to get CElement for Macro",1395262665685
+error,log,,,"Unable to get CElement for Macro",1395262665687
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.text.contentAssist.proposals",1395262665723
+error,log,,,"Unable to get CElement for Macro",1395262668272
+error,log,,,"Unable to get CElement for Macro",1395262668277
+error,log,,,"Unable to get CElement for Macro",1395262668279
+error,log,,,"Unable to get CElement for Macro",1395262668280
+error,log,,,"Unable to get CElement for Macro",1395262668282
+error,log,,,"Unable to get CElement for Macro",1395262668284
+error,log,,,"Unable to get CElement for Macro",1395262668285
+error,log,,,"Unable to get CElement for Macro",1395262668287
+error,log,,,"Unable to get CElement for Macro",1395262668288
+error,log,,,"Unable to get CElement for Macro",1395262668290
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.text.contentAssist.proposals",1395262668322
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.goto.lineEnd",1395262680752
+error,log,,,"Unable to get CElement for Macro",1395262704206
+error,log,,,"Unable to get CElement for Macro",1395262704208
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.text.contentAssist.proposals",1395262704224
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.delete",1395262724729
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.delete",1395262724912
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.goto.lineEnd",1395262732000
+error,log,,,"Unable to get CElement for Macro",1395262753238
+error,log,,,"Unable to get CElement for Macro",1395262753240
+error,log,,,"Unable to get CElement for Macro",1395262753241
+error,log,,,"Unable to get CElement for Macro",1395262753242
+error,log,,,"Unable to get CElement for Macro",1395262753244
+error,log,,,"Unable to get CElement for Macro",1395262753245
+error,log,,,"Unable to get CElement for Macro",1395262753247
+error,log,,,"Unable to get CElement for Macro",1395262753248
+error,log,,,"Unable to get CElement for Macro",1395262753250
+error,log,,,"Unable to get CElement for Macro",1395262753252
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.text.contentAssist.proposals",1395262753287
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.text.contentAssist.proposals",1395262755237
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.text.contentAssist.proposals",1395262770697
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.goto.lineEnd",1395262778239
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.text.contentAssist.proposals",1395262795938
+error,log,,,"Unable to get CElement for Macro",1395262798449
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.text.contentAssist.proposals",1395262798455
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.goto.lineEnd",1395262801543
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.goto.lineEnd",1395262807567
+error,log,,,"Unable to get CElement for Macro",1395262815731
+error,log,,,"Unable to get CElement for Macro",1395262815733
+error,log,,,"Unable to get CElement for Macro",1395262815734
+error,log,,,"Unable to get CElement for Macro",1395262815736
+error,log,,,"Unable to get CElement for Macro",1395262815737
+error,log,,,"Unable to get CElement for Macro",1395262815739
+error,log,,,"Unable to get CElement for Macro",1395262815740
+error,log,,,"Unable to get CElement for Macro",1395262815742
+error,log,,,"Unable to get CElement for Macro",1395262815743
+error,log,,,"Unable to get CElement for Macro",1395262815745
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.text.contentAssist.proposals",1395262815781
+error,log,,,"Unable to get CElement for Macro",1395262819219
+error,log,,,"Unable to get CElement for Macro",1395262819221
+error,log,,,"Unable to get CElement for Macro",1395262819222
+error,log,,,"Unable to get CElement for Macro",1395262819224
+error,log,,,"Unable to get CElement for Macro",1395262819225
+error,log,,,"Unable to get CElement for Macro",1395262819227
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.text.contentAssist.proposals",1395262819256
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.text.contentAssist.proposals",1395262820263
+error,log,,,"Unable to get CElement for Macro",1395262827206
+error,log,,,"Unable to get CElement for Macro",1395262827208
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.text.contentAssist.proposals",1395262827242
+error,log,,,"Unable to get CElement for Macro",1395262831464
+error,log,,,"Unable to get CElement for Macro",1395262831466
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.text.contentAssist.proposals",1395262831499
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.text.contentAssist.proposals",1395262866185
+error,log,,,"Unable to get CElement for Macro",1395262882460
+error,log,,,"Unable to get CElement for Macro",1395262882462
+error,log,,,"Unable to get CElement for Macro",1395262882464
+error,log,,,"Unable to get CElement for Macro",1395262882466
+error,log,,,"Unable to get CElement for Macro",1395262882467
+error,log,,,"Unable to get CElement for Macro",1395262882469
+error,log,,,"Unable to get CElement for Macro",1395262882470
+error,log,,,"Unable to get CElement for Macro",1395262882471
+error,log,,,"Unable to get CElement for Macro",1395262882473
+error,log,,,"Unable to get CElement for Macro",1395262882475
+error,log,,,"Unable to get CElement for Macro",1395262882476
+error,log,,,"Unable to get CElement for Macro",1395262882478
+error,log,,,"Unable to get CElement for Macro",1395262882480
+error,log,,,"Unable to get CElement for Macro",1395262882481
+error,log,,,"Unable to get CElement for Macro",1395262882483
+error,log,,,"Unable to get CElement for Macro",1395262882486
+error,log,,,"Unable to get CElement for Macro",1395262882488
+error,log,,,"Unable to get CElement for Macro",1395262882489
+error,log,,,"Unable to get CElement for Macro",1395262882491
+error,log,,,"Unable to get CElement for Macro",1395262882493
+error,log,,,"Unable to get CElement for Macro",1395262882495
+error,log,,,"Unable to get CElement for Macro",1395262882497
+error,log,,,"Unable to get CElement for Macro",1395262882499
+error,log,,,"Unable to get CElement for Macro",1395262882501
+error,log,,,"Unable to get CElement for Macro",1395262882503
+error,log,,,"Unable to get CElement for Macro",1395262882505
+error,log,,,"Unable to get CElement for Macro",1395262882506
+error,log,,,"Unable to get CElement for Macro",1395262882508
+error,log,,,"Unable to get CElement for Macro",1395262882510
+error,log,,,"Unable to get CElement for Macro",1395262882512
+error,log,,,"Unable to get CElement for Macro",1395262882514
+error,log,,,"Unable to get CElement for Macro",1395262882516
+error,log,,,"Unable to get CElement for Macro",1395262882517
+error,log,,,"Unable to get CElement for Macro",1395262882519
+error,log,,,"Unable to get CElement for Macro",1395262882521
+error,log,,,"Unable to get CElement for Macro",1395262882523
+error,log,,,"Unable to get CElement for Macro",1395262882525
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.text.contentAssist.proposals",1395262882553
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.goto.lineEnd",1395262888862
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.text.contentAssist.proposals",1395262900715
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.goto.lineEnd",1395262905583
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.file.save",1395262909412
+executed,command,org.eclipse.cdt.ui,5.2.1.201009141542,"org.eclipse.cdt.ui.edit.text.c.format",1395262914344
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.file.save",1395262943062
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.goto.lineEnd",1395262985756
+error,log,,,"Unable to get CElement for Macro",1395263010273
+error,log,,,"Unable to get CElement for Macro",1395263010277
+error,log,,,"Unable to get CElement for Macro",1395263010279
+error,log,,,"Unable to get CElement for Macro",1395263010280
+error,log,,,"Unable to get CElement for Macro",1395263010282
+error,log,,,"Unable to get CElement for Macro",1395263010283
+error,log,,,"Unable to get CElement for Macro",1395263010285
+error,log,,,"Unable to get CElement for Macro",1395263010286
+error,log,,,"Unable to get CElement for Macro",1395263010288
+error,log,,,"Unable to get CElement for Macro",1395263010289
+error,log,,,"Unable to get CElement for Macro",1395263010290

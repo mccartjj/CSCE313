@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>Mar 5, 2014 4:53:35 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1394056415127</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>Mar 24, 2014 5:23:51 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1395696231768</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>/acct/s1/mccartjj/CSCE313/lights/software/lights_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>../../nios_system.sopcinfo</SopcDesignFile>
@@ -891,6 +891,30 @@
                 <addressRange>0x00000000 - 0x0000003F</addressRange>
                 <addressSpan>64</addressSpan>
                 <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>mailbox_0</slaveDescriptor>
+                <addressRange>0x00000040 - 0x0000004F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>mailbox_1</slaveDescriptor>
+                <addressRange>0x00000050 - 0x0000005F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>onchip_memory2_0</slaveDescriptor>
+                <addressRange>0x00003000 - 0x000031FF</addressRange>
+                <addressSpan>512</addressSpan>
+                <attributes>memory</attributes>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>onchip_memory2_1</slaveDescriptor>
+                <addressRange>0x00004000 - 0x000041FF</addressRange>
+                <addressSpan>512</addressSpan>
+                <attributes>memory</attributes>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>sdram_0</slaveDescriptor>

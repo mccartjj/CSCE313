@@ -776,7 +776,7 @@ module jtag_uart_0 (
 //      .t_pause (t_pause)
 //    );
 //
-//  defparam jtag_uart_0_alt_jtag_atlantic.INSTANCE_ID = 0,
+//  defparam jtag_uart_0_alt_jtag_atlantic.INSTANCE_ID = 1,
 //           jtag_uart_0_alt_jtag_atlantic.LOG2_RXFIFO_DEPTH = 6,
 //           jtag_uart_0_alt_jtag_atlantic.LOG2_TXFIFO_DEPTH = 6,
 //           jtag_uart_0_alt_jtag_atlantic.SLD_AUTO_INSTANCE_INDEX = "YES";

@@ -4,7 +4,7 @@
  * Machine generated for CPU 'cpu_0' in SOPC Builder design 'nios_system'
  * SOPC Builder design path: ../../nios_system.sopcinfo
  *
- * Generated: Wed Feb 05 16:55:06 EST 2014
+ * Generated: Wed Mar 19 16:24:50 EDT 2014
  */
 
 /*
@@ -67,10 +67,14 @@
 
 #define CFI_FLASH_0_REGION_BASE 0x1400000
 #define CFI_FLASH_0_REGION_SPAN 4194304
+#define ONCHIP_MEMORY2_0_REGION_BASE 0x3000
+#define ONCHIP_MEMORY2_0_REGION_SPAN 512
+#define ONCHIP_MEMORY2_1_REGION_BASE 0x4000
+#define ONCHIP_MEMORY2_1_REGION_SPAN 512
 #define RESET_REGION_BASE 0x800000
 #define RESET_REGION_SPAN 32
 #define SDRAM_0_REGION_BASE 0x800020
-#define SDRAM_0_REGION_SPAN 8388576
+#define SDRAM_0_REGION_SPAN 4194272
 #define SRAM_0_REGION_BASE 0x1880000
 #define SRAM_0_REGION_SPAN 524288
 

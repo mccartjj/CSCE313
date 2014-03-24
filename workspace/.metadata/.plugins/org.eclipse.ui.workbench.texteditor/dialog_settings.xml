@@ -13,8 +13,10 @@
 		<item value="false" key="isRegEx"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="" key="selection"/>
+		<item value="barrier" key="selection"/>
 		<list key="findhistory">
+			<item value="barrier"/>
+			<item value="LCD"/>
 			<item value="destImage"/>
 			<item value="fixed"/>
 			<item value="printChar"/>

@@ -16,6 +16,7 @@
 #include "altera_avalon_pio_regs.h"
 #include "alt_types.h"
 #include <altera_avalon_performance_counter.h>
+#include <altera_avalon_mailbox.h>
 
 #define key3 3
 #define key2 5
@@ -31,6 +32,8 @@ int main() {
 	alt_u8 current_direction = 0;
 	alt_u32 keys = 0;
 	setUpImage();
+
+
 
 	printf("Program running (UART)...\n");
 	fprintf(stderr, "Program running (LCD)...\n");
@@ -61,7 +64,7 @@ int main() {
 		else {
 			clearScreen();
 			clearCharBuffer();
-			printLineToScreen(0, 0, "John McCarthy and Silas Rubinson, Lab 2.");
+			printLineToScreen(0, 0, "John McCarthy and Silas Rubinson, Lab 4.");
 			printLineToScreen(0, 1, "Key 3: View Original Image.");
 			printLineToScreen(0, 2, "Key 2: Rotate 360.");
 			printLineToScreen(0, 3, "Key 1: Shrink and Expand.");
