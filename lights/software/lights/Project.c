@@ -55,7 +55,7 @@ int main() {
 		#ifdef FIXED_POINT
 			constantRotationFP();
 		#else
-			constantRotation();
+//			constantRotation();
 		#endif
 		}
 		else if (current_state == key1){

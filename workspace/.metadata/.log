@@ -7533,3 +7533,52 @@ Command-line arguments:  -os linux -ws gtk -arch x86 -product org.eclipse.epp.pa
 
 !ENTRY com.altera.sbtgui.launch 1 0 2014-03-26 15:43:55.687
 !MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=1 --go --sidp=0x19030c0 --id=0x0 --timestamp=1395695788 /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf]
+!SESSION 2014-03-26 16:21:14.972 -----------------------------------------------
+eclipse.buildId=M20100909-0800
+java.version=1.6.0_23
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=linux, ARCH=x86, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+Command-line arguments:  -os linux -ws gtk -arch x86 -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+
+!ENTRY org.eclipse.core.resources 2 10035 2014-03-26 16:21:17.523
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-03-26 16:22:22.963
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=1 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1395695788]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-03-26 16:22:24.575
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=1 --go --sidp=0x19030c0 --id=0x0 --timestamp=1395695788 /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-03-26 16:22:29.935
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1395695788]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-03-26 16:22:31.551
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --go --sidp=0x19030c0 --id=0x0 --timestamp=1395695788 /acct/s1/mccartjj/CSCE313/lights/software/Lab4/Lab4.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-03-26 16:23:42.522
+!MESSAGE Terminated Launch with connection: 11USB-Blaster on localhost [3-2]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-03-26 16:23:43.048
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=1 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1395695788]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-03-26 16:23:44.664
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=1 --go --sidp=0x19030c0 --id=0x0 --timestamp=1395695788 /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-03-26 16:23:48.495
+!MESSAGE Terminated Launch with connection: 11USB-Blaster on localhost [3-2]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-03-26 16:23:49.007
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=1 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1395695788]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-03-26 16:23:50.624
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=1 --go --sidp=0x19030c0 --id=0x0 --timestamp=1395695788 /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-03-26 16:23:54.454
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [3-2]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-03-26 16:23:54.992
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1395695788]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-03-26 16:23:56.608
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [3-2]' --device=1 --instance=0 --go --sidp=0x19030c0 --id=0x0 --timestamp=1395695788 /acct/s1/mccartjj/CSCE313/lights/software/Lab4/Lab4.elf]

@@ -1923,7 +1923,7 @@ int main() {
   c0078c:	84402926 	beq	r16,r17,c00834 <main+0x128>
 			constantRotationFP();
 		#else
-			constantRotation();
+//			constantRotation();
 		#endif
 		}
 		else if (current_state == key1){
@@ -1937,7 +1937,7 @@ int main() {
   c00794:	84802a26 	beq	r16,r18,c00840 <main+0x134>
 			constantRotationFP();
 		#else
-			constantRotation();
+//			constantRotation();
 		#endif
 		}
 		else if (current_state == key1){
@@ -2009,7 +2009,7 @@ int main() {
   c00840:	0c016180 	call	c01618 <constantRotationFP>
   c00844:	003fc506 	br	c0075c <main+0x50>
 		#else
-			constantRotation();
+//			constantRotation();
 		#endif
 		}
 		else if (current_state == key1){
