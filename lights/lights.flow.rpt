@@ -1,5 +1,5 @@
 Flow report for lights
-Wed Mar  5 16:52:24 2014
+Wed Mar 26 16:01:47 2014
 Quartus II 32-bit Version 12.0 Build 178 05/31/2012 SJ Full Version
 
 
@@ -38,20 +38,20 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------+
 ; Flow Summary                                                                   ;
 +------------------------------------+-------------------------------------------+
-; Flow Status                        ; Successful - Wed Mar  5 16:52:24 2014     ;
+; Flow Status                        ; Successful - Wed Mar 26 16:01:47 2014     ;
 ; Quartus II 32-bit Version          ; 12.0 Build 178 05/31/2012 SJ Full Version ;
 ; Revision Name                      ; lights                                    ;
 ; Top-level Entity Name              ; lights                                    ;
 ; Family                             ; Cyclone II                                ;
 ; Device                             ; EP2C35F672C6                              ;
 ; Timing Models                      ; Final                                     ;
-; Total logic elements               ; 7,552 / 33,216 ( 23 % )                   ;
-;     Total combinational functions  ; 6,410 / 33,216 ( 19 % )                   ;
-;     Dedicated logic registers      ; 4,862 / 33,216 ( 15 % )                   ;
-; Total registers                    ; 4979                                      ;
+; Total logic elements               ; 7,536 / 33,216 ( 23 % )                   ;
+;     Total combinational functions  ; 6,397 / 33,216 ( 19 % )                   ;
+;     Dedicated logic registers      ; 4,864 / 33,216 ( 15 % )                   ;
+; Total registers                    ; 4981                                      ;
 ; Total pins                         ; 265 / 475 ( 56 % )                        ;
 ; Total virtual pins                 ; 0                                         ;
-; Total memory bits                  ; 274,432 / 483,840 ( 57 % )                ;
+; Total memory bits                  ; 171,392 / 483,840 ( 35 % )                ;
 ; Embedded Multiplier 9-bit elements ; 11 / 70 ( 16 % )                          ;
 ; Total PLLs                         ; 1 / 4 ( 25 % )                            ;
 +------------------------------------+-------------------------------------------+
@@ -62,7 +62,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 03/05/2014 16:50:45 ;
+; Start date & time ; 03/26/2014 16:00:00 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; lights              ;
 +-------------------+---------------------+
@@ -73,7 +73,7 @@ applicable agreement for further details.
 +-----------------------------------------+---------------------------------------+---------------+-------------+----------------+
 ; Assignment Name                         ; Value                                 ; Default Value ; Entity Name ; Section Id     ;
 +-----------------------------------------+---------------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID                   ; 69137494426.139405624409261           ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID                   ; 69137494426.139586399805786           ; --            ; --          ; --             ;
 ; CYCLONEII_OPTIMIZATION_TECHNIQUE        ; Speed                                 ; Balanced      ; --          ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT                  ; Vhdl                                  ; --            ; --          ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                     ; ModelSim-Altera (VHDL)                ; <None>        ; --          ; --             ;
@@ -94,7 +94,7 @@ applicable agreement for further details.
 ; POWER_PRESET_COOLING_SOLUTION           ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW ; --            ; --          ; --             ;
 ; ROUTER_TIMING_OPTIMIZATION_LEVEL        ; MAXIMUM                               ; Normal        ; --          ; --             ;
 ; SMART_RECOMPILE                         ; On                                    ; Off           ; --          ; --             ;
-; SOPC_BUILDER_SIGNATURE_ID               ; 1803733468DF000001449438684E          ; --            ; --          ; --             ;
+; SOPC_BUILDER_SIGNATURE_ID               ; 1803733468DF00000144FFF8B164          ; --            ; --          ; --             ;
 +-----------------------------------------+---------------------------------------+---------------+-------------+----------------+
 
 
@@ -103,12 +103,12 @@ applicable agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:36     ; 1.0                     ; --                  ; 00:00:33                           ;
-; Fitter                    ; 00:00:45     ; 1.7                     ; --                  ; 00:00:54                           ;
+; Analysis & Synthesis      ; 00:00:43     ; 1.0                     ; --                  ; 00:00:33                           ;
+; Fitter                    ; 00:00:45     ; 1.7                     ; --                  ; 00:00:53                           ;
 ; Assembler                 ; 00:00:03     ; 1.0                     ; --                  ; 00:00:03                           ;
 ; TimeQuest Timing Analyzer ; 00:00:04     ; 1.0                     ; --                  ; 00:00:03                           ;
-; EDA Netlist Writer        ; 00:00:05     ; 1.0                     ; --                  ; 00:00:05                           ;
-; Total                     ; 00:01:33     ; --                      ; --                  ; 00:01:38                           ;
+; EDA Netlist Writer        ; 00:00:06     ; 1.0                     ; --                  ; 00:00:05                           ;
+; Total                     ; 00:01:41     ; --                      ; --                  ; 00:01:37                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

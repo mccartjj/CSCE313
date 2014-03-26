@@ -54,7 +54,7 @@ set_global_assignment -name VERILOG_FILE [file join $::quartus(qip_path) cpu_0_a
 # performance_counter_0
 # null
 set_global_assignment -name SDC_FILE [file join $::quartus(ip_rootpath) altera/sopc_builder_ip/altera_avalon_clock_adapter/altera_avalon_clock_adapter.sdc]
-set_global_assignment -name SOPC_BUILDER_SIGNATURE_ID "1803733468DF000001449438684E"
+set_global_assignment -name SOPC_BUILDER_SIGNATURE_ID "1803733468DF00000144FFF8B164"
 set_global_assignment -entity "nios_system" -name IP_TOOL_NAME "sopc"
 set_global_assignment -entity "nios_system" -name IP_TOOL_VERSION "12.0"
 set_global_assignment -entity "nios_system" -name IP_TOOL_ENV "sopc"

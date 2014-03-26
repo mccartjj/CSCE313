@@ -75,7 +75,7 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
  28 .jdi          000040db  00000000  00000000  000a49b6  2**0
                   CONTENTS, READONLY
- 29 .sopcinfo     00099c05  00000000  00000000  000a8a91  2**0
+ 29 .sopcinfo     00099c03  00000000  00000000  000a8a91  2**0
                   CONTENTS, READONLY
 SYMBOL TABLE:
 00800000 l    d  .entry	00000000 .entry
@@ -1040,7 +1040,7 @@ Disassembly of section .text:
     movhi r2, %hi(NIOS2_DCACHE_SIZE)
 #else
     movui r2, NIOS2_DCACHE_SIZE
-  8001b4:	00900014 	movui	r2,16384
+  8001b4:	00840014 	movui	r2,4096
 #endif
 
 0:
@@ -30888,7 +30888,7 @@ void alt_dcache_flush_all (void)
   816538:	10800804 	addi	r2,r2,32
   81653c:	e0bfff15 	stw	r2,-4(fp)
   816540:	e0bfff17 	ldw	r2,-4(fp)
-  816544:	10900030 	cmpltui	r2,r2,16384
+  816544:	10840030 	cmpltui	r2,r2,4096
   816548:	103ff81e 	bne	r2,zero,81652c <alt_dcache_flush_all+0x14>
   { 
     __asm__ volatile ("flushd (%0)" :: "r" (i));

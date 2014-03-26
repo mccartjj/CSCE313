@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="19" version="2.0">
+<workbench progressCount="18" version="2.0">
 <workbenchAdvisor/>
 <window height="991" maximized="true" width="723" x="65" y="46">
 <fastViewData fastViewLocation="1024"/>
@@ -13,7 +13,7 @@
 <coolItem id="org.eclipse.cdt.ui.CElementCreationActionSet" itemType="typeToolBarContribution" x="156" y="30"/>
 <coolItem id="org.eclipse.cdt.ui.buildConfigActionSet" itemType="typeToolBarContribution" x="82" y="30"/>
 <coolItem id="org.eclipse.debug.ui.launchActionSet" itemType="typeToolBarContribution" x="120" y="30"/>
-<coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="104" y="30"/>
+<coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="76" y="30"/>
 <coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="68" y="30"/>
 <coolItem id="group.nav" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="184" y="30"/>
@@ -48,21 +48,21 @@
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/lights/VideoFunctions.h"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="720" selectionTopPixel="80"/>
 </editor>
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="VideoFunctions.c" partName="VideoFunctions.c" path="/acct/s1/mccartjj/CSCE313/lights/software/lights/VideoFunctions.c" title="VideoFunctions.c" tooltip="lights/VideoFunctions.c" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="VideoFunctions.c" partName="VideoFunctions.c" path="/acct/s1/mccartjj/CSCE313/lights/software/lights/VideoFunctions.c" title="VideoFunctions.c" tooltip="lights/VideoFunctions.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/lights/VideoFunctions.c"/>
 <editorState selectionHorizontalPixel="0" selectionLength="1" selectionOffset="658" selectionTopPixel="6986"/>
 </editor>
 <editor id="org.eclipse.ui.DefaultTextEditor" name="cycles4kDC" partName="cycles4kDC" path="/acct/s1/mccartjj/CSCE313/lights/software/lights/cycles4kDC" title="cycles4kDC" tooltip="lights/cycles4kDC" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/lights/cycles4kDC"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2820" selectionTopPixel="864"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2820" selectionTopPixel="1583"/>
 </editor>
-<editor id="org.eclipse.ui.DefaultTextEditor" name="cyclesNoDC" partName="cyclesNoDC" path="/acct/s1/mccartjj/CSCE313/lights/software/lights/cyclesNoDC" title="cyclesNoDC" tooltip="lights/cyclesNoDC" workbook="DefaultEditorWorkbook">
+<editor activePart="true" focus="true" id="org.eclipse.ui.DefaultTextEditor" name="cyclesNoDC" partName="cyclesNoDC" path="/acct/s1/mccartjj/CSCE313/lights/software/lights/cyclesNoDC" title="cyclesNoDC" tooltip="lights/cyclesNoDC" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/lights/cyclesNoDC"/>
-<editorState selectionHorizontalPixel="0" selectionLength="5" selectionOffset="2722" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2319" selectionTopPixel="3246"/>
 </editor>
 <editor id="org.eclipse.ui.DefaultTextEditor" name="cycles16kDC" partName="cycles16kDC" path="/acct/s1/mccartjj/CSCE313/lights/software/lights/cycles16kDC" title="cycles16kDC" tooltip="lights/cycles16kDC" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/lights/cycles16kDC"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2169" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2169" selectionTopPixel="1566"/>
 </editor>
 </editors>
 <views>
@@ -79,7 +79,7 @@
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
 <expanded>
-<category IMemento.internal.id="Warnings (5 items)"/>
+<category IMemento.internal.id="Warnings (4 items)"/>
 </expanded>
 <columnWidths org.eclipse.ui.ide.locationField="73" org.eclipse.ui.ide.markerType="384" org.eclipse.ui.ide.pathField="143" org.eclipse.ui.ide.resourceField="108" org.eclipse.ui.ide.severityAndDescriptionField="350"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
@@ -109,7 +109,7 @@
 <viewState/>
 </view>
 </views>
-<perspectives activePart="org.eclipse.cdt.ui.editor.CEditor" activePerspective="com.altera.sbtgui.ui.cPerspective">
+<perspectives activePart="org.eclipse.ui.DefaultTextEditor" activePerspective="com.altera.sbtgui.ui.cPerspective">
 <perspective editorAreaTrimState="2" editorAreaVisible="1" fixed="0" version="0.016">
 <descriptor class="org.eclipse.cdt.internal.ui.CPerspectiveFactory" id="org.eclipse.cdt.ui.CPerspective" label="C/C++"/>
 <alwaysOnActionSet id="org.eclipse.mylyn.context.ui.actionSet"/>
@@ -325,34 +325,10 @@
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/lights/cyclesNoDC"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/lights/cycles16kDC"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/lights/VideoFunctions.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/lights/cyclesNoDC"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/lights/cycles4kDC"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/lights/cycles16kDC"/>
 </editors>
-<item historyLabel="Project.c" index="1">
-<position info="not_deleted" x="427" y="0"/>
-</item>
-<item historyLabel="cyclesNoDC" index="3">
-<position info="not_deleted" x="5422" y="0"/>
-</item>
-<item historyLabel="cycles4kDC" index="2">
-<position info="not_deleted" x="2819" y="0"/>
-</item>
-<item historyLabel="cyclesNoDC" index="3">
-<position info="not_deleted" x="2771" y="0"/>
-</item>
-<item historyLabel="VideoFunctions.c" index="0">
-<position info="not_deleted" x="6143" y="0"/>
-</item>
-<item historyLabel="cyclesNoDC" index="3">
-<position info="not_deleted" x="58" y="0"/>
-</item>
-<item historyLabel="cycles16kDC" index="4">
-<position info="not_deleted" x="5523" y="0"/>
-</item>
-<item historyLabel="cyclesNoDC" index="3">
-<position info="not_deleted" x="58" y="0"/>
-</item>
-<item historyLabel="cycles4kDC" index="2">
-<position info="not_deleted" x="2819" y="0"/>
-</item>
 <item historyLabel="cyclesNoDC" index="3">
 <position info="not_deleted" x="58" y="0"/>
 </item>
@@ -473,8 +449,35 @@
 <item historyLabel="Project.c" index="1">
 <position info="not_deleted" x="2" y="0"/>
 </item>
-<item active="true" historyLabel="VideoFunctions.c" index="0">
+<item historyLabel="VideoFunctions.c" index="0">
 <position info="not_deleted" x="71" y="33"/>
+</item>
+<item historyLabel="cyclesNoDC" index="6">
+<position info="not_deleted" x="2722" y="5"/>
+</item>
+<item historyLabel="cycles4kDC" index="7">
+<position info="not_deleted" x="2820" y="0"/>
+</item>
+<item historyLabel="cycles16kDC" index="8">
+<position info="not_deleted" x="2169" y="0"/>
+</item>
+<item historyLabel="cycles4kDC" index="7">
+<position info="not_deleted" x="2820" y="0"/>
+</item>
+<item historyLabel="cyclesNoDC" index="6">
+<position info="not_deleted" x="2319" y="0"/>
+</item>
+<item historyLabel="cycles4kDC" index="7">
+<position info="not_deleted" x="2820" y="0"/>
+</item>
+<item historyLabel="cycles16kDC" index="8">
+<position info="not_deleted" x="2169" y="0"/>
+</item>
+<item historyLabel="cycles4kDC" index="7">
+<position info="not_deleted" x="2820" y="0"/>
+</item>
+<item active="true" historyLabel="cyclesNoDC" index="6">
+<position info="not_deleted" x="2319" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -482,9 +485,6 @@
 <workbenchWindowAdvisor/>
 <actionBarAdvisor/>
 <trimLayout>
-<trimArea IMemento.internal.id="16384">
-<trimItem IMemento.internal.id="topLeft"/>
-</trimArea>
 <trimArea IMemento.internal.id="131072">
 <trimItem IMemento.internal.id="topRight"/>
 </trimArea>
@@ -495,7 +495,6 @@
 <trimItem IMemento.internal.id="org.eclise.ui.internal.FastViewBar"/>
 <trimItem IMemento.internal.id="org.eclipse.jface.action.StatusLineManager"/>
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.progress.ProgressRegion"/>
-<trimItem IMemento.internal.id="bottom"/>
 </trimArea>
 </trimLayout>
 </window>
