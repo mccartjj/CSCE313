@@ -279,13 +279,13 @@ void constantRotationFP(void) {
 
 		rotateImageFixedPoint(1, degree);
 
+		//this "synchronizes" the two cpus after computing the image transformation
+		barrier(0);
 
 		//end timing the rotation
 		PERF_END(PERFORMANCE_COUNTER_0_BASE, 1);
 		PERF_STOP_MEASURING(PERFORMANCE_COUNTER_0_BASE);
 
-		//this "synchronizes" the two cpus after computing the image transformation
-		barrier(0);
 
 		//getting the average pixel render time
 		unsigned long cycles = perf_get_section_time((void*) PERFORMANCE_COUNTER_0_BASE, 1);

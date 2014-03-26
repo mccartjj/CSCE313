@@ -4364,18 +4364,18 @@ void printCharToScreen(int row, int col, char *input) {
   8016cc:	01000044 	movi	r4,1
   8016d0:	08013f80 	call	8013f8 <rotateImageFixedPoint>
 
-		//this "synchronizes" the two cpus after computing the image transformation
-		barrier(0);
-  8016d4:	0009883a 	mov	r4,zero
-  8016d8:	080093c0 	call	80093c <barrier>
 
 		//end timing the rotation
 		PERF_END(PERFORMANCE_COUNTER_0_BASE, 1);
-  8016dc:	00800404 	movi	r2,16
-  8016e0:	10000035 	stwio	zero,0(r2)
+  8016d4:	00800404 	movi	r2,16
+  8016d8:	10000035 	stwio	zero,0(r2)
 		PERF_STOP_MEASURING(PERFORMANCE_COUNTER_0_BASE);
-  8016e4:	a0000035 	stwio	zero,0(r20)
+  8016dc:	a0000035 	stwio	zero,0(r20)
 
+		//this "synchronizes" the two cpus after computing the image transformation
+		barrier(0);
+  8016e0:	0009883a 	mov	r4,zero
+  8016e4:	080093c0 	call	80093c <barrier>
 
 		//getting the average pixel render time
 		unsigned long cycles = perf_get_section_time((void*) PERFORMANCE_COUNTER_0_BASE, 1);
