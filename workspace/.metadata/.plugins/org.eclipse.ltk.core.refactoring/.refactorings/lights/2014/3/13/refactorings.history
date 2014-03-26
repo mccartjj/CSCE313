@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;lights/singleCPU.txt&apos; to &apos;1CPU.txt&apos;" description="Rename resource &apos;singleCPU.txt&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="singleCPU.txt" name="1CPU.txt" stamp="1395872840221" updateReferences="true"/>
+</session>

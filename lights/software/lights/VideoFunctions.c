@@ -186,6 +186,7 @@ void rotateImageFixedPoint(int direction, float angle) {
 	for (col = cpuid; col < (colSize); col += 2) {
 		for (row = 0; row < (rowSize); row += 1) {
 
+
 			//correcting the position to center
 			row = row - centerRow;
 			col = col - centerCol;
@@ -273,19 +274,23 @@ void constantRotationFP(void) {
 
 	for (degree = 0; degree < 360; degree += 10) {
 
+
+		if (cpuid == 1) {
 		//begin timing the rotation
 		PERF_START_MEASURING(PERFORMANCE_COUNTER_0_BASE);
 		PERF_BEGIN(PERFORMANCE_COUNTER_0_BASE, 1);
+		}
 
 		rotateImageFixedPoint(1, degree);
+		barrier(0);
 
 
+		if (cpuid == 1) {
 		//end timing the rotation
 		PERF_END(PERFORMANCE_COUNTER_0_BASE, 1);
 		PERF_STOP_MEASURING(PERFORMANCE_COUNTER_0_BASE);
 
 		//this "synchronizes" the two cpus after computing the image transformation
-		barrier(0);
 
 		//getting the average pixel render time
 		unsigned long cycles = perf_get_section_time((void*) PERFORMANCE_COUNTER_0_BASE, 1);
@@ -295,7 +300,6 @@ void constantRotationFP(void) {
 		//totalTime = totalTime + timeSecs;
 
 		//slowed down the rotation for some reason, commented out until we need it
-		cycles = cycles / (colSize * rowSize);
 		totalCycles = totalCycles + cycles;
 
 		//printing average time for pixel render and average time in seconds
@@ -303,6 +307,7 @@ void constantRotationFP(void) {
 		printf("Degrees: %d.\nCycles: %lu \n", degree, cycles);
 //		fprintf(stderr, "Deg %d Cyc %lu \n", degree, cycles);
 		PERF_RESET(PERFORMANCE_COUNTER_0_BASE);
+		}
 	}
 	averageCycles = totalCycles / 36;
 	printf("------------------------------------------\n");
