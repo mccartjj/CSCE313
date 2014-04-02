@@ -218,7 +218,7 @@ module cpu_1_jtag_debug_module_wrapper (
 //    );
 //
 //  defparam cpu_1_jtag_debug_module_phy.sld_auto_instance_index = "YES",
-//           cpu_1_jtag_debug_module_phy.sld_instance_index = 0,
+//           cpu_1_jtag_debug_module_phy.sld_instance_index = 2,
 //           cpu_1_jtag_debug_module_phy.sld_ir_width = 2,
 //           cpu_1_jtag_debug_module_phy.sld_mfg_id = 70,
 //           cpu_1_jtag_debug_module_phy.sld_sim_action = "",

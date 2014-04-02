@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>Mar 26, 2014 5:25:39 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1395869139857</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>Apr 2, 2014 4:43:13 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1396471393394</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>/acct/s1/mccartjj/CSCE313/lights/software/lights_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>../../nios_system.sopcinfo</SopcDesignFile>
@@ -218,7 +218,7 @@
                 <SettingName>hal.stderr</SettingName>
                 <Identifier>NONE</Identifier>
                 <Type>UnquotedString</Type>
-                <Value>lcd_0</Value>
+                <Value>jtag_uart_0</Value>
                 <DefaultValue>none</DefaultValue>
                 <DestinationFile>system_h_define</DestinationFile>
                 <Description>Slave descriptor of STDERR character-mode device. This setting is used by the ALT_STDERR family of defines in system.h.</Description>
@@ -905,6 +905,18 @@
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
+                <slaveDescriptor>mailbox_2</slaveDescriptor>
+                <addressRange>0x00000070 - 0x0000007F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>mailbox_3</slaveDescriptor>
+                <addressRange>0x00000080 - 0x0000008F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
                 <slaveDescriptor>onchip_memory2_0</slaveDescriptor>
                 <addressRange>0x00003000 - 0x000031FF</addressRange>
                 <addressSpan>512</addressSpan>
@@ -917,16 +929,22 @@
                 <attributes>memory</attributes>
         </MemoryMap>
         <MemoryMap>
+                <slaveDescriptor>onchip_memory2_2</slaveDescriptor>
+                <addressRange>0x00006000 - 0x000061FF</addressRange>
+                <addressSpan>512</addressSpan>
+                <attributes>memory</attributes>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>onchip_memory2_3</slaveDescriptor>
+                <addressRange>0x00007000 - 0x000071FF</addressRange>
+                <addressSpan>512</addressSpan>
+                <attributes>memory</attributes>
+        </MemoryMap>
+        <MemoryMap>
                 <slaveDescriptor>sdram_0</slaveDescriptor>
                 <addressRange>0x00800000 - 0x00FFFFFF</addressRange>
                 <addressSpan>8388608</addressSpan>
                 <attributes>memory</attributes>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>cfi_flash_0</slaveDescriptor>
-                <addressRange>0x01400000 - 0x017FFFFF</addressRange>
-                <addressSpan>4194304</addressSpan>
-                <attributes>flash, memory, non-volatile</attributes>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>sram_0</slaveDescriptor>
@@ -935,74 +953,8 @@
                 <attributes>memory</attributes>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>video_character_buffer_with_dma_0_avalon_char_buffer_slave</slaveDescriptor>
-                <addressRange>0x01900000 - 0x01901FFF</addressRange>
-                <addressSpan>8192</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>leds</slaveDescriptor>
-                <addressRange>0x01903000 - 0x0190300F</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
                 <slaveDescriptor>keys</slaveDescriptor>
                 <addressRange>0x01903010 - 0x0190301F</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>lcd_0</slaveDescriptor>
-                <addressRange>0x01903020 - 0x0190302F</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes>printable</attributes>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>HEX0</slaveDescriptor>
-                <addressRange>0x01903030 - 0x0190303F</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>HEX2</slaveDescriptor>
-                <addressRange>0x01903040 - 0x0190304F</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>HEX3</slaveDescriptor>
-                <addressRange>0x01903050 - 0x0190305F</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>HEX4</slaveDescriptor>
-                <addressRange>0x01903060 - 0x0190306F</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>HEX5</slaveDescriptor>
-                <addressRange>0x01903070 - 0x0190307F</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>HEX6</slaveDescriptor>
-                <addressRange>0x01903080 - 0x0190308F</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>HEX7</slaveDescriptor>
-                <addressRange>0x01903090 - 0x0190309F</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>HEX1</slaveDescriptor>
-                <addressRange>0x019030A0 - 0x019030AF</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
@@ -1023,12 +975,6 @@
                 <addressRange>0x019030C8 - 0x019030CF</addressRange>
                 <addressSpan>8</addressSpan>
                 <attributes>printable</attributes>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>video_character_buffer_with_dma_0_avalon_char_control_slave</slaveDescriptor>
-                <addressRange>0x019030D0 - 0x019030D7</addressRange>
-                <addressSpan>8</addressSpan>
-                <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>clocks_0</slaveDescriptor>

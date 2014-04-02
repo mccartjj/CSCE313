@@ -155,9 +155,9 @@ SOPC_SYSID_FLAG += --sidp=0x19030c0
 ELF_PATCH_FLAG  += --sidp 0x19030c0
 
 # The SOPC Timestamp 
-# setting SOPC_TIMESTAMP is 1395695788
-SOPC_SYSID_FLAG += --timestamp=1395695788
-ELF_PATCH_FLAG  += --timestamp 1395695788
+# setting SOPC_TIMESTAMP is 1396470760
+SOPC_SYSID_FLAG += --timestamp=1396470760
+ELF_PATCH_FLAG  += --timestamp 1396470760
 
 # Small-footprint (polled mode) driver none 
 # setting altera_avalon_jtag_uart_driver.enable_small_driver is false
@@ -320,8 +320,8 @@ ALT_CPPFLAGS += -DALT_NO_INSTRUCTION_EMULATION
 
 # Slave descriptor of STDERR character-mode device. This setting is used by the 
 # ALT_STDERR family of defines in system.h. none 
-# setting hal.stderr is lcd_0
-ELF_PATCH_FLAG  += --stderr_dev lcd_0
+# setting hal.stderr is jtag_uart_0
+ELF_PATCH_FLAG  += --stderr_dev jtag_uart_0
 
 # Slave descriptor of STDIN character-mode device. This setting is used by the 
 # ALT_STDIN family of defines in system.h. none 

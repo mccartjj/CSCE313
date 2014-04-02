@@ -161,29 +161,29 @@ RESET_ADDRESS ?= 0x00800000
 # Pre-Initialized Memory Descriptions
 #-------------------------------------
 
-# Memory: cfi_flash_0
-MEM_0 := cfi_flash_0
-$(MEM_0)_NAME := cfi_flash_0
+# Memory: onchip_memory2_0
+MEM_0 := onchip_memory2_0
+$(MEM_0)_NAME := onchip_memory2_0
+$(MEM_0)_MEM_INIT_FILE_PARAM_NAME := INIT_FILE
+HEX_FILES += $(MEM_INIT_DIR)/$(MEM_0).hex
+MEM_INIT_INSTALL_FILES += $(MEM_INIT_INSTALL_DIR)/$(MEM_0).hex
 DAT_FILES += $(HDL_SIM_DIR)/$(MEM_0).dat
 HDL_SIM_INSTALL_FILES += $(HDL_SIM_INSTALL_DIR)/$(MEM_0).dat
 SYM_FILES += $(HDL_SIM_DIR)/$(MEM_0).sym
 HDL_SIM_INSTALL_FILES += $(HDL_SIM_INSTALL_DIR)/$(MEM_0).sym
-FLASH_FILES += $(MEM_0).flash
-$(MEM_0)_START := 0x01400000
-$(MEM_0)_END := 0x017fffff
-$(MEM_0)_HIERARCHICAL_PATH := cfi_flash_0
-$(MEM_0)_WIDTH := 8
+$(MEM_0)_START := 0x00003000
+$(MEM_0)_END := 0x000031ff
+$(MEM_0)_HIERARCHICAL_PATH := onchip_memory2_0
+$(MEM_0)_WIDTH := 32
 $(MEM_0)_ENDIANNESS := --little-endian-mem
 $(MEM_0)_CREATE_LANES := 0
-$(MEM_0)_CFI_FLAGS := --base=$($(MEM_0)_START) --end=$($(MEM_0)_END) --reset=$(RESET_ADDRESS)
-$(MEM_0)_BOOT_LOADER_FLAG := --boot="$(BOOT_LOADER_CFI)"
 
-.PHONY: cfi_flash_0
-cfi_flash_0: check_elf_exists $(HDL_SIM_DIR)/$(MEM_0).dat $(HDL_SIM_DIR)/$(MEM_0).sym $(MEM_0).flash
+.PHONY: onchip_memory2_0
+onchip_memory2_0: check_elf_exists $(MEM_INIT_DIR)/$(MEM_0).hex $(HDL_SIM_DIR)/$(MEM_0).dat $(HDL_SIM_DIR)/$(MEM_0).sym
 
-# Memory: onchip_memory2_0
-MEM_1 := onchip_memory2_0
-$(MEM_1)_NAME := onchip_memory2_0
+# Memory: onchip_memory2_1
+MEM_1 := onchip_memory2_1
+$(MEM_1)_NAME := onchip_memory2_1
 $(MEM_1)_MEM_INIT_FILE_PARAM_NAME := INIT_FILE
 HEX_FILES += $(MEM_INIT_DIR)/$(MEM_1).hex
 MEM_INIT_INSTALL_FILES += $(MEM_INIT_INSTALL_DIR)/$(MEM_1).hex
@@ -191,19 +191,19 @@ DAT_FILES += $(HDL_SIM_DIR)/$(MEM_1).dat
 HDL_SIM_INSTALL_FILES += $(HDL_SIM_INSTALL_DIR)/$(MEM_1).dat
 SYM_FILES += $(HDL_SIM_DIR)/$(MEM_1).sym
 HDL_SIM_INSTALL_FILES += $(HDL_SIM_INSTALL_DIR)/$(MEM_1).sym
-$(MEM_1)_START := 0x00003000
-$(MEM_1)_END := 0x000031ff
-$(MEM_1)_HIERARCHICAL_PATH := onchip_memory2_0
+$(MEM_1)_START := 0x00004000
+$(MEM_1)_END := 0x000041ff
+$(MEM_1)_HIERARCHICAL_PATH := onchip_memory2_1
 $(MEM_1)_WIDTH := 32
 $(MEM_1)_ENDIANNESS := --little-endian-mem
 $(MEM_1)_CREATE_LANES := 0
 
-.PHONY: onchip_memory2_0
-onchip_memory2_0: check_elf_exists $(MEM_INIT_DIR)/$(MEM_1).hex $(HDL_SIM_DIR)/$(MEM_1).dat $(HDL_SIM_DIR)/$(MEM_1).sym
+.PHONY: onchip_memory2_1
+onchip_memory2_1: check_elf_exists $(MEM_INIT_DIR)/$(MEM_1).hex $(HDL_SIM_DIR)/$(MEM_1).dat $(HDL_SIM_DIR)/$(MEM_1).sym
 
-# Memory: onchip_memory2_1
-MEM_2 := onchip_memory2_1
-$(MEM_2)_NAME := onchip_memory2_1
+# Memory: onchip_memory2_2
+MEM_2 := onchip_memory2_2
+$(MEM_2)_NAME := onchip_memory2_2
 $(MEM_2)_MEM_INIT_FILE_PARAM_NAME := INIT_FILE
 HEX_FILES += $(MEM_INIT_DIR)/$(MEM_2).hex
 MEM_INIT_INSTALL_FILES += $(MEM_INIT_INSTALL_DIR)/$(MEM_2).hex
@@ -211,32 +211,52 @@ DAT_FILES += $(HDL_SIM_DIR)/$(MEM_2).dat
 HDL_SIM_INSTALL_FILES += $(HDL_SIM_INSTALL_DIR)/$(MEM_2).dat
 SYM_FILES += $(HDL_SIM_DIR)/$(MEM_2).sym
 HDL_SIM_INSTALL_FILES += $(HDL_SIM_INSTALL_DIR)/$(MEM_2).sym
-$(MEM_2)_START := 0x00004000
-$(MEM_2)_END := 0x000041ff
-$(MEM_2)_HIERARCHICAL_PATH := onchip_memory2_1
+$(MEM_2)_START := 0x00006000
+$(MEM_2)_END := 0x000061ff
+$(MEM_2)_HIERARCHICAL_PATH := onchip_memory2_2
 $(MEM_2)_WIDTH := 32
 $(MEM_2)_ENDIANNESS := --little-endian-mem
 $(MEM_2)_CREATE_LANES := 0
 
-.PHONY: onchip_memory2_1
-onchip_memory2_1: check_elf_exists $(MEM_INIT_DIR)/$(MEM_2).hex $(HDL_SIM_DIR)/$(MEM_2).dat $(HDL_SIM_DIR)/$(MEM_2).sym
+.PHONY: onchip_memory2_2
+onchip_memory2_2: check_elf_exists $(MEM_INIT_DIR)/$(MEM_2).hex $(HDL_SIM_DIR)/$(MEM_2).dat $(HDL_SIM_DIR)/$(MEM_2).sym
 
-# Memory: sdram_0
-MEM_3 := sdram_0
-$(MEM_3)_NAME := sdram_0
+# Memory: onchip_memory2_3
+MEM_3 := onchip_memory2_3
+$(MEM_3)_NAME := onchip_memory2_3
+$(MEM_3)_MEM_INIT_FILE_PARAM_NAME := INIT_FILE
+HEX_FILES += $(MEM_INIT_DIR)/$(MEM_3).hex
+MEM_INIT_INSTALL_FILES += $(MEM_INIT_INSTALL_DIR)/$(MEM_3).hex
 DAT_FILES += $(HDL_SIM_DIR)/$(MEM_3).dat
 HDL_SIM_INSTALL_FILES += $(HDL_SIM_INSTALL_DIR)/$(MEM_3).dat
 SYM_FILES += $(HDL_SIM_DIR)/$(MEM_3).sym
 HDL_SIM_INSTALL_FILES += $(HDL_SIM_INSTALL_DIR)/$(MEM_3).sym
-$(MEM_3)_START := 0x00800000
-$(MEM_3)_END := 0x00ffffff
-$(MEM_3)_HIERARCHICAL_PATH := sdram_0
-$(MEM_3)_WIDTH := 16
+$(MEM_3)_START := 0x00007000
+$(MEM_3)_END := 0x000071ff
+$(MEM_3)_HIERARCHICAL_PATH := onchip_memory2_3
+$(MEM_3)_WIDTH := 32
 $(MEM_3)_ENDIANNESS := --little-endian-mem
 $(MEM_3)_CREATE_LANES := 0
 
+.PHONY: onchip_memory2_3
+onchip_memory2_3: check_elf_exists $(MEM_INIT_DIR)/$(MEM_3).hex $(HDL_SIM_DIR)/$(MEM_3).dat $(HDL_SIM_DIR)/$(MEM_3).sym
+
+# Memory: sdram_0
+MEM_4 := sdram_0
+$(MEM_4)_NAME := sdram_0
+DAT_FILES += $(HDL_SIM_DIR)/$(MEM_4).dat
+HDL_SIM_INSTALL_FILES += $(HDL_SIM_INSTALL_DIR)/$(MEM_4).dat
+SYM_FILES += $(HDL_SIM_DIR)/$(MEM_4).sym
+HDL_SIM_INSTALL_FILES += $(HDL_SIM_INSTALL_DIR)/$(MEM_4).sym
+$(MEM_4)_START := 0x00800000
+$(MEM_4)_END := 0x00ffffff
+$(MEM_4)_HIERARCHICAL_PATH := sdram_0
+$(MEM_4)_WIDTH := 16
+$(MEM_4)_ENDIANNESS := --little-endian-mem
+$(MEM_4)_CREATE_LANES := 0
+
 .PHONY: sdram_0
-sdram_0: check_elf_exists $(HDL_SIM_DIR)/$(MEM_3).dat $(HDL_SIM_DIR)/$(MEM_3).sym
+sdram_0: check_elf_exists $(HDL_SIM_DIR)/$(MEM_4).dat $(HDL_SIM_DIR)/$(MEM_4).sym
 
 
 #END OF BSP SPECIFIC

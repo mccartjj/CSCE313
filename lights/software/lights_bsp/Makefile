@@ -208,16 +208,6 @@ GENERATED_C_LIB_SRCS += alt_sys_init.c
 # used to build each file.
 #-------------------------------------------------------------------------------
 
-# altera_avalon_cfi_flash_driver sources root 
-altera_avalon_cfi_flash_driver_SRCS_ROOT := drivers
-
-# altera_avalon_cfi_flash_driver sources 
-altera_avalon_cfi_flash_driver_C_LIB_SRCS := \
-	$(altera_avalon_cfi_flash_driver_SRCS_ROOT)/src/altera_avalon_cfi_flash.c \
-	$(altera_avalon_cfi_flash_driver_SRCS_ROOT)/src/altera_avalon_cfi_flash_amd.c \
-	$(altera_avalon_cfi_flash_driver_SRCS_ROOT)/src/altera_avalon_cfi_flash_intel.c \
-	$(altera_avalon_cfi_flash_driver_SRCS_ROOT)/src/altera_avalon_cfi_flash_table.c
-
 # altera_avalon_jtag_uart_driver sources root 
 altera_avalon_jtag_uart_driver_SRCS_ROOT := drivers
 
@@ -228,14 +218,6 @@ altera_avalon_jtag_uart_driver_C_LIB_SRCS := \
 	$(altera_avalon_jtag_uart_driver_SRCS_ROOT)/src/altera_avalon_jtag_uart_write.c \
 	$(altera_avalon_jtag_uart_driver_SRCS_ROOT)/src/altera_avalon_jtag_uart_ioctl.c \
 	$(altera_avalon_jtag_uart_driver_SRCS_ROOT)/src/altera_avalon_jtag_uart_fd.c
-
-# altera_avalon_lcd_16207_driver sources root 
-altera_avalon_lcd_16207_driver_SRCS_ROOT := drivers
-
-# altera_avalon_lcd_16207_driver sources 
-altera_avalon_lcd_16207_driver_C_LIB_SRCS := \
-	$(altera_avalon_lcd_16207_driver_SRCS_ROOT)/src/altera_avalon_lcd_16207.c \
-	$(altera_avalon_lcd_16207_driver_SRCS_ROOT)/src/altera_avalon_lcd_16207_fd.c
 
 # altera_avalon_mailbox_driver sources root 
 altera_avalon_mailbox_driver_SRCS_ROOT := drivers
@@ -306,13 +288,6 @@ altera_ro_zipfs_SRCS_ROOT := drivers
 altera_ro_zipfs_C_LIB_SRCS := \
 	$(altera_ro_zipfs_SRCS_ROOT)/src/altera_ro_zipfs.c
 
-# altera_up_avalon_video_character_buffer_with_dma_driver sources root 
-altera_up_avalon_video_character_buffer_with_dma_driver_SRCS_ROOT := drivers
-
-# altera_up_avalon_video_character_buffer_with_dma_driver sources 
-altera_up_avalon_video_character_buffer_with_dma_driver_C_LIB_SRCS := \
-	$(altera_up_avalon_video_character_buffer_with_dma_driver_SRCS_ROOT)/src/altera_up_avalon_video_character_buffer_with_dma.c
-
 # avalon_video_pixel_buffer_dma_driver sources root 
 avalon_video_pixel_buffer_dma_driver_SRCS_ROOT := drivers
 
@@ -381,15 +356,12 @@ hal_C_LIB_SRCS := \
 
 # Assemble all component C source files 
 COMPONENT_C_LIB_SRCS += \
-	$(altera_avalon_cfi_flash_driver_C_LIB_SRCS) \
 	$(altera_avalon_jtag_uart_driver_C_LIB_SRCS) \
-	$(altera_avalon_lcd_16207_driver_C_LIB_SRCS) \
 	$(altera_avalon_mailbox_driver_C_LIB_SRCS) \
 	$(altera_avalon_performance_counter_driver_C_LIB_SRCS) \
 	$(altera_avalon_sysid_driver_C_LIB_SRCS) \
 	$(altera_nios2_hal_driver_C_LIB_SRCS) \
 	$(altera_ro_zipfs_C_LIB_SRCS) \
-	$(altera_up_avalon_video_character_buffer_with_dma_driver_C_LIB_SRCS) \
 	$(avalon_video_pixel_buffer_dma_driver_C_LIB_SRCS) \
 	$(hal_C_LIB_SRCS)
 

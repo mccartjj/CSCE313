@@ -4,23 +4,23 @@ module lights (
 	//4 blue buttons
 	input [3:0] KEY,
 	//18 black switches
-	input [17:0] SW,
+	//input [17:0] SW,
 	
 	//8 7-segment LEDs
-	output[6:0] HEX0,
-	output[6:0] HEX1,
-	output[6:0] HEX2,
-	output[6:0] HEX3,
-	output[6:0] HEX4,
-	output[6:0] HEX5,
-	output[6:0] HEX6,
-	output[6:0] HEX7,
+	//output[6:0] HEX0,
+	//output[6:0] HEX1,
+	//output[6:0] HEX2,
+	//output[6:0] HEX3,
+	//output[6:0] HEX4,
+	//output[6:0] HEX5,
+	//output[6:0] HEX6,
+	//output[6:0] HEX7,
 	
 	//9 green LEDs
-	output[8:0] LEDG,
+	//output[8:0] LEDG,
 	
 	//18 red LEDs
-	output[17:0] LEDR,
+	//output[17:0] LEDR,
 	
 	//DRAM interface signals
 	inout [15:0] DRAM_DQ,
@@ -37,12 +37,12 @@ module lights (
 	output DRAM_CKE,
 	
 	//LCD interface signals
-	inout [7:0] LCD_DATA,
-	output LCD_ON,
-	output LCD_BLON,
-	output LCD_RW,
-	output LCD_EN,
-	output LCD_RS,
+	//inout [7:0] LCD_DATA,
+	//output LCD_ON,
+	//output LCD_BLON,
+	//output LCD_RW,
+	//output LCD_EN,
+	//output LCD_RS,
 	
 	//////////////////////// SRAM Interface////////////////////////
 	inout		[15:0] SRAM_DQ, //SRAM Data bus 16 Bits
@@ -61,15 +61,15 @@ module lights (
 	output VGA_SYNC,//VGA SYNC
 	output [9:0] VGA_R,//VGA Red[9:0]
 	output [9:0] VGA_G,//VGA Green[9:0]
-	output [9:0] VGA_B,//VGA Blue[9:0]
+	output [9:0] VGA_B//VGA Blue[9:0]
 	
 	////////////////////////Flash Interface////////////////////////
-	inout	 [7:0] FL_DQ,	//FLASH Data bus 8 Bits
-	output [21:0] FL_ADDR,//FLASH Address bus 22 Bits
-	output FL_WE_N,//FLASH Write Enable
-	output FL_RST_N,//FLASH Reset
-	output FL_OE_N,//FLASH Output Enable
-	output FL_CE_N //FLASH Chip Enable
+	//inout	 [7:0] FL_DQ,	//FLASH Data bus 8 Bits
+	//output [21:0] FL_ADDR,//FLASH Address bus 22 Bits
+	//output FL_WE_N,//FLASH Write Enable
+	//output FL_RST_N,//FLASH Reset
+	//output FL_OE_N,//FLASH Output Enable
+	//output FL_CE_N //FLASH Chip Enable
 	);
 	
 	
@@ -77,7 +77,7 @@ module lights (
 	////////////////////// PREVIOUS MATERIAL //////////////////////
 	wire clk_0;
 	wire [2:0] in_port_to_the_keys;
-	wire [25:0] out_port_from_the_leds;
+	//wire [25:0] out_port_from_the_leds;
 	wire reset_n;
 	wire sdram_clk;
 	wire sys_clk;
@@ -86,10 +86,10 @@ module lights (
 	assign FL_RST_N = 1'b1;
 	
 	//LAB1
-	assign LCD_ON = 1'b1;
-	assign LCD_BLON = 1'b1;
-	assign LEDR = out_port_from_the_leds[25:8];
-	assign LEDG = out_port_from_the_leds[7:0];
+	//assign LCD_ON = 1'b1;
+	//assign LCD_BLON = 1'b1;
+	//assign LEDR = out_port_from_the_leds[25:8];
+	//assign LEDG = out_port_from_the_leds[7:0];
 	assign DRAM_CLK = sdram_clk;
 	
 	//assigns the clock to 50MHz
@@ -117,16 +117,16 @@ nios_system DUT(
 	.VGA_SYNC_from_the_video_vga_controller_0 (VGA_SYNC),
 	.VGA_VS_from_the_video_vga_controller_0 (VGA_VS),
 	
-	.address_to_the_cfi_flash_0 (FL_ADDR),
-	.data_to_and_from_the_cfi_flash_0 (FL_DQ),
-	.read_n_to_the_cfi_flash_0 (FL_OE_N),
-	.select_n_to_the_cfi_flash_0 (FL_CE_N),
-	.write_n_to_the_cfi_flash_0 (FL_WE_N),
+	//.address_to_the_cfi_flash_0 (FL_ADDR),
+	//.data_to_and_from_the_cfi_flash_0 (FL_DQ),
+	//.read_n_to_the_cfi_flash_0 (FL_OE_N),
+	//.select_n_to_the_cfi_flash_0 (FL_CE_N),
+	//.write_n_to_the_cfi_flash_0 (FL_WE_N),
 	
-	
+	/*
 	//PREVIOUS STUFF
 	.out_port_from_the_HEX0(HEX0),
-	.out_port_from_the_HEX1(HEX1),
+	//.out_port_from_the_HEX1(HEX1),
 	.out_port_from_the_HEX2(HEX2),
 	.out_port_from_the_HEX3(HEX3),
 	.out_port_from_the_HEX4(HEX4),
@@ -138,9 +138,10 @@ nios_system DUT(
 	.LCD_RS_from_the_lcd_0 (LCD_RS),
 	.LCD_RW_from_the_lcd_0 (LCD_RW),
 	.LCD_data_to_and_from_the_lcd_0 (LCD_DATA),
+	*/
 	.clk_0 (clk_0),
 	.in_port_to_the_keys (in_port_to_the_keys),
-	.out_port_from_the_leds (out_port_from_the_leds),
+	//.out_port_from_the_leds (out_port_from_the_leds),
 	.reset_n (reset_n),
 	.sdram_clk (sdram_clk),
 	.sys_clk (sys_clk),

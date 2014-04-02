@@ -4,7 +4,7 @@
  * Machine generated for CPU 'cpu_0' in SOPC Builder design 'nios_system'
  * SOPC Builder design path: ../../nios_system.sopcinfo
  *
- * Generated: Mon Mar 24 17:23:52 EDT 2014
+ * Generated: Wed Apr 02 16:43:14 EDT 2014
  */
 
 /*
@@ -70,7 +70,7 @@
 #define ALT_CPU_DATA_ADDR_WIDTH 0x19
 #define ALT_CPU_DCACHE_LINE_SIZE 32
 #define ALT_CPU_DCACHE_LINE_SIZE_LOG2 5
-#define ALT_CPU_DCACHE_SIZE 4096
+#define ALT_CPU_DCACHE_SIZE 1024
 #define ALT_CPU_EXCEPTION_ADDR 0x800020
 #define ALT_CPU_FLUSHDA_SUPPORTED
 #define ALT_CPU_FREQ 50000000
@@ -82,7 +82,7 @@
 #define ALT_CPU_HAS_JMPI_INSTRUCTION
 #define ALT_CPU_ICACHE_LINE_SIZE 32
 #define ALT_CPU_ICACHE_LINE_SIZE_LOG2 5
-#define ALT_CPU_ICACHE_SIZE 4096
+#define ALT_CPU_ICACHE_SIZE 1024
 #define ALT_CPU_INITDA_SUPPORTED
 #define ALT_CPU_INST_ADDR_WIDTH 0x19
 #define ALT_CPU_NAME "cpu_0"
@@ -104,7 +104,7 @@
 #define NIOS2_DATA_ADDR_WIDTH 0x19
 #define NIOS2_DCACHE_LINE_SIZE 32
 #define NIOS2_DCACHE_LINE_SIZE_LOG2 5
-#define NIOS2_DCACHE_SIZE 4096
+#define NIOS2_DCACHE_SIZE 1024
 #define NIOS2_EXCEPTION_ADDR 0x800020
 #define NIOS2_FLUSHDA_SUPPORTED
 #define NIOS2_HARDWARE_DIVIDE_PRESENT 1
@@ -115,7 +115,7 @@
 #define NIOS2_HAS_JMPI_INSTRUCTION
 #define NIOS2_ICACHE_LINE_SIZE 32
 #define NIOS2_ICACHE_LINE_SIZE_LOG2 5
-#define NIOS2_ICACHE_SIZE 4096
+#define NIOS2_ICACHE_SIZE 1024
 #define NIOS2_INITDA_SUPPORTED
 #define NIOS2_INST_ADDR_WIDTH 0x19
 #define NIOS2_NUM_OF_SHADOW_REG_SETS 0
@@ -137,9 +137,7 @@
  *
  */
 
-#define __ALTERA_AVALON_CFI_FLASH
 #define __ALTERA_AVALON_JTAG_UART
-#define __ALTERA_AVALON_LCD_16207
 #define __ALTERA_AVALON_MAILBOX
 #define __ALTERA_AVALON_NEW_SDRAM_CONTROLLER
 #define __ALTERA_AVALON_ONCHIP_MEMORY2
@@ -150,224 +148,7 @@
 #define __ALTERA_NIOS_CUSTOM_INSTR_FLOATING_POINT
 #define __ALTERA_UP_AVALON_CLOCKS
 #define __ALTERA_UP_AVALON_SRAM
-#define __ALTERA_UP_AVALON_VIDEO_CHARACTER_BUFFER_WITH_DMA
 #define __ALTERA_UP_AVALON_VIDEO_PIXEL_BUFFER_DMA
-
-
-/*
- * HEX0 configuration
- *
- */
-
-#define ALT_MODULE_CLASS_HEX0 altera_avalon_pio
-#define HEX0_BASE 0x1903030
-#define HEX0_BIT_CLEARING_EDGE_REGISTER 0
-#define HEX0_BIT_MODIFYING_OUTPUT_REGISTER 0
-#define HEX0_CAPTURE 0
-#define HEX0_DATA_WIDTH 7
-#define HEX0_DO_TEST_BENCH_WIRING 0
-#define HEX0_DRIVEN_SIM_VALUE 0x0
-#define HEX0_EDGE_TYPE "NONE"
-#define HEX0_FREQ 50000000u
-#define HEX0_HAS_IN 0
-#define HEX0_HAS_OUT 1
-#define HEX0_HAS_TRI 0
-#define HEX0_IRQ -1
-#define HEX0_IRQ_INTERRUPT_CONTROLLER_ID -1
-#define HEX0_IRQ_TYPE "NONE"
-#define HEX0_NAME "/dev/HEX0"
-#define HEX0_RESET_VALUE 0x0
-#define HEX0_SPAN 16
-#define HEX0_TYPE "altera_avalon_pio"
-
-
-/*
- * HEX1 configuration
- *
- */
-
-#define ALT_MODULE_CLASS_HEX1 altera_avalon_pio
-#define HEX1_BASE 0x19030a0
-#define HEX1_BIT_CLEARING_EDGE_REGISTER 0
-#define HEX1_BIT_MODIFYING_OUTPUT_REGISTER 0
-#define HEX1_CAPTURE 0
-#define HEX1_DATA_WIDTH 7
-#define HEX1_DO_TEST_BENCH_WIRING 0
-#define HEX1_DRIVEN_SIM_VALUE 0x0
-#define HEX1_EDGE_TYPE "NONE"
-#define HEX1_FREQ 50000000u
-#define HEX1_HAS_IN 0
-#define HEX1_HAS_OUT 1
-#define HEX1_HAS_TRI 0
-#define HEX1_IRQ -1
-#define HEX1_IRQ_INTERRUPT_CONTROLLER_ID -1
-#define HEX1_IRQ_TYPE "NONE"
-#define HEX1_NAME "/dev/HEX1"
-#define HEX1_RESET_VALUE 0x0
-#define HEX1_SPAN 16
-#define HEX1_TYPE "altera_avalon_pio"
-
-
-/*
- * HEX2 configuration
- *
- */
-
-#define ALT_MODULE_CLASS_HEX2 altera_avalon_pio
-#define HEX2_BASE 0x1903040
-#define HEX2_BIT_CLEARING_EDGE_REGISTER 0
-#define HEX2_BIT_MODIFYING_OUTPUT_REGISTER 0
-#define HEX2_CAPTURE 0
-#define HEX2_DATA_WIDTH 7
-#define HEX2_DO_TEST_BENCH_WIRING 0
-#define HEX2_DRIVEN_SIM_VALUE 0x0
-#define HEX2_EDGE_TYPE "NONE"
-#define HEX2_FREQ 50000000u
-#define HEX2_HAS_IN 0
-#define HEX2_HAS_OUT 1
-#define HEX2_HAS_TRI 0
-#define HEX2_IRQ -1
-#define HEX2_IRQ_INTERRUPT_CONTROLLER_ID -1
-#define HEX2_IRQ_TYPE "NONE"
-#define HEX2_NAME "/dev/HEX2"
-#define HEX2_RESET_VALUE 0x0
-#define HEX2_SPAN 16
-#define HEX2_TYPE "altera_avalon_pio"
-
-
-/*
- * HEX3 configuration
- *
- */
-
-#define ALT_MODULE_CLASS_HEX3 altera_avalon_pio
-#define HEX3_BASE 0x1903050
-#define HEX3_BIT_CLEARING_EDGE_REGISTER 0
-#define HEX3_BIT_MODIFYING_OUTPUT_REGISTER 0
-#define HEX3_CAPTURE 0
-#define HEX3_DATA_WIDTH 7
-#define HEX3_DO_TEST_BENCH_WIRING 0
-#define HEX3_DRIVEN_SIM_VALUE 0x0
-#define HEX3_EDGE_TYPE "NONE"
-#define HEX3_FREQ 50000000u
-#define HEX3_HAS_IN 0
-#define HEX3_HAS_OUT 1
-#define HEX3_HAS_TRI 0
-#define HEX3_IRQ -1
-#define HEX3_IRQ_INTERRUPT_CONTROLLER_ID -1
-#define HEX3_IRQ_TYPE "NONE"
-#define HEX3_NAME "/dev/HEX3"
-#define HEX3_RESET_VALUE 0x0
-#define HEX3_SPAN 16
-#define HEX3_TYPE "altera_avalon_pio"
-
-
-/*
- * HEX4 configuration
- *
- */
-
-#define ALT_MODULE_CLASS_HEX4 altera_avalon_pio
-#define HEX4_BASE 0x1903060
-#define HEX4_BIT_CLEARING_EDGE_REGISTER 0
-#define HEX4_BIT_MODIFYING_OUTPUT_REGISTER 0
-#define HEX4_CAPTURE 0
-#define HEX4_DATA_WIDTH 7
-#define HEX4_DO_TEST_BENCH_WIRING 0
-#define HEX4_DRIVEN_SIM_VALUE 0x0
-#define HEX4_EDGE_TYPE "NONE"
-#define HEX4_FREQ 50000000u
-#define HEX4_HAS_IN 0
-#define HEX4_HAS_OUT 1
-#define HEX4_HAS_TRI 0
-#define HEX4_IRQ -1
-#define HEX4_IRQ_INTERRUPT_CONTROLLER_ID -1
-#define HEX4_IRQ_TYPE "NONE"
-#define HEX4_NAME "/dev/HEX4"
-#define HEX4_RESET_VALUE 0x0
-#define HEX4_SPAN 16
-#define HEX4_TYPE "altera_avalon_pio"
-
-
-/*
- * HEX5 configuration
- *
- */
-
-#define ALT_MODULE_CLASS_HEX5 altera_avalon_pio
-#define HEX5_BASE 0x1903070
-#define HEX5_BIT_CLEARING_EDGE_REGISTER 0
-#define HEX5_BIT_MODIFYING_OUTPUT_REGISTER 0
-#define HEX5_CAPTURE 0
-#define HEX5_DATA_WIDTH 7
-#define HEX5_DO_TEST_BENCH_WIRING 0
-#define HEX5_DRIVEN_SIM_VALUE 0x0
-#define HEX5_EDGE_TYPE "NONE"
-#define HEX5_FREQ 50000000u
-#define HEX5_HAS_IN 0
-#define HEX5_HAS_OUT 1
-#define HEX5_HAS_TRI 0
-#define HEX5_IRQ -1
-#define HEX5_IRQ_INTERRUPT_CONTROLLER_ID -1
-#define HEX5_IRQ_TYPE "NONE"
-#define HEX5_NAME "/dev/HEX5"
-#define HEX5_RESET_VALUE 0x0
-#define HEX5_SPAN 16
-#define HEX5_TYPE "altera_avalon_pio"
-
-
-/*
- * HEX6 configuration
- *
- */
-
-#define ALT_MODULE_CLASS_HEX6 altera_avalon_pio
-#define HEX6_BASE 0x1903080
-#define HEX6_BIT_CLEARING_EDGE_REGISTER 0
-#define HEX6_BIT_MODIFYING_OUTPUT_REGISTER 0
-#define HEX6_CAPTURE 0
-#define HEX6_DATA_WIDTH 7
-#define HEX6_DO_TEST_BENCH_WIRING 0
-#define HEX6_DRIVEN_SIM_VALUE 0x0
-#define HEX6_EDGE_TYPE "NONE"
-#define HEX6_FREQ 50000000u
-#define HEX6_HAS_IN 0
-#define HEX6_HAS_OUT 1
-#define HEX6_HAS_TRI 0
-#define HEX6_IRQ -1
-#define HEX6_IRQ_INTERRUPT_CONTROLLER_ID -1
-#define HEX6_IRQ_TYPE "NONE"
-#define HEX6_NAME "/dev/HEX6"
-#define HEX6_RESET_VALUE 0x0
-#define HEX6_SPAN 16
-#define HEX6_TYPE "altera_avalon_pio"
-
-
-/*
- * HEX7 configuration
- *
- */
-
-#define ALT_MODULE_CLASS_HEX7 altera_avalon_pio
-#define HEX7_BASE 0x1903090
-#define HEX7_BIT_CLEARING_EDGE_REGISTER 0
-#define HEX7_BIT_MODIFYING_OUTPUT_REGISTER 0
-#define HEX7_CAPTURE 0
-#define HEX7_DATA_WIDTH 7
-#define HEX7_DO_TEST_BENCH_WIRING 0
-#define HEX7_DRIVEN_SIM_VALUE 0x0
-#define HEX7_EDGE_TYPE "NONE"
-#define HEX7_FREQ 50000000u
-#define HEX7_HAS_IN 0
-#define HEX7_HAS_OUT 1
-#define HEX7_HAS_TRI 0
-#define HEX7_IRQ -1
-#define HEX7_IRQ_INTERRUPT_CONTROLLER_ID -1
-#define HEX7_IRQ_TYPE "NONE"
-#define HEX7_NAME "/dev/HEX7"
-#define HEX7_RESET_VALUE 0x0
-#define HEX7_SPAN 16
-#define HEX7_TYPE "altera_avalon_pio"
 
 
 /*
@@ -385,11 +166,12 @@
 #define ALT_NUM_EXTERNAL_INTERRUPT_CONTROLLERS 0
 #define ALT_NUM_INTERNAL_INTERRUPT_CONTROLLERS 1
 #define ALT_NUM_INTERRUPT_CONTROLLERS 1
-#define ALT_STDERR "/dev/lcd_0"
-#define ALT_STDERR_BASE 0x1903020
-#define ALT_STDERR_DEV lcd_0
+#define ALT_STDERR "/dev/jtag_uart_0"
+#define ALT_STDERR_BASE 0x19030c8
+#define ALT_STDERR_DEV jtag_uart_0
+#define ALT_STDERR_IS_JTAG_UART
 #define ALT_STDERR_PRESENT
-#define ALT_STDERR_TYPE "altera_avalon_lcd_16207"
+#define ALT_STDERR_TYPE "altera_avalon_jtag_uart"
 #define ALT_STDIN "/dev/jtag_uart_0"
 #define ALT_STDIN_BASE 0x19030c8
 #define ALT_STDIN_DEV jtag_uart_0
@@ -413,25 +195,6 @@
 #define ALTERA_RO_ZIPFS_BASE 0x1400000
 #define ALTERA_RO_ZIPFS_NAME "myFileSystem"
 #define ALTERA_RO_ZIPFS_OFFSET 0x0
-
-
-/*
- * cfi_flash_0 configuration
- *
- */
-
-#define ALT_MODULE_CLASS_cfi_flash_0 altera_avalon_cfi_flash
-#define CFI_FLASH_0_BASE 0x1400000
-#define CFI_FLASH_0_HOLD_VALUE 0
-#define CFI_FLASH_0_IRQ -1
-#define CFI_FLASH_0_IRQ_INTERRUPT_CONTROLLER_ID -1
-#define CFI_FLASH_0_NAME "/dev/cfi_flash_0"
-#define CFI_FLASH_0_SETUP_VALUE 0
-#define CFI_FLASH_0_SIZE 4194304u
-#define CFI_FLASH_0_SPAN 4194304
-#define CFI_FLASH_0_TIMING_UNITS "ns"
-#define CFI_FLASH_0_TYPE "altera_avalon_cfi_flash"
-#define CFI_FLASH_0_WAIT_VALUE 100
 
 
 /*
@@ -504,47 +267,6 @@
 
 
 /*
- * lcd_0 configuration
- *
- */
-
-#define ALT_MODULE_CLASS_lcd_0 altera_avalon_lcd_16207
-#define LCD_0_BASE 0x1903020
-#define LCD_0_IRQ -1
-#define LCD_0_IRQ_INTERRUPT_CONTROLLER_ID -1
-#define LCD_0_NAME "/dev/lcd_0"
-#define LCD_0_SPAN 16
-#define LCD_0_TYPE "altera_avalon_lcd_16207"
-
-
-/*
- * leds configuration
- *
- */
-
-#define ALT_MODULE_CLASS_leds altera_avalon_pio
-#define LEDS_BASE 0x1903000
-#define LEDS_BIT_CLEARING_EDGE_REGISTER 0
-#define LEDS_BIT_MODIFYING_OUTPUT_REGISTER 0
-#define LEDS_CAPTURE 0
-#define LEDS_DATA_WIDTH 26
-#define LEDS_DO_TEST_BENCH_WIRING 0
-#define LEDS_DRIVEN_SIM_VALUE 0x0
-#define LEDS_EDGE_TYPE "NONE"
-#define LEDS_FREQ 50000000u
-#define LEDS_HAS_IN 0
-#define LEDS_HAS_OUT 1
-#define LEDS_HAS_TRI 0
-#define LEDS_IRQ -1
-#define LEDS_IRQ_INTERRUPT_CONTROLLER_ID -1
-#define LEDS_IRQ_TYPE "NONE"
-#define LEDS_NAME "/dev/leds"
-#define LEDS_RESET_VALUE 0x0
-#define LEDS_SPAN 16
-#define LEDS_TYPE "altera_avalon_pio"
-
-
-/*
  * mailbox_0 configuration
  *
  */
@@ -578,6 +300,42 @@
 #define MAILBOX_1_SLAVE "onchip_memory2_1/s1"
 #define MAILBOX_1_SPAN 16
 #define MAILBOX_1_TYPE "altera_avalon_mailbox"
+
+
+/*
+ * mailbox_2 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_mailbox_2 altera_avalon_mailbox
+#define MAILBOX_2_BASE 0x70
+#define MAILBOX_2_IRQ -1
+#define MAILBOX_2_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define MAILBOX_2_MAILBOX_MEMORY_ADDR 0x6000
+#define MAILBOX_2_MAILBOX_MEMORY_OFFSET 0u
+#define MAILBOX_2_MAILBOX_MEMORY_SIZE 512u
+#define MAILBOX_2_NAME "/dev/mailbox_2"
+#define MAILBOX_2_SLAVE "onchip_memory2_2/s1"
+#define MAILBOX_2_SPAN 16
+#define MAILBOX_2_TYPE "altera_avalon_mailbox"
+
+
+/*
+ * mailbox_3 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_mailbox_3 altera_avalon_mailbox
+#define MAILBOX_3_BASE 0x80
+#define MAILBOX_3_IRQ -1
+#define MAILBOX_3_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define MAILBOX_3_MAILBOX_MEMORY_ADDR 0x7000
+#define MAILBOX_3_MAILBOX_MEMORY_OFFSET 0u
+#define MAILBOX_3_MAILBOX_MEMORY_SIZE 512u
+#define MAILBOX_3_NAME "/dev/mailbox_3"
+#define MAILBOX_3_SLAVE "onchip_memory2_3/s1"
+#define MAILBOX_3_SPAN 16
+#define MAILBOX_3_TYPE "altera_avalon_mailbox"
 
 
 /*
@@ -636,6 +394,64 @@
 #define ONCHIP_MEMORY2_1_SPAN 512
 #define ONCHIP_MEMORY2_1_TYPE "altera_avalon_onchip_memory2"
 #define ONCHIP_MEMORY2_1_WRITABLE 1
+
+
+/*
+ * onchip_memory2_2 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_onchip_memory2_2 altera_avalon_onchip_memory2
+#define ONCHIP_MEMORY2_2_ALLOW_IN_SYSTEM_MEMORY_CONTENT_EDITOR 0
+#define ONCHIP_MEMORY2_2_ALLOW_MRAM_SIM_CONTENTS_ONLY_FILE 0
+#define ONCHIP_MEMORY2_2_BASE 0x6000
+#define ONCHIP_MEMORY2_2_CONTENTS_INFO ""
+#define ONCHIP_MEMORY2_2_DUAL_PORT 0
+#define ONCHIP_MEMORY2_2_GUI_RAM_BLOCK_TYPE "Automatic"
+#define ONCHIP_MEMORY2_2_INIT_CONTENTS_FILE "onchip_memory2_2"
+#define ONCHIP_MEMORY2_2_INIT_MEM_CONTENT 1
+#define ONCHIP_MEMORY2_2_INSTANCE_ID "NONE"
+#define ONCHIP_MEMORY2_2_IRQ -1
+#define ONCHIP_MEMORY2_2_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define ONCHIP_MEMORY2_2_NAME "/dev/onchip_memory2_2"
+#define ONCHIP_MEMORY2_2_NON_DEFAULT_INIT_FILE_ENABLED 0
+#define ONCHIP_MEMORY2_2_RAM_BLOCK_TYPE "Auto"
+#define ONCHIP_MEMORY2_2_READ_DURING_WRITE_MODE "DONT_CARE"
+#define ONCHIP_MEMORY2_2_SINGLE_CLOCK_OP 0
+#define ONCHIP_MEMORY2_2_SIZE_MULTIPLE 1
+#define ONCHIP_MEMORY2_2_SIZE_VALUE 512u
+#define ONCHIP_MEMORY2_2_SPAN 512
+#define ONCHIP_MEMORY2_2_TYPE "altera_avalon_onchip_memory2"
+#define ONCHIP_MEMORY2_2_WRITABLE 1
+
+
+/*
+ * onchip_memory2_3 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_onchip_memory2_3 altera_avalon_onchip_memory2
+#define ONCHIP_MEMORY2_3_ALLOW_IN_SYSTEM_MEMORY_CONTENT_EDITOR 0
+#define ONCHIP_MEMORY2_3_ALLOW_MRAM_SIM_CONTENTS_ONLY_FILE 0
+#define ONCHIP_MEMORY2_3_BASE 0x7000
+#define ONCHIP_MEMORY2_3_CONTENTS_INFO ""
+#define ONCHIP_MEMORY2_3_DUAL_PORT 0
+#define ONCHIP_MEMORY2_3_GUI_RAM_BLOCK_TYPE "Automatic"
+#define ONCHIP_MEMORY2_3_INIT_CONTENTS_FILE "onchip_memory2_3"
+#define ONCHIP_MEMORY2_3_INIT_MEM_CONTENT 1
+#define ONCHIP_MEMORY2_3_INSTANCE_ID "NONE"
+#define ONCHIP_MEMORY2_3_IRQ -1
+#define ONCHIP_MEMORY2_3_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define ONCHIP_MEMORY2_3_NAME "/dev/onchip_memory2_3"
+#define ONCHIP_MEMORY2_3_NON_DEFAULT_INIT_FILE_ENABLED 0
+#define ONCHIP_MEMORY2_3_RAM_BLOCK_TYPE "Auto"
+#define ONCHIP_MEMORY2_3_READ_DURING_WRITE_MODE "DONT_CARE"
+#define ONCHIP_MEMORY2_3_SINGLE_CLOCK_OP 0
+#define ONCHIP_MEMORY2_3_SIZE_MULTIPLE 1
+#define ONCHIP_MEMORY2_3_SIZE_VALUE 512u
+#define ONCHIP_MEMORY2_3_SPAN 512
+#define ONCHIP_MEMORY2_3_TYPE "altera_avalon_onchip_memory2"
+#define ONCHIP_MEMORY2_3_WRITABLE 1
 
 
 /*
@@ -718,36 +534,8 @@
 #define SYSID_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define SYSID_NAME "/dev/sysid"
 #define SYSID_SPAN 8
-#define SYSID_TIMESTAMP 1395695788u
+#define SYSID_TIMESTAMP 1396470760u
 #define SYSID_TYPE "altera_avalon_sysid"
-
-
-/*
- * video_character_buffer_with_dma_0_avalon_char_buffer_slave configuration
- *
- */
-
-#define ALT_MODULE_CLASS_video_character_buffer_with_dma_0_avalon_char_buffer_slave altera_up_avalon_video_character_buffer_with_dma
-#define VIDEO_CHARACTER_BUFFER_WITH_DMA_0_AVALON_CHAR_BUFFER_SLAVE_BASE 0x1900000
-#define VIDEO_CHARACTER_BUFFER_WITH_DMA_0_AVALON_CHAR_BUFFER_SLAVE_IRQ -1
-#define VIDEO_CHARACTER_BUFFER_WITH_DMA_0_AVALON_CHAR_BUFFER_SLAVE_IRQ_INTERRUPT_CONTROLLER_ID -1
-#define VIDEO_CHARACTER_BUFFER_WITH_DMA_0_AVALON_CHAR_BUFFER_SLAVE_NAME "/dev/video_character_buffer_with_dma_0_avalon_char_buffer_slave"
-#define VIDEO_CHARACTER_BUFFER_WITH_DMA_0_AVALON_CHAR_BUFFER_SLAVE_SPAN 8192
-#define VIDEO_CHARACTER_BUFFER_WITH_DMA_0_AVALON_CHAR_BUFFER_SLAVE_TYPE "altera_up_avalon_video_character_buffer_with_dma"
-
-
-/*
- * video_character_buffer_with_dma_0_avalon_char_control_slave configuration
- *
- */
-
-#define ALT_MODULE_CLASS_video_character_buffer_with_dma_0_avalon_char_control_slave altera_up_avalon_video_character_buffer_with_dma
-#define VIDEO_CHARACTER_BUFFER_WITH_DMA_0_AVALON_CHAR_CONTROL_SLAVE_BASE 0x19030d0
-#define VIDEO_CHARACTER_BUFFER_WITH_DMA_0_AVALON_CHAR_CONTROL_SLAVE_IRQ -1
-#define VIDEO_CHARACTER_BUFFER_WITH_DMA_0_AVALON_CHAR_CONTROL_SLAVE_IRQ_INTERRUPT_CONTROLLER_ID -1
-#define VIDEO_CHARACTER_BUFFER_WITH_DMA_0_AVALON_CHAR_CONTROL_SLAVE_NAME "/dev/video_character_buffer_with_dma_0_avalon_char_control_slave"
-#define VIDEO_CHARACTER_BUFFER_WITH_DMA_0_AVALON_CHAR_CONTROL_SLAVE_SPAN 8
-#define VIDEO_CHARACTER_BUFFER_WITH_DMA_0_AVALON_CHAR_CONTROL_SLAVE_TYPE "altera_up_avalon_video_character_buffer_with_dma"
 
 
 /*
