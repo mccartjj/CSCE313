@@ -37,7 +37,19 @@ int main() {
 
 	//the main program loop
 	while (1) {
-		drawFrame();
+		printf("Beginning Frame \n");
+		int zoom;
+		for (zoom = 1; zoom < 100; zoom++) {
+			PERF_START_MEASURING(PERFORMANCE_COUNTER_0_BASE);
+			PERF_BEGIN(PERFORMANCE_COUNTER_0_BASE, 1);
+//			barrier(0);
+			drawFrame(zoom);
+//			clearScreen();
+			PERF_END(PERFORMANCE_COUNTER_0_BASE, 1);
+			PERF_STOP_MEASURING(PERFORMANCE_COUNTER_0_BASE);
+			unsigned long cycles = perf_get_section_time((void*) PERFORMANCE_COUNTER_0_BASE, 1);
+			printf("Cycles: %lu \n", cycles);
+		}
 	}
 	return 0;
 }
