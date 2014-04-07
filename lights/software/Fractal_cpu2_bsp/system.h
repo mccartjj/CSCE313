@@ -4,7 +4,7 @@
  * Machine generated for CPU 'cpu_2' in SOPC Builder design 'nios_system'
  * SOPC Builder design path: ../../nios_system.sopcinfo
  *
- * Generated: Mon Mar 31 17:05:13 EDT 2014
+ * Generated: Mon Apr 07 15:38:40 EDT 2014
  */
 
 /*
@@ -137,6 +137,7 @@
  *
  */
 
+#define __ALTERA_AVALON_JTAG_UART
 #define __ALTERA_AVALON_MAILBOX
 #define __ALTERA_AVALON_NEW_SDRAM_CONTROLLER
 #define __ALTERA_AVALON_ONCHIP_MEMORY2
@@ -156,6 +157,7 @@
  */
 
 #define ALT_DEVICE_FAMILY "CYCLONEII"
+#define ALT_ENHANCED_INTERRUPT_API_PRESENT
 #define ALT_IRQ_BASE NULL
 #define ALT_LOG_PORT "/dev/null"
 #define ALT_LOG_PORT_BASE 0x0
@@ -201,6 +203,24 @@
 #define ALT_MAX_FD 32
 #define ALT_SYS_CLK none
 #define ALT_TIMESTAMP_CLK none
+
+
+/*
+ * jtag_uart_2 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_jtag_uart_2 altera_avalon_jtag_uart
+#define JTAG_UART_2_BASE 0x68
+#define JTAG_UART_2_IRQ 1
+#define JTAG_UART_2_IRQ_INTERRUPT_CONTROLLER_ID 0
+#define JTAG_UART_2_NAME "/dev/jtag_uart_2"
+#define JTAG_UART_2_READ_DEPTH 64
+#define JTAG_UART_2_READ_THRESHOLD 8
+#define JTAG_UART_2_SPAN 8
+#define JTAG_UART_2_TYPE "altera_avalon_jtag_uart"
+#define JTAG_UART_2_WRITE_DEPTH 64
+#define JTAG_UART_2_WRITE_THRESHOLD 8
 
 
 /*
@@ -498,7 +518,7 @@
 #define SYSID_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define SYSID_NAME "/dev/sysid"
 #define SYSID_SPAN 8
-#define SYSID_TIMESTAMP 1396299001u
+#define SYSID_TIMESTAMP 1396470760u
 #define SYSID_TYPE "altera_avalon_sysid"
 
 

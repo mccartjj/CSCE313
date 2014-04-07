@@ -21,7 +21,7 @@ void setup(void);
 
 //fractal generation
 int genColor(int iter);
-int mandelbrot(int x, int y);
+int mandelbrot(int x, int y, int zoom);
 
 //drawing functions
 void drawFrame(int zoom);
@@ -33,10 +33,10 @@ void clearScreen(void);
 alt_up_pixel_buffer_dma_dev *myPixelBuffer;
 
 //useful
-#define rowSize 240
-#define colSize 320
-#define maxIter 500
-#define NUM_CPUS 2
+//#define rowSize 240
+//#define colSize 320
+//#define maxIter 500
+//#define NUM_CPUS 2
 //colors
 #define white 0xFFFFFF
 #define black 0x000000

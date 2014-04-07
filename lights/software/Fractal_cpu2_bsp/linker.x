@@ -4,7 +4,7 @@
  * Machine generated for CPU 'cpu_2' in SOPC Builder design 'nios_system'
  * SOPC Builder design path: ../../nios_system.sopcinfo
  *
- * Generated: Mon Mar 31 17:05:13 EDT 2014
+ * Generated: Mon Apr 07 16:55:34 EDT 2014
  */
 
 /*
@@ -217,7 +217,7 @@ SECTIONS
         PROVIDE (__DTOR_END__ = ABSOLUTE(.));
         KEEP (*(.jcr))
         . = ALIGN(4);
-    } > sdram_0_BEFORE_RESET = 0x3a880100 /* Nios II NOP instruction */
+    } > sdram_0 = 0x3a880100 /* Nios II NOP instruction */
 
     .rodata :
     {
@@ -227,7 +227,7 @@ SECTIONS
         *(.rodata1)
         . = ALIGN(4);
         PROVIDE (__ram_rodata_end = ABSOLUTE(.));
-    } > sdram_0_BEFORE_RESET
+    } > sdram_0
 
     PROVIDE (__flash_rodata_start = LOADADDR(.rodata));
 
@@ -261,7 +261,7 @@ SECTIONS
         _edata = ABSOLUTE(.);
         PROVIDE (edata = ABSOLUTE(.));
         PROVIDE (__ram_rwdata_end = ABSOLUTE(.));
-    } > sdram_0_BEFORE_RESET
+    } > sdram_0
 
     PROVIDE (__flash_rwdata_start = LOADADDR(.rwdata));
 
@@ -292,7 +292,7 @@ SECTIONS
 
         . = ALIGN(4);
         __bss_end = ABSOLUTE(.);
-    } > sdram_0_BEFORE_RESET
+    } > sdram_0
 
     /*
      *
@@ -385,12 +385,15 @@ SECTIONS
      *
      */
 
-    .sdram_0 : AT ( LOADADDR (.onchip_memory2_3) + SIZEOF (.onchip_memory2_3) )
+    .sdram_0 LOADADDR (.onchip_memory2_3) + SIZEOF (.onchip_memory2_3) : AT ( LOADADDR (.onchip_memory2_3) + SIZEOF (.onchip_memory2_3) )
     {
         PROVIDE (_alt_partition_sdram_0_start = ABSOLUTE(.));
         *(.sdram_0. sdram_0.*)
         . = ALIGN(4);
         PROVIDE (_alt_partition_sdram_0_end = ABSOLUTE(.));
+        _end = ABSOLUTE(.);
+        end = ABSOLUTE(.);
+        __alt_stack_base = ABSOLUTE(.);
     } > sdram_0
 
     PROVIDE (_alt_partition_sdram_0_load_addr = LOADADDR(.sdram_0));
@@ -411,24 +414,6 @@ SECTIONS
     } > sram_0
 
     PROVIDE (_alt_partition_sram_0_load_addr = LOADADDR(.sram_0));
-
-    /*
-     *
-     * The heap will start at the end of the .bss section
-     *
-     */
-    PROVIDE( _end = __bss_end );
-    _end = __bss_end;
-    PROVIDE( end = __bss_end );
-    end = __bss_end;
-
-    /*
-     *
-     * The stack base
-     *
-     */
-    PROVIDE( __alt_stack_base = ABSOLUTE(.) );
-    __alt_stack_base = ABSOLUTE(.);
 
     /*
      * Stabs debugging sections.
@@ -477,7 +462,7 @@ SECTIONS
 /*
  * Don't override this, override the __alt_stack_* symbols instead.
  */
-__alt_data_end = 0xa00000;
+__alt_data_end = 0xe00000;
 
 /*
  * The next two symbols define the location of the default stack.  You can
@@ -493,4 +478,4 @@ PROVIDE( __alt_stack_limit   = __alt_stack_base );
  * Override this symbol to put the heap in a different memory.
  */
 PROVIDE( __alt_heap_start    = end );
-PROVIDE( __alt_heap_limit    = 0xa00000 );
+PROVIDE( __alt_heap_limit    = 0xe00000 );

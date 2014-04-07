@@ -4,7 +4,7 @@
  * Machine generated for CPU 'cpu_3' in SOPC Builder design 'nios_system'
  * SOPC Builder design path: ../../nios_system.sopcinfo
  *
- * Generated: Mon Mar 31 17:05:46 EDT 2014
+ * Generated: Mon Apr 07 15:59:27 EDT 2014
  */
 
 /*
@@ -59,6 +59,7 @@
  */
 
 #include "altera_nios2_irq.h"
+#include "altera_avalon_jtag_uart.h"
 #include "altera_avalon_mailbox.h"
 #include "altera_avalon_performance_counter.h"
 #include "altera_avalon_sysid.h"
@@ -69,6 +70,7 @@
  */
 
 ALTERA_NIOS2_IRQ_INSTANCE ( CPU_3, cpu_3);
+ALTERA_AVALON_JTAG_UART_INSTANCE ( JTAG_UART_3, jtag_uart_3);
 ALTERA_AVALON_MAILBOX_INSTANCE ( MAILBOX_0, mailbox_0);
 ALTERA_AVALON_MAILBOX_INSTANCE ( MAILBOX_1, mailbox_1);
 ALTERA_AVALON_MAILBOX_INSTANCE ( MAILBOX_2, mailbox_2);
@@ -98,6 +100,7 @@ void alt_irq_init ( const void* base )
 
 void alt_sys_init( void )
 {
+    ALTERA_AVALON_JTAG_UART_INIT ( JTAG_UART_3, jtag_uart_3);
     ALTERA_AVALON_MAILBOX_INIT ( MAILBOX_0, mailbox_0);
     ALTERA_AVALON_MAILBOX_INIT ( MAILBOX_1, mailbox_1);
     ALTERA_AVALON_MAILBOX_INIT ( MAILBOX_2, mailbox_2);

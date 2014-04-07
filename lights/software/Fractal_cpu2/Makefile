@@ -142,8 +142,8 @@ ACDS_VERSION := 12.0
 ELF := Fractal_cpu2.elf
 
 # Paths to C, C++, and assembly source files.
-C_SRCS += ../lights/Fractal.c
-C_SRCS += ../lights/Project.c
+C_SRCS += ../Fractal_cpu2/Fractal.c
+C_SRCS += ../Fractal_cpu2/Project.c
 CXX_SRCS :=
 ASM_SRCS :=
 
@@ -163,7 +163,7 @@ CREATE_LINKER_MAP := 1
 # Common arguments for ALT_CFLAGSs
 APP_CFLAGS_DEFINED_SYMBOLS :=
 APP_CFLAGS_UNDEFINED_SYMBOLS :=
-APP_CFLAGS_OPTIMIZATION := -O0
+APP_CFLAGS_OPTIMIZATION := -O3
 APP_CFLAGS_DEBUG_LEVEL := -g
 APP_CFLAGS_WARNINGS := -Wall
 APP_CFLAGS_USER_FLAGS :=

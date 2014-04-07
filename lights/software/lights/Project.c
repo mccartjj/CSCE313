@@ -27,11 +27,6 @@
 
 int main() {
 
-	alt_u32 current_value = 1;
-	alt_u32 current_state = 0;
-	alt_u8 current_direction = 0;
-	alt_u32 keys = 0;
-
 	setup();
 	printf("Program running (UART)...\n");
 
@@ -39,12 +34,12 @@ int main() {
 	while (1) {
 		printf("Beginning Frame \n");
 		int zoom;
-		for (zoom = 1; zoom < 100; zoom++) {
+		for (zoom = 0; zoom < 100; zoom++) {
 			PERF_START_MEASURING(PERFORMANCE_COUNTER_0_BASE);
 			PERF_BEGIN(PERFORMANCE_COUNTER_0_BASE, 1);
-//			barrier(0);
+			clearScreen();
 			drawFrame(zoom);
-//			clearScreen();
+			barrier(0);
 			PERF_END(PERFORMANCE_COUNTER_0_BASE, 1);
 			PERF_STOP_MEASURING(PERFORMANCE_COUNTER_0_BASE);
 			unsigned long cycles = perf_get_section_time((void*) PERFORMANCE_COUNTER_0_BASE, 1);
