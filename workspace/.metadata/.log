@@ -3344,3 +3344,670 @@ Command-line arguments:  -os linux -ws gtk -arch x86 -product org.eclipse.epp.pa
 
 !ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:37:55.319
 !MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=0 --go --sidp=0x19030c0 --id=0x0 --timestamp=1396470760 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu3/Fractal_cpu3.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:42:46.426
+!MESSAGE Terminated Launch with connection: 11USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:42:46.910
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=1 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1396470760]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:42:48.474
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=1 --go --sidp=0x19030c0 --id=0x0 --timestamp=1396470760 /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:43:06.731
+!MESSAGE Terminated Launch with connection: 11USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:43:07.204
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=1 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1396470760]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:43:08.734
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=1 --go --sidp=0x19030c0 --id=0x0 --timestamp=1396470760 /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:43:11.752
+!MESSAGE Terminated Launch with connection: 12USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:43:12.220
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=2 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1396470760]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:43:13.752
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=2 --go --sidp=0x19030c0 --id=0x0 --timestamp=1396470760 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu1/Fractal_cpu1.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:43:16.738
+!MESSAGE Terminated Launch with connection: 13USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:43:17.216
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=3 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1396470760]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:43:18.751
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=3 --go --sidp=0x19030c0 --id=0x0 --timestamp=1396470760 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu2/Fractal_cpu2.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:43:21.748
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:43:22.225
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=0 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1396470760]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:43:23.760
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=0 --go --sidp=0x19030c0 --id=0x0 --timestamp=1396470760 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu3/Fractal_cpu3.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:46:01.865
+!MESSAGE Terminated Launch with connection: 11USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:46:02.345
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=1 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1396470760]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:46:03.886
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=1 --go --sidp=0x19030c0 --id=0x0 --timestamp=1396470760 /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:46:06.775
+!MESSAGE Terminated Launch with connection: 12USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:46:07.247
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=2 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1396470760]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:46:08.779
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=2 --go --sidp=0x19030c0 --id=0x0 --timestamp=1396470760 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu1/Fractal_cpu1.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:46:11.588
+!MESSAGE Terminated Launch with connection: 13USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:46:12.059
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=3 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1396470760]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:46:13.600
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=3 --go --sidp=0x19030c0 --id=0x0 --timestamp=1396470760 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu2/Fractal_cpu2.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:46:16.413
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:46:16.897
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=0 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1396470760]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:46:18.433
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=0 --go --sidp=0x19030c0 --id=0x0 --timestamp=1396470760 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu3/Fractal_cpu3.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:48:30.766
+!MESSAGE Terminated Launch with connection: 11USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:48:31.144
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=1 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1396470760]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:48:32.680
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=1 --go --sidp=0x19030c0 --id=0x0 --timestamp=1396470760 /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:48:35.553
+!MESSAGE Terminated Launch with connection: 12USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:48:36.023
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=2 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1396470760]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:48:37.575
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=2 --go --sidp=0x19030c0 --id=0x0 --timestamp=1396470760 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu1/Fractal_cpu1.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:48:40.377
+!MESSAGE Terminated Launch with connection: 13USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:48:40.855
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=3 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1396470760]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:48:42.411
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=3 --go --sidp=0x19030c0 --id=0x0 --timestamp=1396470760 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu2/Fractal_cpu2.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:48:45.223
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:48:45.707
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=0 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1396470760]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:48:47.248
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=0 --go --sidp=0x19030c0 --id=0x0 --timestamp=1396470760 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu3/Fractal_cpu3.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:49:59.132
+!MESSAGE Terminated Launch with connection: 11USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:49:59.602
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=1 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1396470760]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:50:01.135
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=1 --go --sidp=0x19030c0 --id=0x0 --timestamp=1396470760 /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:50:04.057
+!MESSAGE Terminated Launch with connection: 12USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:50:04.553
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=2 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1396470760]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:50:06.114
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=2 --go --sidp=0x19030c0 --id=0x0 --timestamp=1396470760 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu1/Fractal_cpu1.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:50:08.977
+!MESSAGE Terminated Launch with connection: 13USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:50:09.451
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=3 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1396470760]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:50:11.000
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=3 --go --sidp=0x19030c0 --id=0x0 --timestamp=1396470760 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu2/Fractal_cpu2.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:50:14.013
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:50:14.486
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=0 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1396470760]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:50:16.024
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=0 --go --sidp=0x19030c0 --id=0x0 --timestamp=1396470760 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu3/Fractal_cpu3.elf]
+!SESSION 2014-04-09 15:54:26.524 -----------------------------------------------
+eclipse.buildId=M20100909-0800
+java.version=1.6.0_23
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=linux, ARCH=x86, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+Command-line arguments:  -os linux -ws gtk -arch x86 -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:56:40.309
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=1 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1396470760]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:56:41.872
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=1 --go --sidp=0x19030c0 --id=0x0 --timestamp=1396470760 /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:56:45.791
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=2 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1396470760]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:56:47.334
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=2 --go --sidp=0x19030c0 --id=0x0 --timestamp=1396470760 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu1/Fractal_cpu1.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:56:50.561
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=3 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1396470760]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:56:52.101
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=3 --go --sidp=0x19030c0 --id=0x0 --timestamp=1396470760 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu2/Fractal_cpu2.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:56:55.499
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=0 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1396470760]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 15:56:56.999
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=0 --go --sidp=0x19030c0 --id=0x0 --timestamp=1396470760 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu3/Fractal_cpu3.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:00:57.573
+!MESSAGE Terminated Launch with connection: 11USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:00:58.054
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=1 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1396470760]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:00:59.587
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=1 --go --sidp=0x19030c0 --id=0x0 --timestamp=1396470760 /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:01:02.421
+!MESSAGE Terminated Launch with connection: 12USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:01:02.908
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=2 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1396470760]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:01:04.463
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=2 --go --sidp=0x19030c0 --id=0x0 --timestamp=1396470760 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu1/Fractal_cpu1.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:01:07.272
+!MESSAGE Terminated Launch with connection: 13USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:01:07.768
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=3 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1396470760]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:01:09.329
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=3 --go --sidp=0x19030c0 --id=0x0 --timestamp=1396470760 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu2/Fractal_cpu2.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:01:12.140
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:01:12.627
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=0 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1396470760]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:01:14.160
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=0 --go --sidp=0x19030c0 --id=0x0 --timestamp=1396470760 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu3/Fractal_cpu3.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:01:44.241
+!MESSAGE Terminated Launch with connection: 11USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:01:44.712
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=1 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1396470760]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:01:46.263
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=1 --go --sidp=0x19030c0 --id=0x0 --timestamp=1396470760 /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:01:48.996
+!MESSAGE Terminated Launch with connection: 12USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:01:49.481
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=2 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1396470760]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:01:51.035
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=2 --go --sidp=0x19030c0 --id=0x0 --timestamp=1396470760 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu1/Fractal_cpu1.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:01:53.765
+!MESSAGE Terminated Launch with connection: 13USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:01:54.233
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=3 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1396470760]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:01:55.784
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=3 --go --sidp=0x19030c0 --id=0x0 --timestamp=1396470760 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu2/Fractal_cpu2.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:01:58.496
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:01:58.967
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=0 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1396470760]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:02:00.504
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=0 --go --sidp=0x19030c0 --id=0x0 --timestamp=1396470760 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu3/Fractal_cpu3.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:02:45.827
+!MESSAGE Terminated Launch with connection: 11USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:02:46.321
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=1 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1396470760]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:02:47.878
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=1 --go --sidp=0x19030c0 --id=0x0 --timestamp=1396470760 /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:02:51.297
+!MESSAGE Terminated Launch with connection: 12USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:02:51.844
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=2 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1396470760]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:02:53.608
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=2 --go --sidp=0x19030c0 --id=0x0 --timestamp=1396470760 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu1/Fractal_cpu1.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:02:56.411
+!MESSAGE Terminated Launch with connection: 13USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:02:56.877
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=3 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1396470760]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:02:58.433
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=3 --go --sidp=0x19030c0 --id=0x0 --timestamp=1396470760 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu2/Fractal_cpu2.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:03:01.290
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:03:01.759
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=0 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1396470760]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:03:03.311
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=0 --go --sidp=0x19030c0 --id=0x0 --timestamp=1396470760 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu3/Fractal_cpu3.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:06:01.209
+!MESSAGE Terminated Launch with connection: 11USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:06:01.685
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=1 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1396470760]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:06:03.244
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=1 --go --sidp=0x19030c0 --id=0x0 --timestamp=1396470760 /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:06:06.179
+!MESSAGE Terminated Launch with connection: 12USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:06:06.654
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=2 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1396470760]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:06:08.211
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=2 --go --sidp=0x19030c0 --id=0x0 --timestamp=1396470760 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu1/Fractal_cpu1.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:06:11.061
+!MESSAGE Terminated Launch with connection: 13USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:06:11.542
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=3 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1396470760]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:06:13.076
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=3 --go --sidp=0x19030c0 --id=0x0 --timestamp=1396470760 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu2/Fractal_cpu2.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:06:15.959
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:06:16.444
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=0 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1396470760]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:06:17.981
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=0 --go --sidp=0x19030c0 --id=0x0 --timestamp=1396470760 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu3/Fractal_cpu3.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:07:01.337
+!MESSAGE Terminated Launch with connection: 11USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:07:01.812
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=1 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1396470760]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:07:03.352
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=1 --go --sidp=0x19030c0 --id=0x0 --timestamp=1396470760 /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:07:06.171
+!MESSAGE Terminated Launch with connection: 12USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:07:06.647
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=2 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1396470760]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:07:08.177
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=2 --go --sidp=0x19030c0 --id=0x0 --timestamp=1396470760 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu1/Fractal_cpu1.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:07:10.888
+!MESSAGE Terminated Launch with connection: 13USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:07:11.358
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=3 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1396470760]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:07:12.889
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=3 --go --sidp=0x19030c0 --id=0x0 --timestamp=1396470760 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu2/Fractal_cpu2.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:07:15.604
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:07:16.070
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=0 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1396470760]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:07:17.603
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=0 --go --sidp=0x19030c0 --id=0x0 --timestamp=1396470760 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu3/Fractal_cpu3.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2014-04-09 16:15:08.220
+!MESSAGE The system console model is invalid. Cannot launch.
+!SESSION 2014-04-09 16:22:39.635 -----------------------------------------------
+eclipse.buildId=M20100909-0800
+java.version=1.6.0_23
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=linux, ARCH=x86, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+Command-line arguments:  -os linux -ws gtk -arch x86 -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:24:02.943
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=1 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1397074164]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:24:04.490
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=1 --go --sidp=0x19030c0 --id=0x0 --timestamp=1397074164 /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:24:08.011
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=2 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1397074164]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:24:09.635
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=2 --go --sidp=0x19030c0 --id=0x0 --timestamp=1397074164 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu1/Fractal_cpu1.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:24:13.157
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=3 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1397074164]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:24:14.788
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=3 --go --sidp=0x19030c0 --id=0x0 --timestamp=1397074164 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu2/Fractal_cpu2.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:24:18.374
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=0 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1397074164]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:24:19.837
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=0 --go --sidp=0x19030c0 --id=0x0 --timestamp=1397074164 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu3/Fractal_cpu3.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:37:36.709
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=1 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1397075237]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:37:38.272
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=1 --go --sidp=0x19030c0 --id=0x0 --timestamp=1397075237 /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:37:41.891
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=2 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1397075237]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:37:43.422
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=2 --go --sidp=0x19030c0 --id=0x0 --timestamp=1397075237 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu1/Fractal_cpu1.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:37:46.866
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=3 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1397075237]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:37:48.404
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=3 --go --sidp=0x19030c0 --id=0x0 --timestamp=1397075237 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu2/Fractal_cpu2.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:37:51.827
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=0 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1397075237]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 16:37:53.361
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=0 --go --sidp=0x19030c0 --id=0x0 --timestamp=1397075237 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu3/Fractal_cpu3.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:09:42.762
+!MESSAGE Terminated Launch with connection: 11USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:09:43.270
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=1 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1397075237]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:09:44.804
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=1 --go --sidp=0x19030c0 --id=0x0 --timestamp=1397075237 /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:09:47.601
+!MESSAGE Terminated Launch with connection: 12USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:09:48.093
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=2 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1397075237]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:09:49.529
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=2 --go --sidp=0x19030c0 --id=0x0 --timestamp=1397075237 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu1/Fractal_cpu1.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:09:52.338
+!MESSAGE Terminated Launch with connection: 13USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:09:52.859
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=3 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1397075237]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:09:54.289
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=3 --go --sidp=0x19030c0 --id=0x0 --timestamp=1397075237 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu2/Fractal_cpu2.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:09:57.045
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:09:57.594
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=0 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1397075237]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:09:59.018
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=0 --go --sidp=0x19030c0 --id=0x0 --timestamp=1397075237 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu3/Fractal_cpu3.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:10:29.407
+!MESSAGE Terminated Launch with connection: 11USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:10:29.877
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=1 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1397075237]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:10:31.429
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=1 --go --sidp=0x19030c0 --id=0x0 --timestamp=1397075237 /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:10:34.189
+!MESSAGE Terminated Launch with connection: 12USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:10:34.773
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=2 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1397075237]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:10:36.329
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=2 --go --sidp=0x19030c0 --id=0x0 --timestamp=1397075237 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu1/Fractal_cpu1.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:10:39.064
+!MESSAGE Terminated Launch with connection: 13USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:10:39.533
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=3 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1397075237]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:10:41.106
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=3 --go --sidp=0x19030c0 --id=0x0 --timestamp=1397075237 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu2/Fractal_cpu2.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:10:43.912
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:10:44.391
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=0 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1397075237]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:10:45.928
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=0 --go --sidp=0x19030c0 --id=0x0 --timestamp=1397075237 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu3/Fractal_cpu3.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:12:10.867
+!MESSAGE Terminated Launch with connection: 11USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:12:11.350
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=1 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1397075237]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:12:12.886
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=1 --go --sidp=0x19030c0 --id=0x0 --timestamp=1397075237 /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:12:15.705
+!MESSAGE Terminated Launch with connection: 12USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:12:16.186
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=2 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1397075237]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:12:17.756
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=2 --go --sidp=0x19030c0 --id=0x0 --timestamp=1397075237 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu1/Fractal_cpu1.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:12:20.549
+!MESSAGE Terminated Launch with connection: 13USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:12:21.019
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=3 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1397075237]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:12:22.575
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=3 --go --sidp=0x19030c0 --id=0x0 --timestamp=1397075237 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu2/Fractal_cpu2.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:12:25.388
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:12:25.885
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=0 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1397075237]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:12:27.565
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=0 --go --sidp=0x19030c0 --id=0x0 --timestamp=1397075237 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu3/Fractal_cpu3.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:14:59.359
+!MESSAGE Terminated Launch with connection: 11USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:14:59.895
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=1 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1397075237]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:15:01.454
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=1 --go --sidp=0x19030c0 --id=0x0 --timestamp=1397075237 /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:15:04.614
+!MESSAGE Terminated Launch with connection: 12USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:15:05.096
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=2 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1397075237]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:15:06.633
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=2 --go --sidp=0x19030c0 --id=0x0 --timestamp=1397075237 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu1/Fractal_cpu1.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:15:09.742
+!MESSAGE Terminated Launch with connection: 13USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:15:10.209
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=3 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1397075237]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:15:11.766
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=3 --go --sidp=0x19030c0 --id=0x0 --timestamp=1397075237 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu2/Fractal_cpu2.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:15:14.502
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:15:14.989
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=0 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1397075237]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:15:16.526
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=0 --go --sidp=0x19030c0 --id=0x0 --timestamp=1397075237 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu3/Fractal_cpu3.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:16:05.911
+!MESSAGE Terminated Launch with connection: 11USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:16:06.379
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=1 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1397075237]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:16:07.938
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=1 --go --sidp=0x19030c0 --id=0x0 --timestamp=1397075237 /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:16:10.768
+!MESSAGE Terminated Launch with connection: 12USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:16:11.246
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=2 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1397075237]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:16:12.776
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=2 --go --sidp=0x19030c0 --id=0x0 --timestamp=1397075237 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu1/Fractal_cpu1.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:16:15.549
+!MESSAGE Terminated Launch with connection: 13USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:16:16.017
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=3 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1397075237]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:16:17.576
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=3 --go --sidp=0x19030c0 --id=0x0 --timestamp=1397075237 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu2/Fractal_cpu2.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:16:20.372
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:16:20.848
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=0 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1397075237]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:16:22.378
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=0 --go --sidp=0x19030c0 --id=0x0 --timestamp=1397075237 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu3/Fractal_cpu3.elf]
+!SESSION 2014-04-09 17:19:29.126 -----------------------------------------------
+eclipse.buildId=M20100909-0800
+java.version=1.6.0_23
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=linux, ARCH=x86, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+Command-line arguments:  -os linux -ws gtk -arch x86 -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:19:46.961
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=0 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1397075237]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:19:48.506
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=0 --go --sidp=0x19030c0 --id=0x0 --timestamp=1397075237 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu3/Fractal_cpu3.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:20:06.775
+!MESSAGE Terminated Launch with connection: 10USB-Blaster on localhost [2-1.5]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:20:07.212
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=0 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1397075237]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:20:08.774
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=0 --go --sidp=0x19030c0 --id=0x0 --timestamp=1397075237 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu3/Fractal_cpu3.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:27:28.406
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=0 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1397075237]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:27:29.997
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=0 --go --sidp=0x19030c0 --id=0x0 --timestamp=1397075237 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu3/Fractal_cpu3.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:27:38.971
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=3 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1397075237]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:27:40.505
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=3 --go --sidp=0x19030c0 --id=0x0 --timestamp=1397075237 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu2/Fractal_cpu2.elf]
+!SESSION 2014-04-09 17:29:10.410 -----------------------------------------------
+eclipse.buildId=M20100909-0800
+java.version=1.6.0_23
+java.vendor=Sun Microsystems Inc.
+BootLoader constants: OS=linux, ARCH=x86, WS=gtk, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+Command-line arguments:  -os linux -ws gtk -arch x86 -product org.eclipse.epp.package.cpp.product -perspective com.altera.sbtgui.ui.cPerspective
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:29:37.991
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=1 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1397075237]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:29:39.530
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=1 --go --sidp=0x19030c0 --id=0x0 --timestamp=1397075237 /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:29:47.000
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=2 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1397075237]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:29:48.535
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=2 --go --sidp=0x19030c0 --id=0x0 --timestamp=1397075237 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu1/Fractal_cpu1.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:41:15.714
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=1 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1397075237]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:41:17.295
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=1 --go --sidp=0x19030c0 --id=0x0 --timestamp=1397075237 /acct/s1/mccartjj/CSCE313/lights/software/lights/lights.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:41:24.736
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=2 --stop --sidp=0x19030c0 --id=0x0 --timestamp=1397075237]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2014-04-09 17:41:26.323
+!MESSAGE Executing: [/bin/bash, -c, nios2-download '--cable=USB-Blaster on localhost [2-1.5]' --device=1 --instance=2 --go --sidp=0x19030c0 --id=0x0 --timestamp=1397075237 /acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu1/Fractal_cpu1.elf]

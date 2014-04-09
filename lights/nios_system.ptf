@@ -816,7 +816,7 @@ SYSTEM nios_system
          gui_include_tightly_coupled_data_masters = "0";
          gui_omit_avalon_data_master = "0";
          cache_has_icache = "1";
-         cache_icache_size = "1024";
+         cache_icache_size = "4096";
          cache_icache_line_size = "32";
          cache_icache_ram_block_type = "AUTO";
          cache_icache_bursts = "0";
@@ -974,7 +974,7 @@ SYSTEM nios_system
             }
             CONSTANT nasys_icache_size
             {
-               value = "1024";
+               value = "4096";
                comment = "Size in bytes of instruction cache";
             }
             CONSTANT nasys_icache_line_size
@@ -1030,7 +1030,7 @@ SYSTEM nios_system
          View 
          {
             Settings_Summary = "Nios II/f
-            <br>&nbsp;&nbsp;1-Kbyte Instruction Cache
+            <br>&nbsp;&nbsp;4-Kbyte Instruction Cache
             <br>&nbsp;&nbsp;1-Kbyte Data Cache
             <br>&nbsp;&nbsp;JTAG Debug Module
             ";
@@ -2719,7 +2719,7 @@ SYSTEM nios_system
          Has_Clock = "1";
          View 
          {
-            Settings_Summary = "System ID (at last Generate):<br> <b>00000000</b>    (unique ID tag) <br> <b>533C73E8</b> (timestamp: Wed Apr 2, 2014 @4:32 PM)";
+            Settings_Summary = "System ID (at last Generate):<br> <b>00000000</b>    (unique ID tag) <br> <b>5345AD25</b> (timestamp: Wed Apr 9, 2014 @4:27 PM)";
             MESSAGES 
             {
             }
@@ -2728,7 +2728,7 @@ SYSTEM nios_system
       WIZARD_SCRIPT_ARGUMENTS 
       {
          id = "0u";
-         timestamp = "1396470760u";
+         timestamp = "1397075237u";
          regenerate_values = "0";
          MAKE 
          {
@@ -2737,7 +2737,7 @@ SYSTEM nios_system
                verifysysid 
                {
                   All_Depends_On = "0";
-                  Command = "nios2-download $(JTAG_CABLE)                                --sidp=0x019030c0 --id=0 --timestamp=1396470760";
+                  Command = "nios2-download $(JTAG_CABLE)                                --sidp=0x019030c0 --id=0 --timestamp=1397075237";
                   Is_Phony = "1";
                   Target_File = "dummy_verifysysid_file";
                }
@@ -5305,7 +5305,7 @@ SYSTEM nios_system
          gui_include_tightly_coupled_data_masters = "0";
          gui_omit_avalon_data_master = "0";
          cache_has_icache = "1";
-         cache_icache_size = "1024";
+         cache_icache_size = "4096";
          cache_icache_line_size = "32";
          cache_icache_ram_block_type = "AUTO";
          cache_icache_bursts = "0";
@@ -5463,7 +5463,7 @@ SYSTEM nios_system
             }
             CONSTANT nasys_icache_size
             {
-               value = "1024";
+               value = "4096";
                comment = "Size in bytes of instruction cache";
             }
             CONSTANT nasys_icache_line_size
@@ -5519,7 +5519,7 @@ SYSTEM nios_system
          View 
          {
             Settings_Summary = "Nios II/f
-            <br>&nbsp;&nbsp;1-Kbyte Instruction Cache
+            <br>&nbsp;&nbsp;4-Kbyte Instruction Cache
             <br>&nbsp;&nbsp;1-Kbyte Data Cache
             <br>&nbsp;&nbsp;JTAG Debug Module
             ";
@@ -8566,7 +8566,7 @@ SYSTEM nios_system
          gui_include_tightly_coupled_data_masters = "0";
          gui_omit_avalon_data_master = "0";
          cache_has_icache = "1";
-         cache_icache_size = "1024";
+         cache_icache_size = "4096";
          cache_icache_line_size = "32";
          cache_icache_ram_block_type = "AUTO";
          cache_icache_bursts = "0";
@@ -8724,7 +8724,7 @@ SYSTEM nios_system
             }
             CONSTANT nasys_icache_size
             {
-               value = "1024";
+               value = "4096";
                comment = "Size in bytes of instruction cache";
             }
             CONSTANT nasys_icache_line_size
@@ -8780,7 +8780,7 @@ SYSTEM nios_system
          View 
          {
             Settings_Summary = "Nios II/f
-            <br>&nbsp;&nbsp;1-Kbyte Instruction Cache
+            <br>&nbsp;&nbsp;4-Kbyte Instruction Cache
             <br>&nbsp;&nbsp;1-Kbyte Data Cache
             <br>&nbsp;&nbsp;JTAG Debug Module
             ";
@@ -10513,7 +10513,7 @@ SYSTEM nios_system
          gui_include_tightly_coupled_data_masters = "0";
          gui_omit_avalon_data_master = "0";
          cache_has_icache = "1";
-         cache_icache_size = "1024";
+         cache_icache_size = "4096";
          cache_icache_line_size = "32";
          cache_icache_ram_block_type = "AUTO";
          cache_icache_bursts = "0";
@@ -10671,7 +10671,7 @@ SYSTEM nios_system
             }
             CONSTANT nasys_icache_size
             {
-               value = "1024";
+               value = "4096";
                comment = "Size in bytes of instruction cache";
             }
             CONSTANT nasys_icache_line_size
@@ -10727,7 +10727,7 @@ SYSTEM nios_system
          View 
          {
             Settings_Summary = "Nios II/f
-            <br>&nbsp;&nbsp;1-Kbyte Instruction Cache
+            <br>&nbsp;&nbsp;4-Kbyte Instruction Cache
             <br>&nbsp;&nbsp;1-Kbyte Data Cache
             <br>&nbsp;&nbsp;JTAG Debug Module
             ";

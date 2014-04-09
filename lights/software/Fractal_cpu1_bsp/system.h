@@ -4,7 +4,7 @@
  * Machine generated for CPU 'cpu_1' in SOPC Builder design 'nios_system'
  * SOPC Builder design path: ../../nios_system.sopcinfo
  *
- * Generated: Mon Apr 07 15:30:01 EDT 2014
+ * Generated: Wed Apr 09 16:37:13 EDT 2014
  */
 
 /*
@@ -82,7 +82,7 @@
 #define ALT_CPU_HAS_JMPI_INSTRUCTION
 #define ALT_CPU_ICACHE_LINE_SIZE 32
 #define ALT_CPU_ICACHE_LINE_SIZE_LOG2 5
-#define ALT_CPU_ICACHE_SIZE 1024
+#define ALT_CPU_ICACHE_SIZE 4096
 #define ALT_CPU_INITDA_SUPPORTED
 #define ALT_CPU_INST_ADDR_WIDTH 0x19
 #define ALT_CPU_NAME "cpu_1"
@@ -115,7 +115,7 @@
 #define NIOS2_HAS_JMPI_INSTRUCTION
 #define NIOS2_ICACHE_LINE_SIZE 32
 #define NIOS2_ICACHE_LINE_SIZE_LOG2 5
-#define NIOS2_ICACHE_SIZE 1024
+#define NIOS2_ICACHE_SIZE 4096
 #define NIOS2_INITDA_SUPPORTED
 #define NIOS2_INST_ADDR_WIDTH 0x19
 #define NIOS2_NUM_OF_SHADOW_REG_SETS 0
@@ -524,7 +524,7 @@
 #define SYSID_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define SYSID_NAME "/dev/sysid"
 #define SYSID_SPAN 8
-#define SYSID_TIMESTAMP 1396470760u
+#define SYSID_TIMESTAMP 1397075237u
 #define SYSID_TYPE "altera_avalon_sysid"
 
 

@@ -14,13 +14,8 @@
 #include "system.h"
 #include <altera_avalon_mailbox.h>
 
-float targetX = -1.162900;
-float targetY = -0.043999;
-//int NUM_CPUS = 4;
-//int rowSize = 320;
-//int colSize = 240;
-//int maxIter = 100;
-//float highIter = 0;
+float targetX = -0.227;
+float targetY = 0.700;
 
 extern alt_up_pixel_buffer_dma_dev *myPixelBuffer;
 
@@ -49,80 +44,92 @@ int genColor(int iter) {
 	return color;
 }
 
-int mandelbrot(int cRow, int cCol, int zoom) {
+int mandelbrot(int cRow, int cCol, float x0, float y0) {
 	int iter = 0;
-	float minX = /*-2.5;//*/targetX - (1 / powf(1.5, zoom));
-	float maxX = /*1;//*/targetX + (1 / powf(1.5, zoom));
-	float minY = /*-1;//*/targetY - (0.75 / powf(1.5, zoom));
-	float maxY = /*1;//*/targetY + (0.75 / powf(1.5, zoom));
 
-	float x0 = (((float) cCol / (float) 320) * (maxX - minX)) + minX;
-	float y0 = ((((float) 239 - (float) cRow) / (float) 240) * (maxY - minY)) + minY;
 	float x = 0.0;
 	float y = 0.0;
 	float xtemp = 0.0;
 
+	unsigned long long cycles = 0;
+
 	while (((x * x + y * y) <= 4.0) && (iter < maxIter)) {
+
+		PERF_START_MEASURING(PERFORMANCE_COUNTER_0_BASE);
+		PERF_BEGIN(PERFORMANCE_COUNTER_0_BASE, 1);
+
 		xtemp = x * x - y * y + x0;
 		y = 2 * x * y + y0;
 		x = xtemp;
 		iter++;
+
+		PERF_END(PERFORMANCE_COUNTER_0_BASE, 1);
+		PERF_STOP_MEASURING(PERFORMANCE_COUNTER_0_BASE);
+		cycles = perf_get_section_time((void*) PERFORMANCE_COUNTER_0_BASE, 1);
+		printf("iter number: %i\n", iter);
+		printf("Cycles on frame: %llu \n\n", cycles);
 	}
 	return iter;
 }
 
-int mandelbrotNoZoom(int cRow, int cCol) {
-	int iter = 0;
-	float minX = -2.5;
-	float maxX = 1;
-	float minY = -1;
-	float maxY = 1;
-
-	float x0 = (((float) cCol / (float) 320) * (maxX - minX)) + minX;
-	float y0 = ((((float) 239 - (float) cRow) / (float) 240) * (maxY - minY)) + minY;
-	float x = 0.0;
-	float y = 0.0;
-	float xtemp = 0.0;
-
-	while (((x * x + y * y) <= 4.0) && (iter < maxIter)) {
-		xtemp = x * x - y * y + x0;
-		y = 2 * x * y + y0;
-		x = xtemp;
-		iter++;
-	}
-	return iter;
-}
-void drawFullSet(void) {
-	int i;
-	int j;
-	int result = 0;
-	int color = 0;
-	int cpu = __builtin_rdctl(5);
-	for (i = cpu; i < rowSize; i = i + NUM_CPUS) {
-		for (j = 0; j < colSize; j++) {
-			result = mandelbrotNoZoom(j, i);
-			color = genColor(result);
-			drawPixel(color, i, j);
-		}
-	}
-}
+//int mandelbrotNoZoom(int cRow, int cCol) {
+//	int iter = 0;
+//	float minX = -2.5;
+//	float maxX = 1;
+//	float minY = -1;
+//	float maxY = 1;
+//
+//	float x0 = (((float) cCol / (float) 320) * (maxX - minX)) + minX;
+//	float y0 = ((((float) 239 - (float) cRow) / (float) 240) * (maxY - minY)) + minY;
+//	float x = 0.0;
+//	float y = 0.0;
+//	float xtemp = 0.0;
+//
+//	while (((x * x + y * y) <= 4.0) && (iter < maxIter)) {
+//		xtemp = x * x - y * y + x0;
+//		y = 2 * x * y + y0;
+//		x = xtemp;
+//		iter++;
+//	}
+//	return iter;
+//}
+//void drawFullSet(void) {
+//	int i;
+//	int j;
+//	int result = 0;
+//	int color = 0;
+//	int cpu = __builtin_rdctl(5);
+//
+//	for (i = cpu; i < rowSize; i = i + NUM_CPUS) {
+//		for (j = 0; j < colSize; j++) {
+//			result = mandelbrotNoZoom(j, i);
+//			color = genColor(result);
+//			alt_up_pixel_buffer_dma_draw(myPixelBuffer, color, i, j);
+//		}
+//	}
+//}
 void drawFrame(int zoom) {
 	int i;
 	int j;
 	int result = 0;
 	int color = 0;
 	int cpu = __builtin_rdctl(5);
-	for (i = cpu; i < rowSize; i = i + NUM_CPUS) {
-		for (j = 0; j < colSize; j++) {
-			result = mandelbrot(j, i, zoom);
+
+	float minX = /*-2.5;//*/targetX - (1 / powf(1.5, zoom));
+	float maxX = /*1;//*/targetX + (1 / powf(1.5, zoom));
+	float minY = /*-1;//*/targetY - (0.75 / powf(1.5, zoom));
+	float maxY = /*1;//*/targetY + (0.75 / powf(1.5, zoom));
+
+	for (i = cpu; i < colSize; i = i + NUM_CPUS) {
+		float y0 = ((((float) 239 - (float) i) / (float) 240) * (maxY - minY)) + minY;
+		for (j = 0; j < rowSize; j++) {
+			float x0 = (((float) j / (float) 320) * (maxX - minX)) + minX;
+
+			result = mandelbrot(j, i, x0, y0);
 			color = genColor(result);
-			drawPixel(color, i, j);
+			alt_up_pixel_buffer_dma_draw(myPixelBuffer, color, i, j);
 		}
 	}
-}
-
-void drawPixel(int color, int row, int col) {
-	alt_up_pixel_buffer_dma_draw(myPixelBuffer, color, row, col);
 }
 
 void barrier(alt_u8 barrierNum) {

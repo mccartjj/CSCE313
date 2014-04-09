@@ -18,14 +18,6 @@
          type = "long";
       }
    }
-   element jtag_uart_3.avalon_jtag_slave
-   {
-      datum baseAddress
-      {
-         value = "144";
-         type = "long";
-      }
-   }
    element jtag_uart_2.avalon_jtag_slave
    {
       datum baseAddress
@@ -44,6 +36,14 @@
       datum baseAddress
       {
          value = "26226888";
+         type = "long";
+      }
+   }
+   element jtag_uart_3.avalon_jtag_slave
+   {
+      datum baseAddress
+      {
+         value = "144";
          type = "long";
       }
    }
@@ -189,19 +189,11 @@
          type = "int";
       }
    }
-   element cpu_2.jtag_debug_module
+   element cpu_1.jtag_debug_module
    {
       datum baseAddress
       {
-         value = "6144";
-         type = "long";
-      }
-   }
-   element cpu_0.jtag_debug_module
-   {
-      datum baseAddress
-      {
-         value = "26224640";
+         value = "4096";
          type = "long";
       }
    }
@@ -213,11 +205,19 @@
          type = "long";
       }
    }
-   element cpu_1.jtag_debug_module
+   element cpu_0.jtag_debug_module
    {
       datum baseAddress
       {
-         value = "4096";
+         value = "26224640";
+         type = "long";
+      }
+   }
+   element cpu_2.jtag_debug_module
+   {
+      datum baseAddress
+      {
+         value = "6144";
          type = "long";
       }
    }
@@ -356,27 +356,11 @@
          type = "int";
       }
    }
-   element onchip_memory2_0.s1
+   element onchip_memory2_1.s1
    {
       datum baseAddress
       {
-         value = "12288";
-         type = "long";
-      }
-   }
-   element sdram_0.s1
-   {
-      datum baseAddress
-      {
-         value = "8388608";
-         type = "long";
-      }
-   }
-   element mailbox_0.s1
-   {
-      datum baseAddress
-      {
-         value = "64";
+         value = "16384";
          type = "long";
       }
    }
@@ -388,11 +372,11 @@
          type = "long";
       }
    }
-   element mailbox_3.s1
+   element keys.s1
    {
       datum baseAddress
       {
-         value = "128";
+         value = "26226704";
          type = "long";
       }
    }
@@ -404,27 +388,19 @@
          type = "long";
       }
    }
-   element onchip_memory2_1.s1
+   element mailbox_0.s1
    {
       datum baseAddress
       {
-         value = "16384";
+         value = "64";
          type = "long";
       }
    }
-   element onchip_memory2_3.s1
+   element onchip_memory2_0.s1
    {
       datum baseAddress
       {
-         value = "28672";
-         type = "long";
-      }
-   }
-   element keys.s1
-   {
-      datum baseAddress
-      {
-         value = "26226704";
+         value = "12288";
          type = "long";
       }
    }
@@ -433,6 +409,30 @@
       datum baseAddress
       {
          value = "112";
+         type = "long";
+      }
+   }
+   element sdram_0.s1
+   {
+      datum baseAddress
+      {
+         value = "8388608";
+         type = "long";
+      }
+   }
+   element mailbox_3.s1
+   {
+      datum baseAddress
+      {
+         value = "128";
+         type = "long";
+      }
+   }
+   element onchip_memory2_3.s1
+   {
+      datum baseAddress
+      {
+         value = "28672";
          type = "long";
       }
    }
@@ -543,8 +543,8 @@
  <parameter name="maxAdditionalLatency" value="0" />
  <parameter name="projectName" value="lights.qpf" />
  <parameter name="sopcBorderPoints" value="true" />
- <parameter name="systemHash" value="-155289699334" />
- <parameter name="timeStamp" value="1396470759904" />
+ <parameter name="systemHash" value="-152557843686" />
+ <parameter name="timeStamp" value="1397075236673" />
  <parameter name="useTestBenchNamingPattern" value="false" />
  <module kind="clock_source" version="12.0" enabled="1" name="clk_0">
   <parameter name="clockFrequency" value="50000000" />
@@ -624,7 +624,7 @@
   <parameter name="instSlaveMapParam"><![CDATA[<address-map><slave name='onchip_memory2_0.s1' start='0x3000' end='0x3200' /><slave name='onchip_memory2_1.s1' start='0x4000' end='0x4200' /><slave name='onchip_memory2_2.s1' start='0x6000' end='0x6200' /><slave name='onchip_memory2_3.s1' start='0x7000' end='0x7200' /><slave name='sdram_0.s1' start='0x800000' end='0x1000000' /><slave name='cpu_0.jtag_debug_module' start='0x1902800' end='0x1903000' /></address-map>]]></parameter>
   <parameter name="instAddrWidth" value="25" />
   <parameter name="impl" value="Fast" />
-  <parameter name="icache_size" value="_1024" />
+  <parameter name="icache_size" value="_4096" />
   <parameter name="icache_ramBlockType" value="Automatic" />
   <parameter name="icache_numTCIM" value="_0" />
   <parameter name="icache_burstType" value="None" />
@@ -885,7 +885,7 @@
   <parameter name="instSlaveMapParam"><![CDATA[<address-map><slave name='cpu_1.jtag_debug_module' start='0x1000' end='0x1800' /><slave name='onchip_memory2_0.s1' start='0x3000' end='0x3200' /><slave name='onchip_memory2_1.s1' start='0x4000' end='0x4200' /><slave name='onchip_memory2_2.s1' start='0x6000' end='0x6200' /><slave name='onchip_memory2_3.s1' start='0x7000' end='0x7200' /><slave name='sdram_0.s1' start='0x800000' end='0x1000000' /><slave name='sram_0.avalon_sram_slave' start='0x1880000' end='0x1900000' /></address-map>]]></parameter>
   <parameter name="instAddrWidth" value="25" />
   <parameter name="impl" value="Fast" />
-  <parameter name="icache_size" value="_1024" />
+  <parameter name="icache_size" value="_4096" />
   <parameter name="icache_ramBlockType" value="Automatic" />
   <parameter name="icache_numTCIM" value="_0" />
   <parameter name="icache_burstType" value="None" />
@@ -1081,7 +1081,7 @@
   <parameter name="instSlaveMapParam"><![CDATA[<address-map><slave name='cpu_2.jtag_debug_module' start='0x1800' end='0x2000' /><slave name='onchip_memory2_0.s1' start='0x3000' end='0x3200' /><slave name='onchip_memory2_1.s1' start='0x4000' end='0x4200' /><slave name='onchip_memory2_2.s1' start='0x6000' end='0x6200' /><slave name='onchip_memory2_3.s1' start='0x7000' end='0x7200' /><slave name='sdram_0.s1' start='0x800000' end='0x1000000' /><slave name='sram_0.avalon_sram_slave' start='0x1880000' end='0x1900000' /></address-map>]]></parameter>
   <parameter name="instAddrWidth" value="25" />
   <parameter name="impl" value="Fast" />
-  <parameter name="icache_size" value="_1024" />
+  <parameter name="icache_size" value="_4096" />
   <parameter name="icache_ramBlockType" value="Automatic" />
   <parameter name="icache_numTCIM" value="_0" />
   <parameter name="icache_burstType" value="None" />
@@ -1191,7 +1191,7 @@
   <parameter name="instSlaveMapParam"><![CDATA[<address-map><slave name='cpu_3.jtag_debug_module' start='0x2000' end='0x2800' /><slave name='onchip_memory2_0.s1' start='0x3000' end='0x3200' /><slave name='onchip_memory2_1.s1' start='0x4000' end='0x4200' /><slave name='onchip_memory2_2.s1' start='0x6000' end='0x6200' /><slave name='onchip_memory2_3.s1' start='0x7000' end='0x7200' /><slave name='sdram_0.s1' start='0x800000' end='0x1000000' /><slave name='sram_0.avalon_sram_slave' start='0x1880000' end='0x1900000' /></address-map>]]></parameter>
   <parameter name="instAddrWidth" value="25" />
   <parameter name="impl" value="Fast" />
-  <parameter name="icache_size" value="_1024" />
+  <parameter name="icache_size" value="_4096" />
   <parameter name="icache_ramBlockType" value="Automatic" />
   <parameter name="icache_numTCIM" value="_0" />
   <parameter name="icache_burstType" value="None" />
