@@ -29,12 +29,15 @@ int main() {
 
 	setup();
 	printf("Program running (UART)...\n");
-
+	int cpu = __builtin_rdctl(5);
+	printf("cpu %d\n", cpu);
+	unsigned long long cycles = 0;
+	clearScreen();
+//	drawFullSet();
 	//the main program loop
 	while (1) {
-		printf("Beginning Frame \n");
 		int zoom;
-		for (zoom = 0; zoom < 100; zoom++) {
+		for (zoom = 1; zoom <= 10; zoom++) {
 			PERF_START_MEASURING(PERFORMANCE_COUNTER_0_BASE);
 			PERF_BEGIN(PERFORMANCE_COUNTER_0_BASE, 1);
 			clearScreen();
@@ -42,8 +45,9 @@ int main() {
 			barrier(0);
 			PERF_END(PERFORMANCE_COUNTER_0_BASE, 1);
 			PERF_STOP_MEASURING(PERFORMANCE_COUNTER_0_BASE);
-			unsigned long cycles = perf_get_section_time((void*) PERFORMANCE_COUNTER_0_BASE, 1);
-			printf("Cycles: %lu \n", cycles);
+			cycles = perf_get_section_time((void*) PERFORMANCE_COUNTER_0_BASE, 1);
+			printf("Zoom level: %i\n", zoom);
+			printf("Cycles on frame: %llu \n\n", cycles);
 		}
 	}
 	return 0;

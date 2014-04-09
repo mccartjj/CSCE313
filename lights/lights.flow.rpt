@@ -1,5 +1,5 @@
 Flow report for lights
-Wed Apr  2 16:42:20 2014
+Tue Apr  8 19:07:02 2014
 Quartus II 32-bit Version 12.0 Build 178 05/31/2012 SJ Full Version
 
 
@@ -38,7 +38,7 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------+
 ; Flow Summary                                                                   ;
 +------------------------------------+-------------------------------------------+
-; Flow Status                        ; Successful - Wed Apr  2 16:42:20 2014     ;
+; Flow Status                        ; Successful - Tue Apr  8 19:07:02 2014     ;
 ; Quartus II 32-bit Version          ; 12.0 Build 178 05/31/2012 SJ Full Version ;
 ; Revision Name                      ; lights                                    ;
 ; Top-level Entity Name              ; lights                                    ;
@@ -62,7 +62,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 04/02/2014 16:36:47 ;
+; Start date & time ; 04/08/2014 19:01:21 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; lights              ;
 +-------------------+---------------------+
@@ -73,7 +73,7 @@ applicable agreement for further details.
 +-----------------------------------------+---------------------------------------+---------------+-------------+----------------+
 ; Assignment Name                         ; Value                                 ; Default Value ; Entity Name ; Section Id     ;
 +-----------------------------------------+---------------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID                   ; 26403096133564.139647100323739        ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID                   ; 69137494426.139699807725297           ; --            ; --          ; --             ;
 ; CYCLONEII_OPTIMIZATION_TECHNIQUE        ; Speed                                 ; Balanced      ; --          ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT                  ; Vhdl                                  ; --            ; --          ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                     ; ModelSim-Altera (VHDL)                ; <None>        ; --          ; --             ;
@@ -103,12 +103,12 @@ applicable agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:01:49     ; 1.0                     ; --                  ; 00:01:44                           ;
-; Fitter                    ; 00:03:00     ; 2.3                     ; --                  ; 00:04:10                           ;
-; Assembler                 ; 00:00:04     ; 1.0                     ; --                  ; 00:00:04                           ;
-; TimeQuest Timing Analyzer ; 00:00:09     ; 1.0                     ; --                  ; 00:00:08                           ;
-; EDA Netlist Writer        ; 00:00:17     ; 1.0                     ; --                  ; 00:00:15                           ;
-; Total                     ; 00:05:19     ; --                      ; --                  ; 00:06:21                           ;
+; Analysis & Synthesis      ; 00:01:56     ; 1.0                     ; --                  ; 00:01:44                           ;
+; Fitter                    ; 00:03:00     ; 2.3                     ; --                  ; 00:04:11                           ;
+; Assembler                 ; 00:00:05     ; 1.0                     ; --                  ; 00:00:04                           ;
+; TimeQuest Timing Analyzer ; 00:00:10     ; 1.0                     ; --                  ; 00:00:08                           ;
+; EDA Netlist Writer        ; 00:00:16     ; 1.0                     ; --                  ; 00:00:15                           ;
+; Total                     ; 00:05:27     ; --                      ; --                  ; 00:06:22                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -117,11 +117,11 @@ applicable agreement for further details.
 +---------------------------+------------------+----------------+------------+----------------+
 ; Module Name               ; Machine Hostname ; OS Name        ; OS Version ; Processor type ;
 +---------------------------+------------------+----------------+------------+----------------+
-; Analysis & Synthesis      ; c3po             ; Ubuntu 12.04.4 ; 12         ; i686           ;
-; Fitter                    ; c3po             ; Ubuntu 12.04.4 ; 12         ; i686           ;
-; Assembler                 ; c3po             ; Ubuntu 12.04.4 ; 12         ; i686           ;
-; TimeQuest Timing Analyzer ; c3po             ; Ubuntu 12.04.4 ; 12         ; i686           ;
-; EDA Netlist Writer        ; c3po             ; Ubuntu 12.04.4 ; 12         ; i686           ;
+; Analysis & Synthesis      ; asimo            ; Ubuntu 12.04.4 ; 12         ; i686           ;
+; Fitter                    ; asimo            ; Ubuntu 12.04.4 ; 12         ; i686           ;
+; Assembler                 ; asimo            ; Ubuntu 12.04.4 ; 12         ; i686           ;
+; TimeQuest Timing Analyzer ; asimo            ; Ubuntu 12.04.4 ; 12         ; i686           ;
+; EDA Netlist Writer        ; asimo            ; Ubuntu 12.04.4 ; 12         ; i686           ;
 +---------------------------+------------------+----------------+------------+----------------+
 
 
