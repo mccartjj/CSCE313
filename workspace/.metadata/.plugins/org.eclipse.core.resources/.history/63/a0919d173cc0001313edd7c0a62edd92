@@ -37,7 +37,7 @@ alt_up_pixel_buffer_dma_dev *myPixelBuffer;
 //useful
 #define rowSize 240
 #define colSize 320
-#define maxIter 100
+#define maxIter 1000
 #define NUM_CPUS 4
 //colors
 #define white 0xFFFFFF
