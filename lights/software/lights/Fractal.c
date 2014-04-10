@@ -55,19 +55,21 @@ int mandelbrot(int cRow, int cCol, float x0, float y0) {
 
 	while (((x * x + y * y) <= 4.0) && (iter < maxIter)) {
 
-		//		PERF_START_MEASURING(PERFORMANCE_COUNTER_0_BASE);
-		//		PERF_BEGIN(PERFORMANCE_COUNTER_0_BASE, 1);
+		PERF_START_MEASURING(PERFORMANCE_COUNTER_0_BASE);
+		PERF_BEGIN(PERFORMANCE_COUNTER_0_BASE, 1);
 
 		xtemp = x * x - y * y + x0;
 		y = 2 * x * y + y0;
+
+		PERF_END(PERFORMANCE_COUNTER_0_BASE, 1);
+		PERF_STOP_MEASURING(PERFORMANCE_COUNTER_0_BASE);
+		cycles = perf_get_section_time((void*) PERFORMANCE_COUNTER_0_BASE, 1);
+		printf("iter number: %i\n", iter);
+		printf("Cycles on frame: %llu \n\n", cycles);
+
 		x = xtemp;
 		iter++;
 
-		//		PERF_END(PERFORMANCE_COUNTER_0_BASE, 1);
-		//		PERF_STOP_MEASURING(PERFORMANCE_COUNTER_0_BASE);
-		//		cycles = perf_get_section_time((void*) PERFORMANCE_COUNTER_0_BASE, 1);
-		//		printf("iter number: %i\n", iter);
-		//		printf("Cycles on frame: %llu \n\n", cycles);
 	}
 	return iter;
 }
