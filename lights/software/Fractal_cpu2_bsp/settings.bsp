@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>Apr 9, 2014 4:37:16 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1397075836875</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>Apr 16, 2014 4:58:57 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1397681937511</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>/acct/s1/mccartjj/CSCE313/lights/software/Fractal_cpu2_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>../../nios_system.sopcinfo</SopcDesignFile>

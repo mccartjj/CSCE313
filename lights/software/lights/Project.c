@@ -38,16 +38,24 @@ int main() {
 	while (1) {
 		int zoom;
 		for (zoom = 1; zoom <= 100; zoom++) {
-			//				PERF_START_MEASURING(PERFORMANCE_COUNTER_0_BASE);
-			//				PERF_BEGIN(PERFORMANCE_COUNTER_0_BASE, 1);
+
+			/*
+			PERF_RESET(PERFORMANCE_COUNTER_0_BASE);
+			PERF_START_MEASURING(PERFORMANCE_COUNTER_0_BASE);
+			PERF_BEGIN(PERFORMANCE_COUNTER_0_BASE, 1);
+			//*/
+
 			clearScreen();
 			drawFrame(zoom);
 			barrier(0);
-			//				PERF_END(PERFORMANCE_COUNTER_0_BASE, 1);
-			//				PERF_STOP_MEASURING(PERFORMANCE_COUNTER_0_BASE);
-			//				cycles = perf_get_section_time((void*) PERFORMANCE_COUNTER_0_BASE, 1);
-			//				printf("Zoom level: %i\n", zoom);
-			//				printf("Cycles on frame: %llu \n\n", cycles);
+
+			/*
+			PERF_END(PERFORMANCE_COUNTER_0_BASE, 1);
+			PERF_STOP_MEASURING(PERFORMANCE_COUNTER_0_BASE);
+			cycles = perf_get_section_time((void*) PERFORMANCE_COUNTER_0_BASE, 1);
+			printf("Zoom level: %i\n", zoom);
+			printf("Cycles on frame: %llu \n\n", cycles);
+			//*/
 		}
 	}
 	return 0;

@@ -46,6 +46,7 @@ int genColor(int iter) {
 
 int mandelbrot(int cRow, int cCol, float x0, float y0) {
 	int iter = 0;
+	int cpu = __builtin_rdctl(5);
 
 	float x = 0.0;
 	float y = 0.0;
@@ -55,61 +56,74 @@ int mandelbrot(int cRow, int cCol, float x0, float y0) {
 
 	while (((x * x + y * y) <= 4.0) && (iter < maxIter)) {
 
-		PERF_START_MEASURING(PERFORMANCE_COUNTER_0_BASE);
-		PERF_BEGIN(PERFORMANCE_COUNTER_0_BASE, 1);
+		/*
+		if (cpu == 3) {
+			PERF_RESET(PERFORMANCE_COUNTER_0_BASE);
+			PERF_START_MEASURING(PERFORMANCE_COUNTER_0_BASE);
+			PERF_BEGIN(PERFORMANCE_COUNTER_0_BASE, 1);
+		}//*/
 
 		xtemp = x * x - y * y + x0;
 		y = 2 * x * y + y0;
 
-		PERF_END(PERFORMANCE_COUNTER_0_BASE, 1);
-		PERF_STOP_MEASURING(PERFORMANCE_COUNTER_0_BASE);
-		cycles = perf_get_section_time((void*) PERFORMANCE_COUNTER_0_BASE, 1);
-		printf("iter number: %i\n", iter);
-		printf("Cycles on frame: %llu \n\n", cycles);
+		/*
+		if (cpu == 3) {
+			PERF_END(PERFORMANCE_COUNTER_0_BASE, 1);
+			PERF_STOP_MEASURING(PERFORMANCE_COUNTER_0_BASE);
+			cycles = perf_get_section_time((void*) PERFORMANCE_COUNTER_0_BASE, 1);
+
+			printf("iter number: %i\n", iter);
+			printf("Cycles on frame: %llu \n\n", (cycles));
+		}//*/
 
 		x = xtemp;
 		iter++;
 
 	}
+
 	return iter;
 }
 
-//int mandelbrotNoZoom(int cRow, int cCol) {
-//	int iter = 0;
-//	float minX = -2.5;
-//	float maxX = 1;
-//	float minY = -1;
-//	float maxY = 1;
-//
-//	float x0 = (((float) cCol / (float) 320) * (maxX - minX)) + minX;
-//	float y0 = ((((float) 239 - (float) cRow) / (float) 240) * (maxY - minY)) + minY;
-//	float x = 0.0;
-//	float y = 0.0;
-//	float xtemp = 0.0;
-//
-//	while (((x * x + y * y) <= 4.0) && (iter < maxIter)) {
-//		xtemp = x * x - y * y + x0;
-//		y = 2 * x * y + y0;
-//		x = xtemp;
-//		iter++;
-//	}
-//	return iter;
-//}
-//void drawFullSet(void) {
-//	int i;
-//	int j;
-//	int result = 0;
-//	int color = 0;
-//	int cpu = __builtin_rdctl(5);
-//
-//	for (i = cpu; i < rowSize; i = i + NUM_CPUS) {
-//		for (j = 0; j < colSize; j++) {
-//			result = mandelbrotNoZoom(j, i);
-//			color = genColor(result);
-//			alt_up_pixel_buffer_dma_draw(myPixelBuffer, color, i, j);
-//		}
-//	}
-//}
+/*
+int mandelbrotNoZoom(int cRow, int cCol) {
+	int iter = 0;
+	float minX = -2.5;
+	float maxX = 1;
+	float minY = -1;
+	float maxY = 1;
+
+	float x0 = (((float) cCol / (float) 320) * (maxX - minX)) + minX;
+	float y0 = ((((float) 239 - (float) cRow) / (float) 240) * (maxY - minY)) + minY;
+	float x = 0.0;
+	float y = 0.0;
+	float xtemp = 0.0;
+
+	while (((x * x + y * y) <= 4.0) && (iter < maxIter)) {
+		xtemp = x * x - y * y + x0;
+		y = 2 * x * y + y0;
+		x = xtemp;
+		iter++;
+	}
+	return iter;
+}//*/
+
+/*
+void drawFullSet(void) {
+	int i;
+	int j;
+	int result = 0;
+	int color = 0;
+	int cpu = __builtin_rdctl(5);
+
+	for (i = cpu; i < rowSize; i = i + NUM_CPUS) {
+		for (j = 0; j < colSize; j++) {
+			result = mandelbrotNoZoom(j, i);
+			color = genColor(result);
+			alt_up_pixel_buffer_dma_draw(myPixelBuffer, color, i, j);
+		}
+	}
+}//*/
+
 void drawFrame(int zoom) {
 	int i;
 	int j;
