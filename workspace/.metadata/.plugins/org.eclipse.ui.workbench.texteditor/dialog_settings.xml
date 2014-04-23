@@ -2,29 +2,30 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
 		<item value="312" key="DIALOG_WIDTH"/>
-		<item value="140" key="DIALOG_Y_ORIGIN"/>
+		<item value="542" key="DIALOG_Y_ORIGIN"/>
+		<item value="903" key="DIALOG_X_ORIGIN"/>
 		<item value="437" key="DIALOG_HEIGHT"/>
-		<item value="746" key="DIALOG_X_ORIGIN"/>
 		<item value="1|Ubuntu|11.0|0|GTK|1|" key="DIALOG_FONT_NAME"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="true" key="wrap"/>
-		<item value="false" key="isRegEx"/>
 		<item value="false" key="casesensitive"/>
+		<item value="false" key="isRegEx"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="cycles" key="selection"/>
+		<item value="cpu == 3" key="selection"/>
 		<list key="findhistory">
+			<item value="cpu == 0"/>
+			<item value="targetArrayXYMaster"/>
+			<item value="targetArrayXY"/>
+			<item value="&#x09;if (cpu == 0) {"/>
 			<item value="cycles"/>
 			<item value="maxIter"/>
 			<item value="rowSize"/>
 			<item value="targetX"/>
-			<item value="barrier"/>
-			<item value="LCD"/>
-			<item value="destImage"/>
-			<item value="fixed"/>
 		</list>
 		<list key="replacehistory">
+			<item value="cpu == 3"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.GotoLineAction$GotoLineDialog_dialogBounds">

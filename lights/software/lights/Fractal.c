@@ -14,8 +14,8 @@
 #include "system.h"
 #include <altera_avalon_mailbox.h>
 
-float targetX = -0.227;
-float targetY = 0.700;
+float targetArrayXYMaster[2] = {0.0,0.0};
+volatile float *targetArrayXY = targetArrayXYMaster;
 
 extern alt_up_pixel_buffer_dma_dev *myPixelBuffer;
 
@@ -44,48 +44,48 @@ int genColor(int iter) {
 	return color;
 }
 
-int mandelbrot(int cRow, int cCol, float x0, float y0) {
+int mandelbrot(float x0,float y0,float *xOut,float *yOut) {
 	int iter = 0;
-	int cpu = __builtin_rdctl(5);
+	//	int cpu = __builtin_rdctl(5);
+	//	unsigned long long cycles = 0;
 
 	float x = 0.0;
 	float y = 0.0;
 	float xtemp = 0.0;
 
-	unsigned long long cycles = 0;
-
 	while (((x * x + y * y) <= 4.0) && (iter < maxIter)) {
 
 		/*
-		if (cpu == 3) {
-			PERF_RESET(PERFORMANCE_COUNTER_0_BASE);
-			PERF_START_MEASURING(PERFORMANCE_COUNTER_0_BASE);
-			PERF_BEGIN(PERFORMANCE_COUNTER_0_BASE, 1);
-		}//*/
+		 if (cpu == 3) {
+		 PERF_RESET(PERFORMANCE_COUNTER_0_BASE);
+		 PERF_START_MEASURING(PERFORMANCE_COUNTER_0_BASE);
+		 PERF_BEGIN(PERFORMANCE_COUNTER_0_BASE, 1);
+		 }//*/
 
 		xtemp = x * x - y * y + x0;
 		y = 2 * x * y + y0;
 
 		/*
-		if (cpu == 3) {
-			PERF_END(PERFORMANCE_COUNTER_0_BASE, 1);
-			PERF_STOP_MEASURING(PERFORMANCE_COUNTER_0_BASE);
-			cycles = perf_get_section_time((void*) PERFORMANCE_COUNTER_0_BASE, 1);
+		 if (cpu == 3) {
+		 PERF_END(PERFORMANCE_COUNTER_0_BASE, 1);
+		 PERF_STOP_MEASURING(PERFORMANCE_COUNTER_0_BASE);
+		 cycles = perf_get_section_time((void*) PERFORMANCE_COUNTER_0_BASE, 1);
 
-			printf("iter number: %i\n", iter);
-			printf("Cycles on frame: %llu \n\n", (cycles));
-		}//*/
+		 printf("iter number: %i\n", iter);
+		 printf("Cycles on frame: %llu \n\n", (cycles));
+		 }//*/
 
 		x = xtemp;
 		iter++;
 
 	}
+	*xOut = x;
+	*yOut = y;
 
 	return iter;
 }
 
-/*
-int mandelbrotNoZoom(int cRow, int cCol) {
+int mandelbrotNoZoom(int cRow, int cCol, int *recalculateTargetFlag) {
 	int iter = 0;
 	float minX = -2.5;
 	float maxX = 1;
@@ -104,10 +104,21 @@ int mandelbrotNoZoom(int cRow, int cCol) {
 		x = xtemp;
 		iter++;
 	}
+	int cpu = __builtin_rdctl(5);
+	if (cpu == 3) {
+		//		printf("i am alive");
+		if (*recalculateTargetFlag) {
+			if (iter >= (maxIter - 2)) {
+				targetArrayXYMaster[0] = x;
+				targetArrayXYMaster[1] = y;
+				*recalculateTargetFlag = *recalculateTargetFlag - 1;
+			}
+		}
+	}
 	return iter;
 }//*/
 
-/*
+
 void drawFullSet(void) {
 	int i;
 	int j;
@@ -115,9 +126,11 @@ void drawFullSet(void) {
 	int color = 0;
 	int cpu = __builtin_rdctl(5);
 
-	for (i = cpu; i < rowSize; i = i + NUM_CPUS) {
-		for (j = 0; j < colSize; j++) {
-			result = mandelbrotNoZoom(j, i);
+	int recalculateTargetFlag = 10;
+
+	for (i = cpu; i < colSize; i = i + NUM_CPUS) {
+		for (j = 0; j < rowSize; j++) {
+			result = mandelbrotNoZoom(j, i, &recalculateTargetFlag);
 			color = genColor(result);
 			alt_up_pixel_buffer_dma_draw(myPixelBuffer, color, i, j);
 		}
@@ -130,22 +143,38 @@ void drawFrame(int zoom) {
 	int result = 0;
 	int color = 0;
 	int cpu = __builtin_rdctl(5);
+	int recalculateTargetFlag = 20;
+	float x = 0.0;
+	float y = 0.0;
 
-	float minX = /*-2.5;//*/targetX - (1 / powf(1.5, zoom));
-	float maxX = /*1;//*/targetX + (1 / powf(1.5, zoom));
-	float minY = /*-1;//*/targetY - (0.75 / powf(1.5, zoom));
-	float maxY = /*1;//*/targetY + (0.75 / powf(1.5, zoom));
+	float minX = targetArrayXY[0] - (1 / powf(1.5, zoom));
+	float maxX = targetArrayXY[0] + (1 / powf(1.5, zoom));
+	float minY = targetArrayXY[1] - (0.75 / powf(1.5, zoom));
+	float maxY = targetArrayXY[1] + (0.75 / powf(1.5, zoom));
 
 	for (i = cpu; i < colSize; i = i + NUM_CPUS) {
 		float y0 = ((((float) 239 - (float) i) / (float) 240) * (maxY - minY)) + minY;
 		for (j = 0; j < rowSize; j++) {
 			float x0 = (((float) j / (float) 320) * (maxX - minX)) + minX;
 
-			result = mandelbrot(j, i, x0, y0);
+			result = mandelbrot(x0, y0, &x, &y);
+
+			//recalculates the x and y
+			if (cpu == 3) {
+				if (recalculateTargetFlag) {
+					if (result > (maxIter - 2)) {
+						targetArrayXYMaster[0] = x;
+						targetArrayXYMaster[1] = y;
+						recalculateTargetFlag = recalculateTargetFlag - 1;
+					}
+				}
+			}
+
 			color = genColor(result);
 			alt_up_pixel_buffer_dma_draw(myPixelBuffer, color, i, j);
 		}
 	}
+
 }
 
 void barrier(alt_u8 barrierNum) {
@@ -159,20 +188,28 @@ void barrier(alt_u8 barrierNum) {
 		sprintf(mb_name, "/dev/mailbox_%d", i);
 		mb[i] = altera_avalon_mailbox_open(mb_name);
 	}
-
+	//sending the messages to the other CPU's
 	for (i = 0; i < NUM_CPUS; i++) {
 		if (i != cpu) {
-			altera_avalon_mailbox_post(mb[i], barrierNum);
+
+			if (cpu == 3) {
+				altera_avalon_mailbox_post(mb[i], (int) targetArrayXYMaster);
+			}
+			else {
+				altera_avalon_mailbox_post(mb[i], 0);
+			}
 		}
 	}
 
+	//gets the messages from the other CPU's
 	for (i = 0; i < NUM_CPUS - 1; i++) {
-		do {
-			msg = altera_avalon_mailbox_pend(mb[cpu]);
-		}
-		while (msg != barrierNum);
-	}
 
+		msg = altera_avalon_mailbox_pend(mb[cpu]);
+
+		if (msg != 0) {
+			targetArrayXY = (float *) msg;
+		}
+	}
 	for (i = 0; i < NUM_CPUS; i++) {
 		altera_avalon_mailbox_close(mb[i]);
 	}
