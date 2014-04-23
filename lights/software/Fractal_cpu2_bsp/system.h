@@ -4,7 +4,7 @@
  * Machine generated for CPU 'cpu_2' in SOPC Builder design 'nios_system'
  * SOPC Builder design path: ../../nios_system.sopcinfo
  *
- * Generated: Wed Apr 09 16:37:17 EDT 2014
+ * Generated: Wed Apr 23 18:35:27 EDT 2014
  */
 
 /*
@@ -71,7 +71,7 @@
 #define ALT_CPU_DCACHE_LINE_SIZE 32
 #define ALT_CPU_DCACHE_LINE_SIZE_LOG2 5
 #define ALT_CPU_DCACHE_SIZE 1024
-#define ALT_CPU_EXCEPTION_ADDR 0xc00020
+#define ALT_CPU_EXCEPTION_ADDR 0xd00020
 #define ALT_CPU_FLUSHDA_SUPPORTED
 #define ALT_CPU_FREQ 50000000
 #define ALT_CPU_HARDWARE_DIVIDE_PRESENT 1
@@ -84,10 +84,10 @@
 #define ALT_CPU_ICACHE_LINE_SIZE_LOG2 5
 #define ALT_CPU_ICACHE_SIZE 4096
 #define ALT_CPU_INITDA_SUPPORTED
-#define ALT_CPU_INST_ADDR_WIDTH 0x19
+#define ALT_CPU_INST_ADDR_WIDTH 0x18
 #define ALT_CPU_NAME "cpu_2"
 #define ALT_CPU_NUM_OF_SHADOW_REG_SETS 0
-#define ALT_CPU_RESET_ADDR 0xc00000
+#define ALT_CPU_RESET_ADDR 0xd00000
 
 
 /*
@@ -105,7 +105,7 @@
 #define NIOS2_DCACHE_LINE_SIZE 32
 #define NIOS2_DCACHE_LINE_SIZE_LOG2 5
 #define NIOS2_DCACHE_SIZE 1024
-#define NIOS2_EXCEPTION_ADDR 0xc00020
+#define NIOS2_EXCEPTION_ADDR 0xd00020
 #define NIOS2_FLUSHDA_SUPPORTED
 #define NIOS2_HARDWARE_DIVIDE_PRESENT 1
 #define NIOS2_HARDWARE_MULTIPLY_PRESENT 1
@@ -117,9 +117,9 @@
 #define NIOS2_ICACHE_LINE_SIZE_LOG2 5
 #define NIOS2_ICACHE_SIZE 4096
 #define NIOS2_INITDA_SUPPORTED
-#define NIOS2_INST_ADDR_WIDTH 0x19
+#define NIOS2_INST_ADDR_WIDTH 0x18
 #define NIOS2_NUM_OF_SHADOW_REG_SETS 0
-#define NIOS2_RESET_ADDR 0xc00000
+#define NIOS2_RESET_ADDR 0xd00000
 
 
 /*
@@ -147,7 +147,6 @@
 #define __ALTERA_NIOS2
 #define __ALTERA_NIOS_CUSTOM_INSTR_FLOATING_POINT
 #define __ALTERA_UP_AVALON_CLOCKS
-#define __ALTERA_UP_AVALON_SRAM
 #define __ALTERA_UP_AVALON_VIDEO_PIXEL_BUFFER_DMA
 
 
@@ -499,20 +498,6 @@
 
 
 /*
- * sram_0 configuration
- *
- */
-
-#define ALT_MODULE_CLASS_sram_0 altera_up_avalon_sram
-#define SRAM_0_BASE 0x1880000
-#define SRAM_0_IRQ -1
-#define SRAM_0_IRQ_INTERRUPT_CONTROLLER_ID -1
-#define SRAM_0_NAME "/dev/sram_0"
-#define SRAM_0_SPAN 524288
-#define SRAM_0_TYPE "altera_up_avalon_sram"
-
-
-/*
  * sysid configuration
  *
  */
@@ -524,7 +509,7 @@
 #define SYSID_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define SYSID_NAME "/dev/sysid"
 #define SYSID_SPAN 8
-#define SYSID_TIMESTAMP 1397075237u
+#define SYSID_TIMESTAMP 1398290119u
 #define SYSID_TYPE "altera_avalon_sysid"
 
 

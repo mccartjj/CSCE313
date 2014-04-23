@@ -2,8 +2,128 @@
 TimeQuest Timing Analyzer Summary
 ------------------------------------------------------------
 
+Type  : Slow Model Setup 'DUT|the_clocks_0|DE_Clock_Generator_System|pll|clk[0]'
+Slack : -1.612
+TNS   : -601.214
+
+Type  : Slow Model Setup 'DUT|the_clocks_0|DE_Clock_Generator_System|pll|clk[2]'
+Slack : 9.335
+TNS   : 0.000
+
+Type  : Slow Model Setup 'CLOCK_50'
+Slack : 12.958
+TNS   : 0.000
+
+Type  : Slow Model Hold 'CLOCK_50'
+Slack : 0.391
+TNS   : 0.000
+
+Type  : Slow Model Hold 'DUT|the_clocks_0|DE_Clock_Generator_System|pll|clk[0]'
+Slack : 0.391
+TNS   : 0.000
+
+Type  : Slow Model Hold 'DUT|the_clocks_0|DE_Clock_Generator_System|pll|clk[2]'
+Slack : 0.391
+TNS   : 0.000
+
+Type  : Slow Model Recovery 'DUT|the_clocks_0|DE_Clock_Generator_System|pll|clk[2]'
+Slack : -1.152
+TNS   : -2.304
+
+Type  : Slow Model Recovery 'DUT|the_clocks_0|DE_Clock_Generator_System|pll|clk[0]'
+Slack : 1.509
+TNS   : 0.000
+
+Type  : Slow Model Recovery 'CLOCK_50'
+Slack : 10.125
+TNS   : 0.000
+
+Type  : Slow Model Removal 'CLOCK_50'
+Slack : -0.496
+TNS   : -0.992
+
+Type  : Slow Model Removal 'DUT|the_clocks_0|DE_Clock_Generator_System|pll|clk[2]'
+Slack : 1.891
+TNS   : 0.000
+
+Type  : Slow Model Removal 'DUT|the_clocks_0|DE_Clock_Generator_System|pll|clk[0]'
+Slack : 3.261
+TNS   : 0.000
+
+Type  : Slow Model Minimum Pulse Width 'DUT|the_clocks_0|DE_Clock_Generator_System|pll|clk[0]'
+Slack : 2.873
+TNS   : 0.000
+
+Type  : Slow Model Minimum Pulse Width 'DUT|the_clocks_0|DE_Clock_Generator_System|pll|clk[2]'
+Slack : 5.650
+TNS   : 0.000
+
+Type  : Slow Model Minimum Pulse Width 'CLOCK_50'
+Slack : 9.000
+TNS   : 0.000
+
 Type  : Slow Model Minimum Pulse Width 'altera_reserved_tck'
 Slack : 97.778
+TNS   : 0.000
+
+Type  : Fast Model Setup 'DUT|the_clocks_0|DE_Clock_Generator_System|pll|clk[0]'
+Slack : 3.536
+TNS   : 0.000
+
+Type  : Fast Model Setup 'DUT|the_clocks_0|DE_Clock_Generator_System|pll|clk[2]'
+Slack : 12.147
+TNS   : 0.000
+
+Type  : Fast Model Setup 'CLOCK_50'
+Slack : 16.668
+TNS   : 0.000
+
+Type  : Fast Model Hold 'CLOCK_50'
+Slack : 0.215
+TNS   : 0.000
+
+Type  : Fast Model Hold 'DUT|the_clocks_0|DE_Clock_Generator_System|pll|clk[0]'
+Slack : 0.215
+TNS   : 0.000
+
+Type  : Fast Model Hold 'DUT|the_clocks_0|DE_Clock_Generator_System|pll|clk[2]'
+Slack : 0.215
+TNS   : 0.000
+
+Type  : Fast Model Recovery 'DUT|the_clocks_0|DE_Clock_Generator_System|pll|clk[2]'
+Slack : -0.039
+TNS   : -0.078
+
+Type  : Fast Model Recovery 'DUT|the_clocks_0|DE_Clock_Generator_System|pll|clk[0]'
+Slack : 2.997
+TNS   : 0.000
+
+Type  : Fast Model Recovery 'CLOCK_50'
+Slack : 10.457
+TNS   : 0.000
+
+Type  : Fast Model Removal 'CLOCK_50'
+Slack : -0.656
+TNS   : -1.312
+
+Type  : Fast Model Removal 'DUT|the_clocks_0|DE_Clock_Generator_System|pll|clk[2]'
+Slack : 0.950
+TNS   : 0.000
+
+Type  : Fast Model Removal 'DUT|the_clocks_0|DE_Clock_Generator_System|pll|clk[0]'
+Slack : 1.757
+TNS   : 0.000
+
+Type  : Fast Model Minimum Pulse Width 'DUT|the_clocks_0|DE_Clock_Generator_System|pll|clk[0]'
+Slack : 2.873
+TNS   : 0.000
+
+Type  : Fast Model Minimum Pulse Width 'DUT|the_clocks_0|DE_Clock_Generator_System|pll|clk[2]'
+Slack : 5.650
+TNS   : 0.000
+
+Type  : Fast Model Minimum Pulse Width 'CLOCK_50'
+Slack : 9.000
 TNS   : 0.000
 
 Type  : Fast Model Minimum Pulse Width 'altera_reserved_tck'

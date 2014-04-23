@@ -87,14 +87,14 @@ module video_pixel_buffer_dma_0 (
 parameter DEFAULT_BUFFER_ADDRESS	= 32'd25690112;
 parameter DEFAULT_BACK_BUF_ADDRESS	= 32'd25690112;
 
-parameter AW						= 16; // Image size's address width
+parameter AW						= 19; // Image size's address width
 
-parameter MW						= 31; // Avalon master's data width
-parameter DW						= 23; // Image pixel width
-parameter EW						= 1;  // Streaming empty signel width
+parameter MW						= 15; // Avalon master's data width
+parameter DW						= 15; // Image pixel width
+parameter EW						= 0;  // Streaming empty signel width
 
-parameter PIXELS					= 320; // Image width - number of pixels
-parameter LINES 					= 240; // Image height - number of lines
+parameter PIXELS					= 1024; // Image width - number of pixels
+parameter LINES 					= 768; // Image height - number of lines
 
 /*****************************************************************************
  *                             Port Declarations                             *
@@ -258,7 +258,7 @@ begin
 	begin
 		slave_readdata[31:16] <= AW + 'h1;
 		slave_readdata[15: 8] <= 8'h00;
-		slave_readdata[ 7: 4] <= 4'h3;
+		slave_readdata[ 7: 4] <= 4'h2;
 		slave_readdata[ 3: 2] <= 2'h0;
 		slave_readdata[    1] <= 1'b1;
 		slave_readdata[    0] <= buffer_swap;
@@ -345,7 +345,7 @@ end
 
 // Output Assignments
 assign master_address		= buffer_start_address + 
-								{pixel_address, 2'h0};
+								{pixel_address, 1'b0};
 assign master_arbiterlock	= ((present_state == STATE_2_READ_BUFFER) |
 		(present_state == STATE_3_MAX_PENDING_READS_STALL));
 assign master_read			= (present_state == STATE_2_READ_BUFFER);

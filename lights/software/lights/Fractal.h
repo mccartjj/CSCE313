@@ -35,10 +35,11 @@ void clearScreen(void);
 alt_up_pixel_buffer_dma_dev *myPixelBuffer;
 
 //useful
-#define rowSize 240
-#define colSize 320
+#define rowSize 768
+#define colSize 1024
 #define maxIter 100
 #define NUM_CPUS 4
+
 //colors
 #define white 0xFFFFFF
 #define black 0x000000

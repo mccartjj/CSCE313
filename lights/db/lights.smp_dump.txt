@@ -1,10 +1,4 @@
 
-State Machine - |lights|nios_system:DUT|video_scaler_0:the_video_scaler_0|altera_up_video_scaler_multiply_height:Multiply_Height|present_state
-Name present_state.STATE_0_GET_CURRENT_LINE present_state.STATE_2_OUTPUT_LAST_LINE present_state.STATE_1_LOOP_FIFO 
-present_state.STATE_0_GET_CURRENT_LINE 0 0 0 
-present_state.STATE_1_LOOP_FIFO 1 0 1 
-present_state.STATE_2_OUTPUT_LAST_LINE 1 1 0 
-
 State Machine - |lights|nios_system:DUT|video_pixel_buffer_dma_0:the_video_pixel_buffer_dma_0|present_state
 Name present_state.STATE_3_MAX_PENDING_READS_STALL present_state.STATE_2_READ_BUFFER present_state.STATE_1_WAIT_FOR_LAST_PIXEL present_state.STATE_0_IDLE 
 present_state.STATE_0_IDLE 0 0 0 0 
@@ -47,78 +41,6 @@ i_state.011 0 0 1 0 0 1
 i_state.101 0 1 0 0 0 1 
 i_state.111 1 0 0 0 0 1 
 
-State Machine - |lights|nios_system:DUT|nios_system_clock_9:the_nios_system_clock_9|nios_system_clock_9_master_FSM:master_FSM|master_state
-Name master_state.100 master_state.010 master_state.001 
-master_state.001 0 0 0 
-master_state.010 0 1 1 
-master_state.100 1 0 1 
-
-State Machine - |lights|nios_system:DUT|nios_system_clock_9:the_nios_system_clock_9|nios_system_clock_9_slave_FSM:slave_FSM|slave_state
-Name slave_state.100 slave_state.010 slave_state.001 
-slave_state.001 0 0 0 
-slave_state.010 0 1 1 
-slave_state.100 1 0 1 
-
-State Machine - |lights|nios_system:DUT|nios_system_clock_8:the_nios_system_clock_8|nios_system_clock_8_master_FSM:master_FSM|master_state
-Name master_state.100 master_state.010 master_state.001 
-master_state.001 0 0 0 
-master_state.010 0 1 1 
-master_state.100 1 0 1 
-
-State Machine - |lights|nios_system:DUT|nios_system_clock_8:the_nios_system_clock_8|nios_system_clock_8_slave_FSM:slave_FSM|slave_state
-Name slave_state.100 slave_state.010 slave_state.001 
-slave_state.001 0 0 0 
-slave_state.010 0 1 1 
-slave_state.100 1 0 1 
-
-State Machine - |lights|nios_system:DUT|nios_system_clock_7:the_nios_system_clock_7|nios_system_clock_7_master_FSM:master_FSM|master_state
-Name master_state.100 master_state.010 master_state.001 
-master_state.001 0 0 0 
-master_state.010 0 1 1 
-master_state.100 1 0 1 
-
-State Machine - |lights|nios_system:DUT|nios_system_clock_7:the_nios_system_clock_7|nios_system_clock_7_slave_FSM:slave_FSM|slave_state
-Name slave_state.100 slave_state.010 slave_state.001 
-slave_state.001 0 0 0 
-slave_state.010 0 1 1 
-slave_state.100 1 0 1 
-
-State Machine - |lights|nios_system:DUT|nios_system_clock_6:the_nios_system_clock_6|nios_system_clock_6_master_FSM:master_FSM|master_state
-Name master_state.100 master_state.010 master_state.001 
-master_state.001 0 0 0 
-master_state.010 0 1 1 
-master_state.100 1 0 1 
-
-State Machine - |lights|nios_system:DUT|nios_system_clock_6:the_nios_system_clock_6|nios_system_clock_6_slave_FSM:slave_FSM|slave_state
-Name slave_state.100 slave_state.010 slave_state.001 
-slave_state.001 0 0 0 
-slave_state.010 0 1 1 
-slave_state.100 1 0 1 
-
-State Machine - |lights|nios_system:DUT|nios_system_clock_5:the_nios_system_clock_5|nios_system_clock_5_master_FSM:master_FSM|master_state
-Name master_state.100 master_state.010 master_state.001 
-master_state.001 0 0 0 
-master_state.010 0 1 1 
-master_state.100 1 0 1 
-
-State Machine - |lights|nios_system:DUT|nios_system_clock_5:the_nios_system_clock_5|nios_system_clock_5_slave_FSM:slave_FSM|slave_state
-Name slave_state.100 slave_state.010 slave_state.001 
-slave_state.001 0 0 0 
-slave_state.010 0 1 1 
-slave_state.100 1 0 1 
-
-State Machine - |lights|nios_system:DUT|nios_system_clock_4:the_nios_system_clock_4|nios_system_clock_4_master_FSM:master_FSM|master_state
-Name master_state.100 master_state.010 master_state.001 
-master_state.001 0 0 0 
-master_state.010 0 1 1 
-master_state.100 1 0 1 
-
-State Machine - |lights|nios_system:DUT|nios_system_clock_4:the_nios_system_clock_4|nios_system_clock_4_slave_FSM:slave_FSM|slave_state
-Name slave_state.100 slave_state.010 slave_state.001 
-slave_state.001 0 0 0 
-slave_state.010 0 1 1 
-slave_state.100 1 0 1 
-
 State Machine - |lights|nios_system:DUT|nios_system_clock_3:the_nios_system_clock_3|nios_system_clock_3_master_FSM:master_FSM|master_state
 Name master_state.100 master_state.010 master_state.001 
 master_state.001 0 0 0 
@@ -138,30 +60,6 @@ master_state.010 0 1 1
 master_state.100 1 0 1 
 
 State Machine - |lights|nios_system:DUT|nios_system_clock_2:the_nios_system_clock_2|nios_system_clock_2_slave_FSM:slave_FSM|slave_state
-Name slave_state.100 slave_state.010 slave_state.001 
-slave_state.001 0 0 0 
-slave_state.010 0 1 1 
-slave_state.100 1 0 1 
-
-State Machine - |lights|nios_system:DUT|nios_system_clock_11:the_nios_system_clock_11|nios_system_clock_11_master_FSM:master_FSM|master_state
-Name master_state.100 master_state.010 master_state.001 
-master_state.001 0 0 0 
-master_state.010 0 1 1 
-master_state.100 1 0 1 
-
-State Machine - |lights|nios_system:DUT|nios_system_clock_11:the_nios_system_clock_11|nios_system_clock_11_slave_FSM:slave_FSM|slave_state
-Name slave_state.100 slave_state.010 slave_state.001 
-slave_state.001 0 0 0 
-slave_state.010 0 1 1 
-slave_state.100 1 0 1 
-
-State Machine - |lights|nios_system:DUT|nios_system_clock_10:the_nios_system_clock_10|nios_system_clock_10_master_FSM:master_FSM|master_state
-Name master_state.100 master_state.010 master_state.001 
-master_state.001 0 0 0 
-master_state.010 0 1 1 
-master_state.100 1 0 1 
-
-State Machine - |lights|nios_system:DUT|nios_system_clock_10:the_nios_system_clock_10|nios_system_clock_10_slave_FSM:slave_FSM|slave_state
 Name slave_state.100 slave_state.010 slave_state.001 
 slave_state.001 0 0 0 
 slave_state.010 0 1 1 

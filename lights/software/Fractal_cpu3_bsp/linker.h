@@ -4,7 +4,7 @@
  * Machine generated for CPU 'cpu_3' in SOPC Builder design 'nios_system'
  * SOPC Builder design path: ../../nios_system.sopcinfo
  *
- * Generated: Mon Mar 31 17:05:46 EDT 2014
+ * Generated: Wed Apr 23 18:35:35 EDT 2014
  */
 
 /*
@@ -73,14 +73,12 @@
 #define ONCHIP_MEMORY2_2_REGION_SPAN 512
 #define ONCHIP_MEMORY2_3_REGION_BASE 0x7000
 #define ONCHIP_MEMORY2_3_REGION_SPAN 512
-#define RESET_REGION_BASE 0xe00000
+#define RESET_REGION_BASE 0xe50000
 #define RESET_REGION_SPAN 32
 #define SDRAM_0_BEFORE_RESET_REGION_BASE 0x800000
-#define SDRAM_0_BEFORE_RESET_REGION_SPAN 2097152
-#define SDRAM_0_REGION_BASE 0xe00020
-#define SDRAM_0_REGION_SPAN 2097120
-#define SRAM_0_REGION_BASE 0x1880000
-#define SRAM_0_REGION_SPAN 524288
+#define SDRAM_0_BEFORE_RESET_REGION_SPAN 3473408
+#define SDRAM_0_REGION_BASE 0xe50020
+#define SDRAM_0_REGION_SPAN 1769440
 
 
 /*

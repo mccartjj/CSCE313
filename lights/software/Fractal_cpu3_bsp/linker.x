@@ -4,7 +4,7 @@
  * Machine generated for CPU 'cpu_3' in SOPC Builder design 'nios_system'
  * SOPC Builder design path: ../../nios_system.sopcinfo
  *
- * Generated: Mon Apr 07 16:55:57 EDT 2014
+ * Generated: Wed Apr 23 18:35:35 EDT 2014
  */
 
 /*
@@ -54,10 +54,9 @@ MEMORY
     onchip_memory2_1 : ORIGIN = 0x4000, LENGTH = 512
     onchip_memory2_2 : ORIGIN = 0x6000, LENGTH = 512
     onchip_memory2_3 : ORIGIN = 0x7000, LENGTH = 512
-    sdram_0_BEFORE_RESET : ORIGIN = 0x800000, LENGTH = 2097152
-    reset : ORIGIN = 0xe00000, LENGTH = 32
-    sdram_0 : ORIGIN = 0xe00020, LENGTH = 2097120
-    sram_0 : ORIGIN = 0x1880000, LENGTH = 524288
+    sdram_0_BEFORE_RESET : ORIGIN = 0x800000, LENGTH = 3473408
+    reset : ORIGIN = 0xe50000, LENGTH = 32
+    sdram_0 : ORIGIN = 0xe50020, LENGTH = 1769440
 }
 
 /* Define symbols for each memory base-address */
@@ -66,7 +65,6 @@ __alt_mem_onchip_memory2_1 = 0x4000;
 __alt_mem_onchip_memory2_2 = 0x6000;
 __alt_mem_onchip_memory2_3 = 0x7000;
 __alt_mem_sdram_0 = 0x800000;
-__alt_mem_sram_0 = 0x1880000;
 
 OUTPUT_FORMAT( "elf32-littlenios2",
                "elf32-littlenios2",
@@ -397,23 +395,6 @@ SECTIONS
     } > sdram_0
 
     PROVIDE (_alt_partition_sdram_0_load_addr = LOADADDR(.sdram_0));
-
-    /*
-     *
-     * This section's LMA is set to the .text region.
-     * crt0 will copy to this section's specified mapped region virtual memory address (VMA)
-     *
-     */
-
-    .sram_0 : AT ( LOADADDR (.sdram_0) + SIZEOF (.sdram_0) )
-    {
-        PROVIDE (_alt_partition_sram_0_start = ABSOLUTE(.));
-        *(.sram_0. sram_0.*)
-        . = ALIGN(4);
-        PROVIDE (_alt_partition_sram_0_end = ABSOLUTE(.));
-    } > sram_0
-
-    PROVIDE (_alt_partition_sram_0_load_addr = LOADADDR(.sram_0));
 
     /*
      * Stabs debugging sections.

@@ -706,12 +706,6 @@ SYSTEM nios_system
                span = "0x00000010";
                is_bridge = "0";
             }
-            Entry sram_0/avalon_sram_slave
-            {
-               address = "0x01880000";
-               span = "0x00080000";
-               is_bridge = "0";
-            }
             Entry video_pixel_buffer_dma_0/avalon_control_slave
             {
                address = "0x019030b0";
@@ -2123,6 +2117,11 @@ SYSTEM nios_system
                priority = "1";
                Offset_Address = "0x00800000";
             }
+            MASTERED_BY video_pixel_buffer_dma_0/avalon_pixel_dma_master
+            {
+               priority = "1";
+               Offset_Address = "0x00800000";
+            }
             Base_Address = "0x00800000";
             Has_IRQ = "0";
             Simulation_Num_Lanes = "1";
@@ -2427,7 +2426,7 @@ SYSTEM nios_system
          Is_Enabled = "1";
          Default_Module_Name = "sdram";
          Top_Level_Ports_Are_Enumerated = "1";
-         Clock_Source = "sdram_clk";
+         Clock_Source = "sys_clk";
          Has_Clock = "1";
          Disable_Simulation_Port_Wiring = "0";
          View 
@@ -2719,7 +2718,7 @@ SYSTEM nios_system
          Has_Clock = "1";
          View 
          {
-            Settings_Summary = "System ID (at last Generate):<br> <b>00000000</b>    (unique ID tag) <br> <b>5345AD25</b> (timestamp: Wed Apr 9, 2014 @4:27 PM)";
+            Settings_Summary = "System ID (at last Generate):<br> <b>00000000</b>    (unique ID tag) <br> <b>535836C7</b> (timestamp: Wed Apr 23, 2014 @5:55 PM)";
             MESSAGES 
             {
             }
@@ -2728,7 +2727,7 @@ SYSTEM nios_system
       WIZARD_SCRIPT_ARGUMENTS 
       {
          id = "0u";
-         timestamp = "1397075237u";
+         timestamp = "1398290119u";
          regenerate_values = "0";
          MAKE 
          {
@@ -2737,7 +2736,7 @@ SYSTEM nios_system
                verifysysid 
                {
                   All_Depends_On = "0";
-                  Command = "nios2-download $(JTAG_CABLE)                                --sidp=0x019030c0 --id=0 --timestamp=1397075237";
+                  Command = "nios2-download $(JTAG_CABLE)                                --sidp=0x019030c0 --id=0 --timestamp=1398290119";
                   Is_Phony = "1";
                   Target_File = "dummy_verifysysid_file";
                }
@@ -3200,245 +3199,6 @@ SYSTEM nios_system
          Synthesis_Only_Files = "";
       }
    }
-   MODULE sram_0
-   {
-      SLAVE avalon_sram_slave
-      {
-         PORT_WIRING 
-         {
-            PORT clk
-            {
-               type = "clk";
-               width = "1";
-               direction = "input";
-               Is_Enabled = "1";
-            }
-            PORT reset
-            {
-               type = "reset";
-               width = "1";
-               direction = "input";
-               Is_Enabled = "1";
-            }
-            PORT address
-            {
-               type = "address";
-               width = "18";
-               direction = "input";
-               Is_Enabled = "1";
-            }
-            PORT byteenable
-            {
-               type = "byteenable";
-               width = "2";
-               direction = "input";
-               Is_Enabled = "1";
-            }
-            PORT read
-            {
-               type = "read";
-               width = "1";
-               direction = "input";
-               Is_Enabled = "1";
-            }
-            PORT write
-            {
-               type = "write";
-               width = "1";
-               direction = "input";
-               Is_Enabled = "1";
-            }
-            PORT writedata
-            {
-               type = "writedata";
-               width = "16";
-               direction = "input";
-               Is_Enabled = "1";
-            }
-            PORT readdata
-            {
-               type = "readdata";
-               width = "16";
-               direction = "output";
-               Is_Enabled = "1";
-            }
-            PORT readdatavalid
-            {
-               type = "readdatavalid";
-               width = "1";
-               direction = "output";
-               Is_Enabled = "1";
-            }
-         }
-         SYSTEM_BUILDER_INFO 
-         {
-            Bus_Type = "avalon";
-            Write_Wait_States = "0cycles";
-            Read_Wait_States = "0cycles";
-            Hold_Time = "0cycles";
-            Setup_Time = "0cycles";
-            Is_Printable_Device = "0";
-            Address_Alignment = "dynamic";
-            Well_Behaved_Waitrequest = "0";
-            Is_Nonvolatile_Storage = "0";
-            Address_Span = "524288";
-            Read_Latency = "0";
-            Is_Memory_Device = "1";
-            Maximum_Pending_Read_Transactions = "2";
-            Minimum_Uninterrupted_Run_Length = "1";
-            Accepts_Internal_Connections = "1";
-            Write_Latency = "0";
-            Is_Flash = "0";
-            Data_Width = "16";
-            Address_Width = "18";
-            Maximum_Burst_Size = "1";
-            Register_Incoming_Signals = "0";
-            Register_Outgoing_Signals = "0";
-            Interleave_Bursts = "0";
-            Linewrap_Bursts = "0";
-            Burst_On_Burst_Boundaries_Only = "0";
-            Always_Burst_Max_Burst = "0";
-            Is_Big_Endian = "0";
-            Is_Enabled = "1";
-            MASTERED_BY cpu_0/data_master
-            {
-               priority = "1";
-               Offset_Address = "0x01880000";
-            }
-            MASTERED_BY video_pixel_buffer_dma_0/avalon_pixel_dma_master
-            {
-               priority = "1";
-               Offset_Address = "0x01880000";
-            }
-            MASTERED_BY cpu_1/instruction_master
-            {
-               priority = "1";
-               Offset_Address = "0x01880000";
-            }
-            MASTERED_BY cpu_1/data_master
-            {
-               priority = "1";
-               Offset_Address = "0x01880000";
-            }
-            MASTERED_BY cpu_2/instruction_master
-            {
-               priority = "1";
-               Offset_Address = "0x01880000";
-            }
-            MASTERED_BY cpu_2/data_master
-            {
-               priority = "1";
-               Offset_Address = "0x01880000";
-            }
-            MASTERED_BY cpu_3/instruction_master
-            {
-               priority = "1";
-               Offset_Address = "0x01880000";
-            }
-            MASTERED_BY cpu_3/data_master
-            {
-               priority = "1";
-               Offset_Address = "0x01880000";
-            }
-            Base_Address = "0x01880000";
-            Address_Group = "0";
-            IRQ_MASTER cpu_0/data_master
-            {
-               IRQ_Number = "NC";
-            }
-            IRQ_MASTER cpu_1/data_master
-            {
-               IRQ_Number = "NC";
-            }
-            IRQ_MASTER cpu_2/data_master
-            {
-               IRQ_Number = "NC";
-            }
-            IRQ_MASTER cpu_3/data_master
-            {
-               IRQ_Number = "NC";
-            }
-         }
-      }
-      PORT_WIRING 
-      {
-         PORT SRAM_DQ
-         {
-            type = "export";
-            width = "16";
-            direction = "inout";
-            Is_Enabled = "1";
-         }
-         PORT SRAM_ADDR
-         {
-            type = "export";
-            width = "18";
-            direction = "output";
-            Is_Enabled = "1";
-         }
-         PORT SRAM_LB_N
-         {
-            type = "export";
-            width = "1";
-            direction = "output";
-            Is_Enabled = "1";
-         }
-         PORT SRAM_UB_N
-         {
-            type = "export";
-            width = "1";
-            direction = "output";
-            Is_Enabled = "1";
-         }
-         PORT SRAM_CE_N
-         {
-            type = "export";
-            width = "1";
-            direction = "output";
-            Is_Enabled = "1";
-         }
-         PORT SRAM_OE_N
-         {
-            type = "export";
-            width = "1";
-            direction = "output";
-            Is_Enabled = "1";
-         }
-         PORT SRAM_WE_N
-         {
-            type = "export";
-            width = "1";
-            direction = "output";
-            Is_Enabled = "1";
-         }
-      }
-      class = "no_legacy_module";
-      class_version = "7.08120";
-      gtf_class_name = "altera_up_avalon_sram";
-      gtf_class_version = "9.1";
-      SYSTEM_BUILDER_INFO 
-      {
-         Do_Not_Generate = "1";
-         Instantiate_In_System_Module = "1";
-         Is_Bridge = "0";
-         Is_Enabled = "1";
-         Clock_Source = "sys_clk";
-         Has_Clock = "1";
-         View 
-         {
-            MESSAGES 
-            {
-            }
-         }
-      }
-      HDL_INFO 
-      {
-         Simulation_HDL_Files = "__PROJECT_DIRECTORY__/sram_0.v";
-      }
-      WIZARD_SCRIPT_ARGUMENTS 
-      {
-      }
-   }
    MODULE video_pixel_buffer_dma_0
    {
       MASTER avalon_pixel_dma_master
@@ -3497,7 +3257,7 @@ SYSTEM nios_system
             PORT master_readdata
             {
                type = "readdata";
-               width = "32";
+               width = "16";
                direction = "input";
                Is_Enabled = "1";
             }
@@ -3511,7 +3271,7 @@ SYSTEM nios_system
             Do_Stream_Reads = "0";
             Do_Stream_Writes = "0";
             Max_Address_Width = "32";
-            Data_Width = "32";
+            Data_Width = "16";
             Address_Width = "32";
             Maximum_Burst_Size = "1";
             Register_Incoming_Signals = "0";
@@ -3525,10 +3285,10 @@ SYSTEM nios_system
          }
          MEMORY_MAP 
          {
-            Entry sram_0/avalon_sram_slave
+            Entry sdram_0/s1
             {
-               address = "0x01880000";
-               span = "0x00080000";
+               address = "0x00800000";
+               span = "0x00800000";
                is_bridge = "0";
             }
          }
@@ -3572,7 +3332,7 @@ SYSTEM nios_system
             PORT stream_data
             {
                type = "data";
-               width = "24";
+               width = "16";
                direction = "output";
                Is_Enabled = "1";
             }
@@ -3773,7 +3533,7 @@ SYSTEM nios_system
             PORT stream_in_data
             {
                type = "data";
-               width = "24";
+               width = "16";
                direction = "input";
                Is_Enabled = "1";
             }
@@ -3857,146 +3617,6 @@ SYSTEM nios_system
       HDL_INFO 
       {
          Simulation_HDL_Files = "__PROJECT_DIRECTORY__/video_rgb_resampler_0.v";
-      }
-      WIZARD_SCRIPT_ARGUMENTS 
-      {
-      }
-   }
-   MODULE video_scaler_0
-   {
-      SLAVE avalon_scaler_sink
-      {
-         PORT_WIRING 
-         {
-            PORT clk
-            {
-               type = "clk";
-               width = "1";
-               direction = "input";
-               Is_Enabled = "1";
-            }
-            PORT reset
-            {
-               type = "reset";
-               width = "1";
-               direction = "input";
-               Is_Enabled = "1";
-            }
-            PORT stream_in_startofpacket
-            {
-               type = "startofpacket";
-               width = "1";
-               direction = "input";
-               Is_Enabled = "1";
-            }
-            PORT stream_in_endofpacket
-            {
-               type = "endofpacket";
-               width = "1";
-               direction = "input";
-               Is_Enabled = "1";
-            }
-            PORT stream_in_valid
-            {
-               type = "valid";
-               width = "1";
-               direction = "input";
-               Is_Enabled = "1";
-            }
-            PORT stream_in_ready
-            {
-               type = "ready";
-               width = "1";
-               direction = "output";
-               Is_Enabled = "1";
-            }
-            PORT stream_in_data
-            {
-               type = "data";
-               width = "30";
-               direction = "input";
-               Is_Enabled = "1";
-            }
-         }
-         SYSTEM_BUILDER_INFO 
-         {
-            Bus_Type = "atlantic";
-            Accepts_Internal_Connections = "1";
-            MASTERED_BY video_rgb_resampler_0/avalon_rgb_source
-            {
-               priority = "0";
-            }
-            Address_Group = "0";
-            Base_Address = "0x00000000";
-         }
-      }
-      MASTER avalon_scaler_source
-      {
-         SYSTEM_BUILDER_INFO 
-         {
-            Bus_Type = "atlantic";
-         }
-         PORT_WIRING 
-         {
-            PORT stream_out_ready
-            {
-               type = "ready";
-               width = "1";
-               direction = "input";
-               Is_Enabled = "1";
-            }
-            PORT stream_out_startofpacket
-            {
-               type = "startofpacket";
-               width = "1";
-               direction = "output";
-               Is_Enabled = "1";
-            }
-            PORT stream_out_endofpacket
-            {
-               type = "endofpacket";
-               width = "1";
-               direction = "output";
-               Is_Enabled = "1";
-            }
-            PORT stream_out_valid
-            {
-               type = "valid";
-               width = "1";
-               direction = "output";
-               Is_Enabled = "1";
-            }
-            PORT stream_out_data
-            {
-               type = "data";
-               width = "30";
-               direction = "output";
-               Is_Enabled = "1";
-            }
-         }
-      }
-      class = "no_legacy_module";
-      class_version = "7.08120";
-      gtf_class_name = "altera_up_avalon_video_scaler";
-      gtf_class_version = "9.1";
-      SYSTEM_BUILDER_INFO 
-      {
-         Do_Not_Generate = "1";
-         Instantiate_In_System_Module = "1";
-         Is_Bridge = "0";
-         Is_Enabled = "1";
-         Clock_Source = "sys_clk";
-         Has_Clock = "1";
-         View 
-         {
-            MESSAGES 
-            {
-            }
-         }
-      }
-      HDL_INFO 
-      {
-         Simulation_HDL_Files = "__PROJECT_DIRECTORY__/video_scaler_0.v";
       }
       WIZARD_SCRIPT_ARGUMENTS 
       {
@@ -4211,7 +3831,7 @@ SYSTEM nios_system
             Accepts_Internal_Connections = "1";
             Clock_Source = "sys_clk";
             Has_Clock = "1";
-            MASTERED_BY video_scaler_0/avalon_scaler_source
+            MASTERED_BY video_rgb_resampler_0/avalon_rgb_source
             {
                priority = "0";
             }
@@ -4591,7 +4211,7 @@ SYSTEM nios_system
             PORT i_address
             {
                type = "address";
-               width = "25";
+               width = "24";
                direction = "output";
                Is_Enabled = "1";
             }
@@ -4641,7 +4261,7 @@ SYSTEM nios_system
             Do_Stream_Writes = "0";
             Max_Address_Width = "32";
             Data_Width = "32";
-            Address_Width = "25";
+            Address_Width = "24";
             Maximum_Burst_Size = "1";
             Register_Incoming_Signals = "0";
             Register_Outgoing_Signals = "0";
@@ -4671,12 +4291,6 @@ SYSTEM nios_system
             {
                address = "0x00800000";
                span = "0x00800000";
-               is_bridge = "0";
-            }
-            Entry sram_0/avalon_sram_slave
-            {
-               address = "0x01880000";
-               span = "0x00080000";
                is_bridge = "0";
             }
             Entry onchip_memory2_0/s1
@@ -5219,12 +4833,6 @@ SYSTEM nios_system
                span = "0x00000010";
                is_bridge = "0";
             }
-            Entry sram_0/avalon_sram_slave
-            {
-               address = "0x01880000";
-               span = "0x00080000";
-               is_bridge = "0";
-            }
             Entry video_pixel_buffer_dma_0/avalon_control_slave
             {
                address = "0x019030b0";
@@ -5383,9 +4991,9 @@ SYSTEM nios_system
          reset_slave = "sdram_0/s1";
          break_slave = "cpu_1/jtag_debug_module";
          exc_slave = "sdram_0/s1";
-         reset_offset = "0x00200000";
+         reset_offset = "0x00350000";
          break_offset = "0x00000020";
-         exc_offset = "0x00200020";
+         exc_offset = "0x00350020";
          cpu_reset = "0";
          CPU_Implementation = "fast";
          cpu_selection = "f";
@@ -5397,7 +5005,7 @@ SYSTEM nios_system
          dont_overwrite_cpuid = "1";
          allow_legacy_sdk = "1";
          legacy_sdk_support = "1";
-         inst_addr_width = "25";
+         inst_addr_width = "24";
          data_addr_width = "25";
          CPU_Architecture = "nios2";
          cache_icache_burst_type = "none";
@@ -7852,7 +7460,7 @@ SYSTEM nios_system
             PORT i_address
             {
                type = "address";
-               width = "25";
+               width = "24";
                direction = "output";
                Is_Enabled = "1";
             }
@@ -7902,7 +7510,7 @@ SYSTEM nios_system
             Do_Stream_Writes = "0";
             Max_Address_Width = "32";
             Data_Width = "32";
-            Address_Width = "25";
+            Address_Width = "24";
             Maximum_Burst_Size = "1";
             Register_Incoming_Signals = "0";
             Register_Outgoing_Signals = "0";
@@ -7932,12 +7540,6 @@ SYSTEM nios_system
             {
                address = "0x00800000";
                span = "0x00800000";
-               is_bridge = "0";
-            }
-            Entry sram_0/avalon_sram_slave
-            {
-               address = "0x01880000";
-               span = "0x00080000";
                is_bridge = "0";
             }
             Entry onchip_memory2_0/s1
@@ -8480,12 +8082,6 @@ SYSTEM nios_system
                span = "0x00000010";
                is_bridge = "0";
             }
-            Entry sram_0/avalon_sram_slave
-            {
-               address = "0x01880000";
-               span = "0x00080000";
-               is_bridge = "0";
-            }
             Entry video_pixel_buffer_dma_0/avalon_control_slave
             {
                address = "0x019030b0";
@@ -8644,9 +8240,9 @@ SYSTEM nios_system
          reset_slave = "sdram_0/s1";
          break_slave = "cpu_2/jtag_debug_module";
          exc_slave = "sdram_0/s1";
-         reset_offset = "0x00400000";
+         reset_offset = "0x00500000";
          break_offset = "0x00000020";
-         exc_offset = "0x00400020";
+         exc_offset = "0x00500020";
          cpu_reset = "0";
          CPU_Implementation = "fast";
          cpu_selection = "f";
@@ -8658,7 +8254,7 @@ SYSTEM nios_system
          dont_overwrite_cpuid = "1";
          allow_legacy_sdk = "1";
          legacy_sdk_support = "1";
-         inst_addr_width = "25";
+         inst_addr_width = "24";
          data_addr_width = "25";
          CPU_Architecture = "nios2";
          cache_icache_burst_type = "none";
@@ -9799,7 +9395,7 @@ SYSTEM nios_system
             PORT i_address
             {
                type = "address";
-               width = "25";
+               width = "24";
                direction = "output";
                Is_Enabled = "1";
             }
@@ -9849,7 +9445,7 @@ SYSTEM nios_system
             Do_Stream_Writes = "0";
             Max_Address_Width = "32";
             Data_Width = "32";
-            Address_Width = "25";
+            Address_Width = "24";
             Maximum_Burst_Size = "1";
             Register_Incoming_Signals = "0";
             Register_Outgoing_Signals = "0";
@@ -9879,12 +9475,6 @@ SYSTEM nios_system
             {
                address = "0x00800000";
                span = "0x00800000";
-               is_bridge = "0";
-            }
-            Entry sram_0/avalon_sram_slave
-            {
-               address = "0x01880000";
-               span = "0x00080000";
                is_bridge = "0";
             }
             Entry onchip_memory2_0/s1
@@ -10427,12 +10017,6 @@ SYSTEM nios_system
                span = "0x00000010";
                is_bridge = "0";
             }
-            Entry sram_0/avalon_sram_slave
-            {
-               address = "0x01880000";
-               span = "0x00080000";
-               is_bridge = "0";
-            }
             Entry video_pixel_buffer_dma_0/avalon_control_slave
             {
                address = "0x019030b0";
@@ -10591,9 +10175,9 @@ SYSTEM nios_system
          reset_slave = "sdram_0/s1";
          break_slave = "cpu_3/jtag_debug_module";
          exc_slave = "sdram_0/s1";
-         reset_offset = "0x00600000";
+         reset_offset = "0x00650000";
          break_offset = "0x00000020";
-         exc_offset = "0x00600020";
+         exc_offset = "0x00650020";
          cpu_reset = "0";
          CPU_Implementation = "fast";
          cpu_selection = "f";
@@ -10605,7 +10189,7 @@ SYSTEM nios_system
          dont_overwrite_cpuid = "1";
          allow_legacy_sdk = "1";
          legacy_sdk_support = "1";
-         inst_addr_width = "25";
+         inst_addr_width = "24";
          data_addr_width = "25";
          CPU_Architecture = "nios2";
          cache_icache_burst_type = "none";

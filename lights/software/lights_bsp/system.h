@@ -4,7 +4,7 @@
  * Machine generated for CPU 'cpu_0' in SOPC Builder design 'nios_system'
  * SOPC Builder design path: ../../nios_system.sopcinfo
  *
- * Generated: Wed Apr 09 16:37:08 EDT 2014
+ * Generated: Wed Apr 23 18:35:10 EDT 2014
  */
 
 /*
@@ -147,7 +147,6 @@
 #define __ALTERA_NIOS2
 #define __ALTERA_NIOS_CUSTOM_INSTR_FLOATING_POINT
 #define __ALTERA_UP_AVALON_CLOCKS
-#define __ALTERA_UP_AVALON_SRAM
 #define __ALTERA_UP_AVALON_VIDEO_PIXEL_BUFFER_DMA
 
 
@@ -509,20 +508,6 @@
 
 
 /*
- * sram_0 configuration
- *
- */
-
-#define ALT_MODULE_CLASS_sram_0 altera_up_avalon_sram
-#define SRAM_0_BASE 0x1880000
-#define SRAM_0_IRQ -1
-#define SRAM_0_IRQ_INTERRUPT_CONTROLLER_ID -1
-#define SRAM_0_NAME "/dev/sram_0"
-#define SRAM_0_SPAN 524288
-#define SRAM_0_TYPE "altera_up_avalon_sram"
-
-
-/*
  * sysid configuration
  *
  */
@@ -534,7 +519,7 @@
 #define SYSID_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define SYSID_NAME "/dev/sysid"
 #define SYSID_SPAN 8
-#define SYSID_TIMESTAMP 1397075237u
+#define SYSID_TIMESTAMP 1398290119u
 #define SYSID_TYPE "altera_avalon_sysid"
 
 

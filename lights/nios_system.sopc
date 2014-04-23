@@ -18,27 +18,6 @@
          type = "long";
       }
    }
-   element jtag_uart_2.avalon_jtag_slave
-   {
-      datum baseAddress
-      {
-         value = "104";
-         type = "long";
-      }
-   }
-   element jtag_uart_0.avalon_jtag_slave
-   {
-      datum _tags
-      {
-         value = "";
-         type = "String";
-      }
-      datum baseAddress
-      {
-         value = "26226888";
-         type = "long";
-      }
-   }
    element jtag_uart_3.avalon_jtag_slave
    {
       datum baseAddress
@@ -60,11 +39,24 @@
          type = "long";
       }
    }
-   element sram_0.avalon_sram_slave
+   element jtag_uart_0.avalon_jtag_slave
+   {
+      datum _tags
+      {
+         value = "";
+         type = "String";
+      }
+      datum baseAddress
+      {
+         value = "26226888";
+         type = "long";
+      }
+   }
+   element jtag_uart_2.avalon_jtag_slave
    {
       datum baseAddress
       {
-         value = "25690112";
+         value = "104";
          type = "long";
       }
    }
@@ -84,6 +76,14 @@
          type = "int";
       }
    }
+   element performance_counter_0.control_slave
+   {
+      datum baseAddress
+      {
+         value = "0";
+         type = "long";
+      }
+   }
    element sysid.control_slave
    {
       datum _tags
@@ -94,14 +94,6 @@
       datum baseAddress
       {
          value = "26226880";
-         type = "long";
-      }
-   }
-   element performance_counter_0.control_slave
-   {
-      datum baseAddress
-      {
-         value = "0";
          type = "long";
       }
    }
@@ -189,11 +181,11 @@
          type = "int";
       }
    }
-   element cpu_1.jtag_debug_module
+   element cpu_0.jtag_debug_module
    {
       datum baseAddress
       {
-         value = "4096";
+         value = "26224640";
          type = "long";
       }
    }
@@ -205,19 +197,19 @@
          type = "long";
       }
    }
-   element cpu_0.jtag_debug_module
-   {
-      datum baseAddress
-      {
-         value = "26224640";
-         type = "long";
-      }
-   }
    element cpu_2.jtag_debug_module
    {
       datum baseAddress
       {
          value = "6144";
+         type = "long";
+      }
+   }
+   element cpu_1.jtag_debug_module
+   {
+      datum baseAddress
+      {
+         value = "4096";
          type = "long";
       }
    }
@@ -265,7 +257,7 @@
    {
       datum _sortIndex
       {
-         value = "28";
+         value = "26";
          type = "int";
       }
       datum megawizard_uipreferences
@@ -273,8 +265,49 @@
          value = "{output_language=VERILOG, output_directory=/acct/s1/mccartjj/CSCE313/lights}";
          type = "String";
       }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
+      }
    }
    element mailbox_1
+   {
+      datum _sortIndex
+      {
+         value = "27";
+         type = "int";
+      }
+      datum megawizard_uipreferences
+      {
+         value = "{output_language=VERILOG, output_directory=/acct/s1/mccartjj/CSCE313/lights}";
+         type = "String";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
+      }
+   }
+   element mailbox_2
+   {
+      datum _sortIndex
+      {
+         value = "28";
+         type = "int";
+      }
+      datum megawizard_uipreferences
+      {
+         value = "{}";
+         type = "String";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
+      }
+   }
+   element mailbox_3
    {
       datum _sortIndex
       {
@@ -283,34 +316,13 @@
       }
       datum megawizard_uipreferences
       {
-         value = "{output_language=VERILOG, output_directory=/acct/s1/mccartjj/CSCE313/lights}";
-         type = "String";
-      }
-   }
-   element mailbox_2
-   {
-      datum _sortIndex
-      {
-         value = "30";
-         type = "int";
-      }
-      datum megawizard_uipreferences
-      {
          value = "{}";
          type = "String";
       }
-   }
-   element mailbox_3
-   {
-      datum _sortIndex
+      datum sopceditor_expanded
       {
-         value = "31";
-         type = "int";
-      }
-      datum megawizard_uipreferences
-      {
-         value = "{}";
-         type = "String";
+         value = "0";
+         type = "boolean";
       }
    }
    element nios_system
@@ -320,40 +332,73 @@
    {
       datum _sortIndex
       {
-         value = "24";
+         value = "22";
          type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
       }
    }
    element onchip_memory2_1
    {
       datum _sortIndex
       {
-         value = "25";
+         value = "23";
          type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
       }
    }
    element onchip_memory2_2
    {
       datum _sortIndex
       {
-         value = "26";
+         value = "24";
          type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
       }
    }
    element onchip_memory2_3
    {
       datum _sortIndex
       {
-         value = "27";
+         value = "25";
          type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
       }
    }
    element performance_counter_0
    {
       datum _sortIndex
       {
-         value = "23";
+         value = "21";
          type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
+      }
+   }
+   element onchip_memory2_3.s1
+   {
+      datum baseAddress
+      {
+         value = "28672";
+         type = "long";
       }
    }
    element onchip_memory2_1.s1
@@ -364,19 +409,11 @@
          type = "long";
       }
    }
-   element mailbox_1.s1
+   element onchip_memory2_0.s1
    {
       datum baseAddress
       {
-         value = "80";
-         type = "long";
-      }
-   }
-   element keys.s1
-   {
-      datum baseAddress
-      {
-         value = "26226704";
+         value = "12288";
          type = "long";
       }
    }
@@ -385,22 +422,6 @@
       datum baseAddress
       {
          value = "24576";
-         type = "long";
-      }
-   }
-   element mailbox_0.s1
-   {
-      datum baseAddress
-      {
-         value = "64";
-         type = "long";
-      }
-   }
-   element onchip_memory2_0.s1
-   {
-      datum baseAddress
-      {
-         value = "12288";
          type = "long";
       }
    }
@@ -420,6 +441,22 @@
          type = "long";
       }
    }
+   element mailbox_1.s1
+   {
+      datum baseAddress
+      {
+         value = "80";
+         type = "long";
+      }
+   }
+   element keys.s1
+   {
+      datum baseAddress
+      {
+         value = "26226704";
+         type = "long";
+      }
+   }
    element mailbox_3.s1
    {
       datum baseAddress
@@ -428,11 +465,11 @@
          type = "long";
       }
    }
-   element onchip_memory2_3.s1
+   element mailbox_0.s1
    {
       datum baseAddress
       {
-         value = "28672";
+         value = "64";
          type = "long";
       }
    }
@@ -455,14 +492,6 @@
       {
          value = "sdram_clk";
          type = "String";
-      }
-   }
-   element sram_0
-   {
-      datum _sortIndex
-      {
-         value = "17";
-         type = "int";
       }
    }
    element clocks_0.sys_clk
@@ -493,7 +522,7 @@
    {
       datum _sortIndex
       {
-         value = "21";
+         value = "19";
          type = "int";
       }
    }
@@ -501,7 +530,7 @@
    {
       datum _sortIndex
       {
-         value = "18";
+         value = "17";
          type = "int";
       }
    }
@@ -509,15 +538,7 @@
    {
       datum _sortIndex
       {
-         value = "19";
-         type = "int";
-      }
-   }
-   element video_scaler_0
-   {
-      datum _sortIndex
-      {
-         value = "20";
+         value = "18";
          type = "int";
       }
    }
@@ -525,7 +546,7 @@
    {
       datum _sortIndex
       {
-         value = "22";
+         value = "20";
          type = "int";
       }
    }
@@ -543,8 +564,8 @@
  <parameter name="maxAdditionalLatency" value="0" />
  <parameter name="projectName" value="lights.qpf" />
  <parameter name="sopcBorderPoints" value="true" />
- <parameter name="systemHash" value="-152557843686" />
- <parameter name="timeStamp" value="1397075236673" />
+ <parameter name="systemHash" value="-119330214044" />
+ <parameter name="timeStamp" value="1398290118710" />
  <parameter name="useTestBenchNamingPattern" value="false" />
  <module kind="clock_source" version="12.0" enabled="1" name="clk_0">
   <parameter name="clockFrequency" value="50000000" />
@@ -645,7 +666,7 @@
   <parameter name="dcache_numTCDM" value="_0" />
   <parameter name="dcache_lineSize" value="_32" />
   <parameter name="dcache_bursts" value="false" />
-  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='performance_counter_0.control_slave' start='0x0' end='0x40' /><slave name='mailbox_0.s1' start='0x40' end='0x50' /><slave name='mailbox_1.s1' start='0x50' end='0x60' /><slave name='mailbox_2.s1' start='0x70' end='0x80' /><slave name='mailbox_3.s1' start='0x80' end='0x90' /><slave name='onchip_memory2_0.s1' start='0x3000' end='0x3200' /><slave name='onchip_memory2_1.s1' start='0x4000' end='0x4200' /><slave name='onchip_memory2_2.s1' start='0x6000' end='0x6200' /><slave name='onchip_memory2_3.s1' start='0x7000' end='0x7200' /><slave name='sdram_0.s1' start='0x800000' end='0x1000000' /><slave name='sram_0.avalon_sram_slave' start='0x1880000' end='0x1900000' /><slave name='cpu_0.jtag_debug_module' start='0x1902800' end='0x1903000' /><slave name='keys.s1' start='0x1903010' end='0x1903020' /><slave name='video_pixel_buffer_dma_0.avalon_control_slave' start='0x19030B0' end='0x19030C0' /><slave name='sysid.control_slave' start='0x19030C0' end='0x19030C8' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x19030C8' end='0x19030D0' /><slave name='clocks_0.avalon_clocks_slave' start='0x19030D8' end='0x19030DA' /></address-map>]]></parameter>
+  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='performance_counter_0.control_slave' start='0x0' end='0x40' /><slave name='mailbox_0.s1' start='0x40' end='0x50' /><slave name='mailbox_1.s1' start='0x50' end='0x60' /><slave name='mailbox_2.s1' start='0x70' end='0x80' /><slave name='mailbox_3.s1' start='0x80' end='0x90' /><slave name='onchip_memory2_0.s1' start='0x3000' end='0x3200' /><slave name='onchip_memory2_1.s1' start='0x4000' end='0x4200' /><slave name='onchip_memory2_2.s1' start='0x6000' end='0x6200' /><slave name='onchip_memory2_3.s1' start='0x7000' end='0x7200' /><slave name='sdram_0.s1' start='0x800000' end='0x1000000' /><slave name='cpu_0.jtag_debug_module' start='0x1902800' end='0x1903000' /><slave name='keys.s1' start='0x1903010' end='0x1903020' /><slave name='video_pixel_buffer_dma_0.avalon_control_slave' start='0x19030B0' end='0x19030C0' /><slave name='sysid.control_slave' start='0x19030C0' end='0x19030C8' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x19030C8' end='0x19030D0' /><slave name='clocks_0.avalon_clocks_slave' start='0x19030D8' end='0x19030DA' /></address-map>]]></parameter>
   <parameter name="dataAddrWidth" value="25" />
   <parameter name="customInstSlavesSystemInfo"><![CDATA[<info><slave name="altera_nios_custom_instr_floating_point_inst" baseAddress="252" addressSpan="4" clockCycleType="VARIABLE" /><slave name="altera_nios_custom_instr_floating_point_inst" baseAddress="252" addressSpan="4" clockCycleType="VARIABLE" /><slave name="altera_nios_custom_instr_floating_point_inst" baseAddress="252" addressSpan="4" clockCycleType="VARIABLE" /><slave name="altera_nios_custom_instr_floating_point_inst" baseAddress="252" addressSpan="4" clockCycleType="VARIABLE" /></info>]]></parameter>
   <parameter name="cpuReset" value="false" />
@@ -731,12 +752,6 @@
   <parameter name="simDrivenValue" value="0" />
   <parameter name="width" value="3" />
  </module>
- <module kind="altera_up_avalon_sram" version="9.1" enabled="1" name="sram_0">
-  <parameter name="board" value="DE2" />
-  <parameter name="pixel_buffer" value="false" />
-  <parameter name="AUTO_CLOCK_RESET_CLOCK_RATE" value="50000000" />
-  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone II" />
- </module>
  <module
    kind="altera_up_avalon_video_pixel_buffer_dma"
    version="9.1"
@@ -745,9 +760,9 @@
   <parameter name="addr_mode" value="Consecutive" />
   <parameter name="start_address" value="25690112" />
   <parameter name="back_start_address" value="25690112" />
-  <parameter name="image_width" value="320" />
-  <parameter name="image_height" value="240" />
-  <parameter name="color_space" value="24-bit RGB" />
+  <parameter name="image_width" value="1024" />
+  <parameter name="image_height" value="768" />
+  <parameter name="color_space" value="16-bit RGB" />
   <parameter name="AUTO_CLOCK_RESET_CLOCK_RATE" value="50000000" />
   <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone II" />
  </module>
@@ -756,23 +771,9 @@
    version="9.1"
    enabled="1"
    name="video_rgb_resampler_0">
-  <parameter name="input_type" value="24-bit RGB" />
+  <parameter name="input_type" value="16-bit RGB" />
   <parameter name="output_type" value="30-bit RGB" />
   <parameter name="alpha" value="1023" />
-  <parameter name="AUTO_CLOCK_RESET_CLOCK_RATE" value="50000000" />
-  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone II" />
- </module>
- <module
-   kind="altera_up_avalon_video_scaler"
-   version="9.1"
-   enabled="1"
-   name="video_scaler_0">
-  <parameter name="width_scaling" value="2" />
-  <parameter name="height_scaling" value="2" />
-  <parameter name="width_in" value="320" />
-  <parameter name="height_in" value="240" />
-  <parameter name="color_bits" value="10" />
-  <parameter name="color_planes" value="3" />
   <parameter name="AUTO_CLOCK_RESET_CLOCK_RATE" value="50000000" />
   <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone II" />
  </module>
@@ -862,7 +863,7 @@
   <parameter name="setting_HDLSimCachesCleared" value="true" />
   <parameter name="setting_HBreakTest" value="false" />
   <parameter name="resetSlave" value="sdram_0.s1" />
-  <parameter name="resetOffset" value="2097152" />
+  <parameter name="resetOffset" value="3473408" />
   <parameter name="muldiv_multiplierType" value="EmbeddedMulFast" />
   <parameter name="muldiv_divider" value="true" />
   <parameter name="mpu_useLimit" value="false" />
@@ -882,15 +883,15 @@
   <parameter name="mmu_TLBMissExcOffset" value="0" />
   <parameter name="manuallyAssignCpuID" value="true" />
   <parameter name="internalIrqMaskSystemInfo" value="2" />
-  <parameter name="instSlaveMapParam"><![CDATA[<address-map><slave name='cpu_1.jtag_debug_module' start='0x1000' end='0x1800' /><slave name='onchip_memory2_0.s1' start='0x3000' end='0x3200' /><slave name='onchip_memory2_1.s1' start='0x4000' end='0x4200' /><slave name='onchip_memory2_2.s1' start='0x6000' end='0x6200' /><slave name='onchip_memory2_3.s1' start='0x7000' end='0x7200' /><slave name='sdram_0.s1' start='0x800000' end='0x1000000' /><slave name='sram_0.avalon_sram_slave' start='0x1880000' end='0x1900000' /></address-map>]]></parameter>
-  <parameter name="instAddrWidth" value="25" />
+  <parameter name="instSlaveMapParam"><![CDATA[<address-map><slave name='cpu_1.jtag_debug_module' start='0x1000' end='0x1800' /><slave name='onchip_memory2_0.s1' start='0x3000' end='0x3200' /><slave name='onchip_memory2_1.s1' start='0x4000' end='0x4200' /><slave name='onchip_memory2_2.s1' start='0x6000' end='0x6200' /><slave name='onchip_memory2_3.s1' start='0x7000' end='0x7200' /><slave name='sdram_0.s1' start='0x800000' end='0x1000000' /></address-map>]]></parameter>
+  <parameter name="instAddrWidth" value="24" />
   <parameter name="impl" value="Fast" />
   <parameter name="icache_size" value="_4096" />
   <parameter name="icache_ramBlockType" value="Automatic" />
   <parameter name="icache_numTCIM" value="_0" />
   <parameter name="icache_burstType" value="None" />
   <parameter name="exceptionSlave" value="sdram_0.s1" />
-  <parameter name="exceptionOffset" value="2097184" />
+  <parameter name="exceptionOffset" value="3473440" />
   <parameter name="deviceFeaturesSystemInfo">NOT_LISTED 0 INSTALLED 1 IS_DEFAULT_FAMILY 0 ADDRESS_STALL 1 CELL_LEVEL_BACK_ANNOTATION_DISABLED 0 COMPILER_SUPPORT 1 DSP 0 DSP_SHIFTER_BLOCK 0 DUMP_ASM_LAB_BITS_FOR_POWER 1 EMUL 1 ENABLE_ADVANCED_IO_ANALYSIS_GUI_FEATURES 0 EPCS 1 ESB 0 FAKE1 0 FAKE2 0 FAKE3 0 FITTER_USE_FALLING_EDGE_DELAY 0 GENERATE_DC_ON_CURRENT_WARNING_FOR_INTERNAL_CLAMPING_DIODE 0 HARDCOPY 0 HAS_18_BIT_MULTS 0 HAS_ACE_SUPPORT 1 HAS_ADJUSTABLE_OUTPUT_IO_TIMING_MEAS_POINT 0 HAS_ADVANCED_IO_INVERTED_CORNER 0 HAS_ADVANCED_IO_POWER_SUPPORT 0 HAS_ADVANCED_IO_TIMING_SUPPORT 0 HAS_ALM_SUPPORT 0 HAS_ATOM_AND_ROUTING_POWER_MODELED_TOGETHER 0 HAS_AUTO_DERIVE_CLOCK_UNCERTAINTY_SUPPORT 0 HAS_AUTO_FIT_SUPPORT 1 HAS_BALANCED_OPT_TECHNIQUE_SUPPORT 1 HAS_BENEFICIAL_SKEW_SUPPORT 0 HAS_BITLEVEL_DRIVE_STRENGTH_CONTROL 0 HAS_BSDL_FILE_GENERATION 0 HAS_CGA_SUPPORT 1 HAS_CHECK_NETLIST_SUPPORT 1 HAS_CLOCK_REGION_CHECKER_ENABLED 1 HAS_CORE_JUNCTION_TEMP_DERATING 1 HAS_CROSSTALK_SUPPORT 0 HAS_CUSTOM_REGION_SUPPORT 1 HAS_DATA_DRIVEN_ACVQ_HSSI_SUPPORT 0 HAS_DDB_FDI_SUPPORT 0 HAS_DESIGN_ANALYZER_SUPPORT 1 HAS_DETAILED_IO_RAIL_POWER_MODEL 1 HAS_DETAILED_LEIM_STATIC_POWER_MODEL 0 HAS_DETAILED_LE_POWER_MODEL 1 HAS_DETAILED_ROUTING_MUX_STATIC_POWER_MODEL 0 HAS_DETAILED_THERMAL_CIRCUIT_PARAMETER_SUPPORT 1 HAS_DEVICE_MIGRATION_SUPPORT 1 HAS_DIAGONAL_MIGRATION_SUPPORT 0 HAS_EMIF_TOOLKIT_SUPPORT 0 HAS_FAMILY_VARIANT_MIGRATION_SUPPORT 0 HAS_FANOUT_FREE_NODE_SUPPORT 1 HAS_FAST_FIT_SUPPORT 1 HAS_FITTER_EARLY_TIMING_ESTIMATE_SUPPORT 1 HAS_FITTER_ECO_SUPPORT 1 HAS_FIT_NETLIST_OPT_RETIME_SUPPORT 1 HAS_FIT_NETLIST_OPT_SUPPORT 1 HAS_FORMAL_VERIFICATION_SUPPORT 1 HAS_FPGA_XCHANGE_SUPPORT 1 HAS_FSAC_LUTRAM_REGISTER_PACKING_SUPPORT 0 HAS_FULL_DAT_MIN_TIMING_SUPPORT 1 HAS_FULL_INCREMENTAL_DESIGN_SUPPORT 1 HAS_FUNCTIONAL_SIMULATION_SUPPORT 1 HAS_GLITCH_FILTERING_SUPPORT 1 HAS_HC_READY_SUPPORT 0 HAS_HIGH_SPEED_LOW_POWER_TILE_SUPPORT 0 HAS_HOLD_TIME_AVOIDANCE_ACROSS_CLOCK_SPINE_SUPPORT 1 HAS_HSPICE_WRITER_SUPPORT 0 HAS_HSSI_POWER_CALCULATOR 0 HAS_IBISO_WRITER_SUPPORT 1 HAS_INCREMENTAL_DAT_SUPPORT 0 HAS_INCREMENTAL_SYNTHESIS_SUPPORT 1 HAS_IO_ASSIGNMENT_ANALYSIS_SUPPORT 1 HAS_IO_DECODER 0 HAS_IO_PLACEMENT_OPTIMIZATION_SUPPORT 1 HAS_IO_SMART_RECOMPILE_SUPPORT 1 HAS_JITTER_SUPPORT 0 HAS_JTAG_SLD_HUB_SUPPORT 1 HAS_LOGIC_LOCK_SUPPORT 1 HAS_MICROPROCESSOR 0 HAS_MIF_SMART_COMPILE_SUPPORT 1 HAS_MINMAX_TIMING_MODELING_SUPPORT 0 HAS_MIN_TIMING_ANALYSIS_SUPPORT 1 HAS_MUX_RESTRUCTURE_SUPPORT 1 HAS_NEW_HC_FLOW_SUPPORT 0 HAS_NEW_SERDES_MAX_RESOURCE_COUNT_REPORTING_SUPPORT 0 HAS_NEW_VPR_SUPPORT 1 HAS_NONSOCKET_TECHNOLOGY_MIGRATION_SUPPORT 0 HAS_NO_JTAG_USERCODE_SUPPORT 0 HAS_OPERATING_SETTINGS_AND_CONDITIONS_REPORTING_SUPPORT 1 HAS_PAD_LOCATION_ASSIGNMENT_SUPPORT 1 HAS_PARTIAL_RECONFIG_SUPPORT 0 HAS_PHYSICAL_NETLIST_OUTPUT 0 HAS_PHYSICAL_ROUTING_SUPPORT 0 HAS_PIN_SPECIFIC_VOLTAGE_SUPPORT 0 HAS_PLDM_REF_SUPPORT 1 HAS_POWER_ESTIMATION_SUPPORT 1 HAS_PRELIMINARY_CLOCK_UNCERTAINTY_NUMBERS 0 HAS_PRE_FITTER_FPP_SUPPORT 0 HAS_PRE_FITTER_LUTRAM_NETLIST_CHECKER_ENABLED 0 HAS_PVA_SUPPORT 1 HAS_RCF_SUPPORT 1 HAS_RCF_SUPPORT_FOR_DEBUGGING 0 HAS_RED_BLACK_SEPARATION_SUPPORT 0 HAS_RE_LEVEL_TIMING_GRAPH_SUPPORT 0 HAS_RISEFALL_DELAY_SUPPORT 1 HAS_SIGNAL_PROBE_SUPPORT 1 HAS_SIGNAL_TAP_SUPPORT 1 HAS_SIMULATOR_SUPPORT 1 HAS_SPLIT_IO_SUPPORT 0 HAS_SPLIT_LC_SUPPORT 1 HAS_SYNTH_FSYN_NETLIST_OPT_SUPPORT 0 HAS_SYNTH_NETLIST_OPT_RETIME_SUPPORT 1 HAS_SYNTH_NETLIST_OPT_SUPPORT 1 HAS_TECHNOLOGY_MIGRATION_SUPPORT 0 HAS_TEMPLATED_REGISTER_PACKING_SUPPORT 1 HAS_TIME_BORROWING_SUPPORT 0 HAS_TIMING_DRIVEN_SYNTHESIS_SUPPORT 1 HAS_TIMING_INFO_SUPPORT 1 HAS_TIMING_OPERATING_CONDITIONS 0 HAS_TIMING_SIMULATION_SUPPORT 1 HAS_TITAN_BASED_MAC_REGISTER_PACKER_SUPPORT 0 HAS_USER_HIGH_SPEED_LOW_POWER_TILE_SUPPORT 0 HAS_USE_FITTER_INFO_SUPPORT 1 HAS_VCCPD_POWER_RAIL 0 HAS_VERTICAL_MIGRATION_SUPPORT 1 HAS_VIEWDRAW_SYMBOL_SUPPORT 1 HAS_VIO_SUPPORT 1 HAS_VIRTUAL_DEVICES 0 HAS_WYSIWYG_DFFEAS_SUPPORT 0 HAS_XIBISO_WRITER_SUPPORT 0 INCREMENTAL_DESIGN_SUPPORTS_COMPATIBLE_CONSTRAINTS 0 IS_CONFIG_ROM 0 IS_HARDCOPY_FAMILY 0 LVDS_IO 0 M10K_MEMORY 0 M144K_MEMORY 0 M20K_MEMORY 0 M4K_MEMORY 1 M512_MEMORY 0 M9K_MEMORY 0 MLAB_MEMORY 0 MRAM_MEMORY 0 NO_RPE_SUPPORT 0 NO_SUPPORT_FOR_LOGICLOCK_CONTENT_BACK_ANNOTATION 0 NO_SUPPORT_FOR_STA_CLOCK_UNCERTAINTY_CHECK 1 NO_TDC_SUPPORT 0 POSTFIT_BAK_DATABASE_EXPORT_ENABLED 1 POSTMAP_BAK_DATABASE_EXPORT_ENABLED 1 PROGRAMMER_SUPPORT 1 QFIT_IN_DEVELOPMENT 0 QMAP_IN_DEVELOPMENT 0 RAM_LOGICAL_NAME_CHECKING_IN_CUT_ENABLED 1 REPORTS_METASTABILITY_MTBF 0 REQUIRES_INSTALLATION_PATCH 0 REQUIRES_LIST_OF_TEMPERATURE_AND_VOLTAGE_OPERATING_CONDITIONS 0 RESERVES_SIGNAL_PROBE_PINS 0 RESOLVE_MAX_FANOUT_EARLY 1 RESOLVE_MAX_FANOUT_LATE 0 RESPECTS_FIXED_SIZED_LOCKED_LOCATION_LOGICLOCK 1 RESTRICTED_USER_SELECTION 0 RISEFALL_SUPPORT_IS_HIDDEN 1 STRICT_TIMING_DB_CHECKS 0 SUPPORTS_ADDITIONAL_OPTIONS_FOR_UNUSED_IO 1 SUPPORTS_CRC 1 SUPPORTS_DIFFERENTIAL_AIOT_BOARD_TRACE_MODEL 0 SUPPORTS_DSP_BALANCING_BACK_ANNOTATION 0 SUPPORTS_GENERATION_OF_EARLY_POWER_ESTIMATOR_FILE 1 SUPPORTS_GLOBAL_SIGNAL_BACK_ANNOTATION 0 SUPPORTS_MAC_CHAIN_OUT_ADDER 0 SUPPORTS_RAM_PACKING_BACK_ANNOTATION 0 SUPPORTS_REG_PACKING_BACK_ANNOTATION 0 SUPPORTS_SIGNALPROBE_REGISTER_PIPELINING 1 SUPPORTS_SINGLE_ENDED_AIOT_BOARD_TRACE_MODEL 0 SUPPORTS_USER_MANUAL_LOGIC_DUPLICATION 1 TMV_RUN_CUSTOMIZABLE_VIEWER 1 TMV_RUN_INTERNAL_DETAILS 1 TMV_RUN_INTERNAL_DETAILS_ON_IO 1 TMV_RUN_INTERNAL_DETAILS_ON_IOBUF 0 TMV_RUN_INTERNAL_DETAILS_ON_LCELL 0 TMV_RUN_INTERNAL_DETAILS_ON_LRAM 0 TRANSCEIVER_3G_BLOCK 0 TRANSCEIVER_6G_BLOCK 0 USES_ACV_FOR_FLED 1 USES_ADB_FOR_BACK_ANNOTATION 0 USES_ASIC_ROUTING_POWER_CALCULATOR 0 USES_DATA_DRIVEN_PLL_COMPUTATION_UTIL 1 USES_DEV 1 USES_ICP_FOR_ECO_FITTER 0 USES_LIBERTY_TIMING 0 USES_POWER_SIGNAL_ACTIVITIES 1 USES_THIRD_GENERATION_TIMING_MODELS_TIS 0 USE_ADVANCED_IO_POWER_BY_DEFAULT 0 USE_ADVANCED_IO_TIMING_BY_DEFAULT 0 USE_BASE_FAMILY_DDB_PATH 0 USE_OCT_AUTO_CALIBRATION 0 USE_RISEFALL_ONLY 0 USE_SEPARATE_LIST_FOR_TECH_MIGRATION 0 USE_SINGLE_COMPILER_PASS_PLL_MIF_FILE_WRITER 0 USE_TITAN_IO_BASED_IO_REGISTER_PACKER_UTIL 0 WYSIWYG_BUS_WIDTH_CHECKING_IN_CUT_ENABLED 0</parameter>
   <parameter name="deviceFamilyName" value="Cyclone II" />
   <parameter name="debug_triggerArming" value="true" />
@@ -906,7 +907,7 @@
   <parameter name="dcache_numTCDM" value="_0" />
   <parameter name="dcache_lineSize" value="_32" />
   <parameter name="dcache_bursts" value="false" />
-  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='performance_counter_0.control_slave' start='0x0' end='0x40' /><slave name='mailbox_0.s1' start='0x40' end='0x50' /><slave name='mailbox_1.s1' start='0x50' end='0x60' /><slave name='jtag_uart_1.avalon_jtag_slave' start='0x60' end='0x68' /><slave name='mailbox_2.s1' start='0x70' end='0x80' /><slave name='mailbox_3.s1' start='0x80' end='0x90' /><slave name='cpu_1.jtag_debug_module' start='0x1000' end='0x1800' /><slave name='onchip_memory2_0.s1' start='0x3000' end='0x3200' /><slave name='onchip_memory2_1.s1' start='0x4000' end='0x4200' /><slave name='onchip_memory2_2.s1' start='0x6000' end='0x6200' /><slave name='onchip_memory2_3.s1' start='0x7000' end='0x7200' /><slave name='sdram_0.s1' start='0x800000' end='0x1000000' /><slave name='sram_0.avalon_sram_slave' start='0x1880000' end='0x1900000' /><slave name='keys.s1' start='0x1903010' end='0x1903020' /><slave name='video_pixel_buffer_dma_0.avalon_control_slave' start='0x19030B0' end='0x19030C0' /><slave name='sysid.control_slave' start='0x19030C0' end='0x19030C8' /><slave name='clocks_0.avalon_clocks_slave' start='0x19030D8' end='0x19030DA' /></address-map>]]></parameter>
+  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='performance_counter_0.control_slave' start='0x0' end='0x40' /><slave name='mailbox_0.s1' start='0x40' end='0x50' /><slave name='mailbox_1.s1' start='0x50' end='0x60' /><slave name='jtag_uart_1.avalon_jtag_slave' start='0x60' end='0x68' /><slave name='mailbox_2.s1' start='0x70' end='0x80' /><slave name='mailbox_3.s1' start='0x80' end='0x90' /><slave name='cpu_1.jtag_debug_module' start='0x1000' end='0x1800' /><slave name='onchip_memory2_0.s1' start='0x3000' end='0x3200' /><slave name='onchip_memory2_1.s1' start='0x4000' end='0x4200' /><slave name='onchip_memory2_2.s1' start='0x6000' end='0x6200' /><slave name='onchip_memory2_3.s1' start='0x7000' end='0x7200' /><slave name='sdram_0.s1' start='0x800000' end='0x1000000' /><slave name='keys.s1' start='0x1903010' end='0x1903020' /><slave name='video_pixel_buffer_dma_0.avalon_control_slave' start='0x19030B0' end='0x19030C0' /><slave name='sysid.control_slave' start='0x19030C0' end='0x19030C8' /><slave name='clocks_0.avalon_clocks_slave' start='0x19030D8' end='0x19030DA' /></address-map>]]></parameter>
   <parameter name="dataAddrWidth" value="25" />
   <parameter name="customInstSlavesSystemInfo"><![CDATA[<info><slave name="altera_nios_custom_instr_floating_point_inst" baseAddress="252" addressSpan="4" clockCycleType="VARIABLE" /><slave name="altera_nios_custom_instr_floating_point_inst" baseAddress="252" addressSpan="4" clockCycleType="VARIABLE" /><slave name="altera_nios_custom_instr_floating_point_inst" baseAddress="252" addressSpan="4" clockCycleType="VARIABLE" /><slave name="altera_nios_custom_instr_floating_point_inst" baseAddress="252" addressSpan="4" clockCycleType="VARIABLE" /></info>]]></parameter>
   <parameter name="cpuReset" value="false" />
@@ -1058,7 +1059,7 @@
   <parameter name="setting_HDLSimCachesCleared" value="true" />
   <parameter name="setting_HBreakTest" value="false" />
   <parameter name="resetSlave" value="sdram_0.s1" />
-  <parameter name="resetOffset" value="4194304" />
+  <parameter name="resetOffset" value="5242880" />
   <parameter name="muldiv_multiplierType" value="EmbeddedMulFast" />
   <parameter name="muldiv_divider" value="true" />
   <parameter name="mpu_useLimit" value="false" />
@@ -1078,15 +1079,15 @@
   <parameter name="mmu_TLBMissExcOffset" value="0" />
   <parameter name="manuallyAssignCpuID" value="false" />
   <parameter name="internalIrqMaskSystemInfo" value="2" />
-  <parameter name="instSlaveMapParam"><![CDATA[<address-map><slave name='cpu_2.jtag_debug_module' start='0x1800' end='0x2000' /><slave name='onchip_memory2_0.s1' start='0x3000' end='0x3200' /><slave name='onchip_memory2_1.s1' start='0x4000' end='0x4200' /><slave name='onchip_memory2_2.s1' start='0x6000' end='0x6200' /><slave name='onchip_memory2_3.s1' start='0x7000' end='0x7200' /><slave name='sdram_0.s1' start='0x800000' end='0x1000000' /><slave name='sram_0.avalon_sram_slave' start='0x1880000' end='0x1900000' /></address-map>]]></parameter>
-  <parameter name="instAddrWidth" value="25" />
+  <parameter name="instSlaveMapParam"><![CDATA[<address-map><slave name='cpu_2.jtag_debug_module' start='0x1800' end='0x2000' /><slave name='onchip_memory2_0.s1' start='0x3000' end='0x3200' /><slave name='onchip_memory2_1.s1' start='0x4000' end='0x4200' /><slave name='onchip_memory2_2.s1' start='0x6000' end='0x6200' /><slave name='onchip_memory2_3.s1' start='0x7000' end='0x7200' /><slave name='sdram_0.s1' start='0x800000' end='0x1000000' /></address-map>]]></parameter>
+  <parameter name="instAddrWidth" value="24" />
   <parameter name="impl" value="Fast" />
   <parameter name="icache_size" value="_4096" />
   <parameter name="icache_ramBlockType" value="Automatic" />
   <parameter name="icache_numTCIM" value="_0" />
   <parameter name="icache_burstType" value="None" />
   <parameter name="exceptionSlave" value="sdram_0.s1" />
-  <parameter name="exceptionOffset" value="4194336" />
+  <parameter name="exceptionOffset" value="5242912" />
   <parameter name="deviceFeaturesSystemInfo">NOT_LISTED 0 INSTALLED 1 IS_DEFAULT_FAMILY 0 ADDRESS_STALL 1 CELL_LEVEL_BACK_ANNOTATION_DISABLED 0 COMPILER_SUPPORT 1 DSP 0 DSP_SHIFTER_BLOCK 0 DUMP_ASM_LAB_BITS_FOR_POWER 1 EMUL 1 ENABLE_ADVANCED_IO_ANALYSIS_GUI_FEATURES 0 EPCS 1 ESB 0 FAKE1 0 FAKE2 0 FAKE3 0 FITTER_USE_FALLING_EDGE_DELAY 0 GENERATE_DC_ON_CURRENT_WARNING_FOR_INTERNAL_CLAMPING_DIODE 0 HARDCOPY 0 HAS_18_BIT_MULTS 0 HAS_ACE_SUPPORT 1 HAS_ADJUSTABLE_OUTPUT_IO_TIMING_MEAS_POINT 0 HAS_ADVANCED_IO_INVERTED_CORNER 0 HAS_ADVANCED_IO_POWER_SUPPORT 0 HAS_ADVANCED_IO_TIMING_SUPPORT 0 HAS_ALM_SUPPORT 0 HAS_ATOM_AND_ROUTING_POWER_MODELED_TOGETHER 0 HAS_AUTO_DERIVE_CLOCK_UNCERTAINTY_SUPPORT 0 HAS_AUTO_FIT_SUPPORT 1 HAS_BALANCED_OPT_TECHNIQUE_SUPPORT 1 HAS_BENEFICIAL_SKEW_SUPPORT 0 HAS_BITLEVEL_DRIVE_STRENGTH_CONTROL 0 HAS_BSDL_FILE_GENERATION 0 HAS_CGA_SUPPORT 1 HAS_CHECK_NETLIST_SUPPORT 1 HAS_CLOCK_REGION_CHECKER_ENABLED 1 HAS_CORE_JUNCTION_TEMP_DERATING 1 HAS_CROSSTALK_SUPPORT 0 HAS_CUSTOM_REGION_SUPPORT 1 HAS_DATA_DRIVEN_ACVQ_HSSI_SUPPORT 0 HAS_DDB_FDI_SUPPORT 0 HAS_DESIGN_ANALYZER_SUPPORT 1 HAS_DETAILED_IO_RAIL_POWER_MODEL 1 HAS_DETAILED_LEIM_STATIC_POWER_MODEL 0 HAS_DETAILED_LE_POWER_MODEL 1 HAS_DETAILED_ROUTING_MUX_STATIC_POWER_MODEL 0 HAS_DETAILED_THERMAL_CIRCUIT_PARAMETER_SUPPORT 1 HAS_DEVICE_MIGRATION_SUPPORT 1 HAS_DIAGONAL_MIGRATION_SUPPORT 0 HAS_EMIF_TOOLKIT_SUPPORT 0 HAS_FAMILY_VARIANT_MIGRATION_SUPPORT 0 HAS_FANOUT_FREE_NODE_SUPPORT 1 HAS_FAST_FIT_SUPPORT 1 HAS_FITTER_EARLY_TIMING_ESTIMATE_SUPPORT 1 HAS_FITTER_ECO_SUPPORT 1 HAS_FIT_NETLIST_OPT_RETIME_SUPPORT 1 HAS_FIT_NETLIST_OPT_SUPPORT 1 HAS_FORMAL_VERIFICATION_SUPPORT 1 HAS_FPGA_XCHANGE_SUPPORT 1 HAS_FSAC_LUTRAM_REGISTER_PACKING_SUPPORT 0 HAS_FULL_DAT_MIN_TIMING_SUPPORT 1 HAS_FULL_INCREMENTAL_DESIGN_SUPPORT 1 HAS_FUNCTIONAL_SIMULATION_SUPPORT 1 HAS_GLITCH_FILTERING_SUPPORT 1 HAS_HC_READY_SUPPORT 0 HAS_HIGH_SPEED_LOW_POWER_TILE_SUPPORT 0 HAS_HOLD_TIME_AVOIDANCE_ACROSS_CLOCK_SPINE_SUPPORT 1 HAS_HSPICE_WRITER_SUPPORT 0 HAS_HSSI_POWER_CALCULATOR 0 HAS_IBISO_WRITER_SUPPORT 1 HAS_INCREMENTAL_DAT_SUPPORT 0 HAS_INCREMENTAL_SYNTHESIS_SUPPORT 1 HAS_IO_ASSIGNMENT_ANALYSIS_SUPPORT 1 HAS_IO_DECODER 0 HAS_IO_PLACEMENT_OPTIMIZATION_SUPPORT 1 HAS_IO_SMART_RECOMPILE_SUPPORT 1 HAS_JITTER_SUPPORT 0 HAS_JTAG_SLD_HUB_SUPPORT 1 HAS_LOGIC_LOCK_SUPPORT 1 HAS_MICROPROCESSOR 0 HAS_MIF_SMART_COMPILE_SUPPORT 1 HAS_MINMAX_TIMING_MODELING_SUPPORT 0 HAS_MIN_TIMING_ANALYSIS_SUPPORT 1 HAS_MUX_RESTRUCTURE_SUPPORT 1 HAS_NEW_HC_FLOW_SUPPORT 0 HAS_NEW_SERDES_MAX_RESOURCE_COUNT_REPORTING_SUPPORT 0 HAS_NEW_VPR_SUPPORT 1 HAS_NONSOCKET_TECHNOLOGY_MIGRATION_SUPPORT 0 HAS_NO_JTAG_USERCODE_SUPPORT 0 HAS_OPERATING_SETTINGS_AND_CONDITIONS_REPORTING_SUPPORT 1 HAS_PAD_LOCATION_ASSIGNMENT_SUPPORT 1 HAS_PARTIAL_RECONFIG_SUPPORT 0 HAS_PHYSICAL_NETLIST_OUTPUT 0 HAS_PHYSICAL_ROUTING_SUPPORT 0 HAS_PIN_SPECIFIC_VOLTAGE_SUPPORT 0 HAS_PLDM_REF_SUPPORT 1 HAS_POWER_ESTIMATION_SUPPORT 1 HAS_PRELIMINARY_CLOCK_UNCERTAINTY_NUMBERS 0 HAS_PRE_FITTER_FPP_SUPPORT 0 HAS_PRE_FITTER_LUTRAM_NETLIST_CHECKER_ENABLED 0 HAS_PVA_SUPPORT 1 HAS_RCF_SUPPORT 1 HAS_RCF_SUPPORT_FOR_DEBUGGING 0 HAS_RED_BLACK_SEPARATION_SUPPORT 0 HAS_RE_LEVEL_TIMING_GRAPH_SUPPORT 0 HAS_RISEFALL_DELAY_SUPPORT 1 HAS_SIGNAL_PROBE_SUPPORT 1 HAS_SIGNAL_TAP_SUPPORT 1 HAS_SIMULATOR_SUPPORT 1 HAS_SPLIT_IO_SUPPORT 0 HAS_SPLIT_LC_SUPPORT 1 HAS_SYNTH_FSYN_NETLIST_OPT_SUPPORT 0 HAS_SYNTH_NETLIST_OPT_RETIME_SUPPORT 1 HAS_SYNTH_NETLIST_OPT_SUPPORT 1 HAS_TECHNOLOGY_MIGRATION_SUPPORT 0 HAS_TEMPLATED_REGISTER_PACKING_SUPPORT 1 HAS_TIME_BORROWING_SUPPORT 0 HAS_TIMING_DRIVEN_SYNTHESIS_SUPPORT 1 HAS_TIMING_INFO_SUPPORT 1 HAS_TIMING_OPERATING_CONDITIONS 0 HAS_TIMING_SIMULATION_SUPPORT 1 HAS_TITAN_BASED_MAC_REGISTER_PACKER_SUPPORT 0 HAS_USER_HIGH_SPEED_LOW_POWER_TILE_SUPPORT 0 HAS_USE_FITTER_INFO_SUPPORT 1 HAS_VCCPD_POWER_RAIL 0 HAS_VERTICAL_MIGRATION_SUPPORT 1 HAS_VIEWDRAW_SYMBOL_SUPPORT 1 HAS_VIO_SUPPORT 1 HAS_VIRTUAL_DEVICES 0 HAS_WYSIWYG_DFFEAS_SUPPORT 0 HAS_XIBISO_WRITER_SUPPORT 0 INCREMENTAL_DESIGN_SUPPORTS_COMPATIBLE_CONSTRAINTS 0 IS_CONFIG_ROM 0 IS_HARDCOPY_FAMILY 0 LVDS_IO 0 M10K_MEMORY 0 M144K_MEMORY 0 M20K_MEMORY 0 M4K_MEMORY 1 M512_MEMORY 0 M9K_MEMORY 0 MLAB_MEMORY 0 MRAM_MEMORY 0 NO_RPE_SUPPORT 0 NO_SUPPORT_FOR_LOGICLOCK_CONTENT_BACK_ANNOTATION 0 NO_SUPPORT_FOR_STA_CLOCK_UNCERTAINTY_CHECK 1 NO_TDC_SUPPORT 0 POSTFIT_BAK_DATABASE_EXPORT_ENABLED 1 POSTMAP_BAK_DATABASE_EXPORT_ENABLED 1 PROGRAMMER_SUPPORT 1 QFIT_IN_DEVELOPMENT 0 QMAP_IN_DEVELOPMENT 0 RAM_LOGICAL_NAME_CHECKING_IN_CUT_ENABLED 1 REPORTS_METASTABILITY_MTBF 0 REQUIRES_INSTALLATION_PATCH 0 REQUIRES_LIST_OF_TEMPERATURE_AND_VOLTAGE_OPERATING_CONDITIONS 0 RESERVES_SIGNAL_PROBE_PINS 0 RESOLVE_MAX_FANOUT_EARLY 1 RESOLVE_MAX_FANOUT_LATE 0 RESPECTS_FIXED_SIZED_LOCKED_LOCATION_LOGICLOCK 1 RESTRICTED_USER_SELECTION 0 RISEFALL_SUPPORT_IS_HIDDEN 1 STRICT_TIMING_DB_CHECKS 0 SUPPORTS_ADDITIONAL_OPTIONS_FOR_UNUSED_IO 1 SUPPORTS_CRC 1 SUPPORTS_DIFFERENTIAL_AIOT_BOARD_TRACE_MODEL 0 SUPPORTS_DSP_BALANCING_BACK_ANNOTATION 0 SUPPORTS_GENERATION_OF_EARLY_POWER_ESTIMATOR_FILE 1 SUPPORTS_GLOBAL_SIGNAL_BACK_ANNOTATION 0 SUPPORTS_MAC_CHAIN_OUT_ADDER 0 SUPPORTS_RAM_PACKING_BACK_ANNOTATION 0 SUPPORTS_REG_PACKING_BACK_ANNOTATION 0 SUPPORTS_SIGNALPROBE_REGISTER_PIPELINING 1 SUPPORTS_SINGLE_ENDED_AIOT_BOARD_TRACE_MODEL 0 SUPPORTS_USER_MANUAL_LOGIC_DUPLICATION 1 TMV_RUN_CUSTOMIZABLE_VIEWER 1 TMV_RUN_INTERNAL_DETAILS 1 TMV_RUN_INTERNAL_DETAILS_ON_IO 1 TMV_RUN_INTERNAL_DETAILS_ON_IOBUF 0 TMV_RUN_INTERNAL_DETAILS_ON_LCELL 0 TMV_RUN_INTERNAL_DETAILS_ON_LRAM 0 TRANSCEIVER_3G_BLOCK 0 TRANSCEIVER_6G_BLOCK 0 USES_ACV_FOR_FLED 1 USES_ADB_FOR_BACK_ANNOTATION 0 USES_ASIC_ROUTING_POWER_CALCULATOR 0 USES_DATA_DRIVEN_PLL_COMPUTATION_UTIL 1 USES_DEV 1 USES_ICP_FOR_ECO_FITTER 0 USES_LIBERTY_TIMING 0 USES_POWER_SIGNAL_ACTIVITIES 1 USES_THIRD_GENERATION_TIMING_MODELS_TIS 0 USE_ADVANCED_IO_POWER_BY_DEFAULT 0 USE_ADVANCED_IO_TIMING_BY_DEFAULT 0 USE_BASE_FAMILY_DDB_PATH 0 USE_OCT_AUTO_CALIBRATION 0 USE_RISEFALL_ONLY 0 USE_SEPARATE_LIST_FOR_TECH_MIGRATION 0 USE_SINGLE_COMPILER_PASS_PLL_MIF_FILE_WRITER 0 USE_TITAN_IO_BASED_IO_REGISTER_PACKER_UTIL 0 WYSIWYG_BUS_WIDTH_CHECKING_IN_CUT_ENABLED 0</parameter>
   <parameter name="deviceFamilyName" value="Cyclone II" />
   <parameter name="debug_triggerArming" value="true" />
@@ -1102,7 +1103,7 @@
   <parameter name="dcache_numTCDM" value="_0" />
   <parameter name="dcache_lineSize" value="_32" />
   <parameter name="dcache_bursts" value="false" />
-  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='performance_counter_0.control_slave' start='0x0' end='0x40' /><slave name='mailbox_0.s1' start='0x40' end='0x50' /><slave name='mailbox_1.s1' start='0x50' end='0x60' /><slave name='jtag_uart_2.avalon_jtag_slave' start='0x68' end='0x70' /><slave name='mailbox_2.s1' start='0x70' end='0x80' /><slave name='mailbox_3.s1' start='0x80' end='0x90' /><slave name='cpu_2.jtag_debug_module' start='0x1800' end='0x2000' /><slave name='onchip_memory2_0.s1' start='0x3000' end='0x3200' /><slave name='onchip_memory2_1.s1' start='0x4000' end='0x4200' /><slave name='onchip_memory2_2.s1' start='0x6000' end='0x6200' /><slave name='onchip_memory2_3.s1' start='0x7000' end='0x7200' /><slave name='sdram_0.s1' start='0x800000' end='0x1000000' /><slave name='sram_0.avalon_sram_slave' start='0x1880000' end='0x1900000' /><slave name='keys.s1' start='0x1903010' end='0x1903020' /><slave name='video_pixel_buffer_dma_0.avalon_control_slave' start='0x19030B0' end='0x19030C0' /><slave name='sysid.control_slave' start='0x19030C0' end='0x19030C8' /><slave name='clocks_0.avalon_clocks_slave' start='0x19030D8' end='0x19030DA' /></address-map>]]></parameter>
+  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='performance_counter_0.control_slave' start='0x0' end='0x40' /><slave name='mailbox_0.s1' start='0x40' end='0x50' /><slave name='mailbox_1.s1' start='0x50' end='0x60' /><slave name='jtag_uart_2.avalon_jtag_slave' start='0x68' end='0x70' /><slave name='mailbox_2.s1' start='0x70' end='0x80' /><slave name='mailbox_3.s1' start='0x80' end='0x90' /><slave name='cpu_2.jtag_debug_module' start='0x1800' end='0x2000' /><slave name='onchip_memory2_0.s1' start='0x3000' end='0x3200' /><slave name='onchip_memory2_1.s1' start='0x4000' end='0x4200' /><slave name='onchip_memory2_2.s1' start='0x6000' end='0x6200' /><slave name='onchip_memory2_3.s1' start='0x7000' end='0x7200' /><slave name='sdram_0.s1' start='0x800000' end='0x1000000' /><slave name='keys.s1' start='0x1903010' end='0x1903020' /><slave name='video_pixel_buffer_dma_0.avalon_control_slave' start='0x19030B0' end='0x19030C0' /><slave name='sysid.control_slave' start='0x19030C0' end='0x19030C8' /><slave name='clocks_0.avalon_clocks_slave' start='0x19030D8' end='0x19030DA' /></address-map>]]></parameter>
   <parameter name="dataAddrWidth" value="25" />
   <parameter name="customInstSlavesSystemInfo"><![CDATA[<info><slave name="altera_nios_custom_instr_floating_point_inst" baseAddress="252" addressSpan="4" clockCycleType="VARIABLE" /><slave name="altera_nios_custom_instr_floating_point_inst" baseAddress="252" addressSpan="4" clockCycleType="VARIABLE" /><slave name="altera_nios_custom_instr_floating_point_inst" baseAddress="252" addressSpan="4" clockCycleType="VARIABLE" /><slave name="altera_nios_custom_instr_floating_point_inst" baseAddress="252" addressSpan="4" clockCycleType="VARIABLE" /></info>]]></parameter>
   <parameter name="cpuReset" value="false" />
@@ -1168,7 +1169,7 @@
   <parameter name="setting_HDLSimCachesCleared" value="true" />
   <parameter name="setting_HBreakTest" value="false" />
   <parameter name="resetSlave" value="sdram_0.s1" />
-  <parameter name="resetOffset" value="6291456" />
+  <parameter name="resetOffset" value="6619136" />
   <parameter name="muldiv_multiplierType" value="EmbeddedMulFast" />
   <parameter name="muldiv_divider" value="true" />
   <parameter name="mpu_useLimit" value="false" />
@@ -1188,15 +1189,15 @@
   <parameter name="mmu_TLBMissExcOffset" value="0" />
   <parameter name="manuallyAssignCpuID" value="false" />
   <parameter name="internalIrqMaskSystemInfo" value="2" />
-  <parameter name="instSlaveMapParam"><![CDATA[<address-map><slave name='cpu_3.jtag_debug_module' start='0x2000' end='0x2800' /><slave name='onchip_memory2_0.s1' start='0x3000' end='0x3200' /><slave name='onchip_memory2_1.s1' start='0x4000' end='0x4200' /><slave name='onchip_memory2_2.s1' start='0x6000' end='0x6200' /><slave name='onchip_memory2_3.s1' start='0x7000' end='0x7200' /><slave name='sdram_0.s1' start='0x800000' end='0x1000000' /><slave name='sram_0.avalon_sram_slave' start='0x1880000' end='0x1900000' /></address-map>]]></parameter>
-  <parameter name="instAddrWidth" value="25" />
+  <parameter name="instSlaveMapParam"><![CDATA[<address-map><slave name='cpu_3.jtag_debug_module' start='0x2000' end='0x2800' /><slave name='onchip_memory2_0.s1' start='0x3000' end='0x3200' /><slave name='onchip_memory2_1.s1' start='0x4000' end='0x4200' /><slave name='onchip_memory2_2.s1' start='0x6000' end='0x6200' /><slave name='onchip_memory2_3.s1' start='0x7000' end='0x7200' /><slave name='sdram_0.s1' start='0x800000' end='0x1000000' /></address-map>]]></parameter>
+  <parameter name="instAddrWidth" value="24" />
   <parameter name="impl" value="Fast" />
   <parameter name="icache_size" value="_4096" />
   <parameter name="icache_ramBlockType" value="Automatic" />
   <parameter name="icache_numTCIM" value="_0" />
   <parameter name="icache_burstType" value="None" />
   <parameter name="exceptionSlave" value="sdram_0.s1" />
-  <parameter name="exceptionOffset" value="6291488" />
+  <parameter name="exceptionOffset" value="6619168" />
   <parameter name="deviceFeaturesSystemInfo">NOT_LISTED 0 INSTALLED 1 IS_DEFAULT_FAMILY 0 ADDRESS_STALL 1 CELL_LEVEL_BACK_ANNOTATION_DISABLED 0 COMPILER_SUPPORT 1 DSP 0 DSP_SHIFTER_BLOCK 0 DUMP_ASM_LAB_BITS_FOR_POWER 1 EMUL 1 ENABLE_ADVANCED_IO_ANALYSIS_GUI_FEATURES 0 EPCS 1 ESB 0 FAKE1 0 FAKE2 0 FAKE3 0 FITTER_USE_FALLING_EDGE_DELAY 0 GENERATE_DC_ON_CURRENT_WARNING_FOR_INTERNAL_CLAMPING_DIODE 0 HARDCOPY 0 HAS_18_BIT_MULTS 0 HAS_ACE_SUPPORT 1 HAS_ADJUSTABLE_OUTPUT_IO_TIMING_MEAS_POINT 0 HAS_ADVANCED_IO_INVERTED_CORNER 0 HAS_ADVANCED_IO_POWER_SUPPORT 0 HAS_ADVANCED_IO_TIMING_SUPPORT 0 HAS_ALM_SUPPORT 0 HAS_ATOM_AND_ROUTING_POWER_MODELED_TOGETHER 0 HAS_AUTO_DERIVE_CLOCK_UNCERTAINTY_SUPPORT 0 HAS_AUTO_FIT_SUPPORT 1 HAS_BALANCED_OPT_TECHNIQUE_SUPPORT 1 HAS_BENEFICIAL_SKEW_SUPPORT 0 HAS_BITLEVEL_DRIVE_STRENGTH_CONTROL 0 HAS_BSDL_FILE_GENERATION 0 HAS_CGA_SUPPORT 1 HAS_CHECK_NETLIST_SUPPORT 1 HAS_CLOCK_REGION_CHECKER_ENABLED 1 HAS_CORE_JUNCTION_TEMP_DERATING 1 HAS_CROSSTALK_SUPPORT 0 HAS_CUSTOM_REGION_SUPPORT 1 HAS_DATA_DRIVEN_ACVQ_HSSI_SUPPORT 0 HAS_DDB_FDI_SUPPORT 0 HAS_DESIGN_ANALYZER_SUPPORT 1 HAS_DETAILED_IO_RAIL_POWER_MODEL 1 HAS_DETAILED_LEIM_STATIC_POWER_MODEL 0 HAS_DETAILED_LE_POWER_MODEL 1 HAS_DETAILED_ROUTING_MUX_STATIC_POWER_MODEL 0 HAS_DETAILED_THERMAL_CIRCUIT_PARAMETER_SUPPORT 1 HAS_DEVICE_MIGRATION_SUPPORT 1 HAS_DIAGONAL_MIGRATION_SUPPORT 0 HAS_EMIF_TOOLKIT_SUPPORT 0 HAS_FAMILY_VARIANT_MIGRATION_SUPPORT 0 HAS_FANOUT_FREE_NODE_SUPPORT 1 HAS_FAST_FIT_SUPPORT 1 HAS_FITTER_EARLY_TIMING_ESTIMATE_SUPPORT 1 HAS_FITTER_ECO_SUPPORT 1 HAS_FIT_NETLIST_OPT_RETIME_SUPPORT 1 HAS_FIT_NETLIST_OPT_SUPPORT 1 HAS_FORMAL_VERIFICATION_SUPPORT 1 HAS_FPGA_XCHANGE_SUPPORT 1 HAS_FSAC_LUTRAM_REGISTER_PACKING_SUPPORT 0 HAS_FULL_DAT_MIN_TIMING_SUPPORT 1 HAS_FULL_INCREMENTAL_DESIGN_SUPPORT 1 HAS_FUNCTIONAL_SIMULATION_SUPPORT 1 HAS_GLITCH_FILTERING_SUPPORT 1 HAS_HC_READY_SUPPORT 0 HAS_HIGH_SPEED_LOW_POWER_TILE_SUPPORT 0 HAS_HOLD_TIME_AVOIDANCE_ACROSS_CLOCK_SPINE_SUPPORT 1 HAS_HSPICE_WRITER_SUPPORT 0 HAS_HSSI_POWER_CALCULATOR 0 HAS_IBISO_WRITER_SUPPORT 1 HAS_INCREMENTAL_DAT_SUPPORT 0 HAS_INCREMENTAL_SYNTHESIS_SUPPORT 1 HAS_IO_ASSIGNMENT_ANALYSIS_SUPPORT 1 HAS_IO_DECODER 0 HAS_IO_PLACEMENT_OPTIMIZATION_SUPPORT 1 HAS_IO_SMART_RECOMPILE_SUPPORT 1 HAS_JITTER_SUPPORT 0 HAS_JTAG_SLD_HUB_SUPPORT 1 HAS_LOGIC_LOCK_SUPPORT 1 HAS_MICROPROCESSOR 0 HAS_MIF_SMART_COMPILE_SUPPORT 1 HAS_MINMAX_TIMING_MODELING_SUPPORT 0 HAS_MIN_TIMING_ANALYSIS_SUPPORT 1 HAS_MUX_RESTRUCTURE_SUPPORT 1 HAS_NEW_HC_FLOW_SUPPORT 0 HAS_NEW_SERDES_MAX_RESOURCE_COUNT_REPORTING_SUPPORT 0 HAS_NEW_VPR_SUPPORT 1 HAS_NONSOCKET_TECHNOLOGY_MIGRATION_SUPPORT 0 HAS_NO_JTAG_USERCODE_SUPPORT 0 HAS_OPERATING_SETTINGS_AND_CONDITIONS_REPORTING_SUPPORT 1 HAS_PAD_LOCATION_ASSIGNMENT_SUPPORT 1 HAS_PARTIAL_RECONFIG_SUPPORT 0 HAS_PHYSICAL_NETLIST_OUTPUT 0 HAS_PHYSICAL_ROUTING_SUPPORT 0 HAS_PIN_SPECIFIC_VOLTAGE_SUPPORT 0 HAS_PLDM_REF_SUPPORT 1 HAS_POWER_ESTIMATION_SUPPORT 1 HAS_PRELIMINARY_CLOCK_UNCERTAINTY_NUMBERS 0 HAS_PRE_FITTER_FPP_SUPPORT 0 HAS_PRE_FITTER_LUTRAM_NETLIST_CHECKER_ENABLED 0 HAS_PVA_SUPPORT 1 HAS_RCF_SUPPORT 1 HAS_RCF_SUPPORT_FOR_DEBUGGING 0 HAS_RED_BLACK_SEPARATION_SUPPORT 0 HAS_RE_LEVEL_TIMING_GRAPH_SUPPORT 0 HAS_RISEFALL_DELAY_SUPPORT 1 HAS_SIGNAL_PROBE_SUPPORT 1 HAS_SIGNAL_TAP_SUPPORT 1 HAS_SIMULATOR_SUPPORT 1 HAS_SPLIT_IO_SUPPORT 0 HAS_SPLIT_LC_SUPPORT 1 HAS_SYNTH_FSYN_NETLIST_OPT_SUPPORT 0 HAS_SYNTH_NETLIST_OPT_RETIME_SUPPORT 1 HAS_SYNTH_NETLIST_OPT_SUPPORT 1 HAS_TECHNOLOGY_MIGRATION_SUPPORT 0 HAS_TEMPLATED_REGISTER_PACKING_SUPPORT 1 HAS_TIME_BORROWING_SUPPORT 0 HAS_TIMING_DRIVEN_SYNTHESIS_SUPPORT 1 HAS_TIMING_INFO_SUPPORT 1 HAS_TIMING_OPERATING_CONDITIONS 0 HAS_TIMING_SIMULATION_SUPPORT 1 HAS_TITAN_BASED_MAC_REGISTER_PACKER_SUPPORT 0 HAS_USER_HIGH_SPEED_LOW_POWER_TILE_SUPPORT 0 HAS_USE_FITTER_INFO_SUPPORT 1 HAS_VCCPD_POWER_RAIL 0 HAS_VERTICAL_MIGRATION_SUPPORT 1 HAS_VIEWDRAW_SYMBOL_SUPPORT 1 HAS_VIO_SUPPORT 1 HAS_VIRTUAL_DEVICES 0 HAS_WYSIWYG_DFFEAS_SUPPORT 0 HAS_XIBISO_WRITER_SUPPORT 0 INCREMENTAL_DESIGN_SUPPORTS_COMPATIBLE_CONSTRAINTS 0 IS_CONFIG_ROM 0 IS_HARDCOPY_FAMILY 0 LVDS_IO 0 M10K_MEMORY 0 M144K_MEMORY 0 M20K_MEMORY 0 M4K_MEMORY 1 M512_MEMORY 0 M9K_MEMORY 0 MLAB_MEMORY 0 MRAM_MEMORY 0 NO_RPE_SUPPORT 0 NO_SUPPORT_FOR_LOGICLOCK_CONTENT_BACK_ANNOTATION 0 NO_SUPPORT_FOR_STA_CLOCK_UNCERTAINTY_CHECK 1 NO_TDC_SUPPORT 0 POSTFIT_BAK_DATABASE_EXPORT_ENABLED 1 POSTMAP_BAK_DATABASE_EXPORT_ENABLED 1 PROGRAMMER_SUPPORT 1 QFIT_IN_DEVELOPMENT 0 QMAP_IN_DEVELOPMENT 0 RAM_LOGICAL_NAME_CHECKING_IN_CUT_ENABLED 1 REPORTS_METASTABILITY_MTBF 0 REQUIRES_INSTALLATION_PATCH 0 REQUIRES_LIST_OF_TEMPERATURE_AND_VOLTAGE_OPERATING_CONDITIONS 0 RESERVES_SIGNAL_PROBE_PINS 0 RESOLVE_MAX_FANOUT_EARLY 1 RESOLVE_MAX_FANOUT_LATE 0 RESPECTS_FIXED_SIZED_LOCKED_LOCATION_LOGICLOCK 1 RESTRICTED_USER_SELECTION 0 RISEFALL_SUPPORT_IS_HIDDEN 1 STRICT_TIMING_DB_CHECKS 0 SUPPORTS_ADDITIONAL_OPTIONS_FOR_UNUSED_IO 1 SUPPORTS_CRC 1 SUPPORTS_DIFFERENTIAL_AIOT_BOARD_TRACE_MODEL 0 SUPPORTS_DSP_BALANCING_BACK_ANNOTATION 0 SUPPORTS_GENERATION_OF_EARLY_POWER_ESTIMATOR_FILE 1 SUPPORTS_GLOBAL_SIGNAL_BACK_ANNOTATION 0 SUPPORTS_MAC_CHAIN_OUT_ADDER 0 SUPPORTS_RAM_PACKING_BACK_ANNOTATION 0 SUPPORTS_REG_PACKING_BACK_ANNOTATION 0 SUPPORTS_SIGNALPROBE_REGISTER_PIPELINING 1 SUPPORTS_SINGLE_ENDED_AIOT_BOARD_TRACE_MODEL 0 SUPPORTS_USER_MANUAL_LOGIC_DUPLICATION 1 TMV_RUN_CUSTOMIZABLE_VIEWER 1 TMV_RUN_INTERNAL_DETAILS 1 TMV_RUN_INTERNAL_DETAILS_ON_IO 1 TMV_RUN_INTERNAL_DETAILS_ON_IOBUF 0 TMV_RUN_INTERNAL_DETAILS_ON_LCELL 0 TMV_RUN_INTERNAL_DETAILS_ON_LRAM 0 TRANSCEIVER_3G_BLOCK 0 TRANSCEIVER_6G_BLOCK 0 USES_ACV_FOR_FLED 1 USES_ADB_FOR_BACK_ANNOTATION 0 USES_ASIC_ROUTING_POWER_CALCULATOR 0 USES_DATA_DRIVEN_PLL_COMPUTATION_UTIL 1 USES_DEV 1 USES_ICP_FOR_ECO_FITTER 0 USES_LIBERTY_TIMING 0 USES_POWER_SIGNAL_ACTIVITIES 1 USES_THIRD_GENERATION_TIMING_MODELS_TIS 0 USE_ADVANCED_IO_POWER_BY_DEFAULT 0 USE_ADVANCED_IO_TIMING_BY_DEFAULT 0 USE_BASE_FAMILY_DDB_PATH 0 USE_OCT_AUTO_CALIBRATION 0 USE_RISEFALL_ONLY 0 USE_SEPARATE_LIST_FOR_TECH_MIGRATION 0 USE_SINGLE_COMPILER_PASS_PLL_MIF_FILE_WRITER 0 USE_TITAN_IO_BASED_IO_REGISTER_PACKER_UTIL 0 WYSIWYG_BUS_WIDTH_CHECKING_IN_CUT_ENABLED 0</parameter>
   <parameter name="deviceFamilyName" value="Cyclone II" />
   <parameter name="debug_triggerArming" value="true" />
@@ -1212,7 +1213,7 @@
   <parameter name="dcache_numTCDM" value="_0" />
   <parameter name="dcache_lineSize" value="_32" />
   <parameter name="dcache_bursts" value="false" />
-  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='performance_counter_0.control_slave' start='0x0' end='0x40' /><slave name='mailbox_0.s1' start='0x40' end='0x50' /><slave name='mailbox_1.s1' start='0x50' end='0x60' /><slave name='mailbox_2.s1' start='0x70' end='0x80' /><slave name='mailbox_3.s1' start='0x80' end='0x90' /><slave name='jtag_uart_3.avalon_jtag_slave' start='0x90' end='0x98' /><slave name='cpu_3.jtag_debug_module' start='0x2000' end='0x2800' /><slave name='onchip_memory2_0.s1' start='0x3000' end='0x3200' /><slave name='onchip_memory2_1.s1' start='0x4000' end='0x4200' /><slave name='onchip_memory2_2.s1' start='0x6000' end='0x6200' /><slave name='onchip_memory2_3.s1' start='0x7000' end='0x7200' /><slave name='sdram_0.s1' start='0x800000' end='0x1000000' /><slave name='sram_0.avalon_sram_slave' start='0x1880000' end='0x1900000' /><slave name='keys.s1' start='0x1903010' end='0x1903020' /><slave name='video_pixel_buffer_dma_0.avalon_control_slave' start='0x19030B0' end='0x19030C0' /><slave name='sysid.control_slave' start='0x19030C0' end='0x19030C8' /><slave name='clocks_0.avalon_clocks_slave' start='0x19030D8' end='0x19030DA' /></address-map>]]></parameter>
+  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='performance_counter_0.control_slave' start='0x0' end='0x40' /><slave name='mailbox_0.s1' start='0x40' end='0x50' /><slave name='mailbox_1.s1' start='0x50' end='0x60' /><slave name='mailbox_2.s1' start='0x70' end='0x80' /><slave name='mailbox_3.s1' start='0x80' end='0x90' /><slave name='jtag_uart_3.avalon_jtag_slave' start='0x90' end='0x98' /><slave name='cpu_3.jtag_debug_module' start='0x2000' end='0x2800' /><slave name='onchip_memory2_0.s1' start='0x3000' end='0x3200' /><slave name='onchip_memory2_1.s1' start='0x4000' end='0x4200' /><slave name='onchip_memory2_2.s1' start='0x6000' end='0x6200' /><slave name='onchip_memory2_3.s1' start='0x7000' end='0x7200' /><slave name='sdram_0.s1' start='0x800000' end='0x1000000' /><slave name='keys.s1' start='0x1903010' end='0x1903020' /><slave name='video_pixel_buffer_dma_0.avalon_control_slave' start='0x19030B0' end='0x19030C0' /><slave name='sysid.control_slave' start='0x19030C0' end='0x19030C8' /><slave name='clocks_0.avalon_clocks_slave' start='0x19030D8' end='0x19030DA' /></address-map>]]></parameter>
   <parameter name="dataAddrWidth" value="25" />
   <parameter name="customInstSlavesSystemInfo"><![CDATA[<info><slave name="altera_nios_custom_instr_floating_point_inst" baseAddress="252" addressSpan="4" clockCycleType="VARIABLE" /><slave name="altera_nios_custom_instr_floating_point_inst" baseAddress="252" addressSpan="4" clockCycleType="VARIABLE" /><slave name="altera_nios_custom_instr_floating_point_inst" baseAddress="252" addressSpan="4" clockCycleType="VARIABLE" /><slave name="altera_nios_custom_instr_floating_point_inst" baseAddress="252" addressSpan="4" clockCycleType="VARIABLE" /></info>]]></parameter>
   <parameter name="cpuReset" value="false" />
@@ -1346,13 +1347,7 @@
    version="12.0"
    start="clk_0.clk"
    end="clocks_0.clk_in_primary" />
- <connection
-   kind="clock"
-   version="12.0"
-   start="clocks_0.sdram_clk"
-   end="sdram_0.clk" />
  <connection kind="clock" version="12.0" start="clocks_0.sys_clk" end="cpu_0.clk" />
- <connection kind="clock" version="12.0" start="clocks_0.sys_clk" end="sysid.clk" />
  <connection
    kind="interrupt"
    version="12.0"
@@ -1374,14 +1369,6 @@
    kind="avalon"
    version="12.0"
    start="cpu_0.data_master"
-   end="sram_0.avalon_sram_slave">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01880000" />
- </connection>
- <connection
-   kind="avalon"
-   version="12.0"
-   start="cpu_0.data_master"
    end="video_pixel_buffer_dma_0.avalon_control_slave">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x019030b0" />
@@ -1397,33 +1384,10 @@
    start="clocks_0.sys_clk"
    end="video_rgb_resampler_0.clock_reset" />
  <connection
-   kind="clock"
-   version="12.0"
-   start="clocks_0.sys_clk"
-   end="video_scaler_0.clock_reset" />
- <connection
    kind="avalon_streaming"
    version="12.0"
    start="video_pixel_buffer_dma_0.avalon_pixel_source"
    end="video_rgb_resampler_0.avalon_rgb_sink" />
- <connection
-   kind="avalon"
-   version="12.0"
-   start="video_pixel_buffer_dma_0.avalon_pixel_dma_master"
-   end="sram_0.avalon_sram_slave">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01880000" />
- </connection>
- <connection
-   kind="clock"
-   version="12.0"
-   start="clocks_0.sys_clk"
-   end="sram_0.clock_reset" />
- <connection
-   kind="avalon_streaming"
-   version="12.0"
-   start="video_rgb_resampler_0.avalon_rgb_source"
-   end="video_scaler_0.avalon_scaler_sink" />
  <connection
    kind="clock"
    version="12.0"
@@ -1488,14 +1452,6 @@
  <connection
    kind="avalon"
    version="12.0"
-   start="cpu_1.instruction_master"
-   end="sram_0.avalon_sram_slave">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01880000" />
- </connection>
- <connection
-   kind="avalon"
-   version="12.0"
    start="cpu_1.data_master"
    end="sdram_0.s1">
   <parameter name="arbitrationPriority" value="1" />
@@ -1520,14 +1476,6 @@
  <connection kind="avalon" version="12.0" start="cpu_1.data_master" end="keys.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x01903010" />
- </connection>
- <connection
-   kind="avalon"
-   version="12.0"
-   start="cpu_1.data_master"
-   end="sram_0.avalon_sram_slave">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01880000" />
  </connection>
  <connection
    kind="avalon"
@@ -1767,14 +1715,6 @@
    kind="avalon"
    version="12.0"
    start="cpu_2.instruction_master"
-   end="sram_0.avalon_sram_slave">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01880000" />
- </connection>
- <connection
-   kind="avalon"
-   version="12.0"
-   start="cpu_2.instruction_master"
    end="onchip_memory2_0.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x3000" />
@@ -1814,14 +1754,6 @@
  <connection kind="avalon" version="12.0" start="cpu_2.data_master" end="keys.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x01903010" />
- </connection>
- <connection
-   kind="avalon"
-   version="12.0"
-   start="cpu_2.data_master"
-   end="sram_0.avalon_sram_slave">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01880000" />
  </connection>
  <connection
    kind="avalon"
@@ -1908,14 +1840,6 @@
    kind="avalon"
    version="12.0"
    start="cpu_3.instruction_master"
-   end="sram_0.avalon_sram_slave">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01880000" />
- </connection>
- <connection
-   kind="avalon"
-   version="12.0"
-   start="cpu_3.instruction_master"
    end="onchip_memory2_0.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x3000" />
@@ -1955,14 +1879,6 @@
  <connection kind="avalon" version="12.0" start="cpu_3.data_master" end="keys.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x01903010" />
- </connection>
- <connection
-   kind="avalon"
-   version="12.0"
-   start="cpu_3.data_master"
-   end="sram_0.avalon_sram_slave">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01880000" />
  </connection>
  <connection
    kind="avalon"
@@ -2251,16 +2167,6 @@
  <connection kind="clock" version="12.0" start="clocks_0.sys_clk" end="cpu_2.clk" />
  <connection kind="clock" version="12.0" start="clocks_0.sys_clk" end="cpu_3.clk" />
  <connection
-   kind="avalon_streaming"
-   version="12.0"
-   start="video_scaler_0.avalon_scaler_source"
-   end="video_dual_clock_buffer_0.avalon_dc_buffer_sink" />
- <connection
-   kind="avalon_streaming"
-   version="12.0"
-   start="video_dual_clock_buffer_0.avalon_dc_buffer_source"
-   end="video_vga_controller_0.avalon_vga_sink" />
- <connection
    kind="nios_custom_instruction"
    version="12.0"
    start="cpu_3.custom_instruction_master"
@@ -2284,5 +2190,29 @@
    end="jtag_uart_3.avalon_jtag_slave">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x0090" />
+ </connection>
+ <connection kind="clock" version="12.0" start="clocks_0.sys_clk" end="sysid.clk" />
+ <connection
+   kind="clock"
+   version="12.0"
+   start="clocks_0.sys_clk"
+   end="sdram_0.clk" />
+ <connection
+   kind="avalon_streaming"
+   version="12.0"
+   start="video_dual_clock_buffer_0.avalon_dc_buffer_source"
+   end="video_vga_controller_0.avalon_vga_sink" />
+ <connection
+   kind="avalon_streaming"
+   version="12.0"
+   start="video_rgb_resampler_0.avalon_rgb_source"
+   end="video_dual_clock_buffer_0.avalon_dc_buffer_sink" />
+ <connection
+   kind="avalon"
+   version="12.0"
+   start="video_pixel_buffer_dma_0.avalon_pixel_dma_master"
+   end="sdram_0.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00800000" />
  </connection>
 </system>

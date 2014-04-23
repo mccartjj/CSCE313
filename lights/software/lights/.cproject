@@ -278,8 +278,8 @@
 									<listOptionValue builtIn="false" value="__SIZEOF_LONG_LONG__"/>
 									<listOptionValue builtIn="false" value="__UINT_FAST8_MAX__"/>
 									<listOptionValue builtIn="false" value="__DEC64_MAX_EXP__"/>
-									<listOptionValue builtIn="false" value="__UINT16_C(c)"/>
 									<listOptionValue builtIn="false" value="__INT16_MAX__"/>
+									<listOptionValue builtIn="false" value="__UINT16_C(c)"/>
 									<listOptionValue builtIn="false" value="__LDBL_MAX_EXP__"/>
 									<listOptionValue builtIn="false" value="__UINT_LEAST64_MAX__"/>
 									<listOptionValue builtIn="false" value="__FLT_MANT_DIG__"/>
@@ -329,8 +329,8 @@
 									<listOptionValue builtIn="false" value="__INT_FAST16_MAX__"/>
 									<listOptionValue builtIn="false" value="__UINT16_MAX__"/>
 									<listOptionValue builtIn="false" value="__UINT_LEAST8_TYPE__"/>
-									<listOptionValue builtIn="false" value="unix"/>
 									<listOptionValue builtIn="false" value="__UINT_FAST32_TYPE__"/>
+									<listOptionValue builtIn="false" value="unix"/>
 									<listOptionValue builtIn="false" value="__FLT_EVAL_METHOD__"/>
 									<listOptionValue builtIn="false" value="__UINT16_TYPE__"/>
 									<listOptionValue builtIn="false" value="__UINT32_TYPE__"/>
@@ -410,8 +410,8 @@
 									<listOptionValue builtIn="false" value="__USER_LABEL_PREFIX__"/>
 									<listOptionValue builtIn="false" value="__LONG_MAX__"/>
 									<listOptionValue builtIn="false" value="__pentiumpro"/>
-									<listOptionValue builtIn="false" value="__INT8_C(c)"/>
 									<listOptionValue builtIn="false" value="__ORDER_BIG_ENDIAN__"/>
+									<listOptionValue builtIn="false" value="__INT8_C(c)"/>
 									<listOptionValue builtIn="false" value="__INT16_TYPE__"/>
 									<listOptionValue builtIn="false" value="__UINT_LEAST32_MAX__"/>
 									<listOptionValue builtIn="false" value="__PTRDIFF_TYPE__"/>
@@ -425,8 +425,8 @@
 									<listOptionValue builtIn="false" value="__FLT_MAX__"/>
 									<listOptionValue builtIn="false" value="__DBL_MANT_DIG__"/>
 									<listOptionValue builtIn="false" value="__UINT_FAST16_TYPE__"/>
-									<listOptionValue builtIn="false" value="__linux"/>
 									<listOptionValue builtIn="false" value="__UINT_LEAST64_TYPE__"/>
+									<listOptionValue builtIn="false" value="__linux"/>
 									<listOptionValue builtIn="false" value="__DEC128_MIN__"/>
 									<listOptionValue builtIn="false" value="__GNUC_GNU_INLINE__"/>
 									<listOptionValue builtIn="false" value="__FLT_HAS_INFINITY__"/>
@@ -442,6 +442,9 @@
 									<listOptionValue builtIn="false" value="__FINITE_MATH_ONLY__"/>
 									<listOptionValue builtIn="false" value="__WCHAR_TYPE__"/>
 									<listOptionValue builtIn="false" value="__CHAR16_TYPE__"/>
+								</option>
+								<option id="gnu.c.compiler.option.preprocessor.def.symbols.1455645719" name="Defined symbols (-D)" superClass="gnu.c.compiler.option.preprocessor.def.symbols" valueType="definedSymbols">
+									<listOptionValue builtIn="false" value="MASTER"/>
 								</option>
 								<inputType id="cdt.managedbuild.tool.gnu.c.compiler.input.586591904" superClass="cdt.managedbuild.tool.gnu.c.compiler.input"/>
 							</tool>

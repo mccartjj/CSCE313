@@ -97,7 +97,7 @@ module cpu_2_test_bench (
   input   [  3: 0] A_mem_byte_en;
   input            A_op_hbreak;
   input            A_op_intr;
-  input   [ 24: 0] A_pcb;
+  input   [ 23: 0] A_pcb;
   input   [ 31: 0] A_st_data;
   input   [ 31: 0] A_status_reg;
   input            A_valid;
@@ -110,13 +110,13 @@ module cpu_2_test_bench (
   input   [  1: 0] M_bht_wr_data_unfiltered;
   input            M_bht_wr_en_unfiltered;
   input   [ 24: 0] M_mem_baddr;
-  input   [ 24: 0] M_target_pcb;
+  input   [ 23: 0] M_target_pcb;
   input            M_valid;
   input   [  4: 0] W_dst_regnum;
   input   [ 31: 0] W_iw;
   input   [  5: 0] W_iw_op;
   input   [  5: 0] W_iw_opx;
-  input   [ 24: 0] W_pcb;
+  input   [ 23: 0] W_pcb;
   input            W_valid;
   input   [423: 0] W_vinst;
   input            W_wr_dst_reg;
@@ -125,13 +125,13 @@ module cpu_2_test_bench (
   input   [  3: 0] d_byteenable;
   input            d_read;
   input            d_write;
-  input   [ 24: 0] i_address;
+  input   [ 23: 0] i_address;
   input            i_read;
   input            i_readdatavalid;
   input            reset_n;
 
   reg     [ 24: 0] A_mem_baddr;
-  reg     [ 24: 0] A_target_pcb;
+  reg     [ 23: 0] A_target_pcb;
   wire    [ 31: 0] A_wr_data_filtered;
   wire             A_wr_data_unfiltered_0_is_x;
   wire             A_wr_data_unfiltered_10_is_x;

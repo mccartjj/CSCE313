@@ -282,6 +282,7 @@
 <definedSymbol symbol="ALT_SINGLE_THREADED=1"/>
 <definedSymbol symbol="RO_ZIPFS=1"/>
 <definedSymbol symbol="__OPTIMIZE__=1"/>
+<definedSymbol symbol="MASTER=1"/>
 </collector>
 </instance>
 <instance id="preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.278750585;preference.org.eclipse.cdt.managedbuilder.core.configurationDataProvider.278750585.;cdt.managedbuild.tool.gnu.c.compiler.base.275643986;cdt.managedbuild.tool.gnu.c.compiler.input.586591904">
@@ -551,6 +552,7 @@
 <definedSymbol symbol="ALT_SINGLE_THREADED=1"/>
 <definedSymbol symbol="RO_ZIPFS=1"/>
 <definedSymbol symbol="__OPTIMIZE__=1"/>
+<definedSymbol symbol="MASTER=1"/>
 </collector>
 </instance>
 </scannerInfo>

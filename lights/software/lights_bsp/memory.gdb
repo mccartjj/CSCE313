@@ -3,7 +3,7 @@
 # Machine generated for CPU 'cpu_0' in SOPC Builder design 'nios_system'
 # SOPC Builder design path: ../../nios_system.sopcinfo
 #
-# Generated: Wed Apr 02 16:15:28 EDT 2014
+# Generated: Wed Apr 23 18:35:10 EDT 2014
 
 # DO NOT MODIFY THIS FILE
 #
@@ -60,6 +60,3 @@ memory 0x7000 0x7200 cache
 
 # sdram_0
 memory 0x800000 0x1000000 cache
-
-# sram_0
-memory 0x1880000 0x1900000 cache

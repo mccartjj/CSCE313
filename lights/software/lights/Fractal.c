@@ -14,7 +14,7 @@
 #include "system.h"
 #include <altera_avalon_mailbox.h>
 
-float targetArrayXYMaster[2] = {0.0,0.0};
+float targetArrayXYMaster[2] = { 0.0, 0.0 };
 volatile float *targetArrayXY = targetArrayXYMaster;
 
 extern alt_up_pixel_buffer_dma_dev *myPixelBuffer;
@@ -22,6 +22,16 @@ extern alt_up_pixel_buffer_dma_dev *myPixelBuffer;
 void setup(void) {
 	myPixelBuffer = alt_up_pixel_buffer_dma_open_dev("/dev/video_pixel_buffer_dma_0");
 	PERF_RESET(PERFORMANCE_COUNTER_0_BASE);
+
+#ifdef MASTER
+	volatile alt_u8 pixel_buffer_memory[2359296];
+	alt_up_pixel_buffer_dma_change_back_buffer_address(myPixelBuffer, (unsigned int) pixel_buffer_memory);
+	alt_up_pixel_buffer_dma_swap_buffers(myPixelBuffer);
+	while (alt_up_pixel_buffer_dma_check_swap_buffers_status(myPixelBuffer)) {
+		alt_up_pixel_buffer_dma_change_back_buffer_address(myPixelBuffer, (unsigned int) pixel_buffer_memory);
+	}
+#endif
+
 }
 
 int genColor(int iter) {
@@ -30,21 +40,25 @@ int genColor(int iter) {
 		color = black;
 	}
 	else {
-		int red = iter * 2;
+		int red = iter;
 		int green = iter * 8;
-		int blue = iter * 3;
-		if (red > 255)
-			red = 255;
-		if (green > 255)
-			green = 255;
-		if (blue > 255)
-			blue = 255;
-		color = (red << 16) + (green << 8) + (blue);
+		int blue = iter * 2;
+
+		//saturating the colors
+		if (red > 31)
+			red = 31;
+		if (green > 63)
+			green = 63;
+		if (blue > 31)
+			blue = 31;
+
+		//making the final color
+		color = ((red << 11) & 0xF800) | ((green << 5) & 0x07E0) | (blue & 0x00FF);
 	}
 	return color;
 }
 
-int mandelbrot(float x0,float y0,float *xOut,float *yOut) {
+int mandelbrot(float x0, float y0, float *xOut, float *yOut) {
 	int iter = 0;
 	//	int cpu = __builtin_rdctl(5);
 	//	unsigned long long cycles = 0;
@@ -92,8 +106,8 @@ int mandelbrotNoZoom(int cRow, int cCol, int *recalculateTargetFlag) {
 	float minY = -1;
 	float maxY = 1;
 
-	float x0 = (((float) cCol / (float) 320) * (maxX - minX)) + minX;
-	float y0 = ((((float) 239 - (float) cRow) / (float) 240) * (maxY - minY)) + minY;
+	float x0 = (((float) cCol / (float) colSize) * (maxX - minX)) + minX;
+	float y0 = ((((float) 767 - (float) cRow) / (float) rowSize) * (maxY - minY)) + minY;
 	float x = 0.0;
 	float y = 0.0;
 	float xtemp = 0.0;
@@ -106,7 +120,6 @@ int mandelbrotNoZoom(int cRow, int cCol, int *recalculateTargetFlag) {
 	}
 	int cpu = __builtin_rdctl(5);
 	if (cpu == 3) {
-		//		printf("i am alive");
 		if (*recalculateTargetFlag) {
 			if (iter >= (maxIter - 2)) {
 				targetArrayXYMaster[0] = x;
@@ -153,9 +166,9 @@ void drawFrame(int zoom) {
 	float maxY = targetArrayXY[1] + (0.75 / powf(1.5, zoom));
 
 	for (i = cpu; i < colSize; i = i + NUM_CPUS) {
-		float y0 = ((((float) 239 - (float) i) / (float) 240) * (maxY - minY)) + minY;
+		float y0 = ((((float) 767 - (float) i) / (float) 768) * (maxY - minY)) + minY;
 		for (j = 0; j < rowSize; j++) {
-			float x0 = (((float) j / (float) 320) * (maxX - minX)) + minX;
+			float x0 = (((float) j / (float) 1024) * (maxX - minX)) + minX;
 
 			result = mandelbrot(x0, y0, &x, &y);
 

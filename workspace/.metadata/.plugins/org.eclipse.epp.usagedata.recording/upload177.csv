@@ -1,0 +1,326 @@
+what,kind,bundleId,bundleVersion,description,time
+started,bundle,org.eclipse.equinox.app,1.3.1.R36x_v20100803,"org.eclipse.equinox.app",1398289585833
+started,bundle,org.eclipse.equinox.common,3.6.0.v20100503,"org.eclipse.equinox.common",1398289585834
+started,bundle,org.eclipse.equinox.ds,1.2.1.R36x_v20100803,"org.eclipse.equinox.ds",1398289585835
+started,bundle,org.eclipse.equinox.event,1.2.0.v20100503,"org.eclipse.equinox.event",1398289585836
+started,bundle,org.eclipse.equinox.p2.core,2.0.2.R36x_v20100804,"org.eclipse.equinox.p2.core",1398289585837
+started,bundle,org.eclipse.equinox.p2.directorywatcher,1.0.202.R36x_v20100727,"org.eclipse.equinox.p2.directorywatcher",1398289585838
+started,bundle,org.eclipse.equinox.p2.engine,2.0.0.v20100606,"org.eclipse.equinox.p2.engine",1398289585839
+started,bundle,org.eclipse.equinox.p2.metadata,2.0.0.v20100601,"org.eclipse.equinox.p2.metadata",1398289585840
+started,bundle,org.eclipse.equinox.p2.metadata.repository,1.1.0.v20100513,"org.eclipse.equinox.p2.metadata.repository",1398289585841
+started,bundle,org.eclipse.equinox.p2.operations,2.0.0.v20100510,"org.eclipse.equinox.p2.operations",1398289585842
+started,bundle,org.eclipse.equinox.p2.reconciler.dropins,1.1.0.v20100525,"org.eclipse.equinox.p2.reconciler.dropins",1398289585843
+started,bundle,org.eclipse.equinox.p2.repository,2.0.1.R36x_v20100823,"org.eclipse.equinox.p2.repository",1398289585844
+started,bundle,org.eclipse.equinox.p2.ui.sdk.scheduler,1.0.0.v20100507-1815,"org.eclipse.equinox.p2.ui.sdk.scheduler",1398289585845
+started,bundle,org.eclipse.equinox.p2.updatechecker,1.1.101.R36x_v20100823,"org.eclipse.equinox.p2.updatechecker",1398289585845
+started,bundle,org.eclipse.equinox.preferences,3.3.0.v20100503,"org.eclipse.equinox.preferences",1398289585846
+started,bundle,org.eclipse.equinox.registry,3.5.0.v20100503,"org.eclipse.equinox.registry",1398289585847
+started,bundle,org.eclipse.equinox.security,1.0.200.v20100503,"org.eclipse.equinox.security",1398289585848
+started,bundle,org.eclipse.equinox.util,1.0.200.v20100503,"org.eclipse.equinox.util",1398289585849
+started,bundle,org.eclipse.help,3.5.0.v20100524,"org.eclipse.help",1398289585851
+started,bundle,org.eclipse.jface,3.6.1.M20100825-0800,"org.eclipse.jface",1398289585851
+started,bundle,org.eclipse.jsch.core,1.1.200.I20100505-1245,"org.eclipse.jsch.core",1398289585852
+started,bundle,org.eclipse.ltk.core.refactoring,3.5.100.v20100526-0800,"org.eclipse.ltk.core.refactoring",1398289585853
+started,bundle,org.eclipse.ltk.ui.refactoring,3.5.0.v20100526-0800,"org.eclipse.ltk.ui.refactoring",1398289585855
+started,bundle,org.eclipse.mylyn.bugzilla.core,3.4.2.v20100902-0100-e3x,"org.eclipse.mylyn.bugzilla.core",1398289585855
+started,bundle,org.eclipse.mylyn.bugzilla.ui,3.4.2.v20100909-0100-e3x,"org.eclipse.mylyn.bugzilla.ui",1398289585856
+started,bundle,org.eclipse.mylyn.commons.net,3.4.1.v20100625-2100-e3x,"org.eclipse.mylyn.commons.net",1398289585856
+started,bundle,org.eclipse.mylyn.commons.ui,3.4.0.v20100608-0100-e3x,"org.eclipse.mylyn.commons.ui",1398289585857
+started,bundle,org.eclipse.mylyn.context.core,3.4.1.v20100909-0100-e3x,"org.eclipse.mylyn.context.core",1398289585857
+started,bundle,org.eclipse.mylyn.context.ui,3.4.1.v20100909-0100-e3x,"org.eclipse.mylyn.context.ui",1398289585858
+started,bundle,org.eclipse.mylyn.monitor.ui,3.4.0.v20100608-0100-e3x,"org.eclipse.mylyn.monitor.ui",1398289585859
+started,bundle,org.eclipse.mylyn.tasks.ui,3.4.2.v20100902-0100-e3x,"org.eclipse.mylyn.tasks.ui",1398289585860
+started,bundle,org.eclipse.mylyn.team.ui,3.4.2.v20100909-0100-e3x,"org.eclipse.mylyn.team.ui",1398289585861
+started,bundle,org.eclipse.search,3.6.0.v20100520-0800,"org.eclipse.search",1398289585862
+started,bundle,org.eclipse.team.core,3.5.100.R36x_v20100825-0800,"org.eclipse.team.core",1398289585863
+started,bundle,org.eclipse.team.cvs.core,3.3.300.I20100526-0800,"org.eclipse.team.cvs.core",1398289585864
+started,bundle,org.eclipse.team.cvs.ui,3.3.301.R36x_v20100825-0800,"org.eclipse.team.cvs.ui",1398289585865
+started,bundle,org.eclipse.team.ui,3.5.101.R36x_v20100825-0800,"org.eclipse.team.ui",1398289585866
+started,bundle,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui",1398289585868
+started,bundle,org.eclipse.ui.console,3.5.0.v20100526,"org.eclipse.ui.console",1398289585868
+started,bundle,org.eclipse.ui.editors,3.6.1.r361_v20100825-0800,"org.eclipse.ui.editors",1398289585868
+started,bundle,org.eclipse.ui.forms,3.5.2.r36_v20100702,"org.eclipse.ui.forms",1398289585869
+started,bundle,org.eclipse.ui.ide,3.6.1.M20100825-0800,"org.eclipse.ui.ide",1398289585870
+started,bundle,org.eclipse.ui.navigator,3.5.0.I20100601-0800,"org.eclipse.ui.navigator",1398289585871
+started,bundle,org.eclipse.ui.navigator.resources,3.4.201.M20100707-0800,"org.eclipse.ui.navigator.resources",1398289585872
+started,bundle,org.eclipse.ui.net,1.2.100.I20100505-1245,"org.eclipse.ui.net",1398289585872
+started,bundle,org.eclipse.ui.views,3.5.0.I20100527-0800,"org.eclipse.ui.views",1398289585873
+started,bundle,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"org.eclipse.ui.workbench",1398289585873
+started,bundle,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.workbench.texteditor",1398289585874
+started,bundle,org.eclipse.update.configurator,3.3.100.v20100512,"org.eclipse.update.configurator",1398289585874
+started,bundle,org.eclipse.update.core,3.2.402.R36x_v20100629,"org.eclipse.update.core",1398289585875
+started,bundle,org.eclipse.update.scheduler,3.2.300.v20100512,"org.eclipse.update.scheduler",1398289585876
+started,bundle,com.altera.sbtgui.integration,12.0.0.178,"com.altera.sbtgui.integration",1398289585876
+started,bundle,com.altera.sbtgui.launch,12.0.0.178,"com.altera.sbtgui.launch",1398289585877
+started,bundle,com.altera.sbtgui.project,12.0.0.178,"com.altera.sbtgui.project",1398289585877
+started,bundle,com.altera.systemconsole,12.0.0.178,"com.altera.systemconsole",1398289585877
+started,bundle,com.altera.systemconsole.designs.plugin,12.0.0.178,"com.altera.systemconsole.designs.plugin",1398289585877
+started,bundle,com.altera.systemconsole.scripting,12.0.0.178,"com.altera.systemconsole.scripting",1398289585877
+started,bundle,com.altera.utilities,12.0.0.178,"com.altera.utilities",1398289585878
+os,sysinfo,,,"linux",1398289585880
+arch,sysinfo,,,"x86",1398289585880
+ws,sysinfo,,,"gtk",1398289585880
+locale,sysinfo,,,"en_US",1398289585880
+processors,sysinfo,,,"4",1398289585880
+java.runtime.name,sysinfo,,,"Java(TM) SE Runtime Environment",1398289585880
+java.runtime.version,sysinfo,,,"1.6.0_23-b05",1398289585880
+java.specification.name,sysinfo,,,"Java Platform API Specification",1398289585880
+java.specification.vendor,sysinfo,,,"Sun Microsystems Inc.",1398289585880
+java.specification.version,sysinfo,,,"1.6",1398289585880
+java.vendor,sysinfo,,,"Sun Microsystems Inc.",1398289585880
+java.version,sysinfo,,,"1.6.0_23",1398289585880
+java.vm.info,sysinfo,,,"mixed mode",1398289585880
+java.vm.name,sysinfo,,,"Java HotSpot(TM) Server VM",1398289585880
+java.vm.specification.name,sysinfo,,,"Java Virtual Machine Specification",1398289585880
+java.vm.specification.vendor,sysinfo,,,"Sun Microsystems Inc.",1398289585880
+java.vm.specification.version,sysinfo,,,"1.0",1398289585880
+java.vm.vendor,sysinfo,,,"Sun Microsystems Inc.",1398289585880
+java.vm.version,sysinfo,,,"19.0-b09",1398289585880
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.delete",1398289677788
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.delete",1398289678294
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.delete",1398289713845
+started,bundle,com.altera.sbtgui.core,12.0.0.178,"com.altera.sbtgui.core",1398289734124
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.file.save",1398289734128
+opened,editor,org.eclipse.cdt.ui,5.2.1.201009141542,"org.eclipse.cdt.ui.editor.CEditor",1398289746406
+activated,editor,org.eclipse.cdt.ui,5.2.1.201009141542,"org.eclipse.cdt.ui.editor.CEditor",1398289746423
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.file.save",1398289773717
+activated,editor,org.eclipse.cdt.ui,5.2.1.201009141542,"org.eclipse.cdt.ui.editor.CEditor",1398289777197
+activated,editor,org.eclipse.cdt.ui,5.2.1.201009141542,"org.eclipse.cdt.ui.editor.CEditor",1398289838891
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.copy",1398289842258
+activated,editor,org.eclipse.cdt.ui,5.2.1.201009141542,"org.eclipse.cdt.ui.editor.CEditor",1398289843267
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.paste",1398289845337
+activated,editor,org.eclipse.cdt.ui,5.2.1.201009141542,"org.eclipse.cdt.ui.editor.CEditor",1398289849538
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.copy",1398289851809
+activated,editor,org.eclipse.cdt.ui,5.2.1.201009141542,"org.eclipse.cdt.ui.editor.CEditor",1398289852726
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.paste",1398289854897
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.delete.line",1398289877888
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.file.save",1398289879273
+executed,command,org.eclipse.cdt.ui,5.2.1.201009141542,"org.eclipse.cdt.ui.edit.text.c.format",1398289880128
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.file.saveAll",1398289907861
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1398289909882
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1398292455869
+activated,view,org.eclipse.ui.navigator.resources,3.4.201.M20100707-0800,"org.eclipse.ui.navigator.ProjectExplorer",1398292501640
+started,bundle,org.eclipse.compare,3.5.100.I20100526-0800,"org.eclipse.compare",1398292502370
+opened,view,org.eclipse.ui.console,3.5.0.v20100526,"org.eclipse.ui.console.ConsoleView",1398292506310
+started,bundle,org.eclipse.cdt.dsf.gdb.ui,2.1.0.201009141542,"org.eclipse.cdt.dsf.gdb.ui",1398292506339
+started,bundle,org.eclipse.debug.ui,3.6.1.v20100901_r361,"org.eclipse.debug.ui",1398292506368
+started,bundle,org.eclipse.cdt.debug.core,7.0.0.201009141542,"org.eclipse.cdt.debug.core",1398292522000
+started,bundle,org.eclipse.cdt.debug.ui,7.0.0.201009141542,"org.eclipse.cdt.debug.ui",1398292522003
+executed,command,org.eclipse.ui.ide,3.6.1.M20100825-0800,"org.eclipse.ui.project.buildAll",1398292582563
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1398292589736
+started,bundle,org.eclipse.cdt.managedbuilder.ui,7.0.0.201009141542,"org.eclipse.cdt.managedbuilder.ui",1398292597407
+executed,command,org.eclipse.ui.ide,3.6.1.M20100825-0800,"org.eclipse.ui.project.properties",1398292612184
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1398292612198
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1398292628182
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.file.properties",1398292635379
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1398292635400
+opened,editor,org.eclipse.cdt.ui,5.2.1.201009141542,"org.eclipse.cdt.ui.editor.CEditor",1398292647832
+activated,editor,org.eclipse.cdt.ui,5.2.1.201009141542,"org.eclipse.cdt.ui.editor.CEditor",1398292647850
+started,bundle,org.eclipse.cdt.mylyn.ui,1.1.3.v20100909-0100-e3x,"org.eclipse.cdt.mylyn.ui",1398292680520
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.text.contentAssist.proposals",1398292680596
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.file.save",1398292720666
+activated,view,org.eclipse.ui.navigator.resources,3.4.201.M20100707-0800,"org.eclipse.ui.navigator.ProjectExplorer",1398292750778
+deactivated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1398292776956
+started,bundle,org.eclipse.core.databinding,1.3.100.I20100601-0800,"org.eclipse.core.databinding",1398292778521
+started,bundle,org.eclipse.core.databinding.property,1.3.0.I20100601-0800,"org.eclipse.core.databinding.property",1398292778534
+activated,view,org.eclipse.ui.console,3.5.0.v20100526,"org.eclipse.ui.console.ConsoleView",1398292778658
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.file.properties",1398292797566
+activated,workbench,org.eclipse.ui.workbench,3.6.1.M20100826-1330,"",1398292797574
+activated,editor,org.eclipse.cdt.ui,5.2.1.201009141542,"org.eclipse.cdt.ui.editor.CEditor",1398292827716
+activated,editor,org.eclipse.cdt.ui,5.2.1.201009141542,"org.eclipse.cdt.ui.editor.CEditor",1398292874866
+activated,editor,org.eclipse.cdt.ui,5.2.1.201009141542,"org.eclipse.cdt.ui.editor.CEditor",1398293028552
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.goto.lineEnd",1398293031956
+error,log,,,"Unable to get CElement for Macro",1398293046417
+error,log,,,"Unable to get CElement for Macro",1398293046419
+error,log,,,"Unable to get CElement for Macro",1398293046421
+error,log,,,"Unable to get CElement for Macro",1398293046424
+error,log,,,"Unable to get CElement for Macro",1398293046426
+error,log,,,"Unable to get CElement for Macro",1398293046428
+error,log,,,"Unable to get CElement for Macro",1398293046431
+error,log,,,"Unable to get CElement for Macro",1398293046433
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.text.contentAssist.proposals",1398293046471
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.text.contentAssist.proposals",1398293055020
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.text.contentAssist.proposals",1398293070270
+executed,command,org.eclipse.ui.workbench.texteditor,3.6.1.r361_v20100714-0800,"org.eclipse.ui.edit.text.goto.lineEnd",1398293071833
+error,log,,,"Unable to get CElement for Macro",1398293076879
+error,log,,,"Unable to get CElement for Macro",1398293076881
+error,log,,,"Unable to get CElement for Macro",1398293076883
+error,log,,,"Unable to get CElement for Macro",1398293076885
+error,log,,,"Unable to get CElement for Macro",1398293076888
+error,log,,,"Unable to get CElement for Macro",1398293076890
+error,log,,,"Unable to get CElement for Macro",1398293076892
+error,log,,,"Unable to get CElement for Macro",1398293076894
+error,log,,,"Unable to get CElement for Macro",1398293076896
+error,log,,,"Unable to get CElement for Macro",1398293076898
+error,log,,,"Unable to get CElement for Macro",1398293076900
+error,log,,,"Unable to get CElement for Macro",1398293076902
+error,log,,,"Unable to get CElement for Macro",1398293076904
+error,log,,,"Unable to get CElement for Macro",1398293076906
+error,log,,,"Unable to get CElement for Macro",1398293076908
+error,log,,,"Unable to get CElement for Macro",1398293076910
+error,log,,,"Unable to get CElement for Macro",1398293076912
+error,log,,,"Unable to get CElement for Macro",1398293076913
+error,log,,,"Unable to get CElement for Macro",1398293076915
+error,log,,,"Unable to get CElement for Macro",1398293076917
+error,log,,,"Unable to get CElement for Macro",1398293076919
+error,log,,,"Unable to get CElement for Macro",1398293076921
+error,log,,,"Unable to get CElement for Macro",1398293076923
+error,log,,,"Unable to get CElement for Macro",1398293076925
+error,log,,,"Unable to get CElement for Macro",1398293076927
+error,log,,,"Unable to get CElement for Macro",1398293076928
+error,log,,,"Unable to get CElement for Macro",1398293076930
+error,log,,,"Unable to get CElement for Macro",1398293076932
+error,log,,,"Unable to get CElement for Macro",1398293076934
+error,log,,,"Unable to get CElement for Macro",1398293076936
+error,log,,,"Unable to get CElement for Macro",1398293076938
+error,log,,,"Unable to get CElement for Macro",1398293076939
+error,log,,,"Unable to get CElement for Macro",1398293076941
+error,log,,,"Unable to get CElement for Macro",1398293076943
+error,log,,,"Unable to get CElement for Macro",1398293076945
+error,log,,,"Unable to get CElement for Macro",1398293076947
+error,log,,,"Unable to get CElement for Macro",1398293076949
+error,log,,,"Unable to get CElement for Macro",1398293076951
+error,log,,,"Unable to get CElement for Macro",1398293076953
+error,log,,,"Unable to get CElement for Macro",1398293076954
+error,log,,,"Unable to get CElement for Macro",1398293076956
+error,log,,,"Unable to get CElement for Macro",1398293076958
+error,log,,,"Unable to get CElement for Macro",1398293076960
+error,log,,,"Unable to get CElement for Macro",1398293076962
+error,log,,,"Unable to get CElement for Macro",1398293076964
+error,log,,,"Unable to get CElement for Macro",1398293076965
+error,log,,,"Unable to get CElement for Macro",1398293076967
+error,log,,,"Unable to get CElement for Macro",1398293076969
+error,log,,,"Unable to get CElement for Macro",1398293076971
+error,log,,,"Unable to get CElement for Macro",1398293076973
+error,log,,,"Unable to get CElement for Macro",1398293076975
+error,log,,,"Unable to get CElement for Macro",1398293076976
+error,log,,,"Unable to get CElement for Macro",1398293076978
+error,log,,,"Unable to get CElement for Macro",1398293076980
+error,log,,,"Unable to get CElement for Macro",1398293076982
+error,log,,,"Unable to get CElement for Macro",1398293076984
+error,log,,,"Unable to get CElement for Macro",1398293076986
+error,log,,,"Unable to get CElement for Macro",1398293076988
+error,log,,,"Unable to get CElement for Macro",1398293076990
+error,log,,,"Unable to get CElement for Macro",1398293076991
+error,log,,,"Unable to get CElement for Macro",1398293076993
+error,log,,,"Unable to get CElement for Macro",1398293076995
+error,log,,,"Unable to get CElement for Macro",1398293076997
+error,log,,,"Unable to get CElement for Macro",1398293076999
+error,log,,,"Unable to get CElement for Macro",1398293077001
+error,log,,,"Unable to get CElement for Macro",1398293077003
+error,log,,,"Unable to get CElement for Macro",1398293077005
+error,log,,,"Unable to get CElement for Macro",1398293077006
+error,log,,,"Unable to get CElement for Macro",1398293077008
+error,log,,,"Unable to get CElement for Macro",1398293077010
+error,log,,,"Unable to get CElement for Macro",1398293077012
+error,log,,,"Unable to get CElement for Macro",1398293077014
+error,log,,,"Unable to get CElement for Macro",1398293077016
+error,log,,,"Unable to get CElement for Macro",1398293077018
+error,log,,,"Unable to get CElement for Macro",1398293077023
+error,log,,,"Unable to get CElement for Macro",1398293077025
+error,log,,,"Unable to get CElement for Macro",1398293077026
+error,log,,,"Unable to get CElement for Macro",1398293077028
+error,log,,,"Unable to get CElement for Macro",1398293077030
+error,log,,,"Unable to get CElement for Macro",1398293077032
+error,log,,,"Unable to get CElement for Macro",1398293077034
+error,log,,,"Unable to get CElement for Macro",1398293077035
+error,log,,,"Unable to get CElement for Macro",1398293077037
+error,log,,,"Unable to get CElement for Macro",1398293077039
+error,log,,,"Unable to get CElement for Macro",1398293077041
+error,log,,,"Unable to get CElement for Macro",1398293077043
+error,log,,,"Unable to get CElement for Macro",1398293077045
+error,log,,,"Unable to get CElement for Macro",1398293077047
+error,log,,,"Unable to get CElement for Macro",1398293077049
+error,log,,,"Unable to get CElement for Macro",1398293077050
+error,log,,,"Unable to get CElement for Macro",1398293077052
+error,log,,,"Unable to get CElement for Macro",1398293077054
+error,log,,,"Unable to get CElement for Macro",1398293077056
+error,log,,,"Unable to get CElement for Macro",1398293077058
+error,log,,,"Unable to get CElement for Macro",1398293077060
+error,log,,,"Unable to get CElement for Macro",1398293077061
+error,log,,,"Unable to get CElement for Macro",1398293077063
+error,log,,,"Unable to get CElement for Macro",1398293077065
+error,log,,,"Unable to get CElement for Macro",1398293077067
+error,log,,,"Unable to get CElement for Macro",1398293077069
+error,log,,,"Unable to get CElement for Macro",1398293077070
+error,log,,,"Unable to get CElement for Macro",1398293077072
+error,log,,,"Unable to get CElement for Macro",1398293077074
+error,log,,,"Unable to get CElement for Macro",1398293077076
+error,log,,,"Unable to get CElement for Macro",1398293077078
+error,log,,,"Unable to get CElement for Macro",1398293077079
+error,log,,,"Unable to get CElement for Macro",1398293077081
+error,log,,,"Unable to get CElement for Macro",1398293077083
+error,log,,,"Unable to get CElement for Macro",1398293077085
+error,log,,,"Unable to get CElement for Macro",1398293077087
+error,log,,,"Unable to get CElement for Macro",1398293077088
+error,log,,,"Unable to get CElement for Macro",1398293077089
+error,log,,,"Unable to get CElement for Macro",1398293077091
+error,log,,,"Unable to get CElement for Macro",1398293077092
+error,log,,,"Unable to get CElement for Macro",1398293077093
+error,log,,,"Unable to get CElement for Macro",1398293077095
+error,log,,,"Unable to get CElement for Macro",1398293077097
+error,log,,,"Unable to get CElement for Macro",1398293077099
+error,log,,,"Unable to get CElement for Macro",1398293077100
+error,log,,,"Unable to get CElement for Macro",1398293077102
+error,log,,,"Unable to get CElement for Macro",1398293077103
+error,log,,,"Unable to get CElement for Macro",1398293077105
+error,log,,,"Unable to get CElement for Macro",1398293077106
+error,log,,,"Unable to get CElement for Macro",1398293077108
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.text.contentAssist.proposals",1398293077146
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.text.contentAssist.proposals",1398293087510
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.text.contentAssist.proposals",1398293090312
+executed,command,org.eclipse.ui,3.6.1.M20100826-1330,"org.eclipse.ui.edit.text.contentAssist.proposals",1398293098653
+activated,editor,org.eclipse.cdt.ui,5.2.1.201009141542,"org.eclipse.cdt.ui.editor.CEditor",1398293117615
+activated,editor,org.eclipse.cdt.ui,5.2.1.201009141542,"org.eclipse.cdt.ui.editor.CEditor",1398293122281
+activated,editor,org.eclipse.cdt.ui,5.2.1.201009141542,"org.eclipse.cdt.ui.editor.CEditor",1398293123505
+error,log,,,"Unable to get CElement for Macro",1398293138118
+error,log,,,"Unable to get CElement for Macro",1398293138120
+error,log,,,"Unable to get CElement for Macro",1398293138123
+error,log,,,"Unable to get CElement for Macro",1398293138125
+error,log,,,"Unable to get CElement for Macro",1398293138127
+error,log,,,"Unable to get CElement for Macro",1398293138129
+error,log,,,"Unable to get CElement for Macro",1398293138131
+error,log,,,"Unable to get CElement for Macro",1398293138133
+error,log,,,"Unable to get CElement for Macro",1398293138134
+error,log,,,"Unable to get CElement for Macro",1398293138136
+error,log,,,"Unable to get CElement for Macro",1398293138137
+error,log,,,"Unable to get CElement for Macro",1398293138139
+error,log,,,"Unable to get CElement for Macro",1398293138140
+error,log,,,"Unable to get CElement for Macro",1398293138142
+error,log,,,"Unable to get CElement for Macro",1398293138143
+error,log,,,"Unable to get CElement for Macro",1398293138144
+error,log,,,"Unable to get CElement for Macro",1398293138146
+error,log,,,"Unable to get CElement for Macro",1398293138147
+error,log,,,"Unable to get CElement for Macro",1398293138148
+error,log,,,"Unable to get CElement for Macro",1398293138150
+error,log,,,"Unable to get CElement for Macro",1398293138151
+error,log,,,"Unable to get CElement for Macro",1398293138152
+error,log,,,"Unable to get CElement for Macro",1398293138153
+error,log,,,"Unable to get CElement for Macro",1398293138154
+error,log,,,"Unable to get CElement for Macro",1398293138156
+error,log,,,"Unable to get CElement for Macro",1398293138157
+error,log,,,"Unable to get CElement for Macro",1398293138159
+error,log,,,"Unable to get CElement for Macro",1398293138160
+error,log,,,"Unable to get CElement for Macro",1398293138162
+error,log,,,"Unable to get CElement for Macro",1398293138164
+error,log,,,"Unable to get CElement for Macro",1398293138165
+error,log,,,"Unable to get CElement for Macro",1398293138167
+error,log,,,"Unable to get CElement for Macro",1398293138168
+error,log,,,"Unable to get CElement for Macro",1398293138170
+error,log,,,"Unable to get CElement for Macro",1398293138172
+error,log,,,"Unable to get CElement for Macro",1398293138173
+error,log,,,"Unable to get CElement for Macro",1398293138175
+error,log,,,"Unable to get CElement for Macro",1398293138176
+error,log,,,"Unable to get CElement for Macro",1398293138178
+error,log,,,"Unable to get CElement for Macro",1398293138179
+error,log,,,"Unable to get CElement for Macro",1398293138181
+error,log,,,"Unable to get CElement for Macro",1398293138183
+error,log,,,"Unable to get CElement for Macro",1398293138184
+error,log,,,"Unable to get CElement for Macro",1398293138186
+error,log,,,"Unable to get CElement for Macro",1398293138187
+error,log,,,"Unable to get CElement for Macro",1398293138189
+error,log,,,"Unable to get CElement for Macro",1398293138190
+error,log,,,"Unable to get CElement for Macro",1398293138192
+error,log,,,"Unable to get CElement for Macro",1398293138193
+error,log,,,"Unable to get CElement for Macro",1398293138195
+error,log,,,"Unable to get CElement for Macro",1398293138196
