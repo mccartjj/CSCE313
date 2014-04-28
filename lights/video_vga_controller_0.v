@@ -86,24 +86,24 @@ parameter B_UI							= 9;
 parameter B_LI							= 0;
 
 /* Number of pixels */
-parameter H_ACTIVE 						= 1024;
-parameter H_FRONT_PORCH					=   24;
-parameter H_SYNC							=  136;
-parameter H_BACK_PORCH 					=  160;
-parameter H_TOTAL 						= 1344;
+parameter H_ACTIVE 						= 640;
+parameter H_FRONT_PORCH					=  16;
+parameter H_SYNC						=  96;
+parameter H_BACK_PORCH 					=  48;
+parameter H_TOTAL 						= 800;
 
 /* Number of lines */
-parameter V_ACTIVE 						= 768;
-parameter V_FRONT_PORCH					=   3;
-parameter V_SYNC							=   6;
-parameter V_BACK_PORCH 					=  29;
-parameter V_TOTAL							= 806;
+parameter V_ACTIVE 						= 480;
+parameter V_FRONT_PORCH					=  10;
+parameter V_SYNC						=   2;
+parameter V_BACK_PORCH 					=  33;
+parameter V_TOTAL						= 525;
 
-parameter NUMBER_OF_BITS_FOR_LINES		= 11;
-parameter LINE_COUNTER_INCREMENT			= 11'h001;
+parameter NUMBER_OF_BITS_FOR_LINES		= 10;
+parameter LINE_COUNTER_INCREMENT		= 10'h001;
 
-parameter NUMBER_OF_BITS_FOR_PIXELS		= 11;
-parameter PIXEL_COUNTER_INCREMENT		= 11'h001;
+parameter NUMBER_OF_BITS_FOR_PIXELS		= 10;
+parameter PIXEL_COUNTER_INCREMENT		= 10'h001;
 
 /*****************************************************************************
  *                             Port Declarations                             *

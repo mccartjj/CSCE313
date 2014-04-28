@@ -1,5 +1,5 @@
 Assembler report for lights
-Wed Apr 23 18:33:37 2014
+Mon Apr 28 14:36:51 2014
 Quartus II 32-bit Version 12.0 Build 178 05/31/2012 SJ Full Version
 
 
@@ -39,7 +39,7 @@ applicable agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Wed Apr 23 18:33:37 2014 ;
+; Assembler Status      ; Successful - Mon Apr 28 14:36:51 2014 ;
 ; Revision Name         ; lights                                ;
 ; Top-level Entity Name ; lights                                ;
 ; Family                ; Cyclone II                            ;
@@ -108,7 +108,7 @@ applicable agreement for further details.
 +----------------+---------------------+
 ; Device         ; EP2C35F672C6        ;
 ; JTAG usercode  ; 0xFFFFFFFF          ;
-; Checksum       ; 0x017145BB          ;
+; Checksum       ; 0x0161B34A          ;
 +----------------+---------------------+
 
 
@@ -119,7 +119,7 @@ applicable agreement for further details.
 +--------------------+-----------------+
 ; Device             ; EPCS16          ;
 ; JTAG usercode      ; 0x00000000      ;
-; Checksum           ; 0x1AFE745B      ;
+; Checksum           ; 0x1B000730      ;
 ; Compression Ratio  ; 1               ;
 +--------------------+-----------------+
 
@@ -130,13 +130,13 @@ applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 32-bit Assembler
     Info: Version 12.0 Build 178 05/31/2012 SJ Full Version
-    Info: Processing started: Wed Apr 23 18:33:33 2014
+    Info: Processing started: Mon Apr 28 14:36:47 2014
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off lights -c lights
 Info (115031): Writing out detailed assembly data for power analysis
 Info (115030): Assembler is generating device programming files
 Info: Quartus II 32-bit Assembler was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 409 megabytes
-    Info: Processing ended: Wed Apr 23 18:33:37 2014
+    Info: Peak virtual memory: 397 megabytes
+    Info: Processing ended: Mon Apr 28 14:36:51 2014
     Info: Elapsed time: 00:00:04
     Info: Total CPU time (on all processors): 00:00:04
 

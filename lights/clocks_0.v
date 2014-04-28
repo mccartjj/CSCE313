@@ -66,7 +66,7 @@ module clocks_0 (
  *                           Parameter Declarations                          *
  *****************************************************************************/
 
-parameter SYS_CLK_MULT	= 2;
+parameter SYS_CLK_MULT	= 1;
 parameter SYS_CLK_DIV	= 1;
 
 
@@ -163,17 +163,17 @@ altpll DE_Clock_Generator_System (
 	.sclkout1		()
 );
 defparam
-	DE_Clock_Generator_System.clk0_divide_by				= SYS_CLK_DIV,
-	DE_Clock_Generator_System.clk0_duty_cycle				= 50,
+	DE_Clock_Generator_System.clk0_divide_by			= SYS_CLK_DIV,
+	DE_Clock_Generator_System.clk0_duty_cycle			= 50,
 	DE_Clock_Generator_System.clk0_multiply_by			= SYS_CLK_MULT,
 	DE_Clock_Generator_System.clk0_phase_shift			= "0",
-	DE_Clock_Generator_System.clk1_divide_by				= SYS_CLK_DIV,
-	DE_Clock_Generator_System.clk1_duty_cycle				= 50,
+	DE_Clock_Generator_System.clk1_divide_by			= SYS_CLK_DIV,
+	DE_Clock_Generator_System.clk1_duty_cycle			= 50,
 	DE_Clock_Generator_System.clk1_multiply_by			= SYS_CLK_MULT,
 	DE_Clock_Generator_System.clk1_phase_shift			= "-3000",
-	DE_Clock_Generator_System.clk2_divide_by				= 7,
-	DE_Clock_Generator_System.clk2_duty_cycle				= 50,
-	DE_Clock_Generator_System.clk2_multiply_by			= 9,
+	DE_Clock_Generator_System.clk2_divide_by			= 2,
+	DE_Clock_Generator_System.clk2_duty_cycle			= 50,
+	DE_Clock_Generator_System.clk2_multiply_by			= 1,
 	DE_Clock_Generator_System.clk2_phase_shift			= "20000",
 	DE_Clock_Generator_System.compensate_clock			= "CLK0",
 	DE_Clock_Generator_System.gate_lock_signal			= "NO",
