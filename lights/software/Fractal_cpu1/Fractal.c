@@ -1,1 +1,1 @@
-../lights/Fractal.c
+/acct/s1/mccartjj/CSCE313/lights/software/lights/Fractal.c

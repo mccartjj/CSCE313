@@ -21,7 +21,7 @@ extern alt_up_pixel_buffer_dma_dev *myPixelBuffer;
 
 void setup(void) {
 	myPixelBuffer = alt_up_pixel_buffer_dma_open_dev("/dev/video_pixel_buffer_dma_0");
-	PERF_RESET(PERFORMANCE_COUNTER_0_BASE);
+
 #ifdef MASTER
 	volatile alt_u8 pixel_buffer_memory[2359296];
 	alt_up_pixel_buffer_dma_change_back_buffer_address(myPixelBuffer, (unsigned int) pixel_buffer_memory);
@@ -31,6 +31,7 @@ void setup(void) {
 	}
 #endif
 
+	PERF_RESET(PERFORMANCE_COUNTER_0_BASE);
 }
 
 int genColor(int iter) {
