@@ -26,6 +26,14 @@
          type = "long";
       }
    }
+   element jtag_uart_3.avalon_jtag_slave
+   {
+      datum baseAddress
+      {
+         value = "144";
+         type = "long";
+      }
+   }
    element jtag_uart_0.avalon_jtag_slave
    {
       datum _tags
@@ -52,14 +60,6 @@
          type = "long";
       }
    }
-   element jtag_uart_3.avalon_jtag_slave
-   {
-      datum baseAddress
-      {
-         value = "144";
-         type = "long";
-      }
-   }
    element clk_0
    {
       datum _sortIndex
@@ -76,6 +76,14 @@
          type = "int";
       }
    }
+   element performance_counter_0.control_slave
+   {
+      datum baseAddress
+      {
+         value = "0";
+         type = "long";
+      }
+   }
    element sysid.control_slave
    {
       datum _tags
@@ -86,14 +94,6 @@
       datum baseAddress
       {
          value = "26226880";
-         type = "long";
-      }
-   }
-   element performance_counter_0.control_slave
-   {
-      datum baseAddress
-      {
-         value = "0";
          type = "long";
       }
    }
@@ -181,22 +181,6 @@
          type = "int";
       }
    }
-   element cpu_2.jtag_debug_module
-   {
-      datum baseAddress
-      {
-         value = "6144";
-         type = "long";
-      }
-   }
-   element cpu_3.jtag_debug_module
-   {
-      datum baseAddress
-      {
-         value = "8192";
-         type = "long";
-      }
-   }
    element cpu_1.jtag_debug_module
    {
       datum baseAddress
@@ -205,11 +189,27 @@
          type = "long";
       }
    }
+   element cpu_2.jtag_debug_module
+   {
+      datum baseAddress
+      {
+         value = "6144";
+         type = "long";
+      }
+   }
    element cpu_0.jtag_debug_module
    {
       datum baseAddress
       {
          value = "26224640";
+         type = "long";
+      }
+   }
+   element cpu_3.jtag_debug_module
+   {
+      datum baseAddress
+      {
+         value = "8192";
          type = "long";
       }
    }
@@ -401,43 +401,11 @@
          type = "long";
       }
    }
-   element onchip_memory2_1.s1
-   {
-      datum baseAddress
-      {
-         value = "16384";
-         type = "long";
-      }
-   }
-   element onchip_memory2_3.s1
-   {
-      datum baseAddress
-      {
-         value = "28672";
-         type = "long";
-      }
-   }
    element onchip_memory2_0.s1
    {
       datum baseAddress
       {
          value = "12288";
-         type = "long";
-      }
-   }
-   element mailbox_0.s1
-   {
-      datum baseAddress
-      {
-         value = "64";
-         type = "long";
-      }
-   }
-   element sdram_0.s1
-   {
-      datum baseAddress
-      {
-         value = "8388608";
          type = "long";
       }
    }
@@ -449,14 +417,6 @@
          type = "long";
       }
    }
-   element mailbox_3.s1
-   {
-      datum baseAddress
-      {
-         value = "128";
-         type = "long";
-      }
-   }
    element keys.s1
    {
       datum baseAddress
@@ -465,11 +425,51 @@
          type = "long";
       }
    }
+   element onchip_memory2_3.s1
+   {
+      datum baseAddress
+      {
+         value = "28672";
+         type = "long";
+      }
+   }
    element onchip_memory2_2.s1
    {
       datum baseAddress
       {
          value = "24576";
+         type = "long";
+      }
+   }
+   element onchip_memory2_1.s1
+   {
+      datum baseAddress
+      {
+         value = "16384";
+         type = "long";
+      }
+   }
+   element sdram_0.s1
+   {
+      datum baseAddress
+      {
+         value = "8388608";
+         type = "long";
+      }
+   }
+   element mailbox_3.s1
+   {
+      datum baseAddress
+      {
+         value = "128";
+         type = "long";
+      }
+   }
+   element mailbox_0.s1
+   {
+      datum baseAddress
+      {
+         value = "64";
          type = "long";
       }
    }
@@ -564,8 +564,8 @@
  <parameter name="maxAdditionalLatency" value="0" />
  <parameter name="projectName" value="lights.qpf" />
  <parameter name="sopcBorderPoints" value="true" />
- <parameter name="systemHash" value="-119330214044" />
- <parameter name="timeStamp" value="1398718041718" />
+ <parameter name="systemHash" value="-120023613246" />
+ <parameter name="timeStamp" value="1398725577030" />
  <parameter name="useTestBenchNamingPattern" value="false" />
  <module kind="clock_source" version="12.0" enabled="1" name="clk_0">
   <parameter name="clockFrequency" value="50000000" />
@@ -758,8 +758,8 @@
    enabled="1"
    name="video_pixel_buffer_dma_0">
   <parameter name="addr_mode" value="Consecutive" />
-  <parameter name="start_address" value="25690112" />
-  <parameter name="back_start_address" value="25690112" />
+  <parameter name="start_address" value="9502696" />
+  <parameter name="back_start_address" value="9502696" />
   <parameter name="image_width" value="1024" />
   <parameter name="image_height" value="768" />
   <parameter name="color_space" value="16-bit RGB" />

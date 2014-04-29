@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="20" version="2.0">
+<workbench progressCount="19" version="2.0">
 <workbenchAdvisor/>
 <window height="991" maximized="true" width="601" x="793" y="100">
 <fastViewData fastViewLocation="1024"/>
@@ -38,17 +38,17 @@
 </folder>
 </info>
 </editorArea>
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="Project.c" partName="Project.c" path="/acct/s1/mccartjj/CSCE313/lights/software/lights/Project.c" title="Project.c" tooltip="Fractal_cpu0/Project.c" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="Project.c" partName="Project.c" path="/acct/s1/mccartjj/CSCE313/lights/software/lights/Project.c" title="Project.c" tooltip="Fractal_cpu0/Project.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Fractal_cpu0/Project.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1727" selectionTopPixel="793"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1202" selectionTopPixel="481"/>
 </editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="Fractal.c" partName="Fractal.c" path="/acct/s1/mccartjj/CSCE313/lights/software/lights/Fractal.c" title="Fractal.c" tooltip="Fractal_cpu0/Fractal.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Fractal_cpu0/Fractal.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="631" selectionTopPixel="361"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3768" selectionTopPixel="2683"/>
 </editor>
-<editor id="org.eclipse.cdt.ui.editor.CEditor" name="Fractal.h" partName="Fractal.h" path="/acct/s1/mccartjj/CSCE313/lights/software/lights/Fractal.h" title="Fractal.h" tooltip="Fractal_cpu0/Fractal.h" workbook="DefaultEditorWorkbook">
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="Fractal.h" partName="Fractal.h" path="/acct/s1/mccartjj/CSCE313/lights/software/lights/Fractal.h" title="Fractal.h" tooltip="Fractal_cpu0/Fractal.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/Fractal_cpu0/Fractal.h"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="628" selectionTopPixel="198"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="474" selectionTopPixel="198"/>
 </editor>
 </editors>
 <views>
@@ -91,8 +91,8 @@
 </view>
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
-<expanded>&#x0A;<category IMemento.internal.id="Warnings (8 items)"/>
-<category IMemento.internal.id="Warnings"/>
+<expanded>
+<category IMemento.internal.id="Warnings (6 items)"/>
 </expanded>
 <columnWidths org.eclipse.ui.ide.locationField="73" org.eclipse.ui.ide.markerType="259" org.eclipse.ui.ide.pathField="143" org.eclipse.ui.ide.resourceField="108" org.eclipse.ui.ide.severityAndDescriptionField="466"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
@@ -416,81 +416,16 @@
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Fractal_cpu0/Project.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Fractal_cpu0/Fractal.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Fractal_cpu0/Fractal.h"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Fractal_cpu1/Fractal.c"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.make.editor" path="/Fractal_cpu1_bsp/Makefile"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.make.editor" path="/Fractal_cpu1/Makefile"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.make.editor" path="/Fractal_cpu1/Makefile"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.make.editor" path="/Fractal_cpu2/Makefile"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.make.editor" path="/Fractal_cpu3/Makefile"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Fractal_cpu0/Project.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Fractal_cpu0/Fractal.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Fractal_cpu3/Fractal.h"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Fractal_cpu3/Project.c"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Fractal_cpu0/Fractal.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Fractal_cpu0/Fractal.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Fractal_cpu0/Fractal.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Fractal_cpu0/Fractal.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/Fractal_cpu0/Fractal.h"/>
 </editors>
-<item historyLabel="Fractal.c" index="1">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="Fractal.c" index="1">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="Fractal.h" index="2">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="Fractal.h" index="2">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="Fractal.c" index="3">
-<position/>
-</item>
-<item historyLabel="Fractal.h" index="2">
-<position info="not_deleted" x="754" y="0"/>
-</item>
-<item historyLabel="Fractal.c" index="3">
-<position info="not_deleted" x="368" y="0"/>
-</item>
-<item historyLabel="Fractal.h" index="2">
-<position info="not_deleted" x="754" y="0"/>
-</item>
-<item historyLabel="Fractal.c" index="1">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="Makefile" index="4">
-<position info="not_deleted" x="1160" y="0"/>
-</item>
-<item historyLabel="Fractal.c" index="1">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="Makefile" index="5">
-<position/>
-</item>
-<item historyLabel="Fractal.c" index="1">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="Makefile" index="5">
-<position info="not_deleted" x="4823" y="0"/>
-</item>
-<item historyLabel="Fractal.c" index="1">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="Makefile" index="6">
-<position info="not_deleted" x="4869" y="0"/>
-</item>
-<item historyLabel="Makefile" index="7">
-<position info="not_deleted" x="4835" y="0"/>
-</item>
-<item historyLabel="Makefile" index="8">
-<position info="not_deleted" x="4835" y="0"/>
-</item>
-<item historyLabel="Fractal.h" index="2">
-<position info="not_deleted" x="754" y="0"/>
-</item>
-<item historyLabel="Fractal.c" index="1">
-<position info="not_deleted" x="544" y="0"/>
-</item>
-<item historyLabel="Project.c" index="0">
-<position info="not_deleted" x="588" y="0"/>
-</item>
 <item historyLabel="Fractal.c" index="1">
 <position info="not_deleted" x="544" y="0"/>
 </item>
@@ -506,77 +441,140 @@
 <item historyLabel="Fractal.c" index="1">
 <position info="not_deleted" x="1081" y="0"/>
 </item>
-<item historyLabel="Project.c" index="9">
+<item historyLabel="Project.c" index="3">
 <position info="not_deleted" x="1498" y="0"/>
 </item>
 <item historyLabel="Fractal.c" index="1">
 <position info="not_deleted" x="1089" y="0"/>
 </item>
-<item historyLabel="Project.c" index="9">
+<item historyLabel="Project.c" index="3">
 <position info="not_deleted" x="949" y="0"/>
 </item>
 <item historyLabel="Fractal.c" index="1">
 <position info="not_deleted" x="1164" y="0"/>
 </item>
-<item historyLabel="Project.c" index="9">
+<item historyLabel="Project.c" index="3">
 <position info="not_deleted" x="949" y="0"/>
 </item>
-<item historyLabel="Fractal.c" index="10">
+<item historyLabel="Fractal.c" index="4">
 <position info="not_deleted" x="1166" y="0"/>
 </item>
-<item historyLabel="Project.c" index="9">
+<item historyLabel="Project.c" index="3">
 <position/>
 </item>
-<item historyLabel="Fractal.c" index="10">
+<item historyLabel="Fractal.c" index="4">
 <position info="not_deleted" x="1166" y="0"/>
 </item>
-<item historyLabel="Project.c" index="9">
+<item historyLabel="Project.c" index="3">
 <position info="not_deleted" x="971" y="0"/>
 </item>
-<item historyLabel="Fractal.c" index="10">
+<item historyLabel="Fractal.c" index="4">
 <position/>
 </item>
-<item historyLabel="Project.c" index="9">
+<item historyLabel="Project.c" index="3">
 <position info="not_deleted" x="521" y="437"/>
 </item>
-<item historyLabel="Fractal.c" index="10">
+<item historyLabel="Fractal.c" index="4">
 <position/>
 </item>
-<item historyLabel="Project.c" index="9">
+<item historyLabel="Project.c" index="3">
 <position info="not_deleted" x="521" y="437"/>
 </item>
-<item historyLabel="Fractal.h" index="11">
+<item historyLabel="Fractal.h" index="5">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="Project.c" index="9">
+<item historyLabel="Project.c" index="3">
 <position info="not_deleted" x="521" y="437"/>
 </item>
-<item historyLabel="Project.c" index="12">
+<item historyLabel="Project.c" index="6">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="Project.c" index="9">
+<item historyLabel="Project.c" index="3">
 <position info="not_deleted" x="521" y="437"/>
 </item>
-<item historyLabel="Fractal.c" index="10">
+<item historyLabel="Fractal.c" index="4">
 <position/>
 </item>
-<item historyLabel="Project.c" index="9">
+<item historyLabel="Project.c" index="3">
 <position info="not_deleted" x="519" y="439"/>
 </item>
-<item historyLabel="Fractal.c" index="10">
+<item historyLabel="Fractal.c" index="4">
 <position info="not_deleted" x="631" y="0"/>
 </item>
-<item historyLabel="Project.c" index="9">
+<item historyLabel="Project.c" index="3">
 <position info="not_deleted" x="519" y="439"/>
 </item>
-<item historyLabel="Fractal.h" index="13">
+<item historyLabel="Fractal.h" index="7">
 <position info="not_deleted" x="628" y="0"/>
 </item>
+<item historyLabel="Fractal.c" index="4">
+<position info="not_deleted" x="631" y="0"/>
+</item>
+<item historyLabel="Project.c" index="3">
+<position info="not_deleted" x="1727" y="0"/>
+</item>
+<item historyLabel="Project.c" index="3">
+<position info="not_deleted" x="1352" y="0"/>
+</item>
+<item historyLabel="Fractal.c" index="8">
+<position info="not_deleted" x="631" y="0"/>
+</item>
+<item historyLabel="Fractal.h" index="9">
+<position info="not_deleted" x="863" y="0"/>
+</item>
+<item historyLabel="Project.c" index="3">
+<position info="not_deleted" x="1268" y="0"/>
+</item>
+<item historyLabel="Fractal.c" index="8">
+<position info="not_deleted" x="631" y="0"/>
+</item>
+<item historyLabel="Project.c" index="3">
+<position info="not_deleted" x="1268" y="0"/>
+</item>
+<item historyLabel="Fractal.c" index="8">
+<position info="not_deleted" x="631" y="0"/>
+</item>
+<item historyLabel="Project.c" index="3">
+<position info="not_deleted" x="1268" y="0"/>
+</item>
+<item historyLabel="Fractal.c" index="8">
+<position info="not_deleted" x="631" y="0"/>
+</item>
+<item historyLabel="Project.c" index="3">
+<position info="not_deleted" x="1268" y="0"/>
+</item>
 <item historyLabel="Fractal.c" index="10">
 <position info="not_deleted" x="631" y="0"/>
 </item>
-<item active="true" historyLabel="Project.c" index="9">
-<position info="not_deleted" x="1727" y="0"/>
+<item historyLabel="Fractal.h" index="11">
+<position info="not_deleted" x="927" y="0"/>
+</item>
+<item historyLabel="Fractal.c" index="10">
+<position info="not_deleted" x="81" y="0"/>
+</item>
+<item historyLabel="Fractal.h" index="11">
+<position info="not_deleted" x="927" y="0"/>
+</item>
+<item historyLabel="Fractal.c" index="10">
+<position info="not_deleted" x="81" y="0"/>
+</item>
+<item historyLabel="Fractal.h" index="11">
+<position info="not_deleted" x="927" y="0"/>
+</item>
+<item historyLabel="Project.c" index="3">
+<position info="not_deleted" x="1202" y="0"/>
+</item>
+<item historyLabel="Fractal.c" index="10">
+<position info="not_deleted" x="81" y="0"/>
+</item>
+<item historyLabel="Fractal.h" index="11">
+<position info="not_deleted" x="927" y="0"/>
+</item>
+<item historyLabel="Fractal.c" index="10">
+<position info="not_deleted" x="3768" y="0"/>
+</item>
+<item active="true" historyLabel="Fractal.h" index="11">
+<position info="not_deleted" x="927" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>

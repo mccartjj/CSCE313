@@ -11,26 +11,25 @@ perl: warning: Please check that your locale settings:
     are supported and installed on your system.
 perl: warning: Falling back to the standard locale ("C").
 
-# 2014.04.28 16:48:23 (*) mk_custom_sdk starting
-# 2014.04.28 16:48:23 (*) Reading project /acct/s1/mccartjj/CSCE313/lights/nios_system.ptf.
+# 2014.04.28 18:54:06 (*) mk_custom_sdk starting
+# 2014.04.28 18:54:06 (*) Reading project /acct/s1/mccartjj/CSCE313/lights/nios_system.ptf.
 
-# 2014.04.28 16:48:24 (*) Finding all CPUs
-# 2014.04.28 16:48:24 (*) Finding all available components
-# 2014.04.28 16:48:24 (*) Reading /acct/s1/mccartjj/CSCE313/lights/.sopc_builder/install.ptf
+# 2014.04.28 18:54:07 (*) Finding all CPUs
+# 2014.04.28 18:54:07 (*) Finding all available components
+# 2014.04.28 18:54:07 (*) Reading /acct/s1/mccartjj/CSCE313/lights/.sopc_builder/install.ptf
 
-# 2014.04.28 16:48:24 (*) Found 63 components
+# 2014.04.28 18:54:07 (*) Found 63 components
 
-# 2014.04.28 16:48:24 (*) Finding all peripherals
+# 2014.04.28 18:54:07 (*) Finding all peripherals
 
-# 2014.04.28 16:48:25 (*) Finding software components
+# 2014.04.28 18:54:08 (*) Finding software components
 
-# 2014.04.28 16:48:25 (*) (Legacy SDK Generation Skipped)
-# 2014.04.28 16:48:25 (*) (All TCL Script Generation Skipped)
-# 2014.04.28 16:48:25 (*) (No Libraries Built)
-# 2014.04.28 16:48:25 (*) (Contents Generation Skipped)
-# 2014.04.28 16:48:25 (*) mk_custom_sdk finishing
-
-# 2014.04.28 16:48:25 (*) Starting generation for system: nios_system.
+# 2014.04.28 18:54:08 (*) (Legacy SDK Generation Skipped)
+# 2014.04.28 18:54:08 (*) (All TCL Script Generation Skipped)
+# 2014.04.28 18:54:08 (*) (No Libraries Built)
+# 2014.04.28 18:54:08 (*) (Contents Generation Skipped)
+# 2014.04.28 18:54:08 (*) mk_custom_sdk finishing
+# 2014.04.28 18:54:08 (*) Starting generation for system: nios_system.
 
 .
 .
@@ -39,11 +38,10 @@ perl: warning: Falling back to the standard locale ("C").
 .
 ..
 ..
-......
+.......
 ........
-.
 
-# 2014.04.28 16:48:26 (*) Running Generator Program for cpu_0
+# 2014.04.28 18:54:09 (*) Running Generator Program for cpu_0
 
 perl: warning: Setting locale failed.
 perl: warning: Please check that your locale settings:
@@ -61,43 +59,32 @@ perl: warning: Please check that your locale settings:
 	LANG = "C"
     are supported and installed on your system.
 perl: warning: Falling back to the standard locale ("C").
-# 2014.04.28 16:48:27 (*) Starting Nios II generation
-# 2014.04.28 16:48:27 (*)   Checking for plaintext license.
-# 2014.04.28 16:48:29 (*)   Couldn't query license setup in Quartus directory /usr/local/3rdparty/altera/quartus12/quartus
-# 2014.04.28 16:48:29 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
-# 2014.04.28 16:48:29 (*)   Plaintext license not found.
-# 2014.04.28 16:48:29 (*)   Checking for encrypted license (non-evaluation).
-# 2014.04.28 16:48:30 (*)   Couldn't query license setup in Quartus directory /usr/local/3rdparty/altera/quartus12/quartus
-# 2014.04.28 16:48:30 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
-# 2014.04.28 16:48:30 (*)   Encrypted license found.  SOF will not be time-limited.
-# 2014.04.28 16:48:30 (*)   Getting CPU configuration settings
+# 2014.04.28 18:54:10 (*) Starting Nios II generation
+# 2014.04.28 18:54:10 (*)   Checking for plaintext license.
+# 2014.04.28 18:54:12 (*)   Couldn't query license setup in Quartus directory /usr/local/3rdparty/altera/quartus12/quartus
+# 2014.04.28 18:54:12 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
+# 2014.04.28 18:54:12 (*)   Plaintext license not found.
+# 2014.04.28 18:54:12 (*)   Checking for encrypted license (non-evaluation).
+# 2014.04.28 18:54:13 (*)   Couldn't query license setup in Quartus directory /usr/local/3rdparty/altera/quartus12/quartus
+# 2014.04.28 18:54:13 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
+# 2014.04.28 18:54:13 (*)   Encrypted license found.  SOF will not be time-limited.
+# 2014.04.28 18:54:13 (*)   Getting CPU configuration settings
 Warning: currently assigned JTAG instance ID 0 for cpu_0/jtag_debug_module is shared by cpu_2/jtag_debug_module. Reassigned to 1.
-# 2014.04.28 16:48:30 (*)   Elaborating CPU configuration settings
-# 2014.04.28 16:48:30 (*)   Creating all objects for CPU
-# 2014.04.28 16:48:30 (*)     Testbench
-# 2014.04.28 16:48:30 (*)     Instruction decoding
-# 2014.04.28 16:48:30 (*)       Instruction fields
-# 2014.04.28 16:48:30 (*)       Instruction decodes
-# 2014.04.28 16:48:30 (*)       Signals for RTL simulation waveforms
-# 2014.04.28 16:48:31 (*)       Instruction controls
-# 2014.04.28 16:48:31 (*)     Pipeline frontend
-# 2014.04.28 16:48:31 (*)     Pipeline backend
-# 2014.04.28 16:48:33 (*)   Generating HDL from CPU objects
-# 2014.04.28 16:48:35 (*)   Creating encrypted HDL
-# 2014.04.28 16:48:36 (*) Done Nios II generation
+# 2014.04.28 18:54:13 (*)   Elaborating CPU configuration settings
+# 2014.04.28 18:54:13 (*)   Creating all objects for CPU
+# 2014.04.28 18:54:13 (*)     Testbench
+# 2014.04.28 18:54:13 (*)     Instruction decoding
+# 2014.04.28 18:54:13 (*)       Instruction fields
+# 2014.04.28 18:54:13 (*)       Instruction decodes
+# 2014.04.28 18:54:14 (*)       Signals for RTL simulation waveforms
+# 2014.04.28 18:54:14 (*)       Instruction controls
+# 2014.04.28 18:54:14 (*)     Pipeline frontend
+# 2014.04.28 18:54:14 (*)     Pipeline backend
+# 2014.04.28 18:54:16 (*)   Generating HDL from CPU objects
+# 2014.04.28 18:54:18 (*)   Creating encrypted HDL
+# 2014.04.28 18:54:19 (*) Done Nios II generation
 
-# 2014.04.28 16:48:37 (*) Running Generator Program for sdram_0
-
-perl: warning: Setting locale failed.
-perl: warning: Please check that your locale settings:
-	LANGUAGE = (unset),
-	LC_ALL = (unset),
-	LC_CTYPE = "en_US",
-	LANG = "C"
-    are supported and installed on your system.
-perl: warning: Falling back to the standard locale ("C").
-
-# 2014.04.28 16:48:38 (*) Running Generator Program for sysid
+# 2014.04.28 18:54:20 (*) Running Generator Program for sdram_0
 
 perl: warning: Setting locale failed.
 perl: warning: Please check that your locale settings:
@@ -108,7 +95,18 @@ perl: warning: Please check that your locale settings:
     are supported and installed on your system.
 perl: warning: Falling back to the standard locale ("C").
 
-# 2014.04.28 16:48:39 (*) Running Generator Program for jtag_uart_0
+# 2014.04.28 18:54:21 (*) Running Generator Program for sysid
+
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LC_CTYPE = "en_US",
+	LANG = "C"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+
+# 2014.04.28 18:54:22 (*) Running Generator Program for jtag_uart_0
 
 perl: warning: Setting locale failed.
 perl: warning: Please check that your locale settings:
@@ -120,7 +118,7 @@ perl: warning: Please check that your locale settings:
 perl: warning: Falling back to the standard locale ("C").
 Warning: currently assigned JTAG instance ID 0 for jtag_uart_0/avalon_jtag_slave is shared by jtag_uart_3/avalon_jtag_slave. Reassigned to 1.
 
-# 2014.04.28 16:48:41 (*) Running Generator Program for keys
+# 2014.04.28 18:54:24 (*) Running Generator Program for keys
 
 perl: warning: Setting locale failed.
 perl: warning: Please check that your locale settings:
@@ -131,7 +129,7 @@ perl: warning: Please check that your locale settings:
     are supported and installed on your system.
 perl: warning: Falling back to the standard locale ("C").
 
-# 2014.04.28 16:48:42 (*) Running Generator Program for performance_counter_0
+# 2014.04.28 18:54:25 (*) Running Generator Program for performance_counter_0
 
 perl: warning: Setting locale failed.
 perl: warning: Please check that your locale settings:
@@ -142,7 +140,7 @@ perl: warning: Please check that your locale settings:
     are supported and installed on your system.
 perl: warning: Falling back to the standard locale ("C").
 
-# 2014.04.28 16:48:43 (*) Running Generator Program for cpu_1
+# 2014.04.28 18:54:26 (*) Running Generator Program for cpu_1
 
 perl: warning: Setting locale failed.
 perl: warning: Please check that your locale settings:
@@ -160,43 +158,32 @@ perl: warning: Please check that your locale settings:
 	LANG = "C"
     are supported and installed on your system.
 perl: warning: Falling back to the standard locale ("C").
-# 2014.04.28 16:48:44 (*) Starting Nios II generation
-# 2014.04.28 16:48:44 (*)   Checking for plaintext license.
-# 2014.04.28 16:48:45 (*)   Couldn't query license setup in Quartus directory /usr/local/3rdparty/altera/quartus12/quartus
-# 2014.04.28 16:48:45 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
-# 2014.04.28 16:48:45 (*)   Plaintext license not found.
-# 2014.04.28 16:48:45 (*)   Checking for encrypted license (non-evaluation).
-# 2014.04.28 16:48:46 (*)   Couldn't query license setup in Quartus directory /usr/local/3rdparty/altera/quartus12/quartus
-# 2014.04.28 16:48:46 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
-# 2014.04.28 16:48:46 (*)   Encrypted license found.  SOF will not be time-limited.
-# 2014.04.28 16:48:46 (*)   Getting CPU configuration settings
+# 2014.04.28 18:54:27 (*) Starting Nios II generation
+# 2014.04.28 18:54:27 (*)   Checking for plaintext license.
+# 2014.04.28 18:54:28 (*)   Couldn't query license setup in Quartus directory /usr/local/3rdparty/altera/quartus12/quartus
+# 2014.04.28 18:54:28 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
+# 2014.04.28 18:54:28 (*)   Plaintext license not found.
+# 2014.04.28 18:54:28 (*)   Checking for encrypted license (non-evaluation).
+# 2014.04.28 18:54:29 (*)   Couldn't query license setup in Quartus directory /usr/local/3rdparty/altera/quartus12/quartus
+# 2014.04.28 18:54:29 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
+# 2014.04.28 18:54:29 (*)   Encrypted license found.  SOF will not be time-limited.
+# 2014.04.28 18:54:29 (*)   Getting CPU configuration settings
 Warning: currently assigned JTAG instance ID 0 for cpu_1/jtag_debug_module is shared by cpu_2/jtag_debug_module. Reassigned to 2.
-# 2014.04.28 16:48:46 (*)   Elaborating CPU configuration settings
-# 2014.04.28 16:48:46 (*)   Creating all objects for CPU
-# 2014.04.28 16:48:46 (*)     Testbench
-# 2014.04.28 16:48:46 (*)     Instruction decoding
-# 2014.04.28 16:48:46 (*)       Instruction fields
-# 2014.04.28 16:48:46 (*)       Instruction decodes
-# 2014.04.28 16:48:47 (*)       Signals for RTL simulation waveforms
-# 2014.04.28 16:48:47 (*)       Instruction controls
-# 2014.04.28 16:48:47 (*)     Pipeline frontend
-# 2014.04.28 16:48:47 (*)     Pipeline backend
-# 2014.04.28 16:48:49 (*)   Generating HDL from CPU objects
-# 2014.04.28 16:48:51 (*)   Creating encrypted HDL
-# 2014.04.28 16:48:53 (*) Done Nios II generation
+# 2014.04.28 18:54:29 (*)   Elaborating CPU configuration settings
+# 2014.04.28 18:54:29 (*)   Creating all objects for CPU
+# 2014.04.28 18:54:29 (*)     Testbench
+# 2014.04.28 18:54:30 (*)     Instruction decoding
+# 2014.04.28 18:54:30 (*)       Instruction fields
+# 2014.04.28 18:54:30 (*)       Instruction decodes
+# 2014.04.28 18:54:30 (*)       Signals for RTL simulation waveforms
+# 2014.04.28 18:54:30 (*)       Instruction controls
+# 2014.04.28 18:54:30 (*)     Pipeline frontend
+# 2014.04.28 18:54:30 (*)     Pipeline backend
+# 2014.04.28 18:54:32 (*)   Generating HDL from CPU objects
+# 2014.04.28 18:54:35 (*)   Creating encrypted HDL
+# 2014.04.28 18:54:36 (*) Done Nios II generation
 
-# 2014.04.28 16:48:53 (*) Running Generator Program for onchip_memory2_0
-
-perl: warning: Setting locale failed.
-perl: warning: Please check that your locale settings:
-	LANGUAGE = (unset),
-	LC_ALL = (unset),
-	LC_CTYPE = "en_US",
-	LANG = "C"
-    are supported and installed on your system.
-perl: warning: Falling back to the standard locale ("C").
-
-# 2014.04.28 16:48:54 (*) Running Generator Program for onchip_memory2_1
+# 2014.04.28 18:54:36 (*) Running Generator Program for onchip_memory2_0
 
 perl: warning: Setting locale failed.
 perl: warning: Please check that your locale settings:
@@ -207,7 +194,7 @@ perl: warning: Please check that your locale settings:
     are supported and installed on your system.
 perl: warning: Falling back to the standard locale ("C").
 
-# 2014.04.28 16:48:56 (*) Running Generator Program for mailbox_0
+# 2014.04.28 18:54:38 (*) Running Generator Program for onchip_memory2_1
 
 perl: warning: Setting locale failed.
 perl: warning: Please check that your locale settings:
@@ -218,7 +205,7 @@ perl: warning: Please check that your locale settings:
     are supported and installed on your system.
 perl: warning: Falling back to the standard locale ("C").
 
-# 2014.04.28 16:48:57 (*) Running Generator Program for mailbox_1
+# 2014.04.28 18:54:39 (*) Running Generator Program for mailbox_0
 
 perl: warning: Setting locale failed.
 perl: warning: Please check that your locale settings:
@@ -229,7 +216,18 @@ perl: warning: Please check that your locale settings:
     are supported and installed on your system.
 perl: warning: Falling back to the standard locale ("C").
 
-# 2014.04.28 16:48:58 (*) Running Generator Program for jtag_uart_1
+# 2014.04.28 18:54:40 (*) Running Generator Program for mailbox_1
+
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LC_CTYPE = "en_US",
+	LANG = "C"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+
+# 2014.04.28 18:54:42 (*) Running Generator Program for jtag_uart_1
 
 perl: warning: Setting locale failed.
 perl: warning: Please check that your locale settings:
@@ -241,7 +239,7 @@ perl: warning: Please check that your locale settings:
 perl: warning: Falling back to the standard locale ("C").
 Warning: currently assigned JTAG instance ID 0 for jtag_uart_1/avalon_jtag_slave is shared by jtag_uart_3/avalon_jtag_slave. Reassigned to 2.
 
-# 2014.04.28 16:49:00 (*) Running Generator Program for cpu_2
+# 2014.04.28 18:54:43 (*) Running Generator Program for cpu_2
 
 perl: warning: Setting locale failed.
 perl: warning: Please check that your locale settings:
@@ -259,74 +257,32 @@ perl: warning: Please check that your locale settings:
 	LANG = "C"
     are supported and installed on your system.
 perl: warning: Falling back to the standard locale ("C").
-# 2014.04.28 16:49:00 (*) Starting Nios II generation
-# 2014.04.28 16:49:01 (*)   Checking for plaintext license.
-# 2014.04.28 16:49:02 (*)   Couldn't query license setup in Quartus directory /usr/local/3rdparty/altera/quartus12/quartus
-# 2014.04.28 16:49:02 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
-# 2014.04.28 16:49:02 (*)   Plaintext license not found.
-# 2014.04.28 16:49:02 (*)   Checking for encrypted license (non-evaluation).
-# 2014.04.28 16:49:03 (*)   Couldn't query license setup in Quartus directory /usr/local/3rdparty/altera/quartus12/quartus
-# 2014.04.28 16:49:03 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
-# 2014.04.28 16:49:03 (*)   Encrypted license found.  SOF will not be time-limited.
-# 2014.04.28 16:49:03 (*)   Getting CPU configuration settings
+# 2014.04.28 18:54:44 (*) Starting Nios II generation
+# 2014.04.28 18:54:44 (*)   Checking for plaintext license.
+# 2014.04.28 18:54:45 (*)   Couldn't query license setup in Quartus directory /usr/local/3rdparty/altera/quartus12/quartus
+# 2014.04.28 18:54:45 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
+# 2014.04.28 18:54:45 (*)   Plaintext license not found.
+# 2014.04.28 18:54:45 (*)   Checking for encrypted license (non-evaluation).
+# 2014.04.28 18:54:46 (*)   Couldn't query license setup in Quartus directory /usr/local/3rdparty/altera/quartus12/quartus
+# 2014.04.28 18:54:46 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
+# 2014.04.28 18:54:46 (*)   Encrypted license found.  SOF will not be time-limited.
+# 2014.04.28 18:54:46 (*)   Getting CPU configuration settings
 Warning: currently assigned JTAG instance ID 0 for cpu_2/jtag_debug_module is shared by cpu_3/jtag_debug_module. Reassigned to 3.
-# 2014.04.28 16:49:03 (*)   Elaborating CPU configuration settings
-# 2014.04.28 16:49:03 (*)   Creating all objects for CPU
-# 2014.04.28 16:49:03 (*)     Testbench
-# 2014.04.28 16:49:03 (*)     Instruction decoding
-# 2014.04.28 16:49:03 (*)       Instruction fields
-# 2014.04.28 16:49:03 (*)       Instruction decodes
-# 2014.04.28 16:49:04 (*)       Signals for RTL simulation waveforms
-# 2014.04.28 16:49:04 (*)       Instruction controls
-# 2014.04.28 16:49:04 (*)     Pipeline frontend
-# 2014.04.28 16:49:04 (*)     Pipeline backend
-# 2014.04.28 16:49:06 (*)   Generating HDL from CPU objects
-# 2014.04.28 16:49:08 (*)   Creating encrypted HDL
-# 2014.04.28 16:49:09 (*) Done Nios II generation
+# 2014.04.28 18:54:46 (*)   Elaborating CPU configuration settings
+# 2014.04.28 18:54:46 (*)   Creating all objects for CPU
+# 2014.04.28 18:54:46 (*)     Testbench
+# 2014.04.28 18:54:46 (*)     Instruction decoding
+# 2014.04.28 18:54:46 (*)       Instruction fields
+# 2014.04.28 18:54:46 (*)       Instruction decodes
+# 2014.04.28 18:54:47 (*)       Signals for RTL simulation waveforms
+# 2014.04.28 18:54:47 (*)       Instruction controls
+# 2014.04.28 18:54:47 (*)     Pipeline frontend
+# 2014.04.28 18:54:47 (*)     Pipeline backend
+# 2014.04.28 18:54:49 (*)   Generating HDL from CPU objects
+# 2014.04.28 18:54:52 (*)   Creating encrypted HDL
+# 2014.04.28 18:54:53 (*) Done Nios II generation
 
-# 2014.04.28 16:49:10 (*) Running Generator Program for cpu_3
-
-perl: warning: Setting locale failed.
-perl: warning: Please check that your locale settings:
-	LANGUAGE = (unset),
-	LC_ALL = (unset),
-	LC_CTYPE = "en_US",
-	LANG = "C"
-    are supported and installed on your system.
-perl: warning: Falling back to the standard locale ("C").
-perl: warning: Setting locale failed.
-perl: warning: Please check that your locale settings:
-	LANGUAGE = (unset),
-	LC_ALL = (unset),
-	LC_CTYPE = "en_US",
-	LANG = "C"
-    are supported and installed on your system.
-perl: warning: Falling back to the standard locale ("C").
-# 2014.04.28 16:49:11 (*) Starting Nios II generation
-# 2014.04.28 16:49:11 (*)   Checking for plaintext license.
-# 2014.04.28 16:49:12 (*)   Couldn't query license setup in Quartus directory /usr/local/3rdparty/altera/quartus12/quartus
-# 2014.04.28 16:49:12 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
-# 2014.04.28 16:49:12 (*)   Plaintext license not found.
-# 2014.04.28 16:49:12 (*)   Checking for encrypted license (non-evaluation).
-# 2014.04.28 16:49:13 (*)   Couldn't query license setup in Quartus directory /usr/local/3rdparty/altera/quartus12/quartus
-# 2014.04.28 16:49:13 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
-# 2014.04.28 16:49:13 (*)   Encrypted license found.  SOF will not be time-limited.
-# 2014.04.28 16:49:13 (*)   Getting CPU configuration settings
-# 2014.04.28 16:49:13 (*)   Elaborating CPU configuration settings
-# 2014.04.28 16:49:13 (*)   Creating all objects for CPU
-# 2014.04.28 16:49:13 (*)     Testbench
-# 2014.04.28 16:49:13 (*)     Instruction decoding
-# 2014.04.28 16:49:13 (*)       Instruction fields
-# 2014.04.28 16:49:13 (*)       Instruction decodes
-# 2014.04.28 16:49:14 (*)       Signals for RTL simulation waveforms
-# 2014.04.28 16:49:14 (*)       Instruction controls
-# 2014.04.28 16:49:14 (*)     Pipeline frontend
-# 2014.04.28 16:49:14 (*)     Pipeline backend
-# 2014.04.28 16:49:16 (*)   Generating HDL from CPU objects
-# 2014.04.28 16:49:18 (*)   Creating encrypted HDL
-# 2014.04.28 16:49:19 (*) Done Nios II generation
-
-# 2014.04.28 16:49:20 (*) Running Generator Program for onchip_memory2_2
+# 2014.04.28 18:54:53 (*) Running Generator Program for cpu_3
 
 perl: warning: Setting locale failed.
 perl: warning: Please check that your locale settings:
@@ -336,8 +292,39 @@ perl: warning: Please check that your locale settings:
 	LANG = "C"
     are supported and installed on your system.
 perl: warning: Falling back to the standard locale ("C").
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LC_CTYPE = "en_US",
+	LANG = "C"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+# 2014.04.28 18:54:54 (*) Starting Nios II generation
+# 2014.04.28 18:54:54 (*)   Checking for plaintext license.
+# 2014.04.28 18:54:56 (*)   Couldn't query license setup in Quartus directory /usr/local/3rdparty/altera/quartus12/quartus
+# 2014.04.28 18:54:56 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
+# 2014.04.28 18:54:56 (*)   Plaintext license not found.
+# 2014.04.28 18:54:56 (*)   Checking for encrypted license (non-evaluation).
+# 2014.04.28 18:54:57 (*)   Couldn't query license setup in Quartus directory /usr/local/3rdparty/altera/quartus12/quartus
+# 2014.04.28 18:54:57 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
+# 2014.04.28 18:54:57 (*)   Encrypted license found.  SOF will not be time-limited.
+# 2014.04.28 18:54:57 (*)   Getting CPU configuration settings
+# 2014.04.28 18:54:57 (*)   Elaborating CPU configuration settings
+# 2014.04.28 18:54:57 (*)   Creating all objects for CPU
+# 2014.04.28 18:54:57 (*)     Testbench
+# 2014.04.28 18:54:57 (*)     Instruction decoding
+# 2014.04.28 18:54:57 (*)       Instruction fields
+# 2014.04.28 18:54:57 (*)       Instruction decodes
+# 2014.04.28 18:54:57 (*)       Signals for RTL simulation waveforms
+# 2014.04.28 18:54:57 (*)       Instruction controls
+# 2014.04.28 18:54:57 (*)     Pipeline frontend
+# 2014.04.28 18:54:58 (*)     Pipeline backend
+# 2014.04.28 18:55:00 (*)   Generating HDL from CPU objects
+# 2014.04.28 18:55:02 (*)   Creating encrypted HDL
+# 2014.04.28 18:55:03 (*) Done Nios II generation
 
-# 2014.04.28 16:49:22 (*) Running Generator Program for onchip_memory2_3
+# 2014.04.28 18:55:04 (*) Running Generator Program for onchip_memory2_2
 
 perl: warning: Setting locale failed.
 perl: warning: Please check that your locale settings:
@@ -348,7 +335,7 @@ perl: warning: Please check that your locale settings:
     are supported and installed on your system.
 perl: warning: Falling back to the standard locale ("C").
 
-# 2014.04.28 16:49:23 (*) Running Generator Program for mailbox_2
+# 2014.04.28 18:55:05 (*) Running Generator Program for onchip_memory2_3
 
 perl: warning: Setting locale failed.
 perl: warning: Please check that your locale settings:
@@ -359,7 +346,7 @@ perl: warning: Please check that your locale settings:
     are supported and installed on your system.
 perl: warning: Falling back to the standard locale ("C").
 
-# 2014.04.28 16:49:25 (*) Running Generator Program for mailbox_3
+# 2014.04.28 18:55:07 (*) Running Generator Program for mailbox_2
 
 perl: warning: Setting locale failed.
 perl: warning: Please check that your locale settings:
@@ -370,7 +357,18 @@ perl: warning: Please check that your locale settings:
     are supported and installed on your system.
 perl: warning: Falling back to the standard locale ("C").
 
-# 2014.04.28 16:49:26 (*) Running Generator Program for jtag_uart_2
+# 2014.04.28 18:55:08 (*) Running Generator Program for mailbox_3
+
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+	LANGUAGE = (unset),
+	LC_ALL = (unset),
+	LC_CTYPE = "en_US",
+	LANG = "C"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+
+# 2014.04.28 18:55:10 (*) Running Generator Program for jtag_uart_2
 
 perl: warning: Setting locale failed.
 perl: warning: Please check that your locale settings:
@@ -382,7 +380,7 @@ perl: warning: Please check that your locale settings:
 perl: warning: Falling back to the standard locale ("C").
 Warning: currently assigned JTAG instance ID 0 for jtag_uart_2/avalon_jtag_slave is shared by jtag_uart_3/avalon_jtag_slave. Reassigned to 3.
 
-# 2014.04.28 16:49:28 (*) Running Generator Program for jtag_uart_3
+# 2014.04.28 18:55:11 (*) Running Generator Program for jtag_uart_3
 
 perl: warning: Setting locale failed.
 perl: warning: Please check that your locale settings:
@@ -393,7 +391,7 @@ perl: warning: Please check that your locale settings:
     are supported and installed on your system.
 perl: warning: Falling back to the standard locale ("C").
 
-# 2014.04.28 16:49:29 (*) Running Generator Program for nios_system_clock_0
+# 2014.04.28 18:55:13 (*) Running Generator Program for nios_system_clock_0
 
 perl: warning: Setting locale failed.
 perl: warning: Please check that your locale settings:
@@ -404,7 +402,7 @@ perl: warning: Please check that your locale settings:
     are supported and installed on your system.
 perl: warning: Falling back to the standard locale ("C").
 
-# 2014.04.28 16:49:31 (*) Running Generator Program for nios_system_clock_1
+# 2014.04.28 18:55:15 (*) Running Generator Program for nios_system_clock_1
 
 perl: warning: Setting locale failed.
 perl: warning: Please check that your locale settings:
@@ -415,7 +413,7 @@ perl: warning: Please check that your locale settings:
     are supported and installed on your system.
 perl: warning: Falling back to the standard locale ("C").
 
-# 2014.04.28 16:49:32 (*) Running Generator Program for nios_system_clock_2
+# 2014.04.28 18:55:16 (*) Running Generator Program for nios_system_clock_2
 
 perl: warning: Setting locale failed.
 perl: warning: Please check that your locale settings:
@@ -426,7 +424,7 @@ perl: warning: Please check that your locale settings:
     are supported and installed on your system.
 perl: warning: Falling back to the standard locale ("C").
 
-# 2014.04.28 16:49:34 (*) Running Generator Program for nios_system_clock_3
+# 2014.04.28 18:55:18 (*) Running Generator Program for nios_system_clock_3
 
 perl: warning: Setting locale failed.
 perl: warning: Please check that your locale settings:
@@ -440,7 +438,7 @@ perl: warning: Falling back to the standard locale ("C").
 .
 
 
-# 2014.04.28 16:49:36 (*) Running Test Generator Program for sdram_0
+# 2014.04.28 18:55:19 (*) Running Test Generator Program for sdram_0
 
 perl: warning: Setting locale failed.
 perl: warning: Please check that your locale settings:
@@ -451,7 +449,7 @@ perl: warning: Please check that your locale settings:
     are supported and installed on your system.
 perl: warning: Falling back to the standard locale ("C").
 
-# 2014.04.28 16:49:36 (*) Making arbitration and system (top) modules.
+# 2014.04.28 18:55:20 (*) Making arbitration and system (top) modules.
 
 perl: warning: Setting locale failed.
 perl: warning: Please check that your locale settings:
@@ -462,21 +460,21 @@ perl: warning: Please check that your locale settings:
     are supported and installed on your system.
 perl: warning: Falling back to the standard locale ("C").
 
-# 2014.04.28 16:49:53 (*) Generating Quartus symbol for top level: nios_system
+# 2014.04.28 18:55:37 (*) Generating Quartus symbol for top level: nios_system
 
-# 2014.04.28 16:49:53 (*) Symbol /acct/s1/mccartjj/CSCE313/lights/nios_system.bsf already exists, no need to regenerate
-# 2014.04.28 16:49:53 (*) Creating command-line system-generation script: /acct/s1/mccartjj/CSCE313/lights/nios_system_generation_script
+# 2014.04.28 18:55:37 (*) Symbol /acct/s1/mccartjj/CSCE313/lights/nios_system.bsf already exists, no need to regenerate
+# 2014.04.28 18:55:37 (*) Creating command-line system-generation script: /acct/s1/mccartjj/CSCE313/lights/nios_system_generation_script
 
-# 2014.04.28 16:49:53 (*) Running setup for HDL simulator: modelsim
+# 2014.04.28 18:55:37 (*) Running setup for HDL simulator: modelsim
 
 
-# 2014.04.28 16:49:54 (*) Completed generation for system: nios_system.
-# 2014.04.28 16:49:54 (*) THE FOLLOWING SYSTEM ITEMS HAVE BEEN GENERATED:
+# 2014.04.28 18:55:38 (*) Completed generation for system: nios_system.
+# 2014.04.28 18:55:38 (*) THE FOLLOWING SYSTEM ITEMS HAVE BEEN GENERATED:
   SOPC Builder database : /acct/s1/mccartjj/CSCE313/lights/nios_system.ptf 
   System HDL Model : /acct/s1/mccartjj/CSCE313/lights/nios_system.v 
   System Generation Script : /acct/s1/mccartjj/CSCE313/lights/nios_system_generation_script 
 
-# 2014.04.28 16:49:54 (*) SUCCESS: SYSTEM GENERATION COMPLETED.
+# 2014.04.28 18:55:38 (*) SUCCESS: SYSTEM GENERATION COMPLETED.
 
 
 Press 'Exit' to exit.

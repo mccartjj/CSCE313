@@ -84,8 +84,8 @@ module video_pixel_buffer_dma_0 (
  *****************************************************************************/
 
 // Parameters
-parameter DEFAULT_BUFFER_ADDRESS	= 32'd25690112;
-parameter DEFAULT_BACK_BUF_ADDRESS	= 32'd25690112;
+parameter DEFAULT_BUFFER_ADDRESS	= 32'd9502696;
+parameter DEFAULT_BACK_BUF_ADDRESS	= 32'd9502696;
 
 parameter AW						= 19; // Image size's address width
 

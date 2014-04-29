@@ -1,0 +1,37 @@
+In VGA verilog:
+
+parameter CW							= 9;
+parameter DW							= 29;
+
+parameter R_UI							= 29;
+parameter R_LI							= 20;
+parameter G_UI							= 19;
+parameter G_LI							= 10;
+parameter B_UI							= 9;
+parameter B_LI							= 0;
+
+/* Number of pixels */
+parameter H_ACTIVE 						= 1024;
+parameter H_FRONT_PORCH					=  24;
+parameter H_SYNC							=  136;
+parameter H_BACK_PORCH 					=  160;
+parameter H_TOTAL 						= 1344;
+
+/* Number of lines */
+parameter V_ACTIVE 						= 768;
+parameter V_FRONT_PORCH					=  3;
+parameter V_SYNC							=   6;
+parameter V_BACK_PORCH 					=  29;
+parameter V_TOTAL							= 806;
+
+parameter NUMBER_OF_BITS_FOR_LINES		= 11;
+parameter LINE_COUNTER_INCREMENT			= 11'h001;
+
+parameter NUMBER_OF_BITS_FOR_PIXELS		= 11;
+parameter PIXEL_COUNTER_INCREMENT		= 11'h001;
+
+In Clocks_0.v:
+Line 69:  parameter SYS_CLK_MULT	= 2;
+Line 174: DE_Clock_Generator_System.clk2_divide_by			= 7,
+DE_Clock_Generator_System.clk2_duty_cycle			= 50,
+DE_Clock_Generator_System.clk2_multiply_by			= 9,

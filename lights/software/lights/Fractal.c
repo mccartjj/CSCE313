@@ -41,8 +41,8 @@ int genColor(int iter) {
 	}
 	else {
 		int red = iter;
-		int green = iter * 8;
-		int blue = iter * 2;
+		int green = iter * 6;
+		int blue = iter;
 
 		//saturating the colors
 		if (red > 31)
@@ -156,7 +156,7 @@ void drawFrame(int zoom) {
 	int result = 0;
 	int color = 0;
 	int cpu = __builtin_rdctl(5);
-	int recalculateTargetFlag = 20;
+	int recalculateTargetFlag = 15;
 	float x = 0.0;
 	float y = 0.0;
 
