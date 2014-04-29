@@ -21,15 +21,21 @@ void setup(void);
 
 //fractal generation
 int genColor(int iter);
-int mandelbrot(float x0,float y0,float *xOut,float *yOut);
-int mandelbrotNoZoom(int cRow, int cCol, int *recalculateTargetFlag);
+int mandelbrot(long x0, long y0, long *xOut, long *yOut);
 
 //drawing functions
 void drawFrame(int zoom);
-void drawFullSet(void);
 void drawPixel(int color, int row, int col);
 void barrier(alt_u8 barrierNum);
 void clearScreen(void);
+
+//starting and stoping the preformance counters
+void startTimer(void);
+void endTimeAndPrint(void);
+
+long FloatToFixed(float fixMe);
+long fixedPointMultiply32(long a, long b);
+long fixedPointMultiply64(long a, long b);
 
 //universal stuff
 alt_up_pixel_buffer_dma_dev *myPixelBuffer;

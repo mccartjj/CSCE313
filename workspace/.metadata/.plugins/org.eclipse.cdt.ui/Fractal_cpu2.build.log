@@ -7,9 +7,6 @@ make --no-print-directory -C ../Fractal_cpu2_bsp/
 [BSP build complete]
 Info: Compiling Fractal.c to obj/default/Fractal.o
 nios2-elf-gcc -xc -MP -MMD -c -I../Fractal_cpu2_bsp//HAL/inc -I../Fractal_cpu2_bsp/ -I../Fractal_cpu2_bsp//drivers/inc  -DSYSTEM_BUS_WIDTH=32 -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O3 -g -Wall   -EL -mhw-div -mcustom-fpu-cfg=60-1 -mhw-mul -mno-hw-mulx  -o obj/default/Fractal.o Fractal.c
-Fractal.c: In function 'barrier':
-Fractal.c:201: warning: implicit declaration of function 'sprintf'
-Fractal.c:201: warning: incompatible implicit declaration of built-in function 'sprintf'
 Info: Compiling Project.c to obj/default/Project.o
 nios2-elf-gcc -xc -MP -MMD -c -I../Fractal_cpu2_bsp//HAL/inc -I../Fractal_cpu2_bsp/ -I../Fractal_cpu2_bsp//drivers/inc  -DSYSTEM_BUS_WIDTH=32 -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O3 -g -Wall   -EL -mhw-div -mcustom-fpu-cfg=60-1 -mhw-mul -mno-hw-mulx  -o obj/default/Project.o Project.c
 Info: Linking Fractal_cpu2.elf
@@ -23,8 +20,8 @@ perl: warning: Please check that your locale settings:
 	LANG = "C"
     are supported and installed on your system.
 perl: warning: Falling back to the standard locale ("C").
-Info: (Fractal_cpu2.elf) 76 KBytes program size (code + initialized data).
-Info:                    1260 KBytes free for stack + heap.
+Info: (Fractal_cpu2.elf) 77 KBytes program size (code + initialized data).
+Info:                    1259 KBytes free for stack + heap.
 Info: Creating Fractal_cpu2.objdump
 nios2-elf-objdump --disassemble --syms --all-header --source Fractal_cpu2.elf >Fractal_cpu2.objdump
 [Fractal_cpu2 build complete]

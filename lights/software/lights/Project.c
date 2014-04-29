@@ -26,26 +26,21 @@
 #define FIXED_POINT
 
 int main() {
-	setup();
-#ifdef MASTER
-	//	volatile alt_u8 pixel_buffer_memory[2359296];
-	//	alt_up_pixel_buffer_dma_change_back_buffer_address(myPixelBuffer, (unsigned int) pixel_buffer_memory);
-	//	alt_up_pixel_buffer_dma_swap_buffers(myPixelBuffer);
-	//	while (alt_up_pixel_buffer_dma_check_swap_buffers_status(myPixelBuffer)) {
-	//		alt_up_pixel_buffer_dma_change_back_buffer_address(myPixelBuffer, (unsigned int) pixel_buffer_memory);
-	//	}
-#endif
-	//	barrier(0);
 
+	barrier(0);
+	setup();
 
 	printf("Program running (UART)...\n");
+
+	//how to reset the interrupt vector
+	//the following will show you the number to put in SOPC video DMA controller
 	//reset address: 0090FFE4
 	//default buffer start address: 0x01880000
 	printf("ADDRESS: %08X \n", myPixelBuffer->back_buffer_start_address);
 	int cpu = __builtin_rdctl(5);
 	printf("cpu %d \n", cpu);
 
-	//	unsigned long long cycles = 0;
+	//unsigned long long cycles = 0;
 	//the main program loop
 	while (1) {
 
@@ -54,31 +49,16 @@ int main() {
 		int zoom;
 		for (zoom = 0; zoom <= 100; zoom++) {
 
-			/*
-			 PERF_RESET(PERFORMANCE_COUNTER_0_BASE);
-			 PERF_START_MEASURING(PERFORMANCE_COUNTER_0_BASE);
-			 PERF_BEGIN(PERFORMANCE_COUNTER_0_BASE, 1);
-			 //*/
+			//startTimer();
 			clearScreen();
 
-			if (zoom == 0) {
-				drawFullSet();
-			}
+			drawFrame(zoom);
 
-			else {
-				drawFrame(zoom);
-			}
-
-			printf("before barrier %d \n", zoom);
+			//printf("before barrier %d \n", zoom);
 			barrier(0);
-			printf("after barrier %d \n", zoom);
-			/*
-			 PERF_END(PERFORMANCE_COUNTER_0_BASE, 1);
-			 PERF_STOP_MEASURING(PERFORMANCE_COUNTER_0_BASE);
-			 cycles = perf_get_section_time((void*) PERFORMANCE_COUNTER_0_BASE, 1);
-			 printf("Zoom level: %i\n", zoom);
-			 printf("Cycles on frame: %llu \n\n", cycles);
-			 //*/
+			//printf("after barrier %d \n", zoom);
+
+			//endTimeAndPrint();
 		}
 	}
 	return 0;
