@@ -15,7 +15,7 @@
 #include "system.h"
 #include <altera_avalon_mailbox.h>
 
-long targetArrayXYMaster[2] = { 0, 0 };
+long targetArrayXYMaster[2] = { -52679047, -13416037 };
 volatile long *targetArrayXY = targetArrayXYMaster;
 
 extern alt_up_pixel_buffer_dma_dev *myPixelBuffer;
@@ -51,7 +51,7 @@ void setup(void) {
 int genColor(int iter) {
 	int color = 0;
 	if (iter == maxIter) {
-		color = black;
+		color = grey;
 	}
 	else {
 		int red = iter;
@@ -162,12 +162,19 @@ void drawFrame(int zoom) {
 			result = mandelbrot(x0, y0, &x, &y);
 
 			//recalculates the x and y
-			if (cpu == 3) {
-				if (recalculateTargetFlag) {
-					if (result > (maxIter - 2)) {
-						targetArrayXYMaster[0] = x;
-						targetArrayXYMaster[1] = y;
-						recalculateTargetFlag = recalculateTargetFlag - 1;
+			if (zoom > 6) {
+				if (cpu == 3) {
+					printf("iter: %d\n", result);
+					if (recalculateTargetFlag) {
+						if (result > (maxIter - 5) && (result < maxIter)) {
+							if (result < maxIter) {
+								targetArrayXYMaster[0] = x;
+								targetArrayXYMaster[1] = y;
+								recalculateTargetFlag = recalculateTargetFlag - 1;
+								printf("zoom level: %d \n", zoom);
+								printf("X, Y: %d, %d\n", x, y);
+							}
+						}
 					}
 				}
 			}

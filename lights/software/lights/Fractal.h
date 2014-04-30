@@ -49,5 +49,6 @@ alt_up_pixel_buffer_dma_dev *myPixelBuffer;
 //colors
 #define white 0xFFFFFF
 #define black 0x000000
+#define grey 0x7BEF
 
 #endif /* FRACTAL_H_ */
