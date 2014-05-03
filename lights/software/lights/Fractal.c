@@ -15,11 +15,13 @@
 #include "system.h"
 #include <altera_avalon_mailbox.h>
 
+//this is where we keep the target points
 long targetArrayXYMaster[2] = { -52679047, -13416037 };
 volatile long *targetArrayXY = targetArrayXYMaster;
 
 extern alt_up_pixel_buffer_dma_dev *myPixelBuffer;
 
+//the necessary setup before we can run the main program
 void setup(void) {
 
 	volatile void **buffaddr = (volatile void**) 0x31FD;
@@ -50,10 +52,16 @@ void setup(void) {
 //makes the color for display
 int genColor(int iter) {
 	int color = 0;
+
+	//if the pixel in in the set we set the color
 	if (iter == maxIter) {
 		color = grey;
 	}
+
+	//otherwise we use a gradient based on how long it took to get out of the set
 	else {
+
+		//currently this produces shades of green
 		int red = iter;
 		int green = iter * 6;
 		int blue = iter;
@@ -92,8 +100,7 @@ int mandelbrot(long x0, long y0, long *xOut, long *yOut) {
 		xtemp = fixedPointMultiply64(x, x) - fixedPointMultiply64(y, y) + x0;
 		y = fixedPointMultiply64(fixedPointMultiply64(FP2, x), y) + y0;
 
-		/*
-		 if (cpu == 3) {
+		/*if (cpu == 3) {
 		 endTimeAndPrint();
 		 }//*/
 
@@ -107,10 +114,12 @@ int mandelbrot(long x0, long y0, long *xOut, long *yOut) {
 	return iter;
 }
 
+//renders the Mandelbrot set at at predetermined target point with the zoom level you tell it
 void drawFrame(int zoom) {
 	int i;
 	int j;
 	int result = 0;
+	int oldResult = 0;
 	int color = 0;
 	int cpu = __builtin_rdctl(5);
 	int recalculateTargetFlag = 1;
@@ -130,19 +139,11 @@ void drawFrame(int zoom) {
 	long rowOverRowSize = 0;
 	long colOverColSize = 0;
 
-	if (zoom == 0) {
-		minX = FloatToFixed(-2.5);
-		maxX = FloatToFixed(1.0);
-		minY = FloatToFixed(-1.0);
-		maxY = FloatToFixed(1.0);
-	}
-
-	else {
-		minX = targetArrayXY[0] - FloatToFixed(1.0 / powf(1.5, zoom));
-		maxX = targetArrayXY[0] + FloatToFixed(1.0 / powf(1.5, zoom));
-		minY = targetArrayXY[1] - FloatToFixed(0.75 / powf(1.5, zoom));
-		maxY = targetArrayXY[1] + FloatToFixed(0.75 / powf(1.5, zoom));
-	}
+	//calculating the point we are going to be zooming in on
+	minX = targetArrayXY[0] - FloatToFixed(1.0 / powf(1.5, zoom));
+	maxX = targetArrayXY[0] + FloatToFixed(1.0 / powf(1.5, zoom));
+	minY = targetArrayXY[1] - FloatToFixed(0.75 / powf(1.5, zoom));
+	maxY = targetArrayXY[1] + FloatToFixed(0.75 / powf(1.5, zoom));
 
 	//the loop that goes over the rows
 	for (i = cpu; i < rowSize; i = i + NUM_CPUS) {
@@ -162,30 +163,20 @@ void drawFrame(int zoom) {
 			result = mandelbrot(x0, y0, &x, &y);
 
 			//recalculates the x and y
-			if (zoom > 6) {
-				if (cpu == 3) {
-					printf("iter: %d\n", result);
-					if (recalculateTargetFlag) {
-						if (result > (maxIter - 5) && (result < maxIter)) {
-							if (result < maxIter) {
-								targetArrayXYMaster[0] = x;
-								targetArrayXYMaster[1] = y;
-								recalculateTargetFlag = recalculateTargetFlag - 1;
-								printf("zoom level: %d \n", zoom);
-								printf("X, Y: %d, %d\n", x, y);
-							}
-						}
-					}
-				}
-			}
+			getNewXY(x, y, result, zoom, &recalculateTargetFlag, cpu, oldResult);
+			oldResult = result;
 
+			//gets the color using the result of the manderbrot function
 			color = genColor(result);
+
+			//gets the color we give it and sets the pixel at the i j position to that color
 			alt_up_pixel_buffer_dma_draw(myPixelBuffer, color, j, i);
 		}
 	}
 
 }
 
+//forces the CPU to halt until it gets a message to continue
 void barrier(alt_u8 barrierNum) {
 	alt_u32 msg;
 	alt_mailbox_dev *mb[NUM_CPUS];
@@ -224,9 +215,42 @@ void barrier(alt_u8 barrierNum) {
 	}
 }
 
+//sends the command to the altera board to refresh the dma
 void clearScreen(void) {
 	//clears the part of the screen controlled by the pixel buffer
 	alt_up_pixel_buffer_dma_clear_screen(myPixelBuffer, 0);
+}
+
+void getNewXY(long x, long y, int result, int zoom, int *recalculateTargetFlag, int cpu, int oldResult) {
+	if (*recalculateTargetFlag) {
+
+		//makes sure only CPU 3 is doing this function
+		//this is why we have one slow CPU since it has to calculate all the following code
+		if (cpu == 3) {
+			//			if ((oldResult < maxIter) && (oldResult > 31)) {
+			if (result > (maxIter - 2)) {
+
+				//the bounding conditions use these to tune where you will be zooming in at
+				//remember this is in fixed point to get back to normal floating point divide by 2^26
+				if ((x > 60818) && (y > 0)) {
+					if ((x < 2531832) && (y < 61548816)) {
+
+						//setting the master point that all the other CPU's will zoom in on
+						targetArrayXYMaster[0] = x;
+						targetArrayXYMaster[1] = y;
+
+						//this decrements the flag so the function will not run if it is not needed
+						//as in we have already found a good point for the next frame to zoom in on
+						*recalculateTargetFlag = *recalculateTargetFlag - 1;
+
+						printf("point iteration number: %d old iteration: %d \n", result, oldResult);
+						printf("X, Y: %ld, %ld\n", x, y);
+					}
+				}
+			}
+			//			}
+		}
+	}
 }
 
 //starts the performance counter
@@ -247,14 +271,17 @@ void endTimeAndPrint(void) {
 	printf("Cycles : %llu \n\n", (cycles));
 }
 
+//turns a float into a (32, 26) fixed point number
 long FloatToFixed(float fixMe) {
 	return (long) (fixMe * ((float) 134217728));
 }
 
+//Multiples a (32, 26) fixed point number and a normal integer
 long fixedPointMultiply32(long a, long b) {
 	return (long long) a * (long long) b;
 }
 
+//Multiplies a (32, 26) fixed point number with another (32,26) fixed point number
 long fixedPointMultiply64(long a, long b) {
 
 	long long c = (long long) a * (long long) b;
