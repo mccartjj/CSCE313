@@ -55,7 +55,7 @@ int genColor(int iter) {
 
 	//if the pixel in in the set we set the color
 	if (iter == maxIter) {
-		color = grey;
+		color = black;
 	}
 
 	//otherwise we use a gradient based on how long it took to get out of the set
@@ -83,7 +83,7 @@ int genColor(int iter) {
 //this calculates the math to find if a location is in the Mandelbrot set
 int mandelbrot(long x0, long y0, long *xOut, long *yOut) {
 	int iter = 0;
-	//	int cpu = __builtin_rdctl(5);
+	int cpu = __builtin_rdctl(5);
 
 	long x = 0.0;
 	long y = 0.0;
@@ -93,20 +93,20 @@ int mandelbrot(long x0, long y0, long *xOut, long *yOut) {
 
 	while (((fixedPointMultiply64(x, x) + fixedPointMultiply64(y, y)) <= 268435456) && (iter < maxIter)) {
 
-		/*if (cpu == 3) {
-		 startTimer();
-		 }//*/
+		if (cpu == 2) {
+			startTimer();
+		}//*/
 
 		xtemp = fixedPointMultiply64(x, x) - fixedPointMultiply64(y, y) + x0;
 		y = fixedPointMultiply64(fixedPointMultiply64(FP2, x), y) + y0;
 
-		/*if (cpu == 3) {
-		 endTimeAndPrint();
-		 }//*/
 
 		x = xtemp;
 		iter++;
 
+		if (cpu == 2) {
+			endTimeAndPrint();
+		}//*/
 	}
 	*xOut = x;
 	*yOut = y;
@@ -122,7 +122,6 @@ void drawFrame(int zoom) {
 	int oldResult = 0;
 	int color = 0;
 	int cpu = __builtin_rdctl(5);
-	int recalculateTargetFlag = 1;
 
 	long x = 0;
 	long y = 0;
@@ -163,8 +162,7 @@ void drawFrame(int zoom) {
 			result = mandelbrot(x0, y0, &x, &y);
 
 			//recalculates the x and y
-			getNewXY(x, y, result, zoom, &recalculateTargetFlag, cpu, oldResult);
-			oldResult = result;
+			getNewXY(x, y, result, cpu, &oldResult);
 
 			//gets the color using the result of the manderbrot function
 			color = genColor(result);
@@ -221,34 +219,23 @@ void clearScreen(void) {
 	alt_up_pixel_buffer_dma_clear_screen(myPixelBuffer, 0);
 }
 
-void getNewXY(long x, long y, int result, int zoom, int *recalculateTargetFlag, int cpu, int oldResult) {
-	if (*recalculateTargetFlag) {
-
-		//makes sure only CPU 3 is doing this function
-		//this is why we have one slow CPU since it has to calculate all the following code
-		if (cpu == 3) {
-			//			if ((oldResult < maxIter) && (oldResult > 31)) {
-			if (result > (maxIter - 2)) {
-
-				//the bounding conditions use these to tune where you will be zooming in at
-				//remember this is in fixed point to get back to normal floating point divide by 2^26
-				if ((x > 60818) && (y > 0)) {
-					if ((x < 2531832) && (y < 61548816)) {
-
+void getNewXY(long x, long y, int result, int cpu, int *oldResult) {
+	//makes sure only CPU 3 is doing this function
+	//this is why we have one slow CPU since it has to calculate all the following code
+	if (cpu == 3) {
+		//the bounding conditions use these to tune where you will be zooming in at
+		//remember this is in fixed point to get back to normal floating point divide by 2^26
+		if ((x > 60818) && (y > 0)) {
+			if ((x < 2531832) && (y < 61548816)) {
+				if (result < (maxIter)) {
+					if (result > *oldResult) {
+						*oldResult = result;
 						//setting the master point that all the other CPU's will zoom in on
 						targetArrayXYMaster[0] = x;
 						targetArrayXYMaster[1] = y;
-
-						//this decrements the flag so the function will not run if it is not needed
-						//as in we have already found a good point for the next frame to zoom in on
-						*recalculateTargetFlag = *recalculateTargetFlag - 1;
-
-						printf("point iteration number: %d old iteration: %d \n", result, oldResult);
-						printf("X, Y: %ld, %ld\n", x, y);
 					}
 				}
 			}
-			//			}
 		}
 	}
 }

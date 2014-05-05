@@ -14,12 +14,12 @@ perl: warning: Setting locale failed.
 perl: warning: Please check that your locale settings:
 	LANGUAGE = (unset),
 	LC_ALL = (unset),
-Info: (Fractal_cpu1.elf) 77 KBytes program size (code + initialized data).
 	LC_CTYPE = "en_US",
-Info:                    1643 KBytes free for stack + heap.
 	LANG = "C"
-Info: Creating Fractal_cpu1.objdump
     are supported and installed on your system.
-nios2-elf-objdump --disassemble --syms --all-header --source Fractal_cpu1.elf >Fractal_cpu1.objdump
 perl: warning: Falling back to the standard locale ("C").
+Info: (Fractal_cpu1.elf) 77 KBytes program size (code + initialized data).
+Info:                    1643 KBytes free for stack + heap.
+Info: Creating Fractal_cpu1.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source Fractal_cpu1.elf >Fractal_cpu1.objdump
 [Fractal_cpu1 build complete]

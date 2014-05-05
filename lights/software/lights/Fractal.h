@@ -29,7 +29,7 @@ void drawPixel(int color, int row, int col);
 void barrier(alt_u8 barrierNum);
 void clearScreen(void);
 
-void getNewXY(long x, long y, int result, int zoom, int *recalculateTargetFlag, int cpu, int oldResult);
+void getNewXY(long x, long y, int result, int cpu, int *oldResult);
 
 //starting and stoping the preformance counters
 void startTimer(void);

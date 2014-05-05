@@ -45,20 +45,19 @@ int main() {
 	while (1) {
 
 		int zoom;
+
 		for (zoom = 0; zoom <= 100; zoom++) {
 
 			printf("zoom: %d\n", zoom);
 
-			//startTimer();
 			clearScreen();
+//			startTimer();
 
 			drawFrame(zoom);
 
-			//printf("before barrier %d \n", zoom);
 			barrier(0);
-			//printf("after barrier %d \n", zoom);
 
-			//endTimeAndPrint();
+//			endTimeAndPrint();
 		}
 	}
 	return 0;
